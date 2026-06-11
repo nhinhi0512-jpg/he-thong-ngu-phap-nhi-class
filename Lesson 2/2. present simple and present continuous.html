@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 2: Hiện tại đơn & Hiện tại tiếp diễn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px 16px;
+            min-height: 100vh;
+        }
+
+        .grammar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* ===== NAVIGATION BAR ===== */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 28px;
+            background: #f8fafc;
+            border-bottom: 2px solid #e9edf2;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .home-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .exercise-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #48bb78;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-link:hover {
+            transform: translateY(-2px);
+            background: #38a169;
+        }
+
+        /* Progress Indicator */
+        .progress-indicator {
+            background: #edf2f7;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 28px 0 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .progress-text strong {
+            color: #5a67d8;
+        }
+
+        /* Header */
+        .hero-header {
+            background: linear-gradient(135deg, #1E3C5C 0%, #2B4C6E 100%);
+            padding: 1.8rem 2rem;
+            color: white;
+        }
+
+        .hero-header h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-header h1 i {
+            background: #ffb347;
+            padding: 8px;
+            border-radius: 1.2rem;
+            color: #1e3c5c;
+        }
+
+        .hero-header p {
+            opacity: 0.85;
+            margin-top: 10px;
+            border-left: 3px solid #ffb347;
+            padding-left: 12px;
+        }
+
+        /* Tabs */
+        .tabs-modern {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1.8rem 1.8rem 0 1.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #4a627a;
+            font-family: inherit;
+        }
+
+        .tab-btn i {
+            margin-right: 8px;
+        }
+
+        .tab-btn:hover {
+            background: #f0f4f9;
+            color: #667eea;
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+            padding: 1.8rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border: 1px solid #e9edf2;
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+            color: #1a202c;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            color: #667eea;
+            margin: 1.5rem 0 0.8rem 0;
+            font-size: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .note-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .warning-box {
+            background: #fdf2e9;
+            border-left: 4px solid #e67e22;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        ul, ol {
+            padding-left: 1.5rem;
+            margin: 0.8rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9edf2;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #2d3748;
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        .option-label {
+            display: block;
+            padding: 10px 15px;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-label:hover {
+            border-color: #667eea;
+            background: #eeedfe;
+        }
+
+        .option-label input {
+            margin-right: 10px;
+        }
+
+        .option-label.correct {
+            background: #d4edda;
+            border-color: #48bb78;
+        }
+
+        .option-label.incorrect {
+            background: #f8d7da;
+            border-color: #f56565;
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3cd;
+            border-left: 4px solid #f1c40f;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: #48bb78;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: all 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #38a169;
+            transform: scale(0.98);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #edf2f7;
+            border-radius: 16px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1.5rem;
+            color: #7f8c9a;
+            border-top: 1px solid #e2edf5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .home-link, .exercise-link {
+                justify-content: center;
+            }
+            .hero-header h1 {
+                font-size: 1.3rem;
+            }
+            .tabs-modern {
+                margin: 1rem;
+            }
+            .tab-content {
+                padding: 1rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="grammar-container">
+    <!-- NAVIGATION BAR -->
+    <div class="nav-bar">
+        <a href="../index.html" class="home-link">
+            <i class="fas fa-home"></i> Về trang chủ
+        </a>
+        <div class="action-buttons">
+            <a href="2. Practice - Present Simple and Continuous.html" class="exercise-link">
+                <i class="fas fa-pen"></i> Làm bài tập →
+            </a>
+        </div>
+    </div>
+
+    <!-- PROGRESS INDICATOR -->
+    <div class="progress-indicator">
+        <span class="progress-text">📖 <strong>Bài 2:</strong> Hiện tại đơn & Hiện tại tiếp diễn</span>
+        <span class="progress-text">⭐ So sánh 2 thì quan trọng nhất</span>
+    </div>
+
+    <!-- HEADER -->
+    <div class="hero-header">
+        <h1><i class="fas fa-clock"></i> Làm Chủ Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h1>
+        <p>Lộ trình từ mất gốc đến tự tin chinh phục mọi bài thi tiếng Anh!</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-modern">
+        <button class="tab-btn active" onclick="openTab('htd')"><i class="fas fa-sun"></i> Present Simple</button>
+        <button class="tab-btn" onclick="openTab('httd')"><i class="fas fa-spinner"></i> Present Continuous</button>
+        <button class="tab-btn" onclick="openTab('sosanh')"><i class="fas fa-balance-scale"></i> So Sánh & Đặc Biệt</button>
+        <button class="tab-btn" onclick="openTab('luyentap')"><i class="fas fa-tasks"></i> Luyện Tập</button>
+    </div>
+
+    <!-- TAB 1: HIỆN TẠI ĐƠN -->
+    <div id="htd" class="tab-content active">
+        <div class="card">
+            <h2>1. Hiện Tại Đơn (Present Simple)</h2>
+            <p>Nói về <strong>sự thật chung, nghề nghiệp, hoặc hành động lặp đi lặp lại</strong> chứ không nhất thiết phải đang diễn ra ngay lúc nói.</p>
+
+            <h3>A. Cấu trúc câu</h3>
+            <table>
+                <tr><th>Loại câu</th><th>Chủ ngữ: I/We/You/They</th><th>Chủ ngữ: He/She/It</th></tr>
+                <tr><td>Khẳng định (+)</td><td>S + V (nguyên mẫu)</td><td>S + V(s/es)</td></tr>
+                <tr><td>Phủ định (-)</td><td>S + don't + V</td><td>S + doesn't + V</td></tr>
+                <tr><td>Nghi vấn (?)</td><td>Do + S + V?</td><td>Does + S + V?</td></tr>
+            </table>
+
+            <div class="note-box">
+                <strong>💡 Quy tắc thêm -s/es:</strong> Thêm -es khi từ tận cùng: -ch, -sh, -x, -s, -o. Đặc biệt: have → has.
+            </div>
+
+            <h3>B. Dấu hiệu nhận biết</h3>
+            <ul>
+                <li><strong>Trạng từ tần suất:</strong> always, usually, often, sometimes, rarely, never</li>
+                <li><strong>Every day/week/month/year</strong></li>
+                <li><strong>Once/twice a week</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 2: HIỆN TẠI TIẾP DIỄN -->
+    <div id="httd" class="tab-content">
+        <div class="card">
+            <h2>2. Hiện Tại Tiếp Diễn (Present Continuous)</h2>
+            <p>Diễn tả hành động <strong>đang xảy ra ngay tại thời điểm nói</strong>, hoặc <strong>tạm thời</strong> xung quanh hiện tại.</p>
+
+            <h3>A. Cấu trúc câu</h3>
+            <div class="note-box">
+                <p style="font-size:1.2rem; font-weight:bold; text-align:center;">S + am/is/are + V-ing</p>
+                <ul>
+                    <li>I + am + V-ing</li>
+                    <li>He/She/It + is + V-ing</li>
+                    <li>We/You/They + are + V-ing</li>
+                </ul>
+            </div>
+
+            <h3>B. Dấu hiệu nhận biết</h3>
+            <ul>
+                <li><strong>Now, right now, at the moment, at present</strong></li>
+                <li><strong>Today, this week, this year</strong> (chỉ sự tạm thời)</li>
+                <li><strong>Look! / Listen!</strong> (đầu câu)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 3: SO SÁNH -->
+    <div id="sosanh" class="tab-content">
+        <div class="card">
+            <h2>3. So Sánh Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h2>
+
+            <h3>A. Bảng so sánh</h3>
+            <table>
+                <tr><th>Hiện tại tiếp diễn</th><th>Hiện tại đơn</th></tr>
+                <tr><td>The water <strong>is boiling</strong>. (đang sôi)</td><td>Water <strong>boils</strong> at 100°C. (sự thật)</td></tr>
+                <tr><td>They <strong>are building</strong> a house. (tạm thời)</td><td>My parents <strong>live</strong> in London. (lâu dài)</td></tr>
+            </table>
+
+            <div class="warning-box">
+                <strong>⚠️ Động từ trạng thái (Stative Verbs):</strong> like, want, need, know, understand, believe, remember, belong...
+                <br>→ Không dùng ở dạng tiếp diễn!
+                <br>❌ <del>I am wanting food</del> → ✅ I want food.
+            </div>
+
+            <h3>C. Đặc biệt: "Always + V-ing"</h3>
+            <p>Dùng để <strong>phàn nàn</strong> về hành vi lặp lại gây khó chịu.</p>
+            <ul>
+                <li><em>You <strong>are always looking</strong> at your phone!</em> (Suốt ngày cắm mặt vào điện thoại!)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 4: LUYỆN TẬP -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Bài Tập Tổng Hợp (20 câu)</h2>
+            <p>Chọn đáp án đúng nhất cho mỗi câu hỏi bên dưới.</p>
+            
+            <form id="quizForm">
+                <!-- Câu 1 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">1. Please don't make so much noise. I _______ to focus on my study.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> try</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> am trying</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> am try</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> tries</label>
+                    </div>
+                    <div class="explanation">Hành động đang diễn ra tại thời điểm nói → Hiện tại tiếp diễn.</div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">2. Water _______ at 100 degrees Celsius.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> boils</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> is boiling</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> boil</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> are boiling</label>
+                    </div>
+                    <div class="explanation">Sự thật hiển nhiên khoa học → Hiện tại đơn. Chủ ngữ "Water" số ít nên động từ thêm -s.</div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">3. "Where is Mark?" - "He _______ a shower right now."</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> has</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> is have</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> is having</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> have</label>
+                    </div>
+                    <div class="explanation">Hành động đang diễn ra ngay lúc nói (right now) → Hiện tại tiếp diễn.</div>
+                </div>
+
+                <!-- Câu 4 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">4. I _______ any food right now because I am very full.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> am not wanting</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> don't wanting</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> not want</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> don't want</label>
+                    </div>
+                    <div class="explanation">"Want" là động từ trạng thái (stative verb) → không dùng ở dạng tiếp diễn. Phải dùng Hiện tại đơn.</div>
+                </div>
+
+                <!-- Câu 5 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">5. You are so annoying! You _______ at your phone during dinner.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> are always looking</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> always look</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> always looking</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> look always</label>
+                    </div>
+                    <div class="explanation">Câu phàn nàn về hành vi lặp lại gây khó chịu → cấu trúc "S + am/is/are + always + V-ing".</div>
+                </div>
+
+                <!-- Câu 6 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">6. Rice _______ in cold climates.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> isn't growing</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> don't grow</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> doesn't grow</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> not grows</label>
+                    </div>
+                    <div class="explanation">Sự thật lâu dài hiển nhiên → Hiện tại đơn. "Rice" số ít nên dùng "doesn't + V".</div>
+                </div>
+
+                <!-- Câu 7 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. What _______? Are you thinking about your upcoming trip?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> do you think</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> are you thinking</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> do you thinking</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> you are thinking</label>
+                    </div>
+                    <div class="explanation">"Think" ở đây mang nghĩa "đang cân nhắc, suy nghĩ" → dùng được ở tiếp diễn.</div>
+                </div>
+
+                <!-- Câu 8 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. Look! The population of the world _______ very fast.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> increases</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> is increasing</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> are increasing</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> increase</label>
+                    </div>
+                    <div class="explanation">Diễn tả xu hướng thay đổi đang diễn ra từ từ → Hiện tại tiếp diễn.</div>
+                </div>
+
+                <!-- Câu 9 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. I usually _______ away at weekends to relax.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> go</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> am going</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> goes</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> am go</label>
+                    </div>
+                    <div class="explanation">"Usually" là dấu hiệu của thói quen → Hiện tại đơn. Chủ ngữ "I" nên giữ nguyên động từ.</div>
+                </div>
+
+                <!-- Câu 10 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">10. "What _______?" - "I am a shop assistant."</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> are you doing</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> do you</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> are you do</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> do you do</label>
+                    </div>
+                    <div class="explanation">Hỏi về nghề nghiệp lâu dài → dùng câu hỏi Hiện tại đơn "What do you do?"</div>
+                </div>
+
+                <!-- Câu 11 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. I am living with some friends _______ I find a place of my own.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> always</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> every day</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> until</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> usually</label>
+                    </div>
+                    <div class="explanation">"I am living" chỉ tình huống tạm thời, đi kèm với "until" (cho đến khi).</div>
+                </div>
+
+                <!-- Câu 12 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. I _______ Mary is Canadian, but I'm not entirely sure.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> am thinking</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> think</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> thinks</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> am think</label>
+                    </div>
+                    <div class="explanation">"Think" ở đây mang nghĩa "tin rằng" (opinion) → động từ trạng thái, dùng Hiện tại đơn.</div>
+                </div>
+
+                <!-- Câu 13 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">13. Let's go out now. It _______ any more.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> doesn't rain</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> isn't rain</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> not raining</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> isn't raining</label>
+                    </div>
+                    <div class="explanation">Hành động thời tiết tại thời điểm nói đã dừng → Hiện tại tiếp diễn phủ định.</div>
+                </div>
+
+                <!-- Câu 14 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. Nurses _______ after patients in hospitals.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> look</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> are looking</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> looks</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> is looking</label>
+                    </div>
+                    <div class="explanation">Bản chất công việc, sự thật lâu dài → Hiện tại đơn. "Nurses" số nhiều nên giữ nguyên động từ.</div>
+                </div>
+
+                <!-- Câu 15 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. I promise I _______ late tonight.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> won't be</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> am not being</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> don't be</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> am not</label>
+                    </div>
+                    <div class="explanation">"I promise" dùng để thực hiện lời hứa cho tương lai → cấu trúc cố định.</div>
+                </div>
+
+                <!-- Câu 16 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">16. I can't understand why he _______ so selfish today. He isn't usually like that.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> is</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> don't be</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> is being</label>
+                        <label class="option-label"><input type="radio" name="q16" value="D"> being</label>
+                    </div>
+                    <div class="explanation">Hành vi nhất thời hôm nay, khác ngày thường → dùng "is/are being + adj".</div>
+                </div>
+
+                <!-- Câu 17 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. This soup _______ very good. What did you put in it?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> is not tasting</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> doesn't taste</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> isn't taste</label>
+                        <label class="option-label"><input type="radio" name="q17" value="D"> don't taste</label>
+                    </div>
+                    <div class="explanation">"Taste" (có vị) là động từ giác quan trạng thái → không dùng tiếp diễn. Dùng Hiện tại đơn.</div>
+                </div>
+
+                <!-- Câu 18 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. Kate wants to work in Italy, so she _______ Italian at the moment.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> is learning</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> learns</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> learn</label>
+                        <label class="option-label"><input type="radio" name="q18" value="D"> is learn</label>
+                    </div>
+                    <div class="explanation">Hành động đang trong giai đoạn thực hiện (at the moment) → Hiện tại tiếp diễn.</div>
+                </div>
+
+                <!-- Câu 19 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">19. The company I work for _______ so well this year.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> doesn't work</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> isn't work</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> isn't doing</label>
+                        <label class="option-label"><input type="radio" name="q19" value="D"> doesn't do</label>
+                    </div>
+                    <div class="explanation">"This year" chỉ tình trạng tạm thời trong năm nay → Hiện tại tiếp diễn phủ định.</div>
+                </div>
+
+                <!-- Câu 20 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">20. Every day the population of the world increases _______ about 200,000 people.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> by</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> at</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> with</label>
+                        <label class="option-label"><input type="radio" name="q20" value="D"> for</label>
+                    </div>
+                    <div class="explanation">Cấu trúc "increase by + số lượng" = tăng thêm bao nhiêu.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">📝 Nộp Bài Xem Kết Quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>✨ Học mọi lúc, mọi nơi | Hiện tại đơn - Hiện tại tiếp diễn</p>
+    </footer>
+</div>
+
+<script>
+    function openTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function checkQuiz() {
+        const questions = document.querySelectorAll('.question');
+        let score = 0;
+
+        questions.forEach((q, index) => {
+            const correctAnswer = q.getAttribute('data-correct');
+            const selectedInput = q.querySelector(`input[name="q${index + 1}"]:checked`);
+            const explanation = q.querySelector('.explanation');
+            const optionLabels = q.querySelectorAll('.option-label');
+
+            optionLabels.forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+            });
+            explanation.style.display = 'block';
+
+            if (selectedInput) {
+                if (selectedInput.value === correctAnswer) {
+                    score++;
+                    selectedInput.parentElement.classList.add('correct');
+                } else {
+                    selectedInput.parentElement.classList.add('incorrect');
+                    optionLabels.forEach(label => {
+                        if (label.querySelector('input').value === correctAnswer) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                optionLabels.forEach(label => {
+                    if (label.querySelector('input').value === correctAnswer) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `🎉 Bạn đã trả lời đúng <strong>${score}</strong> / ${questions.length} câu! ${score === questions.length ? '🌟 Xuất sắc! Bạn đã hiểu bài hoàn toàn!' : '✍️ Hãy xem phần giải thích màu vàng để sửa các câu sai nhé!'}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
