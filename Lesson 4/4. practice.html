@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Bài tập Ngữ pháp | Present Perfect & Present Perfect Continuous</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Noto Sans', sans-serif;
+            padding: 40px 16px 50px;
+            color: #2d3748;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            padding: 30px 24px 40px;
+        }
+
+        /* Tiêu đề đồng bộ index.html */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #4a3b8a;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        .sub {
+            text-align: center;
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+
+        /* TABS HỆ THỐNG */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 24px;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background: #edf2f7;
+            border: none;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .tab-btn.active {
+            background: #764ba2;
+            color: white;
+            box-shadow: 0 4px 12px rgba(118, 75, 162, 0.3);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        /* Khối hiển thị nội dung tab */
+        .tab-content {
+            display: none;
+            animation: fade 0.3s ease;
+        }
+        .tab-content.active-tab {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Khối bài tập nhỏ */
+        .exercise {
+            background: #f7fafc;
+            margin: 20px 0 35px;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        .ex-title {
+            background: #e2d9f3;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #553c9a;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .question-item {
+            padding-bottom: 14px;
+            border-bottom: 1px dashed #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px;
+        }
+        .question-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .question-text {
+            flex: 1;
+            font-size: 1rem;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        .hint {
+            color: #718096;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        input {
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 36px;
+            background-color: white;
+            width: 280px;
+            font-family: monospace;
+            transition: all 0.2s;
+        }
+        input:focus {
+            border-color: #764ba2;
+            outline: none;
+            background-color: #faf5ff;
+            box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.15);
+        }
+        
+        /* Dropdown lựa chọn đáp án cho Dạng Trắc Nghiệm */
+        select {
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 36px;
+            background-color: white;
+            width: 280px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        select:focus {
+            border-color: #764ba2;
+            outline: none;
+            background-color: #faf5ff;
+        }
+
+        .check-btn {
+            background: #764ba2;
+            border: none;
+            color: white;
+            padding: 10px 28px;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .check-btn:hover {
+            background: #5a3b82;
+            transform: translateY(-1px);
+        }
+        .feedback-area {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .result-badge {
+            display: inline-block;
+            border-radius: 48px;
+            padding: 6px 18px;
+            font-weight: 600;
+        }
+        .correct-badge {
+            background: #c6f6d5;
+            color: #22543d;
+            border: 1px solid #9ae6b4;
+        }
+        .wrong-badge {
+            background: #fed7d7;
+            color: #742a2a;
+            border: 1px solid #feb2b2;
+        }
+        .note {
+            background: #faf5ff;
+            border-radius: 16px;
+            padding: 15px 20px;
+            font-size: 0.9rem;
+            color: #44337a;
+            text-align: center;
+            margin: 30px 0 10px;
+            border: 1px solid #e9d8fd;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            margin-top: 30px;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+        @media (max-width: 600px) {
+            .question-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            input, select {
+                width: 100%;
+            }
+            .tab-btn {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+            body {
+                padding: 15px 10px;
+            }
+            .container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>✨ Present Perfect & Perfect Continuous</h1>
+    <div class="sub">Hệ thống thực hành ngữ pháp - Nhi's Class</div>
+
+    <!-- Hệ thống chuyển các Tab lớn -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="pres-perfect">1 · Present Perfect</button>
+        <button class="tab-btn" data-tab="pres-continuous">2 · Perfect Continuous</button>
+        <button class="tab-btn" data-tab="pres-mixed">3 · Mixed Exercises</button>
+    </div>
+
+    <!-- ==================== TAB 1: PRESENT PERFECT ==================== -->
+    <div id="pres-perfect" class="tab-content active-tab">
+        <!-- Dạng 1 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.1: Điền dạng đúng của động từ (have/has + V3/ed)</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">1. I (finish) ______________________ my homework, so now I can go out with my friends.</span> <input type="text" data-answers='["have finished","\&#39;ve finished"]'></div>
+                <div class="question-item"><span class="question-text">2. Up to now, the professor (publish) ______________________ three scientific papers.</span> <input type="text" data-answers='["has published"]'></div>
+                <div class="question-item"><span class="question-text">3. They (watch) ______________________ that movie three times this month.</span> <input type="text" data-answers='["have watched","\&#39;ve watched"]'></div>
+                <div class="question-item"><span class="question-text">4. I (lose) ______________________ my keys. Have you seen them anywhere?</span> <input type="text" data-answers='["have lost","\&#39;ve lost"]'></div>
+                <div class="question-item"><span class="question-text">5. We (not / see) ______________________ each other since the graduation ceremony.</span> <input type="text" data-answers='["haven\&#39;t seen","have not seen"]'></div>
+                <div class="question-item"><span class="question-text">6. She (know) ______________________ him for more than ten years.</span> <input type="text" data-answers='["has known"]'></div>
+                <div class="question-item"><span class="question-text">7. Look! Somebody (break) ______________________ that window.</span> <input type="text" data-answers='["has broken"]'></div>
+                <div class="question-item"><span class="question-text">8. Mom (bake) ______________________ a delicious cake, it's ready on the table!</span> <input type="text" data-answers='["has baked"]'></div>
+                <div class="question-item"><span class="question-text">9. He (not / reply) ______________________ to my email yet.</span> <input type="text" data-answers='["hasn\&#39;t replied","has not replied"]'></div>
+                <div class="question-item"><span class="question-text">10. (you / ever / eat) ______________________ sushi before?</span> <input type="text" data-answers='["Have you ever eaten"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.1</button>
+            <div class="feedback-area"></div>
+        </div>
+
+        <!-- Dạng 2 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.2: Trắc nghiệm lựa chọn từ nhận biết (since, for, already, yet, ever, never)</div>
+            <div class="question-list">
+                <div class="question-item">
+                    <span class="question-text">11. I have lived in Da Nang ________ 2020.</span>
+                    <select data-answers='["since"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="since">since</option>
+                        <option value="for">for</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">12. They have been married ________ fifteen years.</span>
+                    <select data-answers='["for"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="since">since</option>
+                        <option value="for">for</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">13. Have you ________ visited Paris?</span>
+                    <select data-answers='["ever"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="ever">ever</option>
+                        <option value="never">never</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">14. I have ________ seen such a beautiful sunrise in my life.</span>
+                    <select data-answers='["never"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="ever">ever</option>
+                        <option value="never">never</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">15. She hasn't finished her final report ________.</span>
+                    <select data-answers='["yet"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="already">already</option>
+                        <option value="yet">yet</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">16. Don't worry, I have ________ paid the electricity bill.</span>
+                    <select data-answers='["already"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="already">already</option>
+                        <option value="yet">yet</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">17. We have known each other ________ we were kids.</span>
+                    <select data-answers='["since"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="since">since</option>
+                        <option value="for">for</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">18. He has played football ________ an hour.</span>
+                    <select data-answers='["for"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="since">since</option>
+                        <option value="for">for</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">19. Has the train ________ left the station?</span>
+                    <select data-answers='["already"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="already">already</option>
+                        <option value="yet">yet</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">20. No, I haven't received the results ________.</span>
+                    <select data-answers='["yet"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="already">already</option>
+                        <option value="yet">yet</option>
+                    </select>
+                </div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.2</button>
+            <div class="feedback-area"></div>
+        </div>
+
+        <!-- Dạng 3 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.3: Viết câu hỏi hoàn chỉnh sử dụng cấu trúc "How many / How multiple times"</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">21. (how many countries / you / visit) →</span> <input type="text" data-answers='["how many countries have you visited?"]'></div>
+                <div class="question-item"><span class="question-text">22. (how many letters / he / write / since morning) →</span> <input type="text" data-answers='["how many letters has he written since morning?"]'></div>
+                <div class="question-item"><span class="question-text">23. (how many times / she / see / that movie) →</span> <input type="text" data-answers='["how many times has she seen that movie?"]'></div>
+                <div class="question-item"><span class="question-text">24. (how many pages / you / read / of this book) →</span> <input type="text" data-answers='["how many pages have you read of this book?"]'></div>
+                <div class="question-item"><span class="question-text">25. (how many cups of coffee / you / drink / today) →</span> <input type="text" data-answers='["how many cups of coffee have you drunk today?"]'></div>
+                <div class="question-item"><span class="question-text">26. (how many exams / they / take / this week) →</span> <input type="text" data-answers='["how many exams have they taken this week?"]'></div>
+                <div class="question-item"><span class="question-text">27. (how many goals / Ronaldo / score / this season) →</span> <input type="text" data-answers='["how many goals has ronaldo scored this season?"]'></div>
+                <div class="question-item"><span class="question-text">28. (how many pictures / they / take / during the trip) →</span> <input type="text" data-answers='["how many pictures have they taken during the trip?"]'></div>
+                <div class="question-item"><span class="question-text">29. (how many mistakes / I / make / in the test) →</span> <input type="text" data-answers='["how many mistakes have i made in the test?"]'></div>
+                <div class="question-item"><span class="question-text">30. (how many text messages / she / send / you) →</span> <input type="text" data-answers='["how many text messages has she sent you?"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.3</button>
+            <div class="feedback-area"></div>
+        </div>
+    </div>
+
+    <!-- ==================== TAB 2: PRESENT PERFECT CONTINUOUS ==================== -->
+    <div id="pres-continuous" class="tab-content">
+        <!-- Dạng 1 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.4: Chia động từ ở thì Hiện tại hoàn thành tiếp diễn (have/has + been + V-ing)</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">1. She is exhausted because she (clean) ______________________ the house all morning.</span> <input type="text" data-answers='["has been cleaning"]'></div>
+                <div class="question-item"><span class="question-text">2. Why are your hands so dirty? – I (repair) ______________________ the car.</span> <input type="text" data-answers='["have been repairing","\&#39;ve been repairing"]'></div>
+                <div class="question-item"><span class="question-text">3. I’m really tired. I (work) ______________________ in the garden since morning.</span> <input type="text" data-answers='["have been working","\&#39;ve been working"]'></div>
+                <div class="question-item"><span class="question-text">4. He (read) ______________________ this book for weeks, it's very interesting.</span> <input type="text" data-answers='["has been reading"]'></div>
+                <div class="question-item"><span class="question-text">5. Jessica (play) ______________________ the piano since she was 5 years old.</span> <input type="text" data-answers='["has been playing"]'></div>
+                <div class="question-item"><span class="question-text">6. They are sweaty because they (run) ______________________ outside.</span> <input type="text" data-answers='["have been running"]'></div>
+                <div class="question-item"><span class="question-text">7. It (rain) ______________________ heavily for the last three hours.</span> <input type="text" data-answers='["has been raining"]'></div>
+                <div class="question-item"><span class="question-text">8. We (wait) ______________________ for the bus since 2 o\&#39;clock.</span> <input type="text" data-answers='["have been waiting","\&#39;ve been waiting"]'></div>
+                <div class="question-item"><span class="question-text">9. Why (you / cry) ______________________? Your eyes are so red!</span> <input type="text" data-answers='["have you been crying"]'></div>
+                <div class="question-item"><span class="question-text">10. Linda (learn) ______________________ English for five years.</span> <input type="text" data-answers='["has been learning"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.4</button>
+            <div class="feedback-area"></div>
+        </div>
+
+        <!-- Dạng 2 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.5: Viết câu hoàn chỉnh từ các từ gợi ý (Thì Hiện tại hoàn thành tiếp diễn)</div>
+            <div class="question-list">
+                
+                <div class="question-item">
+                    <span class="question-text">11. They / swim / in the pool / for an hour. →</span>
+                    <input type="text" data-answers='["They have been swimming in the pool for an hour.","They have been swimming in the pool for an hour","they have been swimming in the pool for an hour.","they have been swimming in the pool for an hour"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">12. She / lie / on the sofa / since noon. →</span>
+                    <input type="text" data-answers='["She has been lying on the sofa since noon.","She has been lying on the sofa since noon","she has been lying on the sofa since noon.","she has been lying on the sofa since noon"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">13. My sister / make / a cake / for the party. →</span>
+                    <input type="text" data-answers='["My sister has been making a cake for the party.","My sister has been making a cake for the party","my sister has been making a cake for the party.","my sister has been making a cake for the party"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">14. They / run / around the park. →</span>
+                    <input type="text" data-answers='["They have been running around the park.","They have been running around the park","they have been running around the park.","they have been running around the park"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">15. The chef / tie / the roast meat / carefully. →</span>
+                    <input type="text" data-answers='["The chef has been tying the roast meat carefully.","The chef has been tying the roast meat carefully","the chef has been tying the roast meat carefully.","the chef has been tying the roast meat carefully"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">16. We / travel / around Vietnam / for weeks. →</span>
+                    <input type="text" data-answers='["We have been travelling around Vietnam for weeks.","We have been travelling around Vietnam for weeks","We have been traveling around Vietnam for weeks.","We have been traveling around Vietnam for weeks","we have been travelling around Vietnam for weeks.","we have been traveling around Vietnam for weeks"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">17. He / study / all night. →</span>
+                    <input type="text" data-answers='["He has been studying all night.","He has been studying all night","he has been studying all night.","he has been studying all night"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">18. The company / get / better results / recently. →</span>
+                    <input type="text" data-answers='["The company has been getting better results recently.","The company has been getting better results recently","the company has been getting better results recently.","the company has been getting better results recently"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">19. Why / you / drive / so slowly? →</span>
+                    <input type="text" data-answers='["Why have you been driving so slowly?","Why have you been driving so slowly","why have you been driving so slowly?","why have you been driving so slowly"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+                <div class="question-item">
+                    <span class="question-text">20. The baby / cry / for ten minutes. →</span>
+                    <input type="text" data-answers='["The baby has been crying for ten minutes.","The baby has been crying for ten minutes","the baby has been crying for ten minutes.","the baby has been crying for ten minutes"]' style="width: 100%; max-width: 500px;" placeholder="Viết lại câu hoàn chỉnh tại đây...">
+                </div>
+
+            </div>
+            <button class="check-btn" data-exercise="4.5">✨ Kiểm tra 4.5</button>
+            <div class="feedback-area" id="fb-4.5"></div>
+        </div>
+
+        <!-- Dạng 3 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.6: Viết câu hỏi hoàn chỉnh dùng cấu trúc "How long" kéo dài</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">21. (how long / you / learn / Spanish) →</span> <input type="text" data-answers='["how long have you been learning spanish?"]'></div>
+                <div class="question-item"><span class="question-text">22. (how long / it / rain / outside) →</span> <input type="text" data-answers='["how long has it been raining outside?"]'></div>
+                <div class="question-item"><span class="question-text">23. (how long / they / wait / for the manager) →</span> <input type="text" data-answers='["how long have they been waiting for the manager?"]'></div>
+                <div class="question-item"><span class="question-text">24. (how long / she / work / for this company) →</span> <input type="text" data-answers='["how long has she been working for this company?"]'></div>
+                <div class="question-item"><span class="question-text">25. (how long / he / live / in this apartment) →</span> <input type="text" data-answers='["how long has he been living in this apartment?"]'></div>
+                <div class="question-item"><span class="question-text">26. (how long / you / play / that video game) →</span> <input type="text" data-answers='["how long have you been playing that video game?"]'></div>
+                <div class="question-item"><span class="question-text">27. (how long / the baby / sleep) →</span> <input type="text" data-answers='["how long has the baby been sleeping?"]'></div>
+                <div class="question-item"><span class="question-text">28. (how long / we / plan / this holiday trip) →</span> <input type="text" data-answers='["how long have we been planning this holiday trip?"]'></div>
+                <div class="question-item"><span class="question-text">29. (how long / Thomas / drive / down the highway) →</span> <input type="text" data-answers='["how long has thomas been driving down the highway?"]'></div>
+                <div class="question-item"><span class="question-text">30. (how long / your friends / argue / about politics) →</span> <input type="text" data-answers='["how long have your friends been arguing about politics?"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.6</button>
+            <div class="feedback-area"></div>
+        </div>
+    </div>
+
+    <!-- ==================== TAB 3: MIXED EXERCISES ==================== -->
+    <div id="pres-mixed" class="tab-content">
+        <!-- Dạng 1 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.7: Phân biệt nhanh - Lựa chọn đáp án đúng nhất (Trắc nghiệm tổng hợp)</div>
+            <div class="question-list">
+                <div class="question-item">
+                    <span class="question-text">1. The kitchen smells great! Mom ________ a delicious cake.</span>
+                    <select data-answers='["has baked"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="has baked">has baked</option>
+                        <option value="has been baking">has been baking</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">2. He ________ five letters since 9 o'clock.</span>
+                    <select data-answers='["has written"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="has written">has written</option>
+                        <option value="has been writing">has been writing</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">3. I am so tired because I ________ the house all morning.</span>
+                    <select data-answers='["has been cleaning","have been cleaning"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="have cleaned">have cleaned</option>
+                        <option value="have been cleaning">have been cleaning</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">4. They ________ that romantic movie three times this month.</span>
+                    <select data-answers='["have watched"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="have watched">have watched</option>
+                        <option value="have been watching">have been watching</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">5. Oh no! I ________ my passport somewhere. I can't find it!</span>
+                    <select data-answers='["have lost"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="have lost">have lost</option>
+                        <option value="have been losing">have been losing</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">6. How long ________ you ________ Spanish?</span>
+                    <select data-answers='["have you been learning"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="have you learned">have you learned</option>
+                        <option value="have you been learning">have you been learning</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">7. She ________ him for more than a decade.</span>
+                    <select data-answers='["has known"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="has known">has known</option>
+                        <option value="has been knowing">has been knowing</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">8. Look at the window! Somebody ________ it.</span>
+                    <select data-answers='["has broken"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="has broken">has broken</option>
+                        <option value="has been breaking">has been breaking</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">9. You look very sweaty. ________ you ________?</span>
+                    <select data-answers='["Have you been running"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="Have you run">Have you run</option>
+                        <option value="Have you been running">Have you been running</option>
+                    </select>
+                </div>
+                <div class="question-item">
+                    <span class="question-text">10. We ________ each other since our graduation ceremony in 2022.</span>
+                    <select data-answers='["haven\&#39;t seen"]'>
+                        <option value="">-- Chọn đáp án --</option>
+                        <option value="haven&#39;t seen">haven't seen</option>
+                        <option value="haven&#39;t been seeing">haven't been seeing</option>
+                    </select>
+                </div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.7</button>
+            <div class="feedback-area"></div>
+        </div>
+
+        <!-- Dạng 2 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.8: Điền dạng đúng dứt điểm hoặc dở dang của động từ trong ngoặc</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">11. He (read) ______________________ this book for weeks, but he still (not / finish) ______________________ it. <span class="hint">(Gợi ý điền: V1, V2)</span></span> <input type="text" data-answers='["has been reading, hasn\&#39;t finished","has been reading, has not finished"]' placeholder="V1, V2"></div>
+                <div class="question-item"><span class="question-text">12. I (try) ______________________ to call her all afternoon, but she (turn) ______________________ off her phone.</span> <input type="text" data-answers='["have been trying, has turned","\&#39;ve been trying, has turned"]' placeholder="V1, V2"></div>
+                <div class="question-item"><span class="question-text">13. The ground is very wet. It (rain) ______________________ since morning.</span> <input type="text" data-answers='["has been raining"]'></div>
+                <div class="question-item"><span class="question-text">14. Someone (eat) ______________________ all my chocolates! The box is completely empty.</span> <input type="text" data-answers='["has eaten"]'></div>
+                <div class="question-item"><span class="question-text">15. Why are you so out of breath? ______________________ you ______________________ (run)?</span> <input type="text" data-answers='["Have you been running"]'></div>
+                <div class="question-item"><span class="question-text">16. My brother (paint) ______________________ his bedroom since yesterday, but he (not / complete) ______________________ it yet.</span> <input type="text" data-answers='["has been painting, hasn\&#39;t completed","has been painting, has not completed"]' placeholder="V1, V2"></div>
+                <div class="question-item"><span class="question-text">17. Mary (belong) ______________________ to this volunteer club for three years.</span> <input type="text" data-answers='["has belonged"]' placeholder="Lưu ý động từ trạng thái"></div>
+                <div class="question-item"><span class="question-text">18. I (clean) ______________________ the living room window, and it looks spotless now!</span> <input type="text" data-answers='["have cleaned","\&#39;ve cleaned"]'></div>
+                <div class="question-item"><span class="question-text">19. How many emails ______________________ you ______________________ (send) today?</span> <input type="text" data-answers='["have you sent"]'></div>
+                <div class="question-item"><span class="question-text">20. They (play) ______________________ computer games for four hours straight! Tell them to stop.</span> <input type="text" data-answers='["have been playing"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.8</button>
+            <div class="feedback-area"></div>
+        </div>
+
+        <!-- Dạng 3 -->
+        <div class="exercise">
+            <div class="ex-title">📝 Dạng 4.9: Sửa 1 lỗi sai ngữ pháp duy nhất trong câu</div>
+            <div class="question-list">
+                <div class="question-item"><span class="question-text">21. I have been knowing her for more than five years. → </span> <input type="text" data-answers='["have known"]'></div>
+                <div class="question-item"><span class="question-text">22. He has written five letters since three hours. → </span> <input type="text" data-answers='["for"]'></div>
+                <div class="question-item"><span class="question-text">23. She has been cleaning the house, so it is perfectly clean now. → </span> <input type="text" data-answers='["has cleaned"]'></div>
+                <div class="question-item"><span class="question-text">24. How long have you been visited this wonderful museum? → </span> <input type="text" data-answers='["visiting","have you visited"]'></div>
+                <div class="question-item"><span class="question-text">25. They has been playing tennis since 3 o'clock. → </span> <input type="text" data-answers='["have been"]'></div>
+                <div class="question-item"><span class="question-text">26. I have already been finishing my project report. → </span> <input type="text" data-answers='["have already finished"]'></div>
+                <div class="question-item"><span class="question-text">27. It has been raining for since this morning. → </span> <input type="text" data-answers='["since"]'></div>
+                <div class="question-item"><span class="question-text">28. How many cups of coffee have you been drinking today? → </span> <input type="text" data-answers='["have you drunk"]'></div>
+                <div class="question-item"><span class="question-text">29. We haven't been seeing each other for ages. → </span> <input type="text" data-answers='["haven't seen","have not seen"]'></div>
+                <div class="question-item"><span class="question-text">30. The chef has baked all afternoon, he looks so tired. → </span> <input type="text" data-answers='["has been baking"]'></div>
+            </div>
+            <button class="check-btn">✨ Kiểm tra 4.9</button>
+            <div class="feedback-area"></div>
+        </div>
+    </div>
+
+    <div class="note">🌸 Học vui cùng ngữ pháp -  Lớp cô Nhi</div>
+    <footer>✨ Lớp cô Nhi ✨</footer>
+</div>
+
+<script>
+    (function() {
+        // Hàm chuẩn hóa chuỗi đáp án để loại bỏ khoảng trắng dư và dấu câu thừa
+        function isAnswerValid(user, acceptedList) {
+            let norm = user.trim().toLowerCase().replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ').trim();
+            return acceptedList.some(acc => {
+                let candidate = acc.trim().toLowerCase().replace(/\s+/g, ' ');
+                return norm === candidate;
+            });
+        }
+
+        // Logic kiểm tra chấm điểm tự động cho các khối .exercise
+        const checkBtns = document.querySelectorAll('.check-btn');
+        checkBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parentExercise = btn.closest('.exercise');
+                
+                // Thu thập cả ô input nhập liệu lẫn select chọn phương án
+                const inputs = parentExercise.querySelectorAll('.question-item input, .question-item select');
+                const feedbackDiv = parentExercise.querySelector('.feedback-area');
+                if (!feedbackDiv) return;
+                
+                let total = 0, correctCount = 0;
+                inputs.forEach((inp) => {
+                    total++;
+                    let rawAnswers = inp.getAttribute('data-answers');
+                    if (!rawAnswers) return;
+                    let accepted;
+                    try {
+                        accepted = JSON.parse(rawAnswers);
+                    } catch(e) { accepted = [rawAnswers]; }
+                    
+                    const userVal = inp.value;
+                    const valid = isAnswerValid(userVal, accepted);
+                    if (valid) correctCount++;
+                    
+                    // Thiết lập viền trạng thái chuẩn mực trực quan
+                    inp.style.border = valid ? "2px solid #38a169" : "2px solid #e53e3e";
+                    if (userVal.trim() === "") inp.style.border = "1px solid #cbd5e0";
+                });
+                
+                const allCorrect = (correctCount === total && total > 0);
+                if (allCorrect) {
+                    feedbackDiv.innerHTML = `<span class="result-badge correct-badge">✅ Quá xuất sắc! Bạn đã làm đúng hoàn toàn ${correctCount}/${total} câu.</span>`;
+                } else {
+                    feedbackDiv.innerHTML = `<span class="result-badge wrong-badge">⚠️ Bạn đã làm đúng ${correctCount}/${total} câu. Hãy kiểm tra các ô viền đỏ nhé!</span>`;
+                }
+            });
+        });
+
+        // Xử lý chuyển đổi TAB động mượt mà giữa các chuyên đề thì
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabContents.forEach(tc => tc.classList.remove('active-tab'));
+                document.getElementById(tabId).classList.add('active-tab');
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    })();
+</script>
+</body>
+</html>
