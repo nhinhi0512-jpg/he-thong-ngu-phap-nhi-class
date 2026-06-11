@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài tập - Đại từ nhân xưng, To Be, Động từ thường</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px 16px;
+            min-height: 100vh;
+        }
+
+        /* main container - đồng bộ với lý thuyết */
+        .grammar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* ===== NAVIGATION BAR (đồng bộ với index) ===== */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px 28px;
+            background: #f8fafc;
+            border-bottom: 2px solid #e9edf2;
+        }
+
+        .home-link, .theory-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .home-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .theory-link {
+            background: #48bb78;
+            color: white;
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+        }
+
+        .home-link:hover, .theory-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* header với gradient đồng bộ */
+        .hero-header {
+            background: linear-gradient(135deg, #1E3C5C 0%, #2B4C6E 100%);
+            padding: 1.8rem 2rem;
+            color: white;
+        }
+
+        .hero-header h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-header h1 i {
+            background: #ffb347;
+            padding: 8px;
+            border-radius: 1.2rem;
+            color: #1e3c5c;
+            font-size: 1.2rem;
+        }
+
+        .hero-header p {
+            font-weight: 400;
+            opacity: 0.85;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ffb347;
+            padding-left: 12px;
+        }
+
+        /* progress indicator (đồng bộ với lý thuyết) */
+        .progress-indicator {
+            background: #edf2f7;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 20px 28px 0 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .progress-text strong {
+            color: #5a67d8;
+        }
+
+        /* score panel */
+        .score-panel {
+            background: white;
+            margin: 1.2rem 1.8rem 0 1.8rem;
+            border-radius: 1.2rem;
+            padding: 0.7rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 6px 12px -6px rgba(0,0,0,0.05);
+            border: 1px solid #e9edf2;
+        }
+
+        .score-box {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            background: #f0f4f9;
+            padding: 6px 18px;
+            border-radius: 40px;
+        }
+
+        .score-box span:first-child {
+            font-weight: 500;
+            color: #2c4e6e;
+        }
+
+        .score-val {
+            font-size: 1.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .reset-btn-modern {
+            background: #f1f5f9;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #1e3c5c;
+            border: 1px solid #dce3ec;
+        }
+
+        .reset-btn-modern:hover {
+            background: #e2eaf3;
+            transform: translateY(-1px);
+        }
+
+        /* tabs styling */
+        .tabs-modern {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 1.8rem 1.8rem 0 1.8rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #4a627a;
+            font-family: 'Inter', monospace;
+        }
+
+        .tab-btn i {
+            margin-right: 6px;
+            font-size: 0.85rem;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #667eea;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03), 0 0 0 1px #cddfe7;
+            font-weight: 600;
+        }
+
+        /* content area */
+        .content-area {
+            padding: 1.8rem;
+        }
+
+        .section-card {
+            display: none;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .section-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section-header p {
+            color: #5c6f87;
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* exercise grid */
+        .exercise-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .exercise-item {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1rem 1.4rem;
+            transition: all 0.2s;
+            border: 1px solid #eef2f8;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .exercise-item:hover {
+            border-color: #cbdde9;
+            box-shadow: 0 6px 12px -8px rgba(0,0,0,0.08);
+        }
+
+        .ex-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6b8aae;
+            margin-bottom: 0.5rem;
+        }
+
+        .ex-question {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1f2f3e;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* MC options */
+        .mc-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 10px 0 6px;
+        }
+
+        .mc-option-btn {
+            background: #f8fafd;
+            border: 1px solid #dce5ef;
+            padding: 6px 20px;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            color: #2a4b6e;
+        }
+
+        .mc-option-btn:hover {
+            background: #eef3fc;
+            border-color: #667eea;
+            transform: scale(0.97);
+        }
+
+        .mc-opt-correct {
+            background: #dff0e2 !important;
+            border-color: #48bb78 !important;
+            color: #1b5e2a !important;
+        }
+
+        .mc-opt-wrong {
+            background: #ffe6e5 !important;
+            border-color: #f56565 !important;
+            color: #b33c38 !important;
+            text-decoration: line-through;
+        }
+
+        /* fill input */
+        .fill-input {
+            width: 100%;
+            max-width: 360px;
+            border: 1px solid #cfdfed;
+            border-radius: 60px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            background: white;
+            transition: 0.2s;
+        }
+        .fill-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+        .check-btn {
+            background: #eef2f7;
+            border: none;
+            margin-left: 12px;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .check-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* arrange words */
+        .word-bank {
+            background: #f2f6fa;
+            border-radius: 1rem;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+            min-height: 64px;
+        }
+        .word-chip {
+            background: white;
+            padding: 6px 16px;
+            border-radius: 32px;
+            border: 1px solid #cbdde9;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        .word-chip.used {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .answer-area {
+            background: #fefefe;
+            border: 1px dashed #9bb7d0;
+            min-height: 58px;
+        }
+
+        /* error correction */
+        .error-word {
+            display: inline-block;
+            background: #f9f4e8;
+            padding: 5px 14px;
+            margin: 4px;
+            border-radius: 30px;
+            border: 1px solid #f0dbc0;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .error-word.correct-pick {
+            background: #c8e6d9;
+            border-color: #48bb78;
+        }
+        .error-word.wrong-pick {
+            background: #ffddd9;
+            border-color: #f56565;
+        }
+
+        .feedback {
+            font-size: 0.8rem;
+            margin-top: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .feedback.correct {
+            background: #e1f3e5;
+            color: #1e6b3b;
+        }
+        .feedback.wrong {
+            background: #ffe6e3;
+            color: #c33;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 1.5rem;
+            color: #7f8c9a;
+            border-top: 1px solid #e2edf5;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 680px) {
+            .hero-header h1 { font-size: 1.3rem; }
+            .exercise-item { padding: 0.9rem; }
+            .mc-options { gap: 8px; }
+            .nav-bar { flex-direction: column; align-items: stretch; }
+            .home-link, .theory-link { justify-content: center; }
+            .progress-indicator { margin: 15px 18px 0 18px; }
+            .score-panel { margin: 1rem 1rem 0 1rem; }
+            .tabs-modern { margin: 1rem 1rem 0 1rem; }
+            .content-area { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="grammar-container">
+    <!-- NAVIGATION BAR - ĐỒNG BỘ VỚI INDEX -->
+    <div class="nav-bar">
+        <a href="../index.html" class="home-link">
+            🏠 ← Về trang chủ
+        </a>
+        <a href="1. Personal Pronouns and Verb tobe.html" class="theory-link">
+            📖 Xem lại lý thuyết →
+        </a>
+    </div>
+
+    <!-- PROGRESS INDICATOR - ĐỒNG BỘ VỚI LÝ THUYẾT -->
+    <div class="progress-indicator">
+        <span class="progress-text">📝 <strong>Bài tập Bài 1:</strong> Đại từ nhân xưng | To Be | Động từ thường</span>
+        <span class="progress-text">🎯 60 câu hỏi - Làm ngay!</span>
+    </div>
+
+    <div class="hero-header">
+        <h1><i class="fas fa-tasks"></i> Bài tập thực hành</h1>
+        <p>Đại từ nhân xưng · Động từ to be · Động từ thường thì hiện tại đơn — 60 bài tập đa dạng</p>
+    </div>
+
+    <div class="score-panel">
+        <div class="score-box">
+            <span><i class="fas fa-star-of-life" style="font-size:12px;"></i> Tổng điểm</span>
+            <span class="score-val" id="scoreDisplay">0 / 0</span>
+        </div>
+        <button class="reset-btn-modern" id="globalResetBtn"><i class="fas fa-rotate-right"></i> Làm lại tất cả</button>
+    </div>
+
+    <div class="tabs-modern" id="tabsContainer"></div>
+    <div class="content-area" id="sectionsContainer"></div>
+    <footer>✨ Nhấn vào đáp án để kiểm tra — Tự động lưu tiến độ. Luyện tập chủ động!</footer>
+</div>
+
+<script>
+    // ======================= DATA MODEL (full 60 câu) ====================
+    const sectionsData = [
+        { id:"mc", label:"Chọn đáp án", icon:"fas fa-check-circle", desc:"Chọn phương án đúng nhất (câu 1-15)", type:"mc", items:[
+            {q:"_____ is my teacher. She is very kind.", opts:["He","She","They","It"], ans:1},
+            {q:"My name is Lan. _____ am 12 years old.", opts:["I","She","He","We"], ans:0},
+            {q:"Tom and Jerry _____ best friends.", opts:["is","am","are","be"], ans:2},
+            {q:"This is my dog. _____ is very cute.", opts:["She","They","It","We"], ans:2},
+            {q:"My sister _____ not like spicy food.", opts:["do","does","is","are"], ans:1},
+            {q:"_____ you a student?", opts:["Is","Are","Am","Do"], ans:1},
+            {q:"Peter _____ to school every day.", opts:["go","goes","is go","do go"], ans:1},
+            {q:"We _____ not from Ha Noi. We are from Hue.", opts:["is","am","are","do"], ans:2},
+            {q:"_____ your parents work in a hospital?", opts:["Does","Is","Do","Are"], ans:2},
+            {q:"The cat _____ on the table right now. (habit)", opts:["sit","sits","is sit","do sit"], ans:1},
+            {q:"I _____ 13 years old.", opts:["am","is","are","be"], ans:0},
+            {q:"She _____ not play football.", opts:["do","does","is","are"], ans:1},
+            {q:"_____ he your brother?", opts:["Are","Do","Does","Is"], ans:3},
+            {q:"My parents _____ teachers.", opts:["am","is","are","be"], ans:2},
+            {q:"The boys _____ soccer after school every day.", opts:["play","plays","is play","are play"], ans:0}
+        ]},
+        { id:"fill", label:"Điền từ", icon:"fas fa-keyboard", desc:"Điền dạng đúng của động từ hoặc đại từ (câu 16-30)", type:"fill", items:[
+            {q:"My father _____ (work) in a bank.", ans:"works"},
+            {q:"_____ (I / pronoun) am from Vietnam.", ans:"I"},
+            {q:"Anna and I _____ (be) classmates.", ans:"are"},
+            {q:"The dog _____ (not run) fast.", ans:"doesn't run", alt:["does not run"]},
+            {q:"_____ they _____ (have) a pet? → viết từ còn thiếu (have)", ans:"have"},
+            {q:"My brother _____ (study) English every night.", ans:"studies"},
+            {q:"She is my friend. _____ name is Hoa. (pronoun)", ans:"Her"},
+            {q:"The children _____ (not watch) TV in the morning.", ans:"don't watch", alt:["do not watch"]},
+            {q:"He _____ (be) not a doctor. He is a teacher.", ans:"is"},
+            {q:"We _____ (like) playing games.", ans:"like"},
+            {q:"This is my pen. _____ is blue. (pronoun)", ans:"It"},
+            {q:"Tom _____ (wash) the dishes after dinner.", ans:"washes"},
+            {q:"You _____ (be) very smart!", ans:"are"},
+            {q:"My sister _____ (not speak) French.", ans:"doesn't speak", alt:["does not speak"]},
+            {q:"_____ he always _____ (come) to class on time? → viết 'come'", ans:"come"}
+        ]},
+        { id:"rewrite", label:"Viết lại câu", icon:"fas fa-edit", desc:"Viết câu hoàn chỉnh (câu 31-45)", type:"fill", items:[
+            {q:"She is a student. → Phủ định:", ans:"She is not a student.", alt:["She isn't a student."]},
+            {q:"They play football. → Phủ định:", ans:"They don't play football.", alt:["They do not play football."]},
+            {q:"He works at a hospital. → Nghi vấn:", ans:"Does he work at a hospital?"},
+            {q:"I am from Vietnam. → Nghi vấn:", ans:"Am I from Vietnam?"},
+            {q:"We are students. → Phủ định:", ans:"We are not students.", alt:["We aren't students."]},
+            {q:"She likes cats. → Nghi vấn:", ans:"Does she like cats?"},
+            {q:"You are my friend. → Phủ định:", ans:"You are not my friend.", alt:["You aren't my friend."]},
+            {q:"Tom and Lily study hard. → Nghi vấn:", ans:"Do Tom and Lily study hard?"},
+            {q:"He is not happy. → Khẳng định:", ans:"He is happy."},
+            {q:"Do you live in Hanoi? → Trả lời 'Yes':", ans:"Yes, I do."},
+            {q:"Is she your teacher? → Trả lời 'No':", ans:"No, she isn't.", alt:["No, she is not."]},
+            {q:"My dog runs fast. → Phủ định:", ans:"My dog doesn't run fast.", alt:["My dog does not run fast."]},
+            {q:"Are they doctors? → Trả lời 'Yes':", ans:"Yes, they are."},
+            {q:"She doesn't eat meat. → Khẳng định:", ans:"She eats meat."},
+            {q:"We don't go to school on Sunday. → Khẳng định:", ans:"We go to school on Sunday."}
+        ]},
+        { id:"arrange", label:"Sắp xếp từ", icon:"fas fa-arrow-right-arrow-left", desc:"Chạm vào từ theo thứ tự đúng (câu 46-55)", type:"arrange", items:[
+            {q:"Câu 46:", words:["She","is","not","a","doctor","."], ans:"She is not a doctor ."},
+            {q:"Câu 47:", words:["Do","they","play","tennis","every","day","?"], ans:"Do they play tennis every day ?"},
+            {q:"Câu 48:", words:["My","sister","goes","to","school","by","bike","."], ans:"My sister goes to school by bike ."},
+            {q:"Câu 49:", words:["Are","you","and","your","friend","students","?"], ans:"Are you and your friend students ?"},
+            {q:"Câu 50:", words:["He","does","not","like","vegetables","."], ans:"He does not like vegetables ."},
+            {q:"Câu 51:", words:["We","are","in","grade","6","."], ans:"We are in grade 6 ."},
+            {q:"Câu 52:", words:["Does","she","speak","English","well","?"], ans:"Does she speak English well ?"},
+            {q:"Câu 53:", words:["I","am","not","tired","today","."], ans:"I am not tired today ."},
+            {q:"Câu 54:", words:["They","do","not","watch","TV","at","night","."], ans:"They do not watch TV at night ."},
+            {q:"Câu 55:", words:["Is","he","your","best","friend","?"], ans:"Is he your best friend ?"}
+        ]},
+        { id:"error", label:"Tìm lỗi sai", icon:"fas fa-exclamation-triangle", desc:"Chọn từ bị sai trong câu (câu 56-60)", type:"error", items:[
+            {q:"She don't like coffee.", words:["She","don't","like","coffee","."], ans:1, fix:"doesn't"},
+            {q:"They is my classmates.", words:["They","is","my","classmates","."], ans:1, fix:"are"},
+            {q:"He go to school every day.", words:["He","go","to","school","every","day","."], ans:1, fix:"goes"},
+            {q:"I are 12 years old.", words:["I","are","12","years","old","."], ans:1, fix:"am"},
+            {q:"Do she speak French?", words:["Do","she","speak","French","?"], ans:0, fix:"Does"}
+        ]}
+    ];
+
+    let answerState = {};
+    let correctCount = 0;
+    let totalAnswered = 0;
+    let arrangeTemp = {};
+
+    function updateGlobalScoreUI() {
+        document.getElementById("scoreDisplay").innerText = `${correctCount} / ${totalAnswered}`;
+    }
+
+    function markAnswered(sectionId, idx, isCorrect) {
+        const key = `${sectionId}-${idx}`;
+        if (answerState[key]) return false;
+        answerState[key] = true;
+        totalAnswered++;
+        if (isCorrect) correctCount++;
+        updateGlobalScoreUI();
+        return true;
+    }
+
+    function isAlreadyAnswered(sectionId, idx) {
+        const key = `${sectionId}-${idx}`;
+        return !!answerState[key];
+    }
+
+    function buildUI() {
+        const tabsContainer = document.getElementById("tabsContainer");
+        const sectionsContainer = document.getElementById("sectionsContainer");
+        tabsContainer.innerHTML = "";
+        sectionsContainer.innerHTML = "";
+
+        sectionsData.forEach((section, secIndex) => {
+            const tabBtn = document.createElement("button");
+            tabBtn.className = "tab-btn" + (secIndex === 0 ? " active" : "");
+            tabBtn.innerHTML = `<i class="${section.icon}"></i> ${section.label}`;
+            tabBtn.addEventListener("click", () => {
+                document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+                tabBtn.classList.add("active");
+                document.querySelectorAll(".section-card").forEach(card => card.classList.remove("active"));
+                document.getElementById(`card-${section.id}`).classList.add("active");
+            });
+            tabsContainer.appendChild(tabBtn);
+
+            const card = document.createElement("div");
+            card.className = "section-card" + (secIndex === 0 ? " active" : "");
+            card.id = `card-${section.id}`;
+            card.innerHTML = `
+                <div class="section-header">
+                    <h3><i class="${section.icon}" style="margin-right:8px;"></i> ${section.label}</h3>
+                    <p>${section.desc}</p>
+                </div>
+                <div class="exercise-grid" id="grid-${section.id}"></div>
+            `;
+            sectionsContainer.appendChild(card);
+
+            const grid = document.getElementById(`grid-${section.id}`);
+            section.items.forEach((item, itemIdx) => {
+                const exDiv = document.createElement("div");
+                exDiv.className = "exercise-item";
+                const globalNumber = getGlobalNumber(secIndex, itemIdx);
+                exDiv.innerHTML = `<div class="ex-label">📝 Câu ${globalNumber}</div><div class="ex-question">${item.q}</div><div id="content-${section.id}-${itemIdx}"></div><div class="feedback" id="fb-${section.id}-${itemIdx}" style="display:none;"></div>`;
+                grid.appendChild(exDiv);
+
+                const contentHolder = document.getElementById(`content-${section.id}-${itemIdx}`);
+                if (section.type === "mc") {
+                    renderMC(section, itemIdx, item, contentHolder);
+                } else if (section.type === "fill") {
+                    renderFill(section, itemIdx, item, contentHolder);
+                } else if (section.type === "arrange") {
+                    renderArrange(section, itemIdx, item, contentHolder);
+                } else if (section.type === "error") {
+                    renderError(section, itemIdx, item, contentHolder);
+                }
+            });
+        });
+    }
+
+    function getGlobalNumber(secIdx, itemIdx) {
+        let sum = 0;
+        for (let i = 0; i < secIdx; i++) sum += sectionsData[i].items.length;
+        return sum + itemIdx + 1;
+    }
+
+    function renderMC(section, idx, item, container) {
+        const optsDiv = document.createElement("div");
+        optsDiv.className = "mc-options";
+        const btns = [];
+        item.opts.forEach((opt, optIndex) => {
+            const btn = document.createElement("button");
+            btn.className = "mc-option-btn";
+            btn.innerText = opt;
+            btn.addEventListener("click", () => {
+                if (isAlreadyAnswered(section.id, idx)) return;
+                const isCorrect = (optIndex === item.ans);
+                const success = markAnswered(section.id, idx, isCorrect);
+                if (!success) return;
+                const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+                fbDiv.style.display = "block";
+                if (isCorrect) {
+                    fbDiv.className = "feedback correct";
+                    fbDiv.innerHTML = "<i class='fas fa-check-circle'></i> Chính xác!";
+                    btn.classList.add("mc-opt-correct");
+                } else {
+                    fbDiv.className = "feedback wrong";
+                    fbDiv.innerHTML = `<i class='fas fa-times-circle'></i> Sai! Đáp án đúng: ${item.opts[item.ans]}`;
+                    btn.classList.add("mc-opt-wrong");
+                    btns[item.ans].classList.add("mc-opt-correct");
+                }
+                btns.forEach(b => { b.style.pointerEvents = "none"; });
+            });
+            btns.push(btn);
+            optsDiv.appendChild(btn);
+        });
+        container.appendChild(optsDiv);
+    }
+
+    function renderFill(section, idx, item, container) {
+        const wrapper = document.createElement("div");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Nhập đáp án...";
+        input.className = "fill-input";
+        const btn = document.createElement("button");
+        btn.innerText = "Kiểm tra";
+        btn.className = "check-btn";
+        btn.addEventListener("click", () => {
+            if (isAlreadyAnswered(section.id, idx)) return;
+            const val = input.value.trim();
+            if (!val) return;
+            const norm = s => s.trim().toLowerCase().replace(/\s+/g, " ");
+            const isMatch = norm(val) === norm(item.ans) || (item.alt && item.alt.some(a => norm(val) === norm(a)));
+            const success = markAnswered(section.id, idx, isMatch);
+            if (!success) return;
+            const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+            fbDiv.style.display = "block";
+            if (isMatch) {
+                fbDiv.className = "feedback correct";
+                fbDiv.innerHTML = "✓ Đúng rồi!";
+                input.style.borderColor = "#48bb78";
+            } else {
+                fbDiv.className = "feedback wrong";
+                fbDiv.innerHTML = `✗ Sai. Đáp án: ${item.ans}`;
+                input.style.borderColor = "#f56565";
+            }
+            input.disabled = true;
+            btn.disabled = true;
+        });
+        wrapper.appendChild(input);
+        wrapper.appendChild(btn);
+        container.appendChild(wrapper);
+    }
+
+    function renderArrange(section, idx, item, container) {
+        const shuffled = [...item.words].sort(() => Math.random() - 0.5);
+        const bankDiv = document.createElement("div");
+        bankDiv.className = "word-bank";
+        const answerDiv = document.createElement("div");
+        answerDiv.className = "word-bank answer-area";
+        const checkBtn = document.createElement("button");
+        checkBtn.innerText = "Kiểm tra câu";
+        checkBtn.className = "check-btn";
+        let selectedWords = [];
+
+        function refreshBankAndAnswer() {
+            bankDiv.innerHTML = "";
+            shuffled.forEach((word, wIdx) => {
+                const used = selectedWords.some(s => s.originalIdx === wIdx);
+                const chip = document.createElement("span");
+                chip.className = "word-chip" + (used ? " used" : "");
+                chip.innerText = word;
+                if (!used) {
+                    chip.addEventListener("click", () => {
+                        if (isAlreadyAnswered(section.id, idx)) return;
+                        selectedWords.push({ word, originalIdx: wIdx });
+                        refreshBankAndAnswer();
+                    });
+                }
+                bankDiv.appendChild(chip);
+            });
+            answerDiv.innerHTML = "";
+            selectedWords.forEach((sel, i) => {
+                const chipAns = document.createElement("span");
+                chipAns.className = "word-chip";
+                chipAns.innerText = sel.word;
+                chipAns.addEventListener("click", () => {
+                    if (isAlreadyAnswered(section.id, idx)) return;
+                    selectedWords.splice(i, 1);
+                    refreshBankAndAnswer();
+                });
+                answerDiv.appendChild(chipAns);
+            });
+        }
+        refreshBankAndAnswer();
+        checkBtn.addEventListener("click", () => {
+            if (isAlreadyAnswered(section.id, idx)) return;
+            const built = selectedWords.map(s => s.word).join(" ");
+            const isCorrect = built.toLowerCase() === item.ans.toLowerCase();
+            const marked = markAnswered(section.id, idx, isCorrect);
+            if (!marked) return;
+            const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+            fbDiv.style.display = "block";
+            if (isCorrect) {
+                fbDiv.className = "feedback correct";
+                fbDiv.innerHTML = "✅ Tuyệt vời! Đúng thứ tự.";
+            } else {
+                fbDiv.className = "feedback wrong";
+                fbDiv.innerHTML = `❌ Sai rồi. Đáp án: ${item.ans}`;
+            }
+            checkBtn.disabled = true;
+        });
+        container.appendChild(bankDiv);
+        container.appendChild(answerDiv);
+        container.appendChild(checkBtn);
+    }
+
+    function renderError(section, idx, item, container) {
+        const lineDiv = document.createElement("div");
+        lineDiv.style.display = "flex";
+        lineDiv.style.flexWrap = "wrap";
+        lineDiv.style.gap = "8px";
+        const wordSpans = [];
+        item.words.forEach((word, wIndex) => {
+            const span = document.createElement("span");
+            span.className = "error-word";
+            span.innerText = word;
+            span.addEventListener("click", () => {
+                if (isAlreadyAnswered(section.id, idx)) return;
+                const isCorrect = (wIndex === item.ans);
+                const marked = markAnswered(section.id, idx, isCorrect);
+                if (!marked) return;
+                const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+                fbDiv.style.display = "block";
+                if (isCorrect) {
+                    span.classList.add("correct-pick");
+                    fbDiv.className = "feedback correct";
+                    fbDiv.innerHTML = `✔ Đúng! Từ sai là "${word}" → sửa thành "${item.fix}".`;
+                } else {
+                    span.classList.add("wrong-pick");
+                    fbDiv.className = "feedback wrong";
+                    const correctSpan = wordSpans[item.ans];
+                    if(correctSpan) correctSpan.classList.add("correct-pick");
+                    fbDiv.innerHTML = `✗ Sai! Từ bị sai là "${item.words[item.ans]}" → sửa thành "${item.fix}".`;
+                }
+                wordSpans.forEach(sp => sp.style.pointerEvents = "none");
+            });
+            wordSpans.push(span);
+            lineDiv.appendChild(span);
+        });
+        container.appendChild(lineDiv);
+    }
+
+    function resetEverything() {
+        answerState = {};
+        correctCount = 0;
+        totalAnswered = 0;
+        arrangeTemp = {};
+        updateGlobalScoreUI();
+        buildUI();
+    }
+
+    document.getElementById("globalResetBtn").addEventListener("click", resetEverything);
+    buildUI();
+</script>
+</body>
+</html>
