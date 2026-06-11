@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Quá Khứ Đơn & Quá Khứ Tiếp Diễn</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header giống index.html */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .page-header h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .page-header .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+        }
+
+        /* Nút back giống index */
+        .back-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-3px);
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background: white;
+            border-radius: 60px;
+            padding: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tab-btn {
+            padding: 12px 28px;
+            border: none;
+            background: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+        }
+
+        .tab-btn:hover {
+            background-color: #f0f0f0;
+            color: #667eea;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card và Layout nội dung - style mới đồng bộ */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #5a67d8;
+            border-left: 5px solid #7c3aed;
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Bảng so sánh cấu trúc */
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .grammar-table th, .grammar-table td {
+            border: 1px solid #e2e8f0;
+            padding: 14px;
+            text-align: left;
+        }
+
+        .grammar-table th {
+            background: linear-gradient(135deg, #5a67d8 0%, #7c3aed 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .grammar-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        /* Hộp ghi chú đặc biệt */
+        .note-box {
+            background-color: #eef2ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 16px;
+        }
+
+        .note-box strong {
+            color: #5a67d8;
+        }
+
+        .warning-box {
+            background-color: #fff5f0;
+            border-left: 5px solid #ed8936;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 16px;
+        }
+
+        .warning-box strong {
+            color: #ed8936;
+        }
+
+        /* Giao diện Trắc Nghiệm */
+        .quiz-container {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        @media (min-width: 600px) {
+            .options-route {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .option-label {
+            display: block;
+            padding: 12px 18px;
+            background: #f7fafc;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .option-label:hover {
+            background: #eef2ff;
+            border-color: #c3dafe;
+        }
+
+        .option-label input {
+            margin-right: 12px;
+            accent-color: #667eea;
+        }
+
+        /* Đúng/Sai Classes */
+        .correct {
+            background-color: #c6f6d5 !important;
+            border-color: #48bb78 !important;
+            color: #22543d;
+        }
+
+        .incorrect {
+            background-color: #fed7d7 !important;
+            border-color: #f56565 !important;
+            color: #742a2a;
+        }
+
+        .explanation {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background-color: #fefcbf;
+            border-left: 4px solid #ecc94b;
+            font-size: 0.9rem;
+            display: none;
+            border-radius: 12px;
+            color: #744210;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(72,187,120,0.3);
+        }
+
+        .submit-btn:hover {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 25px;
+            display: none;
+            padding: 20px;
+            background: #f0fff4;
+            border-radius: 16px;
+            color: #2f855a;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 1.8rem; }
+            .tabs { border-radius: 20px; }
+            .tab-btn { padding: 8px 16px; font-size: 0.85rem; }
+            .card, .quiz-container { padding: 20px; }
+            h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Nút quay lại trang chủ -->
+    <a href="index.html" class="back-btn">← Trang chủ</a>
+
+    <!-- Header giống index.html -->
+    <div class="page-header">
+        <h1>📖 Bài 3: Quá Khứ Đơn & Quá Khứ Tiếp Diễn</h1>
+        <div class="subtitle">Lý thuyết chi tiết + 20 câu trắc nghiệm thực chiến</div>
+    </div>
+
+    <!-- HỆ THỐNG TABS -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('qkd')">1. Past Simple</button>
+        <button class="tab-btn" onclick="openTab('qktd')">2. Past Continuous</button>
+        <button class="tab-btn" onclick="openTab('giao_thoa')">3. Quy Tắc Vàng</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 Luyện tập</button>
+    </div>
+
+    <!-- TAB 1: QUÁ KHỨ ĐƠN -->
+    <div id="qkd" class="tab-content active">
+        <div class="card">
+            <h2>1. Thì Quá Khứ Đơn (Past Simple)</h2>
+            <p>Hãy nhìn vào cuộc đời của nhà soạn nhạc thiên tài Wolfgang Amadeus Mozart. Ông sống từ năm 1756 đến năm 1791. Ông bắt đầu sáng tác từ lúc 5 tuổi và đã viết hơn 600 tác phẩm âm nhạc. Ông mất năm 35 tuổi.</p>
+            <p>Tất cả các hành động này (<em>lived, started, wrote, was, died</em>) đều đã <strong>xảy ra và kết thúc hoàn toàn trong quá khứ</strong>. Đó chính là bản chất cốt lõi của Quá khứ đơn!</p>
+
+            <h3>A. Cấu trúc câu với Động Từ Thường</h3>
+            <table class="grammar-table">
+                <tr><th>Loại câu</th><th>Công thức (S = Chủ ngữ, V = Động từ)</th></tr>
+                <tr><td><strong>Khẳng định (+)</strong></td><td><strong>S + V2 / V-ed</strong><br><small>VD: Laura <u>passed</u> her exam. / Mozart <u>wrote</u> 600 pieces.</small></td></tr>
+                <tr><td><strong>Phủ định (-)</strong></td><td><strong>S + didn't + V (nguyên thể)</strong><br><small>VD: I <u>didn't buy</u> anything.</small></td></tr>
+                <tr><td><strong>Nghi vấn (?)</strong></td><td><strong>Did + S + V (nguyên thể)?</strong><br><small>VD: <u>Did you enjoy</u> the party?</small></td></tr>
+            </table>
+
+            <div class="note-box">
+                <strong>💡 Ghi chú quan trọng:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li><strong>Động từ có quy tắc:</strong> thêm <em>-ed</em> (work → worked).</li>
+                    <li><strong>Động từ bất quy tắc:</strong> học thuộc cột 2 (write → wrote, go → went).</li>
+                    <li><strong>Sai lầm thường gặp:</strong> ❌ <del>Did you went?</del> → ✅ <strong>Did you go?</strong></li>
+                </ul>
+            </div>
+
+            <h3>B. Cấu trúc với Động từ To Be (Was/Were)</h3>
+            <ul>
+                <li><strong>I / He / She / It</strong> + <strong>was / wasn't</strong> <small>(I was annoyed.)</small></li>
+                <li><strong>We / You / They</strong> + <strong>were / weren't</strong> <small>(They were busy.)</small></li>
+                <li><strong>Câu hỏi:</strong> Was/Were + S? <small>(Was the weather good?)</small></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TAB 2: QUÁ KHỨ TIẾP DIỄN -->
+    <div id="qktd" class="tab-content">
+        <div class="card">
+            <h2>2. Thì Quá Khứ Tiếp Diễn (Past Continuous)</h2>
+            <p>Ví dụ: Hôm qua Karen và Joe chơi quần vợt từ 10h00 đến 11h30. Vào lúc <strong>10h30</strong>, họ <strong>were playing</strong> tennis.</p>
+            <p><strong>Bản chất:</strong> Diễn tả hành động <strong>đang diễn ra dở dang</strong> tại một thời điểm xác định trong quá khứ.</p>
+
+            <h3>Công thức</h3>
+            <div class="note-box">
+                <p style="font-size: 1.2rem; text-align: center; font-weight: bold;">📌 S + was/were + V-ing</p>
+                <ul>
+                    <li>I/He/She/It → <strong>was</strong> + V-ing <small>(Kate was watching TV.)</small></li>
+                    <li>We/You/They → <strong>were</strong> + V-ing <small>(They were playing.)</small></li>
+                </ul>
+            </div>
+
+            <h3>Dấu hiệu nhận biết</h3>
+            <ul>
+                <li>At 10 o'clock last night, at this time last year...</li>
+                <li>Đi kèm <strong>When/While</strong> trong câu phức.</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>⚠️ Lưu ý:</strong> Động từ trạng thái (know, want, need, believe) <strong>không dùng -ing</strong>.<br>
+                ❌ <del>We were knowing each other.</del> → ✅ <strong>We knew each other.</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: GIAO THOA -->
+    <div id="giao_thoa" class="tab-content">
+        <div class="card">
+            <h2>3. Sự Giao Thoa Giữa Hai Thì</h2>
+            <p>Khi hai thì này xuất hiện trong cùng một câu, hãy nhớ quy tắc vàng:</p>
+
+            <div class="warning-box" style="border-left-color: #e53e3e;">
+                <h3 style="margin-top:0; color:#e53e3e;">🔥 Quy Tắc Vàng</h3>
+                <ul>
+                    <li>Hành động <strong>ĐANG DIỄN RA</strong> (kéo dài) → <strong>Quá Khứ Tiếp Diễn</strong> (was/were + V-ing)</li>
+                    <li>Hành động bất ngờ <strong>XEN NGANG</strong> (ngắn) → <strong>Quá Khứ Đơn</strong> (V2/ed)</li>
+                </ul>
+            </div>
+
+            <h3>Ví dụ kinh điển</h3>
+            <p><em>"We <u>were walking</u> home when I <u>met</u> Dan."</em><br>
+            → Đang đi bộ (dài) thì gặp Dan (ngắn xen vào).</p>
+
+            <table class="grammar-table">
+                <tr><th>When Karen arrived, we <u>were having</u> dinner.</th>
+                <th>When Karen arrived, we <u>had</u> dinner.</th></tr>
+                <tr><td>Đang ăn dở thì Karen đến</td>
+                    <td>Karen đến rồi chúng tôi mới ăn</td></tr>
+            }</table>
+        </div>
+    </div>
+
+    <!-- TAB 4: LUYỆN TẬP TRẮC NGHIỆM -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 20 Câu Trắc Nghiệm Tổng Hợp</h2>
+            <p>Chọn đáp án đúng, hệ thống sẽ tự chấm điểm và giải thích chi tiết!</p>
+            
+            <form id="quizForm">
+                <!-- Câu 1 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">Câu 1: Mozart _______ from 1756 to 1791. He was an Austrian musician.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> was living</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> lived</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> lives</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> live</label>
+                    </div>
+                    <div class="explanation">Hành động sống trong khoảng thời gian xác định trong quá khứ và đã kết thúc → Quá Khứ Đơn.</div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 2: Matt phoned us while we _______ dinner yesterday.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> had</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> have</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> were having</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> was having</label>
+                    </div>
+                    <div class="explanation">Đang ăn tối (hành động dài) thì Matt gọi (ngắn xen vào). Chủ ngữ "we" → were having.</div>
+                </div>
+
+                <!-- Câu 3 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 3: I _______ anything because I didn't have any money.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> didn't buy</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> didn't bought</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> don't buy</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> wasn't buy</label>
+                    </div>
+                    <div class="explanation">Phủ định quá khứ đơn: didn't + V nguyên thể.</div>
+                </div>
+
+                <!-- Câu 4 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">Câu 4: This time last year I _______ in Hong Kong.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> lived</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> am living</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> was live</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> was living</label>
+                    </div>
+                    <div class="explanation">Mốc thời gian cụ thể "this time last year" → Quá Khứ Tiếp Diễn.</div>
+                </div>
+
+                <!-- Câu 5 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 5: I waved to Helen, but she _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> wasn't looking</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> didn't looked</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> isn't looking</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> didn't look</label>
+                    </div>
+                    <div class="explanation">Tại thời điểm tôi vẫy, cô ấy đang không nhìn → Quá Khứ Tiếp Diễn phủ định.</div>
+                </div>
+
+                <!-- Câu 6 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 6: "Did you go out last night?" - "No, I _______."</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> wasn't</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> didn't go</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> didn't</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> don't</label>
+                    </div>
+                    <div class="explanation">Câu trả lời ngắn phủ định: No, I didn't.</div>
+                </div>
+
+                <!-- Câu 7 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">Câu 7: What _______ at 10 o'clock last night?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> did you do</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> were you doing</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> did you doing</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> you were doing</label>
+                    </div>
+                    <div class="explanation">Có thời gian chính xác trong quá khứ → Quá Khứ Tiếp Diễn nghi vấn.</div>
+                </div>
+
+                <!-- Câu 8 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 8: It was cold, so I _______ the window.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> shut</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> shutted</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> am shutting</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> was shutting</label>
+                    </div>
+                    <div class="explanation">Shut là động từ bất quy tắc (shut-shut-shut). Hành động nối tiếp → Quá Khứ Đơn.</div>
+                </div>
+
+                <!-- Câu 9 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 9: We were good friends. We _______ each other well.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> were knowing</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> know</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> knew</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> was knowing</label>
+                    </div>
+                    <div class="explanation">"Know" là động từ trạng thái, không chia -ing → dùng Quá Khứ Đơn "knew".</div>
+                </div>
+
+                <!-- Câu 10 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">Câu 10: I was enjoying the party, but Chris _______ to go home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> was wanting</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> wanted</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> wants</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> want</label>
+                    </div>
+                    <div class="explanation">"Want" là động từ trạng thái → không dùng -ing → Quá Khứ Đơn "wanted".</div>
+                </div>
+
+                <!-- Câu 11 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">Câu 11: When Karen arrived, we _______ dinner. (Sau khi cô ấy đến chúng tôi mới ăn).</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> were having</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> was having</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> have</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> had</label>
+                    </div>
+                    <div class="explanation">Hành động nối tiếp nhau → Quá Khứ Đơn.</div>
+                </div>
+
+                <!-- Câu 12 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 12: I _______ annoyed because they were late.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> was</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> were</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> did</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> did be</label>
+                    </div>
+                    <div class="explanation">"Annoyed" là tính từ, đi với động từ to be. Chủ ngữ "I" → was.</div>
+                </div>
+
+                <!-- Câu 13 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 13: What _______ at the weekend? (Bạn đã làm gì cuối tuần?)</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> did you</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> were you do</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> did you do</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> you did</label>
+                    </div>
+                    <div class="explanation">Câu hỏi Quá Khứ Đơn: Did + S + V nguyên thể?</div>
+                </div>
+
+                <!-- Câu 14 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 14: The police _______ me on my way home last night.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> stopped</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> stoped</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> were stopping</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> stopping</label>
+                    </div>
+                    <div class="explanation">Stop → gấp đôi p + ed = stopped. Hành động đã kết thúc trong quá khứ.</div>
+                </div>
+
+                <!-- Câu 15 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">Câu 15: I was walking along the road when I saw Dan. So I stopped, and we _______ for a while.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> were talking</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> talked</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> talk</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> had talked</label>
+                    </div>
+                    <div class="explanation">Chuỗi hành động nối tiếp → Quá Khứ Đơn.</div>
+                </div>
+
+                <!-- Câu 16 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 16: It _______ when I got up this morning.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> rained</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> rains</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> was raining</label>
+                        <label class="option-label"><input type="radio" name="q16" value="D"> were raining</label>
+                    </div>
+                    <div class="explanation">Trời đang mưa (hành động dài) khi tôi thức dậy (ngắn).</div>
+                </div>
+
+                <!-- Câu 17 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">Câu 17: How many people _______ to the wedding?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> did they invited</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> did they invite</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> were they inviting</label>
+                        <label class="option-label"><input type="radio" name="q17" value="D"> they invited</label>
+                    </div>
+                    <div class="explanation">Câu hỏi Quá Khứ Đơn: Did + S + V nguyên thể.</div>
+                </div>
+
+                <!-- Câu 18 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">Câu 18: I hurt my back while I _______ in the garden.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> worked</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> am working</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> were working</label>
+                        <label class="option-label"><input type="radio" name="q18" value="D"> was working</label>
+                    </div>
+                    <div class="explanation">Đang làm vườn (dài) thì bị đau lưng (ngắn). Chủ ngữ "I" → was working.</div>
+                </div>
+
+                <!-- Câu 19 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">Câu 19: They _______ able to come because they were so busy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> wasn't</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> didn't be</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> weren't</label>
+                        <label class="option-label"><input type="radio" name="q19" value="D"> don't</label>
+                    </div>
+                    <div class="explanation">Chủ ngữ "They" số nhiều → weren't.</div>
+                </div>
+
+                <!-- Câu 20 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">Câu 20: I saw you in the park yesterday. You _______ on the grass and reading a book.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> were sitting</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> sat</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> was sitting</label>
+                        <label class="option-label"><input type="radio" name="q20" value="D"> are sitting</label>
+                    </div>
+                    <div class="explanation">Hành động đang diễn ra tại thời điểm nhìn thấy → Quá Khứ Tiếp Diễn.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">📝 Nộp bài xem kết quả</button>
+            </form>
+
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>✨ Học mọi lúc, mọi nơi | Bài 3: Quá Khứ Đơn & Quá Khứ Tiếp Diễn</p>
+    </footer>
+</div>
+
+<script>
+    // Hàm chuyển đổi các Tab học tập
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+        
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        
+        const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if(activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Hàm chấm điểm trắc nghiệm
+    function checkQuiz() {
+        const questions = document.querySelectorAll('.question');
+        let score = 0;
+
+        questions.forEach((q, index) => {
+            const correctAnswer = q.getAttribute('data-correct');
+            const selectedInput = q.querySelector(`input[name="q${index + 1}"]:checked`);
+            const explanation = q.querySelector('.explanation');
+            const optionLabels = q.querySelectorAll('.option-label');
+
+            optionLabels.forEach(label => {
+                label.classList.remove('correct', 'incorrect');
+            });
+            explanation.style.display = 'block'; 
+
+            if (selectedInput) {
+                const userAnswer = selectedInput.value;
+                
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    selectedInput.parentElement.classList.add('correct');
+                } else {
+                    selectedInput.parentElement.classList.add('incorrect');
+                    optionLabels.forEach(label => {
+                        if(label.querySelector('input').value === correctAnswer) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                // Không chọn đáp án nào
+                optionLabels.forEach(label => {
+                    if(label.querySelector('input').value === correctAnswer) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        
+        if (score === questions.length) {
+            resultDiv.innerHTML = `🎉 Bạn đã trả lời đúng ${score} / ${questions.length} câu! 🌟 Quá xuất sắc! Bạn đã làm chủ kiến thức!`;
+            resultDiv.style.background = "#f0fff4";
+            resultDiv.style.color = "#22543d";
+        } else if (score >= 15) {
+            resultDiv.innerHTML = `✨ Bạn trả lời đúng ${score} / ${questions.length} câu. Rất tốt! Hãy xem lại phần giải thích để hoàn hảo hơn nhé!`;
+            resultDiv.style.background = "#fefcbf";
+            resultDiv.style.color = "#744210";
+        } else {
+            resultDiv.innerHTML = `📖 Bạn trả lời đúng ${score} / ${questions.length} câu. Đừng nản! Hãy đọc kỹ phần giải thích màu vàng bên dưới mỗi câu để cải thiện nhé! 💪`;
+            resultDiv.style.background = "#fed7d7";
+            resultDiv.style.color = "#742a2a";
+        }
+        
+        resultDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
