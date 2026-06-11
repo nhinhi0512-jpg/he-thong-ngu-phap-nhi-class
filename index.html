@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Hệ thống Ngữ pháp Tiếng Anh</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #5a67d8 0%, #7c3aed 100%);
+            padding: 20px;
+            color: white;
+        }
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        .card-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-theory {
+            background: #667eea;
+            color: white;
+        }
+        .btn-exercise {
+            background: #48bb78;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📚 Hệ thống Ngữ pháp Tiếng Anh</h1>
+    <div class="subtitle">Chọn bài học bên dưới để bắt đầu</div>
+    
+    <div class="grid">
+        <!-- Bài 1: Đại từ nhân xưng & To Be & Động từ thường -->
+        <div class="card">
+            <div class="card-header">
+                <h2>👤 Bài 1: Đại từ nhân xưng</h2>
+                <p>Personal Pronouns + To Be + Action Verbs</p>
+                <div class="badge">🎯 Nền tảng cơ bản</div>
+            </div>
+            <div class="card-body">
+                <p style="color:#4a5568; margin-bottom:15px;">Học về đại từ I/you/he/she/it/we/they, cách dùng to be và động từ thường.</p>
+                <div class="btn-group">
+                    <a href="bai-1-dai-tu-va-to-be/1. Personal Pronouns.html" class="btn btn-theory">📖 Lý thuyết</a>
+                    <a href="bai-1-dai-tu-va-to-be/1. ĐTNX - Verb.html" class="btn btn-exercise">✍️ Bài tập</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bài 2: Hiện tại đơn (sẽ thêm sau) -->
+        <div class="card">
+            <div class="card-header" style="background: linear-gradient(135deg, #e53e3e 0%, #ed8936 100%);">
+                <h2>⏰ Bài 2: Hiện tại đơn</h2>
+                <p>Present Simple Tense</p>
+                <div class="badge">🟡 Sắp ra mắt</div>
+            </div>
+            <div class="card-body">
+                <p style="color:#4a5568; margin-bottom:15px;">Thói quen, sự thật hiển nhiên, lịch trình.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-theory" style="background:#cbd5e0; cursor:not-allowed;">📖 Lý thuyết</a>
+                    <a href="#" class="btn btn-exercise" style="background:#cbd5e0; cursor:not-allowed;">✍️ Bài tập</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bài 3: Hiện tại tiếp diễn -->
+        <div class="card">
+            <div class="card-header" style="background: linear-gradient(135deg, #38a169 0%, #68d391 100%);">
+                <h2>🔄 Bài 3: Hiện tại tiếp diễn</h2>
+                <p>Present Continuous Tense</p>
+                <div class="badge">🟢 Sắp ra mắt</div>
+            </div>
+            <div class="card-body">
+                <p style="color:#4a5568; margin-bottom:15px;">Hành động đang xảy ra ngay lúc nói.</p>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-theory" style="background:#cbd5e0; cursor:not-allowed;">📖 Lý thuyết</a>
+                    <a href="#" class="btn btn-exercise" style="background:#cbd5e0; cursor:not-allowed;">✍️ Bài tập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>✨ Học mọi lúc, mọi nơi | Click vào lý thuyết hoặc bài tập để bắt đầu</p>
+    </footer>
+</div>
+</body>
+</html>
