@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Bài tập Ngữ pháp | Present Simple & Present Continuous</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef7f2;  /* Xanh lá nhạt dịu mắt đồng bộ bài 3 */
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Noto Sans', sans-serif;
+            padding: 20px 16px 50px;
+            color: #2c3a30;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 25px 20px 32px;
+        }
+
+        /* Đồng bộ Tiêu đề với index.html */
+        .main-header {
+            background: linear-gradient(135deg, #38a169 0%, #68d391 100%);
+            margin: -25px -20px 25px -20px;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .sub {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+        }
+
+        /* TABS LỚN (Simple vs Continuous) */
+        .main-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: #f0f7f4;
+            padding: 6px;
+            border-radius: 50px;
+        }
+        .main-tab-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 12px 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            color: #2f855a;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            text-align: center;
+        }
+        .main-tab-btn.active {
+            background: #38a169;
+            color: white;
+            box-shadow: 0 4px 10px rgba(56, 161, 105, 0.2);
+        }
+
+        /* TABS NHỎ (Các phần bài tập nhỏ bên trong) */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 15px 0 18px;
+            border-bottom: 2px solid #e2f0e9;
+            padding-bottom: 8px;
+        }
+        .tab-btn {
+            background: #eef7f2;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 40px;
+            color: #2f855a;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .tab-btn.active {
+            background: #48bb78;
+            color: white;
+            box-shadow: 0 2px 6px rgba(72, 187, 120, 0.2);
+        }
+        .tab-btn:hover:not(.active) {
+            background: #ddf0e5;
+        }
+
+        /* Phân chia hiển thị Tab */
+        .main-tab-content {
+            display: none;
+        }
+        .main-tab-content.active-main-tab {
+            display: block;
+        }
+        .tab-content {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+        .tab-content.active-tab {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(5px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* Khối bài tập */
+        .exercise {
+            background: #fcfdfe;
+            margin: 20px 0 25px;
+            padding: 10px 5px;
+            border-radius: 24px;
+        }
+        .ex-title {
+            background: #e6f6ee;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #234e36;
+            margin-bottom: 18px;
+        }
+        .question-item {
+            margin: 14px 0;
+            padding: 6px 0;
+            border-bottom: 1px solid #edf7f2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px;
+        }
+        .question-text {
+            flex: 1;
+            font-size: 0.98rem;
+            color: #2d3748;
+        }
+        input {
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border: 1px solid #cbd5e0;
+            border-radius: 36px;
+            background-color: white;
+            width: 240px;
+            font-family: monospace;
+            transition: 0.15s;
+        }
+        input:focus {
+            border-color: #38a169;
+            outline: none;
+            background-color: #f7fafc;
+            box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
+        }
+        .check-btn {
+            background: #38a169;
+            border: none;
+            color: white;
+            padding: 10px 28px;
+            font-size: 0.9rem;
+            border-radius: 32px;
+            font-weight: 600;
+            margin: 15px 0 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .check-btn:hover {
+            background: #2f855a;
+            transform: scale(0.98);
+        }
+        .feedback-area {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        .result-badge {
+            display: inline-block;
+            border-radius: 48px;
+            padding: 6px 16px;
+            font-weight: 500;
+        }
+        .correct-badge {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        .wrong-badge {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        .note {
+            background: #f0f7f4;
+            border-radius: 28px;
+            padding: 12px 18px;
+            font-size: 0.85rem;
+            color: #2f855a;
+            text-align: center;
+            margin: 25px 0 10px;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 28px;
+            color: #718096;
+        }
+        @media (max-width: 600px) {
+            .question-item {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            input {
+                width: 100%;
+            }
+            .tab-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .main-tab-btn {
+                font-size: 0.9rem;
+                padding: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main-header">
+        <h1>⚡ Present Simple and Present Continuous ⚡</h1>
+        <div class="sub">Hệ thống luyện tập ngữ pháp toàn diện - Nhi's Class</div>
+    </div>
+
+    <div class="main-tabs">
+        <button class="main-tab-btn active" data-main-tab="simple-section">⏰ Present Simple (Hiện tại đơn)</button>
+        <button class="main-tab-btn" data-main-tab="continuous-section">🔄 Present Continuous (Hiện tại tiếp diễn)</button>
+    </div>
+
+    <div id="simple-section" class="main-tab-content active-main-tab">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="unit1">1. am/is/are</button>
+            <button class="tab-btn" data-tab="unit2">2. Questions</button>
+            <button class="tab-btn" data-tab="unit5">3. Present Simple</button>
+            <button class="tab-btn" data-tab="unit6">4. don't / doesn't</button>
+            <button class="tab-btn" data-tab="unit7">5. Do you... ?</button>
+        </div>
+
+        <div id="unit1" class="tab-content active-tab">
+            <div class="exercise">
+                <div class="ex-title">1.1 Dạng rút gọn (short form)</div>
+                <div class="question-item"><span class="question-text">1. she is →</span> <input type="text" data-answers='["she\&#39;s","shes"]'></div>
+                <div class="question-item"><span class="question-text">2. they are →</span> <input type="text" data-answers='["they\&#39;re","theyre","they are"]'></div>
+                <div class="question-item"><span class="question-text">3. it is not →</span> <input type="text" data-answers='["it isn\&#39;t","it isnt","it\&#39;s not","it is not"]'></div>
+                <div class="question-item"><span class="question-text">4. that is →</span> <input type="text" data-answers='["that\&#39;s","thats"]'></div>
+                <div class="question-item"><span class="question-text">5. I am not →</span> <input type="text" data-answers='["i\&#39;m not","im not","i am not"]'></div>
+                <div class="question-item"><span class="question-text">6. you are not →</span> <input type="text" data-answers='["you aren\&#39;t","you arent","you\&#39;re not","you are not"]'></div>
+                <button class="check-btn">✨ Kiểm tra 1.1</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 1.2 Điền am / is / are</div>
+                <div class="question-item"><span class="question-text">1. The weather ____ nice today.</span> <input type="text" data-answers='["is"]'></div>
+                <div class="question-item"><span class="question-text">2. I ____ not rich.</span> <input type="text" data-answers='["am"]'></div>
+                <div class="question-item"><span class="question-text">3. This bag ____ heavy.</span> <input type="text" data-answers='["is"]'></div>
+                <div class="question-item"><span class="question-text">4. These bags ____ heavy.</span> <input type="text" data-answers='["are"]'></div>
+                <div class="question-item"><span class="question-text">5. Look! There ____ Helen.</span> <input type="text" data-answers='["is"]'></div>
+                <div class="question-item"><span class="question-text">6. My brother and I ____ good tennis players.</span> <input type="text" data-answers='["are"]'></div>
+                <div class="question-item"><span class="question-text">7. Emily ____ at home. Her children ____ at school.</span> <input type="text" data-answers='["is","are"]' placeholder="is / are"></div>
+                <div class="question-item"><span class="question-text">8. I ____ a taxi driver. My sister ____ a nurse.</span> <input type="text" data-answers='["am","is"]' placeholder="am / is"></div>
+                <button class="check-btn">✨ Kiểm tra 1.2</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 1.3 Hoàn thành câu (He's / I'm / They're...)</div>
+                <div class="question-item"><span class="question-text">1. Steve is ill. ____ in bed.</span> <input type="text" data-answers='["he\&#39;s","hes","he is"]'></div>
+                <div class="question-item"><span class="question-text">2. I'm not hungry, but ____ thirsty.</span> <input type="text" data-answers='["i\&#39;m","im","i am"]'></div>
+                <div class="question-item"><span class="question-text">3. Mr Thomas is a very old man. (he is) ____</span> <input type="text" data-answers='["he\&#39;s","hes","he is"]'></div>
+                <div class="question-item"><span class="question-text">4. These chairs aren't beautiful, but ____ comfortable.</span> <input type="text" data-answers='["they\&#39;re","theyre","they are"]'></div>
+                <div class="question-item"><span class="question-text">5. The weather is nice today. ____ warm and sunny.</span> <input type="text" data-answers='["it\&#39;s","its","it is"]'></div>
+                <div class="question-item"><span class="question-text">6. "____ late." "No, I'm not. I'm early!"</span> <input type="text" data-answers='["i\&#39;m","im","i am"]'></div>
+                <div class="question-item"><span class="question-text">7. Catherine isn't at home. ____ at work.</span> <input type="text" data-answers='["she\&#39;s","shes","she is"]'></div>
+                <div class="question-item"><span class="question-text">8. "____ your coat." "Oh, thank you."</span> <input type="text" data-answers='["here\&#39;s","heres","here is"]'></div>
+                <button class="check-btn">✨ Kiểm tra 1.3</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 1.4 Viết câu (angry, cold, hot, hungry, scared, thirsty)</div>
+                <div class="question-item"><span class="question-text">2. They _______ (đói).</span> <input type="text" data-answers='["are hungry","they are hungry","they\&#39;re hungry"]'></div>
+                <div class="question-item"><span class="question-text">3. He _______ (lạnh).</span> <input type="text" data-answers='["is cold","he is cold","he\&#39;s cold"]'></div>
+                <div class="question-item"><span class="question-text">4. They _______ (nóng).</span> <input type="text" data-answers='["are hot","they are hot","they\&#39;re hot"]'></div>
+                <div class="question-item"><span class="question-text">5. He _______ (tức giận).</span> <input type="text" data-answers='["is angry","he is angry","he\&#39;s angry"]'></div>
+                <div class="question-item"><span class="question-text">6. She _______ (sợ hãi).</span> <input type="text" data-answers='["is scared","she is scared","she\&#39;s scared"]'></div>
+                <button class="check-btn">✨ Kiểm tra 1.5</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="unit2" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 2.1 Ghép câu trả lời đúng</div>
+                <div class="question-item"><span class="question-text">Where's the camera? →</span> <input type="text" data-answers='["in your bag","in your bag."]'></div>
+                <div class="question-item"><span class="question-text">Is your car blue? →</span> <input type="text" data-answers='["no, it\&#39;s black","no it\&#39;s black","no it is black"]'></div>
+                <div class="question-item"><span class="question-text">Is Kate from London? →</span> <input type="text" data-answers='["no, she\&#39;s american","no she is american","no she\&#39;s american"]'></div>
+                <div class="question-item"><span class="question-text">Am I late? →</span> <input type="text" data-answers='["yes, you are","yes you are"]'></div>
+                <div class="question-item"><span class="question-text">Are you hungry? →</span> <input type="text" data-answers='["no, i\&#39;m not","no i am not","no im not"]'></div>
+                <div class="question-item"><span class="question-text">How is George? →</span> <input type="text" data-answers='["very well","very well."]'></div>
+                <button class="check-btn">✨ Kiểm tra 2.1</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 2.2 Đặt câu hỏi</div>
+                <div class="question-item"><span class="question-text">(your parents / are / well) →</span> <input type="text" data-answers='["are your parents well?"]'></div>
+                <div class="question-item"><span class="question-text">(interesting / is / your job) →</span> <input type="text" data-answers='["is your job interesting?"]'></div>
+                <div class="question-item"><span class="question-text">(the shops / are / open today) →</span> <input type="text" data-answers='["are the shops open today?"]'></div>
+                <div class="question-item"><span class="question-text">(from / where / you / are) →</span> <input type="text" data-answers='["where are you from?"]'></div>
+                <div class="question-item"><span class="question-text">(why / you / are / late) →</span> <input type="text" data-answers='["why are you late?"]'></div>
+                <button class="check-btn">✨ Kiểm tra 2.2</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 2.3 Short answers</div>
+                <div class="question-item"><span class="question-text">Are you married? →</span> <input type="text" data-answers='["no, i\&#39;m not","no i am not","no im not"]'></div>
+                <div class="question-item"><span class="question-text">Are your hands cold? →</span> <input type="text" data-answers='["yes, they are","yes they are"]'></div>
+                <div class="question-item"><span class="question-text">Is it dark now? →</span> <input type="text" data-answers='["no, it isn\&#39;t","no it isnt","no it\&#39;s not","no it is not"]'></div>
+                <div class="question-item"><span class="question-text">Are you a teacher? →</span> <input type="text" data-answers='["yes, i am","yes i am"]'></div>
+                <button class="check-btn">✨ Kiểm tra 2.5</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="unit5" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 3.1 Thêm -s/-es</div>
+                <div class="question-item"><span class="question-text">(read) she ___</span> <input type="text" data-answers='["reads"]'></div>
+                <div class="question-item"><span class="question-text">(fly) it ___</span> <input type="text" data-answers='["flies"]'></div>
+                <div class="question-item"><span class="question-text">(dance) he ___</span> <input type="text" data-answers='["dances"]'></div>
+                <div class="question-item"><span class="question-text">(have) she ___</span> <input type="text" data-answers='["has"]'></div>
+                <div class="question-item"><span class="question-text">(finish) it ___</span> <input type="text" data-answers='["finishes"]'></div>
+                <button class="check-btn">✨ Kiểm tra 5.1</button>
+                <div class="feedback-area"></div>
+            </div>
+            <div class="exercise">
+                <div class="ex-title">📝 3.2 Hoàn thành câu (speaks, open, closes...)</div>
+                <div class="question-item"><span class="question-text">1. Maria ____ four languages.</span> <input type="text" data-answers='["speaks"]'></div>
+                <div class="question-item"><span class="question-text">2. The shops ____ at 9 o'clock.</span> <input type="text" data-answers='["open"]'></div>
+                <div class="question-item"><span class="question-text">3. The museum ____ at 5 o'clock.</span> <input type="text" data-answers='["closes"]'></div>
+                <div class="question-item"><span class="question-text">4. Tina ____ mathematics to children.</span> <input type="text" data-answers='["teaches"]'></div>
+                <div class="question-item"><span class="question-text">5. Water ____ at 100°C.</span> <input type="text" data-answers='["boils"]'></div>
+                <div class="question-item"><span class="question-text">6. I ____ Laura and she ____ me.</span> <input type="text" data-answers='["like","likes"]' placeholder="like / likes"></div>
+                <button class="check-btn">✨ Kiểm tra 5.3</button>
+                <div class="feedback-area"></div>
+            </div>
+            <div class="exercise">
+                <div class="ex-title">📝 3.3 Viết câu (always/never/usually)</div>
+                <div class="question-item"><span class="question-text">(always / early / Sue / arrive) →</span> <input type="text" data-answers='["sue always arrives early"]'></div>
+                <div class="question-item"><span class="question-text">(to the cinema / never / I / go) →</span> <input type="text" data-answers='["i never go to the cinema"]'></div>
+                <div class="question-item"><span class="question-text">(work / Martina / hard / always) →</span> <input type="text" data-answers='["martina always works hard"]'></div>
+                <div class="question-item"><span class="question-text">(like / chocolate / children / usually) →</span> <input type="text" data-answers='["children usually like chocolate"]'></div>
+                <button class="check-btn">✨ Kiểm tra 5.4</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="unit6" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 4.1 Phủ định (don't/doesn't)</div>
+                <div class="question-item"><span class="question-text">I play the piano very well. →</span> <input type="text" data-answers='["i don\&#39;t play the piano very well","i do not play the piano very well"]'></div>
+                <div class="question-item"><span class="question-text">Anna plays the piano very well. →</span> <input type="text" data-answers='["anna doesn\&#39;t play the piano very well","anna does not play the piano very well"]'></div>
+                <div class="question-item"><span class="question-text">They know my phone number. →</span> <input type="text" data-answers='["they don\&#39;t know my phone number","they do not know my phone number"]'></div>
+                <div class="question-item"><span class="question-text">He has a bath every day. →</span> <input type="text" data-answers='["he doesn\&#39;t have a bath every day","he does not have a bath every day"]'></div>
+                <button class="check-btn">✨ Kiểm tra 6.1</button>
+                <div class="feedback-area"></div>
+            </div>
+            <div class="exercise">
+                <div class="ex-title">📝 4.2 don't/doesn't + động từ</div>
+                <div class="question-item"><span class="question-text">It ____ much (rain).</span> <input type="text" data-answers='["doesn\&#39;t rain","does not rain"]'></div>
+                <div class="question-item"><span class="question-text">He ____ it very often (use).</span> <input type="text" data-answers='["doesn\&#39;t use","does not use"]'></div>
+                <div class="question-item"><span class="question-text">They ____ to the cinema often (go).</span> <input type="text" data-answers='["don\&#39;t go","do not go"]'></div>
+                <div class="question-item"><span class="question-text">She ____ a ring (wear).</span> <input type="text" data-answers='["doesn\&#39;t wear","does not wear"]'></div>
+                <button class="check-btn">✨ Kiểm tra 6.4</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="unit7" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 5.1 Câu hỏi Do/Does</div>
+                <div class="question-item"><span class="question-text">(I like chocolate. How about you?) →</span> <input type="text" data-answers='["do you like chocolate?"]'></div>
+                <div class="question-item"><span class="question-text">(Tom plays tennis. How about his friends?) →</span> <input type="text" data-answers='["do tom\&#39;s friends play tennis?"]'></div>
+                <div class="question-item"><span class="question-text">(You speak English. How about your brother?) →</span> <input type="text" data-answers='["does your brother speak english?"]'></div>
+                <div class="question-item"><span class="question-text">(Sue goes away a lot. How about Paul?) →</span> <input type="text" data-answers='["does paul go away a lot?"]'></div>
+                <button class="check-btn">✨ Kiểm tra 7.1</button>
+                <div class="feedback-area"></div>
+            </div>
+            <div class="exercise">
+                <div class="ex-title">📝 5.2 Sắp xếp câu hỏi</div>
+                <div class="question-item"><span class="question-text">(where / live / your parents) →</span> <input type="text" data-answers='["where do your parents live?"]'></div>
+                <div class="question-item"><span class="question-text">(you / early / always / get up) →</span> <input type="text" data-answers='["do you always get up early?"]'></div>
+                <div class="question-item"><span class="question-text">(like / you / football) →</span> <input type="text" data-answers='["do you like football?"]'></div>
+                <div class="question-item"><span class="question-text">(your sister / work / where) →</span> <input type="text" data-answers='["where does your sister work?"]'></div>
+                <div class="question-item"><span class="question-text">(what time / you / usually / go to bed) →</span> <input type="text" data-answers='["what time do you usually go to bed?"]'></div>
+                <button class="check-btn">✨ Kiểm tra 7.2</button>
+                <div class="feedback-area"></div>
+            </div>
+            <div class="exercise">
+                <div class="ex-title">📝 5.3 Short answers Yes/No</div>
+                <div class="question-item"><span class="question-text">Do you watch TV a lot? →</span> <input type="text" data-answers='["no, i don\&#39;t","no i don\&#39;t","no i do not"]'></div>
+                <div class="question-item"><span class="question-text">Do you live in a big city? →</span> <input type="text" data-answers='["yes, i do","yes i do"]'></div>
+                <div class="question-item"><span class="question-text">Does it rain a lot where you live? →</span> <input type="text" data-answers='["no, it doesn\&#39;t","no it does not"]'></div>
+                <button class="check-btn">✨ Kiểm tra 7.4</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="continuous-section" class="main-tab-content">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="cont-unit3">1 · am/is/are + -ing</button>
+            <button class="tab-btn" data-tab="cont-unit4">2 · Questions (ing)</button>
+            <button class="tab-btn" data-tab="cont-mix">3 · Luyện tập tổng hợp</button>
+        </div>
+
+        <div id="cont-unit3" class="tab-content active-tab">
+            <div class="exercise">
+                <div class="ex-title">📝 1.1 Quy tắc thêm đuôi -ing</div>
+                <div class="question-item"><span class="question-text">(come) she is _______</span> <input type="text" data-answers='["coming"]'></div>
+                <div class="question-item"><span class="question-text">(run) they are _______</span> <input type="text" data-answers='["running"]'></div>
+                <div class="question-item"><span class="question-text">(dance) he is _______</span> <input type="text" data-answers='["dancing"]'></div>
+                <div class="question-item"><span class="question-text">(swim) it is _______</span> <input type="text" data-answers='["swimming"]'></div>
+                <div class="question-item"><span class="question-text">(lie) you are _______</span> <input type="text" data-answers='["lying"]'></div>
+                <button class="check-btn">✨ Kiểm tra 3.1</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 1.2 Viết câu khẳng định hoặc phủ định hoàn chỉnh</div>
+                <div class="question-item"><span class="question-text">1. (please be quiet. I / work) →</span> <input type="text" data-answers='["i\&#39;m working","i am working"]'></div>
+                <div class="question-item"><span class="question-text">2. (look! It / rain) →</span> <input type="text" data-answers='["it\&#39;s raining","it is raining"]'></div>
+                <div class="question-item"><span class="question-text">3. (where are the children? They / play / in the garden) →</span> <input type="text" data-answers='["they\&#39;re playing in the garden","they are playing in the garden"]'></div>
+                <div class="question-item"><span class="question-text">4. (we / have / dinner now. Can I call you back later?) →</span> <input type="text" data-answers='["we\&#39;re having dinner now","we are having dinner now"]'></div>
+                <div class="question-item"><span class="question-text">5. (you / not / listen / to me) →</span> <input type="text" data-answers='["you aren\&#39;t listening to me","you\&#39;re not listening to me","you are not listening to me"]'></div>
+                <div class="question-item"><span class="question-text">6. (the bus is coming. She / not / walk) →</span> <input type="text" data-answers='["she isn\&#39;t walking","she\&#39;s not walking","she is not walking"]'></div>
+                <button class="check-btn">✨ Kiểm tra 3.2</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="cont-unit4" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 2.1 Đặt câu hỏi Hiện tại tiếp diễn</div>
+                <div class="question-item"><span class="question-text">(you / feel / well?) →</span> <input type="text" data-answers='["are you feeling well?"]'></div>
+                <div class="question-item"><span class="question-text">(it / rain / now?) →</span> <input type="text" data-answers='["is it raining now?"]'></div>
+                <div class="question-item"><span class="question-text">(why / you / wear / a coat?) →</span> <input type="text" data-answers='["why are you wearing a coat?"]'></div>
+                <div class="question-item"><span class="question-text">(what / Paul / do?) →</span> <input type="text" data-answers='["what is paul doing?","what\&#39;s paul doing?"]'></div>
+                <div class="question-item"><span class="question-text">(the children / do / their homework?) →</span> <input type="text" data-answers='["are the children doing their homework?"]'></div>
+                <button class="check-btn">✨ Kiểm tra 4.1</button>
+                <div class="feedback-area"></div>
+            </div>
+
+            <div class="exercise">
+                <div class="ex-title">📝 2.2 Trả lời ngắn (Short Answers)</div>
+                <div class="question-item"><span class="question-text">Are you listening to music? →</span> <input type="text" data-answers='["no, i\&#39;m not","no i am not","no im not","yes, i am","yes i am"]' placeholder="Yes, I am / No, I'm not"></div>
+                <div class="question-item"><span class="question-text">Is it raining outside? →</span> <input type="text" data-answers='["yes, it is","yes it is","no, it isn\&#39;t","no it isnt","no it\&#39;s not"]'></div>
+                <div class="question-item"><span class="question-text">Are your friends staying with you? →</span> <input type="text" data-answers='["yes, they are","yes they are","no, they aren\&#39;t","no they arent","no they\&#39;re not"]'></div>
+                <button class="check-btn">✨ Kiểm tra 4.2</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+
+        <div id="cont-mix" class="tab-content">
+            <div class="exercise">
+                <div class="ex-title">📝 Hoàn thành câu dựa vào ngữ cảnh thực tế</div>
+                <div class="question-item"><span class="question-text">1. Look! Somebody ________ (swim) in the river.</span> <input type="text" data-answers='["is swimming"]'></div>
+                <div class="question-item"><span class="question-text">2. We are on holiday. We ________ (stay) at a beautiful hotel.</span> <input type="text" data-answers='["are staying"]'></div>
+                <div class="question-item"><span class="question-text">3. "Where is your mother?" "She ________ (cook) in the kitchen."</span> <input type="text" data-answers='["is cooking"]'></div>
+                <div class="question-item"><span class="question-text">4. I ________ (not / watch) TV right now. You can turn it off.</span> <input type="text" data-answers='["am not watching","\&#39;m not watching"]'></div>
+                <div class="question-item"><span class="question-text">5. Let\&#39;s go out now. It ________ (not / rain) anymore.</span> <input type="text" data-answers='["isn\&#39;t raining","is not raining","\&#39;s not raining"]'></div>
+                <button class="check-btn">✨ Kiểm tra phần Tổng hợp</button>
+                <div class="feedback-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="note">🌸 Học vui cùng ngữ pháp & Chúc các bạn làm bài thật tốt!</div>
+    <footer>✨ Lớp cô Nhi ✨</footer>
+</div>
+
+<script>
+    (function() {
+        // Hàm chuẩn hóa so sánh nhiều đáp án
+        function isAnswerValid(user, acceptedList) {
+            let norm = user.trim().toLowerCase().replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ').trim();
+            return acceptedList.some(acc => {
+                let candidate = acc.trim().toLowerCase().replace(/\s+/g, ' ');
+                return norm === candidate;
+            });
+        }
+
+        // Thiết lập tất cả nút kiểm tra tự động bắt theo khối .exercise tương ứng
+        const checkBtns = document.querySelectorAll('.check-btn');
+        checkBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parentExercise = btn.closest('.exercise');
+                const inputs = parentExercise.querySelectorAll('.question-item input');
+                const feedbackDiv = parentExercise.querySelector('.feedback-area');
+                if (!feedbackDiv) return;
+                
+                let total = 0, correctCount = 0;
+                inputs.forEach((inp) => {
+                    total++;
+                    let rawAnswers = inp.getAttribute('data-answers');
+                    if (!rawAnswers) return;
+                    let accepted;
+                    try {
+                        accepted = JSON.parse(rawAnswers);
+                    } catch(e) { accepted = [rawAnswers]; }
+                    const userVal = inp.value;
+                    const valid = isAnswerValid(userVal, accepted);
+                    if (valid) correctCount++;
+                    
+                    // Hiển thị trạng thái màu sắc viền
+                    inp.style.border = valid ? "2px solid #38a169" : "2px solid #e53e3e";
+                    if (userVal.trim() === "") inp.style.border = "1px solid #cbd5e0";
+                });
+                
+                const allCorrect = (correctCount === total && total > 0);
+                if (allCorrect) {
+                    feedbackDiv.innerHTML = `<span class="result-badge correct-badge">✅ Hoàn hảo! ${correctCount}/${total} câu đúng</span>`;
+                } else {
+                    feedbackDiv.innerHTML = `<span class="result-badge wrong-badge">⚠️ Đúng ${correctCount}/${total} câu. Hãy sửa lại ô viền đỏ.</span>`;
+                }
+            });
+        });
+
+        // HỆ THỐNG CHUYỂN TAB LỚN (Hiện tại đơn vs Tiếp diễn)
+        const mainTabBtns = document.querySelectorAll('.main-tab-btn');
+        const mainTabContents = document.querySelectorAll('.main-tab-content');
+        
+        mainTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mainTabId = btn.getAttribute('data-main-tab');
+                
+                mainTabContents.forEach(mtc => mtc.classList.remove('active-main-tab'));
+                document.getElementById(mainTabId).classList.add('active-main-tab');
+                
+                mainTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // HỆ THỐNG CHUYỂN TAB NHỎ (Các Unit bên trong từng thì)
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                const parentSection = btn.closest('.main-tab-content');
+                
+                const siblingContents = parentSection.querySelectorAll('.tab-content');
+                siblingContents.forEach(tc => tc.classList.remove('active-tab'));
+                
+                document.getElementById(tabId).classList.add('active-tab');
+                
+                const siblingBtns = parentSection.querySelectorAll('.tab-btn');
+                siblingBtns.forEach(b => b.classList.remove('active'));
+                
+                btn.classList.add('active');
+            });
+        });
+    })();
+</script>
+</body>
+</html>
