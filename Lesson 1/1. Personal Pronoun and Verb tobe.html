@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 1: Đại từ, To Be, Động từ thường - Hệ thống Ngữ pháp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 24px 16px;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 24px 28px;
+        }
+
+        /* ===== NAVIGATION BAR MỚI (đồng bộ với index) ===== */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e9edf2;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .home-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .exercise-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #48bb78;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(72, 187, 120, 0.3);
+        }
+
+        .exercise-link:hover {
+            transform: translateY(-2px);
+            background: #38a169;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+        }
+
+        /* Thanh tab */
+        .tab-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 28px;
+            border-radius: 50px;
+            border: 1.5px solid #e2e8f0;
+            background: #f8fafc;
+            color: #4a5568;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .tab:hover {
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: #5a67d8;
+            color: white;
+            border-color: #5a67d8;
+            box-shadow: 0 4px 12px rgba(90, 103, 216, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            border: 1px solid #e9edf2;
+            border-radius: 24px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 20px 0 12px 0;
+        }
+
+        p, li {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+
+        /* Lưới đại từ */
+        .pronoun-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .pron-box {
+            background: #f7fafc;
+            border-radius: 20px;
+            padding: 16px 12px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pron-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .pron-main {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pron-sub {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Công thức */
+        .formula-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .formula-box {
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        .formula-plus {
+            background: #eaf3de;
+            color: #2f6b0a;
+            border-color: #b8da8a;
+        }
+
+        .formula-minus {
+            background: #fcebeb;
+            color: #b91c1c;
+            border-color: #f5b8b8;
+        }
+
+        .formula-q {
+            background: #e6f1fb;
+            color: #1e4a76;
+            border-color: #b3d4f5;
+        }
+
+        .arrow {
+            color: #718096;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* Ví dụ */
+        .example {
+            background: #f8fafc;
+            border-left: 5px solid #5a67d8;
+            border-radius: 0 16px 16px 0;
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-size: 16px;
+            color: #1a202c;
+            font-weight: 500;
+        }
+
+        .vn {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 8px;
+            font-weight: normal;
+        }
+
+        .highlight {
+            color: #5a67d8;
+            font-weight: 700;
+        }
+
+        .tip-box {
+            background: #eeedfe;
+            border-radius: 20px;
+            padding: 14px 20px;
+            margin: 16px 0;
+        }
+
+        .tip-box p {
+            color: #3c3489;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Bảng */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 15px;
+        }
+
+        th {
+            background: #eeedfe;
+            color: #3c3489;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #2d3748;
+            font-size: 15px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Rule row */
+        .rule-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .rule-row:last-child {
+            border-bottom: none;
+        }
+
+        .rule-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        /* Quiz */
+        .score-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+            border-radius: 60px;
+            padding: 12px 24px;
+            margin-bottom: 24px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .score-num {
+            font-size: 32px;
+            font-weight: 800;
+            color: #5a67d8;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .reset-btn {
+            padding: 8px 28px;
+            border-radius: 40px;
+            border: 1.5px solid #cbd5e0;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a5568;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #edf2f7;
+            border-color: #5a67d8;
+            color: #5a67d8;
+        }
+
+        .quiz-wrap {
+            background: white;
+            border: 1px solid #e9edf2;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        .quiz-q {
+            padding: 20px 24px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .quiz-q:last-child {
+            border-bottom: none;
+        }
+
+        .qtext {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .opt {
+            padding: 10px 24px;
+            border-radius: 60px;
+            border: 1.5px solid #e2e8f0;
+            background: #f8fafc;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            color: #2d3748;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .opt:hover {
+            border-color: #5a67d8;
+            background: #eeedfe;
+            transform: scale(0.96);
+        }
+
+        .opt.correct {
+            background: #eaf3de;
+            color: #2f6b0a;
+            border-color: #8bc34a;
+        }
+
+        .opt.wrong {
+            background: #fcebeb;
+            color: #b91c1c;
+            border-color: #f5b8b8;
+        }
+
+        .feedback {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+            min-height: 28px;
+        }
+
+        /* Progress indicator */
+        .progress-indicator {
+            background: #edf2f7;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .progress-text strong {
+            color: #5a67d8;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .page {
+                padding: 16px 18px;
+            }
+            .pronoun-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .tab {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .card {
+                padding: 18px 20px;
+            }
+            .formula-box {
+                padding: 6px 14px;
+                font-size: 13px;
+            }
+            .qtext {
+                font-size: 16px;
+            }
+            .opt {
+                padding: 7px 18px;
+                font-size: 14px;
+            }
+            .nav-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .action-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- NAVIGATION BAR MỚI - ĐỒNG BỘ VỚI INDEX -->
+    <div class="nav-bar">
+        <a href="../index.html" class="home-link">
+            🏠 ← Về trang chủ
+        </a>
+        <div class="action-buttons">
+            <a href="bai-tap-bai-1.html" class="exercise-link">
+                ✍️ Làm bài tập ngay →
+            </a>
+        </div>
+    </div>
+
+    <!-- PROGRESS INDICATOR -->
+    <div class="progress-indicator">
+        <span class="progress-text">📖 <strong>Bài 1:</strong> Đại từ nhân xưng | Động từ To Be | Động từ thường</span>
+        <span class="progress-text">⭐ Kiến thức nền tảng - Cơ bản</span>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab active" onclick="showTab('pronouns')">👤 Đại từ nhân xưng</button>
+        <button class="tab" onclick="showTab('tobe')">🔗 Động từ to be</button>
+        <button class="tab" onclick="showTab('verbs')">⚡ Động từ thường</button>
+        <button class="tab" onclick="showTab('quiz')">🎯 Luyện tập</button>
+    </div>
+
+    <!-- PHẦN 1: ĐẠI TỪ NHÂN XƯNG -->
+    <div id="pronouns" class="section active">
+        <div class="card">
+            <h2>📌 Đại từ nhân xưng là gì?</h2>
+            <p>Dùng để <strong class="highlight">thay thế danh từ</strong> đã nhắc đến — tránh lặp từ, giúp câu văn tự nhiên hơn.</p>
+            <div class="example">
+                🌟 This is Anna. <span class="highlight">She</span> is my sister. I love <span class="highlight">her</span>.
+                <div class="vn">→ Dùng "she/her" thay cho "Anna"</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📖 7 đại từ nhân xưng</h2>
+            <div class="pronoun-grid">
+                <div class="pron-box" style="background:#EEEDFE"><div class="pron-main" style="color:#3C3489">I</div><div class="pron-sub">tôi</div></div>
+                <div class="pron-box" style="background:#E1F5EE"><div class="pron-main" style="color:#085041">You</div><div class="pron-sub">bạn / các bạn</div></div>
+                <div class="pron-box" style="background:#E6F1FB"><div class="pron-main" style="color:#0C447C">He</div><div class="pron-sub">anh ấy</div></div>
+                <div class="pron-box" style="background:#FBEAF0"><div class="pron-main" style="color:#72243E">She</div><div class="pron-sub">cô ấy</div></div>
+                <div class="pron-box" style="background:#FAEEDA"><div class="pron-main" style="color:#633806">It</div><div class="pron-sub">vật / con vật</div></div>
+                <div class="pron-box" style="background:#EAF3DE"><div class="pron-main" style="color:#27500A">We</div><div class="pron-sub">chúng ta / chúng tôi</div></div>
+                <div class="pron-box" style="background:#FAECE7"><div class="pron-main" style="color:#712B13">They</div><div class="pron-sub">họ / chúng nó</div></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🧠 Cách chọn đúng đại từ</h2>
+            <div class="rule-row"><div class="rule-icon" style="background:#E6F1FB;color:#0C447C">♂</div><div><p><strong style="color:#0C447C; font-size:17px;">He</strong> — đàn ông, con trai</p><div class="example">Tom is tall. <span class="highlight">He</span> plays basketball.</div></div></div>
+            <div class="rule-row"><div class="rule-icon" style="background:#FBEAF0;color:#993556">♀</div><div><p><strong style="color:#993556; font-size:17px;">She</strong> — phụ nữ, con gái</p><div class="example">Linda is a nurse. <span class="highlight">She</span> works hard.</div></div></div>
+            <div class="rule-row"><div class="rule-icon" style="background:#FAEEDA;color:#854F0B">🐾</div><div><p><strong style="color:#854F0B; font-size:17px;">It</strong> — con vật, đồ vật, sự việc</p><div class="example">I have a cat. <span class="highlight">It</span> is cute.</div></div></div>
+            <div class="rule-row"><div class="rule-icon" style="background:#FAECE7;color:#993C1D">👥</div><div><p><strong style="color:#993C1D; font-size:17px;">They</strong> — nhiều người, nhiều vật</p><div class="example">Tom and Mary are students. <span class="highlight">They</span> study hard.</div></div></div>
+            <div class="rule-row"><div class="rule-icon" style="background:#EAF3DE;color:#3B6D11">🙋</div><div><p><strong style="color:#3B6D11; font-size:17px;">We</strong> — nhóm có người nói</p><div class="example">Peter and I are friends. <span class="highlight">We</span> play football.</div></div></div>
+        </div>
+    </div>
+
+    <!-- PHẦN 2: ĐỘNG TỪ TO BE -->
+    <div id="tobe" class="section">
+        <div class="card">
+            <h2>🔗 Động từ "to be" — am / is / are</h2>
+            <p>Dùng khi <strong class="highlight">không có hành động cụ thể</strong> — miêu tả trạng thái, vị trí, tính chất, cảm xúc.</p>
+            <div class="tip-box"><p>💡 To be như "cây cầu" nối chủ ngữ với thông tin về nó.</p></div>
+            <table>
+                <tr><th>Chủ ngữ</th><th>To be</th><th>Ví dụ</th></tr>
+                <tr><td><span class="highlight">I</span></td><td><strong>am</strong></td><td>I <strong>am</strong> happy.</td></tr>
+                <tr><td><span class="highlight">He / She / It</span></td><td><strong>is</strong></td><td>She <strong>is</strong> a student.</td></tr>
+                <tr><td><span class="highlight">You / We / They</span></td><td><strong>are</strong></td><td>They <strong>are</strong> friends.</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>📐 Công thức 3 dạng câu</h2>
+            <h3>✅ Khẳng định (+)</h3>
+            <div class="formula-row"><div class="formula-box formula-plus">S</div><span class="arrow">+</span><div class="formula-box formula-plus">am / is / are</div><span class="arrow">+</span><div class="formula-box formula-plus">...</div></div>
+            <div class="example">She <span class="highlight">is</span> my friend. &nbsp;|&nbsp; They <span class="highlight">are</span> at school.</div>
+
+            <h3>❌ Phủ định (−)</h3>
+            <div class="formula-row"><div class="formula-box formula-minus">S</div><span class="arrow">+</span><div class="formula-box formula-minus">am/is/are</div><span class="arrow">+</span><div class="formula-box formula-minus">not</div><span class="arrow">+</span><div class="formula-box formula-minus">...</div></div>
+            <div class="example">He <span class="highlight">isn't</span> my brother. &nbsp;|&nbsp; They <span class="highlight">aren't</span> at home.</div>
+
+            <h3>❓ Câu hỏi (?)</h3>
+            <div class="formula-row"><div class="formula-box formula-q">Am / Is / Are</div><span class="arrow">+</span><div class="formula-box formula-q">S</div><span class="arrow">+</span><div class="formula-box formula-q">...?</div></div>
+            <div class="example"><span class="highlight">Is</span> he your brother? &nbsp;|&nbsp; <span class="highlight">Are</span> they students?</div>
+        </div>
+    </div>
+
+    <!-- PHẦN 3: ĐỘNG TỪ THƯỜNG -->
+    <div id="verbs" class="section">
+        <div class="card">
+            <h2>⚡ Động từ thường — có hành động</h2>
+            <p>Dùng khi chủ ngữ <strong class="highlight">thực hiện một hành động cụ thể</strong> (chơi, ăn, đi, học, uống,...).</p>
+            <div class="example">I <span class="highlight">play</span> football. &nbsp;|&nbsp; She <span class="highlight">eats</span> breakfast.</div>
+            <div class="tip-box"><p>⚠️ Với <strong>He / She / It</strong> → phải thêm <strong>-s hoặc -es</strong> vào động từ!</p></div>
+            <table>
+                <tr><th>Trường hợp</th><th>Cách thêm</th><th>Ví dụ</th></tr>
+                <tr><td>Thông thường</td><td>+ <strong>s</strong></td><td>play → play<strong>s</strong></td></tr>
+                <tr><td>Tận cùng ch, sh, x, o, ss</td><td>+ <strong>es</strong></td><td>watch → watch<strong>es</strong></td></tr>
+                <tr><td>Phụ âm + y</td><td>y → <strong>ies</strong></td><td>study → stud<strong>ies</strong></td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>📐 Công thức 3 dạng câu (động từ thường)</h2>
+            <h3>✅ Khẳng định (+)</h3>
+            <div class="formula-row"><div class="formula-box formula-plus">S</div><span class="arrow">+</span><div class="formula-box formula-plus">V (+s/es)</div><span class="arrow">+</span><div class="formula-box formula-plus">...</div></div>
+            <div class="example">I <span class="highlight">play</span> football. &nbsp;|&nbsp; She <span class="highlight">studies</span> English.</div>
+
+            <h3>❌ Phủ định (−)</h3>
+            <div class="formula-row"><div class="formula-box formula-minus">S</div><span class="arrow">+</span><div class="formula-box formula-minus">don't / doesn't</div><span class="arrow">+</span><div class="formula-box formula-minus">V (nguyên mẫu)</div></div>
+            <div class="example">They <span class="highlight">don't go</span> to school. &nbsp;|&nbsp; She <span class="highlight">doesn't like</span> milk.</div>
+
+            <h3>❓ Câu hỏi (?)</h3>
+            <div class="formula-row"><div class="formula-box formula-q">Do / Does</div><span class="arrow">+</span><div class="formula-box formula-q">S</div><span class="arrow">+</span><div class="formula-box formula-q">V (nguyên mẫu)?</div></div>
+            <div class="example"><span class="highlight">Do</span> you like music? &nbsp;|&nbsp; <span class="highlight">Does</span> he like music?</div>
+            <div class="tip-box"><p>⚠️ Với <strong>He/She/It</strong>: dùng <strong>does / doesn't</strong> (động từ trở về nguyên mẫu, bỏ -s)</p></div>
+        </div>
+
+        <div class="card">
+            <h2>🔄 So sánh: to be vs động từ thường</h2>
+            <table>
+                <tr><th></th><th>To be</th><th>Động từ thường</th></tr>
+                <tr><td>Khi nào?</td><td>Không có hành động</td><td>Có hành động cụ thể</td></tr>
+                <tr><td>Khẳng định (+)</td><td>She <strong>is</strong> happy.</td><td>She <strong>sings</strong>.</td></tr>
+                <tr><td>Phủ định (−)</td><td>She <strong>isn't</strong> happy.</td><td>She <strong>doesn't sing</strong>.</td></tr>
+                <tr><td>Câu hỏi (?)</td><td><strong>Is</strong> she happy?</td><td><strong>Does</strong> she sing?</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PHẦN 4: LUYỆN TẬP -->
+    <div id="quiz" class="section">
+        <div class="score-bar">
+            <div><div class="score-num" id="score-display">0 / 0</div><div class="score-label">Điểm số</div></div>
+            <button class="reset-btn" onclick="resetQuiz()">⟳ Làm lại</button>
+        </div>
+        <div class="quiz-wrap" id="quiz-container"></div>
+    </div>
+</div>
+
+<script>
+    function showTab(id) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelectorAll('.tab').forEach(t => {
+            if (t.getAttribute('onclick').includes(id)) t.classList.add('active');
+        });
+    }
+
+    const quizData = [
+        {q:"This is my dog. ___ is very cute.", opts:["He","She","It","They"], ans:"It", hint:"Con chó → dùng 'It'"},
+        {q:"Peter and I are friends. ___ like football.", opts:["They","We","He","You"], ans:"We", hint:"Peter and I = We (có người nói)"},
+        {q:"Linda is my sister. ___ is ten years old.", opts:["He","It","They","She"], ans:"She", hint:"Linda = nữ → She"},
+        {q:"My brother is tall. ___ plays basketball.", opts:["She","It","He","They"], ans:"He", hint:"Brother = nam → He"},
+        {q:"Tom and Sarah are in the kitchen. ___ are cooking.", opts:["He","She","It","They"], ans:"They", hint:"Hai người → They"},
+        {q:"I have a pencil. ___ is red.", opts:["He","She","It","They"], ans:"It", hint:"Bút chì = đồ vật → It"},
+        {q:"Anna and Mary are at school. ___ are in class 5A.", opts:["He","She","It","They"], ans:"They", hint:"Anna và Mary = They"},
+        {q:"Mark and I are classmates. ___ study together.", opts:["They","He","We","You"], ans:"We", hint:"Mark and I = We"},
+        {q:"My father ___ a doctor.", opts:["am","is","are","be"], ans:"is", hint:"My father = He → is"},
+        {q:"Mai and I ___ in the same class.", opts:["am","is","are","be"], ans:"are", hint:"Mai and I = We → are"},
+        {q:"The students ___ in the classroom.", opts:["am","is","are","be"], ans:"are", hint:"The students = They → are"},
+        {q:"The weather ___ cold today.", opts:["am","is","are","be"], ans:"is", hint:"The weather = It → is"},
+        {q:"___ he your brother?", opts:["Do","Does","Is","Are"], ans:"Is", hint:"Câu hỏi to be với he → Is"},
+        {q:"She ___ (go) to school by bike.", opts:["go","goes","going","goed"], ans:"goes", hint:"She → go thêm -es → goes"},
+        {q:"The baby ___ (cry) at night.", opts:["cry","crys","cries","crieing"], ans:"cries", hint:"baby = He/She → y→ies: cries"},
+        {q:"They ___ (not/watch) cartoons.", opts:["doesn't watch","don't watch","not watch","isn't watch"], ans:"don't watch", hint:"They → don't + watch"},
+        {q:"___ you like music?", opts:["Is","Are","Do","Does"], ans:"Do", hint:"You → dùng Do"},
+        {q:"Tom ___ (not/brush) his teeth after meals.", opts:["don't brush","doesn't brush","not brushes","isn't brush"], ans:"doesn't brush", hint:"Tom = He → doesn't + brush"},
+        {q:"My friends and I ___ music every day.", opts:["likes","like","is like","does like"], ans:"like", hint:"Chủ ngữ = We → like (không -s)"},
+        {q:"___ she drink milk every morning?", opts:["Do","Is","Are","Does"], ans:"Does", hint:"She → dùng Does"}
+    ];
+
+    let answered = new Array(quizData.length).fill(false);
+    let correctCount = 0;
+
+    function buildQuiz() {
+        const container = document.getElementById('quiz-container');
+        container.innerHTML = '';
+        quizData.forEach((q, i) => {
+            const div = document.createElement('div');
+            div.className = 'quiz-q';
+            div.id = 'q' + i;
+            div.innerHTML = `
+                <p class="qtext">${i+1}. ${q.q}</p>
+                <div class="quiz-options">
+                    ${q.opts.map(opt => `<button class="opt" onclick="answer(${i}, '${opt}')">${opt}</button>`).join('')}
+                </div>
+                <div class="feedback" id="fb${i}"></div>
+            `;
+            container.appendChild(div);
+        });
+        updateScore();
+    }
+
+    function answer(idx, val) {
+        if (answered[idx]) return;
+        answered[idx] = true;
+        const q = quizData[idx];
+        const fb = document.getElementById('fb' + idx);
+        const buttons = document.querySelectorAll(`#q${idx} .opt`);
+        buttons.forEach(btn => {
+            if (btn.textContent === q.ans) btn.classList.add('correct');
+            if (btn.textContent === val && val !== q.ans) btn.classList.add('wrong');
+            btn.style.pointerEvents = 'none';
+        });
+        if (val === q.ans) {
+            correctCount++;
+            fb.innerHTML = '<span style="color:#2f6b0a;">✓ Đúng rồi!</span>';
+        } else {
+            fb.innerHTML = `<span style="color:#b91c1c;">✗ Sai — ${q.hint}</span>`;
+        }
+        updateScore();
+    }
+
+    function updateScore() {
+        const done = answered.filter(Boolean).length;
+        document.getElementById('score-display').innerHTML = `${correctCount} / ${done}`;
+    }
+
+    function resetQuiz() {
+        answered.fill(false);
+        correctCount = 0;
+        buildQuiz();
+    }
+
+    buildQuiz();
+</script>
+</body>
+</html>
