@@ -34,6 +34,59 @@
         }
 
         /* Nút back giống index - ĐÃ SỬA ĐƯỜNG DẪN */
+        /* ===== NAVIGATION BAR (thêm mới) ===== */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 0 20px 0;
+            margin-bottom: 10px;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .home-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .exercise-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #48bb78;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-link:hover {
+            transform: translateY(-2px);
+            background: #38a169;
+        }
+
+        /* Nút back (giữ lại nhưng đã sửa đường dẫn) */
         .back-btn {
             display: inline-block;
             background: rgba(255,255,255,0.2);
@@ -45,6 +98,7 @@
             transition: all 0.2s;
             font-weight: 500;
         }
+
         .back-btn:hover {
             background: rgba(255,255,255,0.3);
             transform: translateX(-3px);
