@@ -384,6 +384,70 @@
                 padding: 1.2rem;
             }
         }
+
+                .text-highlight {
+            background: #fef9c3;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: #1e3c5c;
+        }
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .formula-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+        }
+        .formula-table td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            vertical-align: top;
+        }
+        .formula-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .example-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .example-item {
+            background: #f8fafc;
+            border-left: 5px solid #667eea;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+        }
+        .special-box {
+            background: #fef2e0;
+            border-left: 6px solid #f39c12;
+            padding: 15px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        .practice-tip {
+            background: #e0f2fe;
+            padding: 12px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .tip-box {
+            background: #dcfce7;
+            border-left: 5px solid #22c55e;
+            padding: 12px;
+            border-radius: 14px;
+            margin: 15px 0;
+        }
     </style>
 </head>
 <body>
@@ -423,78 +487,116 @@
     <!-- TAB 1: HIỆN TẠI ĐƠN -->
     <div id="htd" class="tab-content active">
         <div class="card">
-            <h2>1. Hiện Tại Đơn (Present Simple)</h2>
-            <p>Nói về <strong>sự thật chung, nghề nghiệp, hoặc hành động lặp đi lặp lại</strong> chứ không nhất thiết phải đang diễn ra ngay lúc nói.</p>
+            <h2>📘 1. Hiện Tại Đơn (Present Simple)</h2>
+            <p><strong>✏️ Cách dùng chính:</strong> Diễn tả <strong class="text-highlight">sự thật hiển nhiên, thói quen, lịch trình cố định</strong> hoặc <strong class="text-highlight">nghề nghiệp</strong>.</p>
 
-            <h3>A. Cấu trúc câu</h3>
-            <table>
-                <tr><th>Loại câu</th><th>Chủ ngữ: I/We/You/They</th><th>Chủ ngữ: He/She/It</th></tr>
-                <tr><td>Khẳng định (+)</td><td>S + V (nguyên mẫu)</td><td>S + V(s/es)</td></tr>
-                <tr><td>Phủ định (-)</td><td>S + don't + V</td><td>S + doesn't + V</td></tr>
-                <tr><td>Nghi vấn (?)</td><td>Do + S + V?</td><td>Does + S + V?</td></tr>
+            <h3>🔧 A. Công thức (Form) - Bảng tóm tắt</h3>
+            <table class="formula-table">
+                <thead>
+                    <tr><th>Loại câu</th><th>Công thức</th><th>Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>✅ Khẳng định</strong></td><td>S + V(s/es)</td><td>She <strong>works</strong> in a hospital.</td></tr>
+                    <tr><td><strong>❌ Phủ định</strong></td><td>S + do/does + not + V(nguyên mẫu)</td><td>He <strong>doesn't like</strong> coffee.</td></tr>
+                    <tr><td><strong>❓ Nghi vấn</strong></td><td>Do/Does + S + V(nguyên mẫu)?</td><td><strong>Do you speak</strong> English?</td></tr>
+                </tbody>
             </table>
 
-            <div class="note-box">
-                <strong>💡 Quy tắc thêm -s/es:</strong> Thêm -es khi từ tận cùng: -ch, -sh, -x, -s, -o. Đặc biệt: have → has.
+            <div class="tip-box">
+                💡 <strong>Mẹo nhỏ:</strong> Với chủ ngữ He/She/It, nhớ thêm <strong>-s</strong> hoặc <strong>-es</strong> (watch→watches, go→goes, do→does). Động từ đặc biệt: <strong>have → has</strong>.
             </div>
 
-            <h3>B. Dấu hiệu nhận biết</h3>
+            <h3>📌 B. Dấu hiệu nhận biết (Signal words)</h3>
             <ul>
                 <li><strong>Trạng từ tần suất:</strong> always, usually, often, sometimes, rarely, never</li>
-                <li><strong>Every day/week/month/year</strong></li>
-                <li><strong>Once/twice a week</strong></li>
+                <li><strong>Cụm từ:</strong> every day/week/month, once a week, twice a month</li>
             </ul>
+
+            <h3>🌟 C. Ví dụ chi tiết (kèm giải thích)</h3>
+            <div class="example-list">
+                <div class="example-item">🌞 <strong>The Sun rises in the East.</strong> → Sự thật hiển nhiên, không thay đổi.</div>
+                <div class="example-item">🚌 <strong>She takes the bus to school every day.</strong> → Hành động lặp lại hàng ngày (thói quen).</div>
+                <div class="example-item">😷 <strong>He doesn't smoke.</strong> → Mô tả một sự thật về bản thân.</div>
+                <div class="example-item">🎬 <strong>The movie starts at 8 PM tonight.</strong> → Lịch trình cố định (dù tương lai).</div>
+                <div class="example-item">👩‍⚕️ <strong>My sister is a doctor.</strong> → Nghề nghiệp (dùng tobe).</div>
+            </div>
         </div>
     </div>
 
     <!-- TAB 2: HIỆN TẠI TIẾP DIỄN -->
     <div id="httd" class="tab-content">
         <div class="card">
-            <h2>2. Hiện Tại Tiếp Diễn (Present Continuous)</h2>
-            <p>Diễn tả hành động <strong>đang xảy ra ngay tại thời điểm nói</strong>, hoặc <strong>tạm thời</strong> xung quanh hiện tại.</p>
+            <h2>⏳ 2. Hiện Tại Tiếp Diễn (Present Continuous)</h2>
+            <p><strong>✏️ Cách dùng chính:</strong> Diễn tả hành động <strong class="text-highlight">đang xảy ra ngay lúc nói</strong>, <strong class="text-highlight">tạm thời</strong> hoặc <strong class="text-highlight">có kế hoạch gần</strong> (tương lai gần).</p>
 
-            <h3>A. Cấu trúc câu</h3>
-            <div class="note-box">
-                <p style="font-size:1.2rem; font-weight:bold; text-align:center;">S + am/is/are + V-ing</p>
-                <ul>
-                    <li>I + am + V-ing</li>
-                    <li>He/She/It + is + V-ing</li>
-                    <li>We/You/They + are + V-ing</li>
-                </ul>
+            <h3>🔧 A. Công thức (Form) - Bảng tóm tắt</h3>
+            <table class="formula-table">
+                <thead>
+                    <tr><th>Loại câu</th><th>Công thức</th><th>Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>✅ Khẳng định</strong></td><td>S + am/is/are + V-ing</td><td>I <strong>am reading</strong> a book now.</td></tr>
+                    <tr><td><strong>❌ Phủ định</strong></td><td>S + am/is/are + not + V-ing</td><td>She <strong>isn't sleeping</strong> at the moment.</td></tr>
+                    <tr><td><strong>❓ Nghi vấn</strong></td><td>Am/Is/Are + S + V-ing?</td><td><strong>Are you coming</strong> to the party?</td></tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                ⚠️ <strong>Lưu ý quan trọng:</strong> Một số động từ KHÔNG dùng ở dạng tiếp diễn (Stative Verbs): like, love, hate, want, need, know, believe, understand...
+                <br>👉 <strong>Sai:</strong> ❌ I am wanting a coffee. → <strong>Đúng:</strong> ✅ I want a coffee.
             </div>
 
-            <h3>B. Dấu hiệu nhận biết</h3>
+            <h3>📌 B. Dấu hiệu nhận biết</h3>
             <ul>
-                <li><strong>Now, right now, at the moment, at present</strong></li>
-                <li><strong>Today, this week, this year</strong> (chỉ sự tạm thời)</li>
-                <li><strong>Look! / Listen!</strong> (đầu câu)</li>
+                <li><strong>Now, right now, at the moment, at present</strong> → ngay bây giờ</li>
+                <li><strong>Look!, Listen!, Be quiet!</strong> → câu mệnh lệnh thu hút sự chú ý</li>
+                <li><strong>This week/month, today, these days</strong> → thời gian tạm thời</li>
             </ul>
+
+            <h3>🌟 C. Ví dụ chi tiết (kèm giải thích)</h3>
+            <div class="example-list">
+                <div class="example-item">📖 <strong>I am reading an interesting book right now.</strong> → Đang đọc ngay tại thời điểm nói.</div>
+                <div class="example-item">🏠 <strong>They are staying at a hotel until their house is repaired.</strong> → Hành động tạm thời, không lâu dài.</div>
+                <div class="example-item">✈️ <strong>We are flying to Da Nang next Sunday.</strong> → Kế hoạch tương lai gần đã được sắp xếp.</div>
+                <div class="example-item">🔇 <strong>She is always talking in class.</strong> → Phàn nàn (cấu trúc always + V-ing).</div>
+            </div>
         </div>
     </div>
 
     <!-- TAB 3: SO SÁNH -->
     <div id="sosanh" class="tab-content">
         <div class="card">
-            <h2>3. So Sánh Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h2>
+            <h2>⚖️ 3. So Sánh Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h2>
 
-            <h3>A. Bảng so sánh</h3>
-            <table>
-                <tr><th>Hiện tại tiếp diễn</th><th>Hiện tại đơn</th></tr>
-                <tr><td>The water <strong>is boiling</strong>. (đang sôi)</td><td>Water <strong>boils</strong> at 100°C. (sự thật)</td></tr>
-                <tr><td>They <strong>are building</strong> a house. (tạm thời)</td><td>My parents <strong>live</strong> in London. (lâu dài)</td></tr>
+            <h3>📊 A. Bảng so sánh chi tiết</h3>
+            <table class="formula-table">
+                <thead>
+                    <tr><th>Tiêu chí</th><th>Hiện tại đơn</th><th>Hiện tại tiếp diễn</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Thói quen / Lặp lại</strong></td><td>I <strong>get up</strong> at 6 AM every day.</td><td>I <strong>am getting up</strong> right now.</td></tr>
+                    <tr><td><strong>Sự thật / Hiển nhiên</strong></td><td>Water <strong>boils</strong> at 100°C.</td><td>The climate <strong>is getting</strong> warmer.</td></tr>
+                    <tr><td><strong>Lịch trình / Kế hoạch</strong></td><td>The train <strong>leaves</strong> at 7 PM.</td><td>I <strong>am meeting</strong> my friend tonight.</td></tr>
+                    <tr><td><strong>Trạng từ đi kèm</strong></td><td>always, usually, every day, never</td><td>now, at the moment, Look!, Listen!</td></tr>
+                </tbody>
             </table>
 
-            <div class="warning-box">
-                <strong>⚠️ Động từ trạng thái (Stative Verbs):</strong> like, want, need, know, understand, believe, remember, belong...
-                <br>→ Không dùng ở dạng tiếp diễn!
-                <br>❌ <del>I am wanting food</del> → ✅ I want food.
+            <h3>🧠 B. Động từ vừa hành động vừa trạng thái (Dynamic vs Stative)</h3>
+            <div class="example-list">
+                <div class="example-item">👃 <strong>This soup tastes delicious.</strong> (taste = có vị → hiện tại đơn)</div>
+                <div class="example-item">👨‍🍳 <strong>The chef is tasting the soup.</strong> (taste = nếm thử → hiện tại tiếp diễn)</div>
+                <div class="example-item">📏 <strong>I think you are right.</strong> (think = ý kiến → hiện tại đơn)</div>
+                <div class="example-item">🤔 <strong>I am thinking about my exam.</strong> (think = đang suy nghĩ → hiện tại tiếp diễn)</div>
             </div>
 
-            <h3>C. Đặc biệt: "Always + V-ing"</h3>
-            <p>Dùng để <strong>phàn nàn</strong> về hành vi lặp lại gây khó chịu.</p>
-            <ul>
-                <li><em>You <strong>are always looking</strong> at your phone!</em> (Suốt ngày cắm mặt vào điện thoại!)</li>
-            </ul>
+            <div class="special-box">
+                🔥 <strong>Cấu trúc đặc biệt: "always + V-ing"</strong> để <strong>phàn nàn</strong> hoặc nhấn mạnh hành vi lặp lại gây bực mình.
+                <br>🔹 <em>You <strong>are always leaving</strong> your dirty socks on the floor!</em> (Suốt ngày để bẩn!)
+            </div>
+
+            <div class="practice-tip">
+                🎯 <strong>Mẹo chọn thì nhanh:</strong> Có "now/look/listen/at the moment" → tiếp diễn. Có "usually/every day/never" → hiện tại đơn.
+            </div>
         </div>
     </div>
 
