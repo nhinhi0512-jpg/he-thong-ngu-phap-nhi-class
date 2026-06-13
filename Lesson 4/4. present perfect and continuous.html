@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 0;
+            position: relative;
         }
 
         /* Header giống index */
@@ -24,6 +25,9 @@
             backdrop-filter: blur(4px);
             padding: 1.5rem 2rem;
             border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .app-header a {
@@ -44,6 +48,19 @@
             transform: translateX(-3px);
         }
 
+        /* Nút bài tập góc trên bên phải */
+        .app-header .practice-btn {
+            background: #e67e22;
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
+        }
+
+        .app-header .practice-btn:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6);
+        }
+
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -55,7 +72,7 @@
             background: white;
             border-radius: 32px;
             overflow: hidden;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 35px -12 rgba(0,0,0,0.3);
             transition: all 0.2s;
         }
 
@@ -301,6 +318,15 @@
         }
 
         @media (max-width: 700px) {
+            .app-header {
+                padding: 1rem;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .app-header a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
             .tab-content {
                 padding: 20px;
             }
@@ -316,7 +342,8 @@
 <body>
 
 <div class="app-header">
-    <a href="../index.html">← 📚 Về trang chủ - 20 bài ngữ pháp</a>
+    <a href="../index.html">← 📚 Về trang chủ</a>
+    <a href="4. practice.html" class="practice-btn">📝 Làm bài tập</a>
 </div>
 
 <div class="container">
@@ -336,7 +363,6 @@
             </div>
         </div>
 
-        <!-- TAB 1: HIỆN TẠI HOÀN THÀNH -->
         <div id="htht" class="tab-content active">
             <div class="info-card">
                 <h2>📌 Thì hiện tại hoàn thành (Present Perfect Simple)</h2>
@@ -370,7 +396,6 @@
             </div>
         </div>
 
-        <!-- TAB 2: HIỆN TẠI HOÀN THÀNH TIẾP DIỄN -->
         <div id="hthttd" class="tab-content">
             <div class="info-card">
                 <h2>⏳ Thì hiện tại hoàn thành tiếp diễn</h2>
@@ -396,7 +421,6 @@
             </div>
         </div>
 
-        <!-- TAB 3: SO SÁNH & FOR/SINCE -->
         <div id="so_sanh" class="tab-content">
             <div class="info-card">
                 <h2>⚖️ So sánh trực quan: Simple vs Continuous</h2>
@@ -423,7 +447,6 @@
             </div>
         </div>
 
-        <!-- TAB 4: BÀI TẬP TRẮC NGHIỆM CHUẨN 20 CÂU -->
         <div id="luyentap" class="tab-content">
             <div class="quiz-container" style="padding: 0 0 20px 0;">
                 <div style="padding: 0 24px;">
@@ -431,10 +454,9 @@
                     <p>Chọn đáp án đúng nhất và xem giải thích chi tiết.</p>
                 </div>
                 <form id="quizForm" style="padding: 0 24px;">
-                    <!-- Câu 1 -->
                     <div class="question" data-correct="B"><p class="question-text">1. Tom can't find his key. He _______ his key.</p><div class="options-route"><label class="option-label"><input type="radio" name="q1" value="A"> loses</label><label class="option-label"><input type="radio" name="q1" value="B"> has lost</label><label class="option-label"><input type="radio" name="q1" value="C"> has been losing</label><label class="option-label"><input type="radio" name="q1" value="D"> lost</label></div><div class="explanation">✅ Hành động làm mất chìa khóa trong quá khứ để lại hậu quả hiện tại (không có chìa) → Hiện tại hoàn thành.</div></div>
                     <div class="question" data-correct="C"><p class="question-text">2. "Don't forget to pay the bill." - "I _______ it."</p><div class="options-route"><label class="option-label"><input type="radio" name="q2" value="A"> have just paid</label><label class="option-label"><input type="radio" name="q2" value="B"> paid yet</label><label class="option-label"><input type="radio" name="q2" value="C"> have already paid</label><label class="option-label"><input type="radio" name="q2" value="D"> already pay</label></div><div class="explanation">"Already" đi với hiện tại hoàn thành, đứng giữa have và V3.</div></div>
-                    <div class="question" data-correct="A"><p class="question-text">3. James is on holiday. He _______ to Italy. (Hiện đang ở Ý hoặc đang trên đường)</p><div class="options-route"><label class="option-label"><input type="radio" name="q3" value="A"> has gone</label><label class="option-label"><input type="radio" name="q3" value="B"> has been</label><label class="option-label"><input type="radio" name="q3" value="C"> goes</label><label class="option-label"><input type="radio" name="q3" value="D"> went</label></div><div class="explanation">Has gone to = đã đi và chưa về.</div></div>
+                    <div class="question" data-correct="A"><p class="question-text">3. James is on holiday. He _______ to Italy. (Hiện đang ở Ý hoặc đang trên đường)</p><div class="options-route"><label class="option-label"><input type="radio" name="q3" value="A"> has gone</label><label class="option-label"><input type="radio" name="q3" value="B"> has been</label><label class="option-label"><input type="radio" name="q3" value="D"> goes</label><label class="option-label"><input type="radio" name="q3" value="D"> went</label></div><div class="explanation">Has gone to = đã đi và chưa về.</div></div>
                     <div class="question" data-correct="B"><p class="question-text">4. Amy is back home now. She _______ to Italy.</p><div class="options-route"><label class="option-label"><input type="radio" name="q4" value="A"> has gone</label><label class="option-label"><input type="radio" name="q4" value="B"> has been</label><label class="option-label"><input type="radio" name="q4" value="C"> was going</label><label class="option-label"><input type="radio" name="q4" value="D"> went</label></div><div class="explanation">Has been to = đã từng đến và đã trở về.</div></div>
                     <div class="question" data-correct="D"><p class="question-text">5. I've written the email, but I _______ it yet.</p><div class="options-route"><label class="option-label"><input type="radio" name="q5" value="A"> sent</label><label class="option-label"><input type="radio" name="q5" value="B"> didn't send</label><label class="option-label"><input type="radio" name="q5" value="C"> haven't send</label><label class="option-label"><input type="radio" name="q5" value="D"> haven't sent</label></div><div class="explanation">Yet dùng trong câu phủ định HTHT: haven't + V3 (sent).</div></div>
                     <div class="question" data-correct="C"><p class="question-text">6. Have you _______ eaten caviar?</p><div class="options-route"><label class="option-label"><input type="radio" name="q6" value="A"> never</label><label class="option-label"><input type="radio" name="q6" value="B"> yet</label><label class="option-label"><input type="radio" name="q6" value="C"> ever</label><label class="option-label"><input type="radio" name="q6" value="D"> just</label></div><div class="explanation">Ever dùng trong câu hỏi kinh nghiệm.</div></div>
