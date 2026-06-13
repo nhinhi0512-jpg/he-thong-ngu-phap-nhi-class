@@ -14,9 +14,50 @@
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Noto Sans', sans-serif;
-            padding: 40px 16px 50px;
+            padding: 20px 16px 50px;
             color: #2d3748;
             min-height: 100vh;
+        }
+
+        /* THANH ĐIỀU HƯỚNG MỚI BỔ SUNG */
+        .nav-bar {
+            max-width: 900px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-btn:hover {
+            background: #ffffff;
+            color: #764ba2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .nav-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
         .container {
@@ -232,6 +273,19 @@
             opacity: 0.9;
         }
         @media (max-width: 600px) {
+            .nav-bar {
+                padding: 8px 12px;
+                border-radius: 24px;
+            }
+            .nav-btn {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+                gap: 5px;
+            }
+            .nav-btn svg {
+                width: 16px;
+                height: 16px;
+            }
             .question-item {
                 flex-direction: column;
                 align-items: stretch;
@@ -253,6 +307,26 @@
     </style>
 </head>
 <body>
+
+<!-- THANH ĐIỀU HƯỚNG CHỨA HAI NÚT CHỨC NĂNG MỚI -->
+<div class="nav-bar">
+    <!-- Nút Về trang chủ ở góc trái (Bạn có thể thay đổi thuộc tính href="index.html" theo nhu cầu) -->
+    <a href="index.html" class="nav-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        Về trang chủ
+    </a>
+
+    <!-- Nút Xem lý thuyết ở góc phải (Bạn có thể điền link trang lý thuyết vào thẻ href) -->
+    <a href="ly-thuyet.html" class="nav-btn">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.58 10.57 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zM11 7h2v6h-2zm0 8h2v2h-2z"/>
+        </svg>
+        Xem lý thuyết
+    </a>
+</div>
+
 <div class="container">
     <h1>✨ Present Perfect & Perfect Continuous</h1>
     <div class="sub">Hệ thống thực hành ngữ pháp - Nhi's Class</div>
