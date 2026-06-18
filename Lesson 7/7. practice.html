@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài Tập Thực Hành: Gerund và To-infinitive | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #d97706;
+            --accent: #f59e0b;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #34495e;
+            --gradient-start: #F97316;
+            --gradient-end: #EA580C;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-home:hover {
+            background: white;
+            color: #F97316;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: #F97316;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #d97706, #b45309);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 1.8rem 1rem 0.8rem;
+        }
+
+        .title-section h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #fff, #fde68a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            margin-top: 6px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            backdrop-filter: blur(4px);
+            display: inline-block;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .quiz-container h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-container .sub-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            padding-left: 24px;
+            font-style: italic;
+        }
+
+        .question {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9edf2;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #1f2a3e;
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #e2e8f0;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #d4edda !important;
+            border-color: var(--success) !important;
+            color: #155724;
+        }
+
+        .incorrect {
+            background: #f8d7da !important;
+            border-color: var(--danger) !important;
+            color: #721c24;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #fff8e7;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #F97316, #EA580C);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #EA580C, #C2410C);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #fffbeb;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+        }
+
+        /* Style cho bài tập sắp xếp từ */
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px;
+            background: #f1f5f9;
+            border-radius: 16px;
+            margin: 8px 0 12px 0;
+        }
+
+        .word-chip {
+            background: #e2e8f0;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .sort-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            background: white;
+        }
+
+        .sort-input:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+
+        .sort-input.correct-input {
+            border-color: var(--success);
+            background: #d4edda;
+        }
+
+        .sort-input.incorrect-input {
+            border-color: var(--danger);
+            background: #f8d7da;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Thanh điều hướng -->
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section" style="padding:0;">
+        <h1 style="font-size:1.4rem; color:white; margin:0;">📝 Bài Tập Gerund & To-infinitive</h1>
+    </div>
+    <a href="./7. forms of verb.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div style="text-align: center; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">
+        <p>📌 Tổng hợp 60 câu bài tập về Gerund và To-infinitive</p>
+    </div>
+
+    <!-- PHẦN 1: TRẮC NGHIỆM CHỌN ĐÁP ÁN ĐÚNG -->
+    <h2 class="section-title">📝 Phần 1: Chọn đáp án đúng (30 câu)</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 1: Động từ + Gerund (-ing)</h2>
+        <p class="sub-desc">Chọn dạng đúng của động từ trong ngoặc</p>
+        <form id="quizForm1">
+            <div class="question" data-correct="A">
+                <p class="question-text">1. I enjoy _______ (read) books in my free time.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q1" value="A"> reading</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="B"> to read</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="C"> read</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="D"> to reading</label>
+                </div>
+                <div class="explanation">📖 Sau "enjoy" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">2. She suggested _______ (go) to the cinema.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q2" value="A"> going</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="B"> to go</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="C"> go</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="D"> to going</label>
+                </div>
+                <div class="explanation">🎬 Sau "suggest" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">3. Would you mind _______ (close) the window?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q3" value="A"> closing</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="B"> to close</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="C"> close</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="D"> to closing</label>
+                </div>
+                <div class="explanation">🪟 Sau "mind" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">4. He admitted _______ (steal) the money.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q4" value="A"> stealing</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="B"> to steal</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="C"> steal</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="D"> to stealing</label>
+                </div>
+                <div class="explanation">💰 Sau "admit" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">5. She denied _______ (know) anything about the incident.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q5" value="A"> knowing</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="B"> to know</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="C"> know</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="D"> to knowing</label>
+                </div>
+                <div class="explanation">❌ Sau "deny" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">6. We need to consider _______ (buy) a new car.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q6" value="A"> buying</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="B"> to buy</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="C"> buy</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="D"> to buying</label>
+                </div>
+                <div class="explanation">🚗 Sau "consider" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">7. I don't fancy _______ (go) out tonight.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q7" value="A"> going</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="B"> to go</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="C"> go</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="D"> to going</label>
+                </div>
+                <div class="explanation">🌙 Sau "fancy" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">8. Can you imagine _______ (live) on Mars?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q8" value="A"> living</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="B"> to live</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="C"> live</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="D"> to living</label>
+                </div>
+                <div class="explanation">🚀 Sau "imagine" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">9. She kept _______ (talk) during the movie.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q9" value="A"> talking</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="B"> to talk</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="C"> talk</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="D"> to talking</label>
+                </div>
+                <div class="explanation">🎬 Sau "keep" luôn dùng Gerund (V-ing).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">10. He stopped _______ (smoke) two years ago.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q10" value="A"> smoking</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="B"> to smoke</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="C"> smoke</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="D"> to smoking</label>
+                </div>
+                <div class="explanation">🚬 "Stop + V-ing" = dừng hẳn hành động hút thuốc.</div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">🔹 Dạng 2: Động từ + To-infinitive</h2>
+            <div class="question" data-correct="B">
+                <p class="question-text">11. She decided _______ (find) a new job.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q11" value="A"> finding</label>
+                    <label class="option-label"><input type="radio" name="p1q11" value="B"> to find</label>
+                    <label class="option-label"><input type="radio" name="p1q11" value="C"> find</label>
+                    <label class="option-label"><input type="radio" name="p1q11" value="D"> to finding</label>
+                </div>
+                <div class="explanation">💼 Sau "decide" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">12. They promised _______ (help) us with the project.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q12" value="A"> helping</label>
+                    <label class="option-label"><input type="radio" name="p1q12" value="B"> to help</label>
+                    <label class="option-label"><input type="radio" name="p1q12" value="C"> help</label>
+                    <label class="option-label"><input type="radio" name="p1q12" value="D"> to helping</label>
+                </div>
+                <div class="explanation">🤝 Sau "promise" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">13. I hope _______ (see) you again soon.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q13" value="A"> seeing</label>
+                    <label class="option-label"><input type="radio" name="p1q13" value="B"> to see</label>
+                    <label class="option-label"><input type="radio" name="p1q13" value="C"> see</label>
+                    <label class="option-label"><input type="radio" name="p1q13" value="D"> to seeing</label>
+                </div>
+                <div class="explanation">👋 Sau "hope" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">14. We plan _______ (travel) to Europe next summer.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q14" value="A"> traveling</label>
+                    <label class="option-label"><input type="radio" name="p1q14" value="B"> to travel</label>
+                    <label class="option-label"><input type="radio" name="p1q14" value="C"> travel</label>
+                    <label class="option-label"><input type="radio" name="p1q14" value="D"> to traveling</label>
+                </div>
+                <div class="explanation">🗺️ Sau "plan" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">15. He refused _______ (answer) my question.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q15" value="A"> answering</label>
+                    <label class="option-label"><input type="radio" name="p1q15" value="B"> to answer</label>
+                    <label class="option-label"><input type="radio" name="p1q15" value="C"> answer</label>
+                    <label class="option-label"><input type="radio" name="p1q15" value="D"> to answering</label>
+                </div>
+                <div class="explanation">🙅 Sau "refuse" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">16. She offered _______ (drive) me to the station.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q16" value="A"> driving</label>
+                    <label class="option-label"><input type="radio" name="p1q16" value="B"> to drive</label>
+                    <label class="option-label"><input type="radio" name="p1q16" value="C"> drive</label>
+                    <label class="option-label"><input type="radio" name="p1q16" value="D"> to driving</label>
+                </div>
+                <div class="explanation">🚗 Sau "offer" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">17. I can't afford _______ (buy) a new phone now.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q17" value="A"> buying</label>
+                    <label class="option-label"><input type="radio" name="p1q17" value="B"> to buy</label>
+                    <label class="option-label"><input type="radio" name="p1q17" value="C"> buy</label>
+                    <label class="option-label"><input type="radio" name="p1q17" value="D"> to buying</label>
+                </div>
+                <div class="explanation">📱 Sau "afford" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">18. He managed _______ (finish) the project on time.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q18" value="A"> finishing</label>
+                    <label class="option-label"><input type="radio" name="p1q18" value="B"> to finish</label>
+                    <label class="option-label"><input type="radio" name="p1q18" value="C"> finish</label>
+                    <label class="option-label"><input type="radio" name="p1q18" value="D"> to finishing</label>
+                </div>
+                <div class="explanation">✅ Sau "manage" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">19. I need _______ (get) more exercise.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q19" value="A"> getting</label>
+                    <label class="option-label"><input type="radio" name="p1q19" value="B"> to get</label>
+                    <label class="option-label"><input type="radio" name="p1q19" value="C"> get</label>
+                    <label class="option-label"><input type="radio" name="p1q19" value="D"> to getting</label>
+                </div>
+                <div class="explanation">🏃 "Need + to V" khi chủ ngữ là người.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">20. She seems _______ (be) very happy with her new job.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q20" value="A"> being</label>
+                    <label class="option-label"><input type="radio" name="p1q20" value="B"> to be</label>
+                    <label class="option-label"><input type="radio" name="p1q20" value="C"> be</label>
+                    <label class="option-label"><input type="radio" name="p1q20" value="D"> to being</label>
+                </div>
+                <div class="explanation">😊 Sau "seem" luôn dùng To-infinitive (to V).</div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">🔹 Dạng 3: Động từ đặc biệt (thay đổi nghĩa)</h2>
+            <div class="question" data-correct="B">
+                <p class="question-text">21. I remember _______ (lock) the door. I'm sure I did it.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q21" value="A"> to lock</label>
+                    <label class="option-label"><input type="radio" name="p1q21" value="B"> locking</label>
+                    <label class="option-label"><input type="radio" name="p1q21" value="C"> lock</label>
+                    <label class="option-label"><input type="radio" name="p1q21" value="D"> to locking</label>
+                </div>
+                <div class="explanation">🔒 "Remember + V-ing" = nhớ đã làm gì.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">22. Please remember _______ (turn off) the lights before leaving.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q22" value="A"> to turn off</label>
+                    <label class="option-label"><input type="radio" name="p1q22" value="B"> turning off</label>
+                    <label class="option-label"><input type="radio" name="p1q22" value="C"> turn off</label>
+                    <label class="option-label"><input type="radio" name="p1q22" value="D"> to turning off</label>
+                </div>
+                <div class="explanation">💡 "Remember + to V" = nhớ phải làm gì.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">23. I regret _______ (inform) you that your application was rejected.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q23" value="A"> to inform</label>
+                    <label class="option-label"><input type="radio" name="p1q23" value="B"> informing</label>
+                    <label class="option-label"><input type="radio" name="p1q23" value="C"> inform</label>
+                    <label class="option-label"><input type="radio" name="p1q23" value="D"> to informing</label>
+                </div>
+                <div class="explanation">📧 "Regret + to V" = rất tiếc phải thông báo tin xấu.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">24. I regret _______ (say) those harsh words to her.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q24" value="A"> to say</label>
+                    <label class="option-label"><input type="radio" name="p1q24" value="B"> saying</label>
+                    <label class="option-label"><input type="radio" name="p1q24" value="C"> say</label>
+                    <label class="option-label"><input type="radio" name="p1q24" value="D"> to saying</label>
+                </div>
+                <div class="explanation">😔 "Regret + V-ing" = hối hận vì đã làm gì.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">25. He stopped _______ (drink) coffee and started working again.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q25" value="A"> to drink</label>
+                    <label class="option-label"><input type="radio" name="p1q25" value="B"> drinking</label>
+                    <label class="option-label"><input type="radio" name="p1q25" value="C"> drink</label>
+                    <label class="option-label"><input type="radio" name="p1q25" value="D"> to drinking</label>
+                </div>
+                <div class="explanation">☕ "Stop + V-ing" = dừng hẳn hành động uống cà phê.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">26. He stopped _______ (smoke) a cigarette and then continued walking.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q26" value="A"> to smoke</label>
+                    <label class="option-label"><input type="radio" name="p1q26" value="B"> smoking</label>
+                    <label class="option-label"><input type="radio" name="p1q26" value="C"> smoke</label>
+                    <label class="option-label"><input type="radio" name="p1q26" value="D"> to smoking</label>
+                </div>
+                <div class="explanation">🚬 "Stop + to V" = dừng lại để hút thuốc.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">27. Try _______ (press) the green button. It might work.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q27" value="A"> to press</label>
+                    <label class="option-label"><input type="radio" name="p1q27" value="B"> pressing</label>
+                    <label class="option-label"><input type="radio" name="p1q27" value="C"> press</label>
+                    <label class="option-label"><input type="radio" name="p1q27" value="D"> to pressing</label>
+                </div>
+                <div class="explanation">🔘 "Try + V-ing" = thử làm gì như giải pháp.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">28. I tried _______ (open) the window, but it was stuck.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q28" value="A"> to open</label>
+                    <label class="option-label"><input type="radio" name="p1q28" value="B"> opening</label>
+                    <label class="option-label"><input type="radio" name="p1q28" value="C"> open</label>
+                    <label class="option-label"><input type="radio" name="p1q28" value="D"> to opening</label>
+                </div>
+                <div class="explanation">🪟 "Try + to V" = cố gắng làm gì (có thể thất bại).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">29. He went on _______ (work) for another two hours.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q29" value="A"> working</label>
+                    <label class="option-label"><input type="radio" name="p1q29" value="B"> to work</label>
+                    <label class="option-label"><input type="radio" name="p1q29" value="C"> work</label>
+                    <label class="option-label"><input type="radio" name="p1q29" value="D"> to working</label>
+                </div>
+                <div class="explanation">💼 "Go on + V-ing" = tiếp tục làm việc đang làm.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">30. After discussing the budget, he went on _______ (talk) about the new project.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q30" value="A"> talking</label>
+                    <label class="option-label"><input type="radio" name="p1q30" value="B"> to talk</label>
+                    <label class="option-label"><input type="radio" name="p1q30" value="C"> talk</label>
+                    <label class="option-label"><input type="radio" name="p1q30" value="D"> to talking</label>
+                </div>
+                <div class="explanation">📊 "Go on + to V" = chuyển sang nói về việc khác.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 2: SẮP XẾP TỪ THÀNH CÂU -->
+    <h2 class="section-title">📝 Phần 2: Sắp xếp từ thành câu đúng (30 câu)</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 4: Sắp xếp từ thành câu hoàn chỉnh</h2>
+        <p class="sub-desc">Sắp xếp các từ sau thành câu đúng ngữ pháp</p>
+        <form id="quizForm2">
+            <!-- Câu 31 -->
+            <div class="question" data-correct="I enjoy reading books in my free time.">
+                <p class="question-text">31. Sắp xếp: enjoy / books / I / reading / in / my / free / time</p>
+                <div class="word-bank">
+                    <span class="word-chip">enjoy</span>
+                    <span class="word-chip">books</span>
+                    <span class="word-chip">I</span>
+                    <span class="word-chip">reading</span>
+                    <span class="word-chip">in</span>
+                    <span class="word-chip">my</span>
+                    <span class="word-chip">free</span>
+                    <span class="word-chip">time</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q31">
+                <div class="explanation">✅ Đáp án: I enjoy reading books in my free time.</div>
+            </div>
+
+            <!-- Câu 32 -->
+            <div class="question" data-correct="She suggested going to the cinema.">
+                <p class="question-text">32. Sắp xếp: going / suggested / the / She / cinema / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">going</span>
+                    <span class="word-chip">suggested</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">cinema</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q32">
+                <div class="explanation">✅ Đáp án: She suggested going to the cinema.</div>
+            </div>
+
+            <!-- Câu 33 -->
+            <div class="question" data-correct="Would you mind closing the window?">
+                <p class="question-text">33. Sắp xếp: you / mind / Would / closing / window / the</p>
+                <div class="word-bank">
+                    <span class="word-chip">you</span>
+                    <span class="word-chip">mind</span>
+                    <span class="word-chip">Would</span>
+                    <span class="word-chip">closing</span>
+                    <span class="word-chip">window</span>
+                    <span class="word-chip">the</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q33">
+                <div class="explanation">✅ Đáp án: Would you mind closing the window?</div>
+            </div>
+
+            <!-- Câu 34 -->
+            <div class="question" data-correct="He admitted stealing the money.">
+                <p class="question-text">34. Sắp xếp: the / He / stealing / admitted / money</p>
+                <div class="word-bank">
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">stealing</span>
+                    <span class="word-chip">admitted</span>
+                    <span class="word-chip">money</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q34">
+                <div class="explanation">✅ Đáp án: He admitted stealing the money.</div>
+            </div>
+
+            <!-- Câu 35 -->
+            <div class="question" data-correct="She denied knowing anything about the incident.">
+                <p class="question-text">35. Sắp xếp: denied / She / about / incident / knowing / the / anything</p>
+                <div class="word-bank">
+                    <span class="word-chip">denied</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">about</span>
+                    <span class="word-chip">incident</span>
+                    <span class="word-chip">knowing</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">anything</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q35">
+                <div class="explanation">✅ Đáp án: She denied knowing anything about the incident.</div>
+            </div>
+
+            <!-- Câu 36 -->
+            <div class="question" data-correct="We need to consider buying a new car.">
+                <p class="question-text">36. Sắp xếp: We / need / buying / a / consider / car / new / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">We</span>
+                    <span class="word-chip">need</span>
+                    <span class="word-chip">buying</span>
+                    <span class="word-chip">a</span>
+                    <span class="word-chip">consider</span>
+                    <span class="word-chip">car</span>
+                    <span class="word-chip">new</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q36">
+                <div class="explanation">✅ Đáp án: We need to consider buying a new car.</div>
+            </div>
+
+            <!-- Câu 37 -->
+            <div class="question" data-correct="She decided to find a new job.">
+                <p class="question-text">37. Sắp xếp: find / a / job / She / new / decided / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">find</span>
+                    <span class="word-chip">a</span>
+                    <span class="word-chip">job</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">new</span>
+                    <span class="word-chip">decided</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q37">
+                <div class="explanation">✅ Đáp án: She decided to find a new job.</div>
+            </div>
+
+            <!-- Câu 38 -->
+            <div class="question" data-correct="They promised to help us with the project.">
+                <p class="question-text">38. Sắp xếp: promised / to / the / help / They / us / project / with</p>
+                <div class="word-bank">
+                    <span class="word-chip">promised</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">help</span>
+                    <span class="word-chip">They</span>
+                    <span class="word-chip">us</span>
+                    <span class="word-chip">project</span>
+                    <span class="word-chip">with</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q38">
+                <div class="explanation">✅ Đáp án: They promised to help us with the project.</div>
+            </div>
+
+            <!-- Câu 39 -->
+            <div class="question" data-correct="I hope to see you again soon.">
+                <p class="question-text">39. Sắp xếp: again / soon / see / you / to / hope / I</p>
+                <div class="word-bank">
+                    <span class="word-chip">again</span>
+                    <span class="word-chip">soon</span>
+                    <span class="word-chip">see</span>
+                    <span class="word-chip">you</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">hope</span>
+                    <span class="word-chip">I</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q39">
+                <div class="explanation">✅ Đáp án: I hope to see you again soon.</div>
+            </div>
+
+            <!-- Câu 40 -->
+            <div class="question" data-correct="We plan to travel to Europe next summer.">
+                <p class="question-text">40. Sắp xếp: summer / next / Europe / plan / travel / to / We / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">summer</span>
+                    <span class="word-chip">next</span>
+                    <span class="word-chip">Europe</span>
+                    <span class="word-chip">plan</span>
+                    <span class="word-chip">travel</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">We</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q40">
+                <div class="explanation">✅ Đáp án: We plan to travel to Europe next summer.</div>
+            </div>
+
+            <!-- Câu 41 -->
+            <div class="question" data-correct="He refused to answer my question.">
+                <p class="question-text">41. Sắp xếp: answer / my / He / question / to / refused</p>
+                <div class="word-bank">
+                    <span class="word-chip">answer</span>
+                    <span class="word-chip">my</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">question</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">refused</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q41">
+                <div class="explanation">✅ Đáp án: He refused to answer my question.</div>
+            </div>
+
+            <!-- Câu 42 -->
+            <div class="question" data-correct="She offered to drive me to the station.">
+                <p class="question-text">42. Sắp xếp: offered / the / to / She / station / drive / me / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">offered</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">station</span>
+                    <span class="word-chip">drive</span>
+                    <span class="word-chip">me</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q42">
+                <div class="explanation">✅ Đáp án: She offered to drive me to the station.</div>
+            </div>
+
+            <!-- Câu 43 -->
+            <div class="question" data-correct="I can't afford to buy a new phone now.">
+                <p class="question-text">43. Sắp xếp: afford / a / now / new / buy / phone / can't / I / to</p>
+                <div class="word-bank">
+                    <span class="word-chip">afford</span>
+                    <span class="word-chip">a</span>
+                    <span class="word-chip">now</span>
+                    <span class="word-chip">new</span>
+                    <span class="word-chip">buy</span>
+                    <span class="word-chip">phone</span>
+                    <span class="word-chip">can't</span>
+                    <span class="word-chip">I</span>
+                    <span class="word-chip">to</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q43">
+                <div class="explanation">✅ Đáp án: I can't afford to buy a new phone now.</div>
+            </div>
+
+            <!-- Câu 44 -->
+            <div class="question" data-correct="He managed to finish the project on time.">
+                <p class="question-text">44. Sắp xếp: on / project / to / finish / He / managed / time / the</p>
+                <div class="word-bank">
+                    <span class="word-chip">on</span>
+                    <span class="word-chip">project</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">finish</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">managed</span>
+                    <span class="word-chip">time</span>
+                    <span class="word-chip">the</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q44">
+                <div class="explanation">✅ Đáp án: He managed to finish the project on time.</div>
+            </div>
+
+            <!-- Câu 45 -->
+            <div class="question" data-correct="I need to get more exercise.">
+                <p class="question-text">45. Sắp xếp: get / need / exercise / more / to / I</p>
+                <div class="word-bank">
+                    <span class="word-chip">get</span>
+                    <span class="word-chip">need</span>
+                    <span class="word-chip">exercise</span>
+                    <span class="word-chip">more</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">I</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q45">
+                <div class="explanation">✅ Đáp án: I need to get more exercise.</div>
+            </div>
+
+            <!-- Câu 46 -->
+            <div class="question" data-correct="She seems to be very happy with her new job.">
+                <p class="question-text">46. Sắp xếp: be / with / seems / job / She / very / new / to / her / happy</p>
+                <div class="word-bank">
+                    <span class="word-chip">be</span>
+                    <span class="word-chip">with</span>
+                    <span class="word-chip">seems</span>
+                    <span class="word-chip">job</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">very</span>
+                    <span class="word-chip">new</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">her</span>
+                    <span class="word-chip">happy</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q46">
+                <div class="explanation">✅ Đáp án: She seems to be very happy with her new job.</div>
+            </div>
+
+            <!-- Câu 47 -->
+            <div class="question" data-correct="I remember locking the door.">
+                <p class="question-text">47. Sắp xếp: the / locking / remember / door / I</p>
+                <div class="word-bank">
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">locking</span>
+                    <span class="word-chip">remember</span>
+                    <span class="word-chip">door</span>
+                    <span class="word-chip">I</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q47">
+                <div class="explanation">✅ Đáp án: I remember locking the door.</div>
+            </div>
+
+            <!-- Câu 48 -->
+            <div class="question" data-correct="Please remember to turn off the lights.">
+                <p class="question-text">48. Sắp xếp: off / remember / the / Please / to / turn / lights</p>
+                <div class="word-bank">
+                    <span class="word-chip">off</span>
+                    <span class="word-chip">remember</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">Please</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">turn</span>
+                    <span class="word-chip">lights</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q48">
+                <div class="explanation">✅ Đáp án: Please remember to turn off the lights.</div>
+            </div>
+
+            <!-- Câu 49 -->
+            <div class="question" data-correct="I regret to inform you that your application was rejected.">
+                <p class="question-text">49. Sắp xếp: to / was / rejected / your / that / regret / application / I / inform / you</p>
+                <div class="word-bank">
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">was</span>
+                    <span class="word-chip">rejected</span>
+                    <span class="word-chip">your</span>
+                    <span class="word-chip">that</span>
+                    <span class="word-chip">regret</span>
+                    <span class="word-chip">application</span>
+                    <span class="word-chip">I</span>
+                    <span class="word-chip">inform</span>
+                    <span class="word-chip">you</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q49">
+                <div class="explanation">✅ Đáp án: I regret to inform you that your application was rejected.</div>
+            </div>
+
+            <!-- Câu 50 -->
+            <div class="question" data-correct="I regret saying those harsh words to her.">
+                <p class="question-text">50. Sắp xếp: harsh / her / to / regret / saying / words / those / I</p>
+                <div class="word-bank">
+                    <span class="word-chip">harsh</span>
+                    <span class="word-chip">her</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">regret</span>
+                    <span class="word-chip">saying</span>
+                    <span class="word-chip">words</span>
+                    <span class="word-chip">those</span>
+                    <span class="word-chip">I</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q50">
+                <div class="explanation">✅ Đáp án: I regret saying those harsh words to her.</div>
+            </div>
+
+            <!-- Câu 51 -->
+            <div class="question" data-correct="He stopped drinking coffee and started working again.">
+                <p class="question-text">51. Sắp xếp: coffee / and / stopped / working / again / He / started / drinking</p>
+                <div class="word-bank">
+                    <span class="word-chip">coffee</span>
+                    <span class="word-chip">and</span>
+                    <span class="word-chip">stopped</span>
+                    <span class="word-chip">working</span>
+                    <span class="word-chip">again</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">started</span>
+                    <span class="word-chip">drinking</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q51">
+                <div class="explanation">✅ Đáp án: He stopped drinking coffee and started working again.</div>
+            </div>
+
+            <!-- Câu 52 -->
+            <div class="question" data-correct="He stopped to smoke a cigarette.">
+                <p class="question-text">52. Sắp xếp: a / smoke / cigarette / stopped / to / He</p>
+                <div class="word-bank">
+                    <span class="word-chip">a</span>
+                    <span class="word-chip">smoke</span>
+                    <span class="word-chip">cigarette</span>
+                    <span class="word-chip">stopped</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">He</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q52">
+                <div class="explanation">✅ Đáp án: He stopped to smoke a cigarette.</div>
+            </div>
+
+            <!-- Câu 53 -->
+            <div class="question" data-correct="Try pressing the green button.">
+                <p class="question-text">53. Sắp xếp: pressing / green / the / button / Try</p>
+                <div class="word-bank">
+                    <span class="word-chip">pressing</span>
+                    <span class="word-chip">green</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">button</span>
+                    <span class="word-chip">Try</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q53">
+                <div class="explanation">✅ Đáp án: Try pressing the green button.</div>
+            </div>
+
+            <!-- Câu 54 -->
+            <div class="question" data-correct="I tried to open the window.">
+                <p class="question-text">54. Sắp xếp: to / the / tried / open / window / I</p>
+                <div class="word-bank">
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">tried</span>
+                    <span class="word-chip">open</span>
+                    <span class="word-chip">window</span>
+                    <span class="word-chip">I</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q54">
+                <div class="explanation">✅ Đáp án: I tried to open the window.</div>
+            </div>
+
+            <!-- Câu 55 -->
+            <div class="question" data-correct="He went on working for another two hours.">
+                <p class="question-text">55. Sắp xếp: on / working / another / two / for / hours / He / went</p>
+                <div class="word-bank">
+                    <span class="word-chip">on</span>
+                    <span class="word-chip">working</span>
+                    <span class="word-chip">another</span>
+                    <span class="word-chip">two</span>
+                    <span class="word-chip">for</span>
+                    <span class="word-chip">hours</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">went</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q55">
+                <div class="explanation">✅ Đáp án: He went on working for another two hours.</div>
+            </div>
+
+            <!-- Câu 56 -->
+            <div class="question" data-correct="He went on to talk about the new project.">
+                <p class="question-text">56. Sắp xếp: to / about / He / project / talk / on / the / new / went</p>
+                <div class="word-bank">
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">about</span>
+                    <span class="word-chip">He</span>
+                    <span class="word-chip">project</span>
+                    <span class="word-chip">talk</span>
+                    <span class="word-chip">on</span>
+                    <span class="word-chip">the</span>
+                    <span class="word-chip">new</span>
+                    <span class="word-chip">went</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q56">
+                <div class="explanation">✅ Đáp án: He went on to talk about the new project.</div>
+            </div>
+
+            <!-- Câu 57 -->
+            <div class="question" data-correct="She can't help feeling sorry for him.">
+                <p class="question-text">57. Sắp xếp: help / feeling / She / for / sorry / can't / him</p>
+                <div class="word-bank">
+                    <span class="word-chip">help</span>
+                    <span class="word-chip">feeling</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">for</span>
+                    <span class="word-chip">sorry</span>
+                    <span class="word-chip">can't</span>
+                    <span class="word-chip">him</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q57">
+                <div class="explanation">✅ Đáp án: She can't help feeling sorry for him.</div>
+            </div>
+
+            <!-- Câu 58 -->
+            <div class="question" data-correct="My mother made me clean the whole house.">
+                <p class="question-text">58. Sắp xếp: made / me / whole / house / clean / My / mother / the</p>
+                <div class="word-bank">
+                    <span class="word-chip">made</span>
+                    <span class="word-chip">me</span>
+                    <span class="word-chip">whole</span>
+                    <span class="word-chip">house</span>
+                    <span class="word-chip">clean</span>
+                    <span class="word-chip">My</span>
+                    <span class="word-chip">mother</span>
+                    <span class="word-chip">the</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q58">
+                <div class="explanation">✅ Đáp án: My mother made me clean the whole house.</div>
+            </div>
+
+            <!-- Câu 59 -->
+            <div class="question" data-correct="She let her children play outside.">
+                <p class="question-text">59. Sắp xếp: let / outside / her / She / play / children</p>
+                <div class="word-bank">
+                    <span class="word-chip">let</span>
+                    <span class="word-chip">outside</span>
+                    <span class="word-chip">her</span>
+                    <span class="word-chip">She</span>
+                    <span class="word-chip">play</span>
+                    <span class="word-chip">children</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q59">
+                <div class="explanation">✅ Đáp án: She let her children play outside.</div>
+            </div>
+
+            <!-- Câu 60 -->
+            <div class="question" data-correct="I was made to wait for two hours.">
+                <p class="question-text">60. Sắp xếp: made / wait / hours / two / for / to / I / was</p>
+                <div class="word-bank">
+                    <span class="word-chip">made</span>
+                    <span class="word-chip">wait</span>
+                    <span class="word-chip">hours</span>
+                    <span class="word-chip">two</span>
+                    <span class="word-chip">for</span>
+                    <span class="word-chip">to</span>
+                    <span class="word-chip">I</span>
+                    <span class="word-chip">was</span>
+                </div>
+                <input type="text" class="sort-input" placeholder="Nhập câu hoàn chỉnh..." name="p2q60">
+                <div class="explanation">✅ Đáp án: I was made to wait for two hours.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- NÚT NỘP BÀI TỔNG HỢP -->
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="button" class="submit-btn" onclick="checkAllQuizzes()">🎯 Nộp tất cả bài & xem kết quả</button>
+    </div>
+    <div id="quizResult" class="result-score"></div>
+</div>
+
+<footer>
+    ✨ Bài 7: Thực hành Gerund và To-infinitive (60 câu) | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function checkAllQuizzes() {
+        let totalQuestions = 0;
+        let totalCorrect = 0;
+
+        // Kiểm tra phần 1: Trắc nghiệm
+        const form1 = document.getElementById('quizForm1');
+        const mcQuestions = form1.querySelectorAll('.question');
+        mcQuestions.forEach((q) => {
+            totalQuestions++;
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    totalCorrect++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+
+        // Kiểm tra phần 2: Sắp xếp từ
+        const form2 = document.getElementById('quizForm2');
+        const sortQuestions = form2.querySelectorAll('.question');
+        sortQuestions.forEach((q) => {
+            totalQuestions++;
+            const correctAnswer = q.getAttribute('data-correct');
+            const input = q.querySelector('.sort-input');
+            const explanationDiv = q.querySelector('.explanation');
+
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            input.classList.remove('correct-input', 'incorrect-input');
+
+            if (input && input.value.trim()) {
+                const userAnswer = input.value.trim().replace(/\s+/g, ' ');
+                const normalizedCorrect = correctAnswer.replace(/\s+/g, ' ');
+                if (userAnswer.toLowerCase() === normalizedCorrect.toLowerCase()) {
+                    totalCorrect++;
+                    input.classList.add('correct-input');
+                } else {
+                    input.classList.add('incorrect-input');
+                }
+            } else {
+                input.classList.add('incorrect-input');
+            }
+        });
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const percent = (totalCorrect / totalQuestions) * 100;
+
+        let message = '';
+        if (percent === 100) {
+            message = '🏆 Xuất sắc! Bạn đã hoàn toàn làm chủ Gerund và To-infinitive!';
+        } else if (percent >= 80) {
+            message = '🌟 Rất tốt! Bạn đã nắm vững phần lớn kiến thức!';
+        } else if (percent >= 60) {
+            message = '📖 Khá ổn! Hãy xem lại phần lý thuyết để cải thiện thêm nhé!';
+        } else {
+            message = '💪 Đừng nản! Hãy xem kỹ lại phần lý thuyết và thử lại lần nữa!';
+        }
+
+        resultDiv.innerHTML = `📊 Kết quả tổng hợp: ${totalCorrect} / ${totalQuestions} câu đúng (${Math.round(percent)}%). ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+</body>
+</html>
