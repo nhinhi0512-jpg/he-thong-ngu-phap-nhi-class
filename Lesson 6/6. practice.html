@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài Tập Thực Hành: Các Thì Tương Lai (Future Tenses) | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #6c2bd9;
+            --accent: #e67e22;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --light: #f8f9fa;
+            --dark: #34495e;
+            --gradient-start: #8B5CF6;
+            --gradient-end: #6D28D9;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav-home:hover {
+            background: white;
+            color: #8B5CF6;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: #8B5CF6;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #d97706, #b45309);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 1.8rem 1rem 0.8rem;
+        }
+
+        .title-section h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #fff, #e9d5ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            margin-top: 6px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            backdrop-filter: blur(4px);
+            display: inline-block;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .quiz-container h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 0.5rem;
+        }
+
+        .quiz-container .sub-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            padding-left: 24px;
+            font-style: italic;
+        }
+
+        .question {
+            background: #fafcff;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e9edf2;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #1f2a3e;
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #e2e8f0;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #d4edda !important;
+            border-color: var(--success) !important;
+            color: #155724;
+        }
+
+        .incorrect {
+            background: #f8d7da !important;
+            border-color: var(--danger) !important;
+            color: #721c24;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #fff8e7;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #7C3AED, #5B21B6);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #f3edff;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Thanh điều hướng -->
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section" style="padding:0;">
+        <h1 style="font-size:1.4rem; color:white; margin:0;">📝 Bài Tập Future Tenses</h1>
+    </div>
+    <a href="./6. future structures.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div style="text-align: center; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem;">
+        <p>📌 Tổng hợp 60 câu bài tập bao gồm tất cả các dạng ngữ pháp về thì tương lai</p>
+    </div>
+
+    <!-- PHẦN 1: CHỌN ĐÁP ÁN ĐÚNG -->
+    <h2 class="section-title">📝 Phần 1: Present Continuous vs Present Simple (Tương lai) - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 1: Hiện Tại Tiếp Diễn & Hiện Tại Đơn (Kế hoạch / Lịch trình)</h2>
+        <p class="sub-desc">Chọn thì đúng để diễn tả kế hoạch cá nhân hoặc lịch trình cố định</p>
+        <form id="quizForm1">
+            <div class="question" data-correct="B">
+                <p class="question-text">1. What time _______ the film _______ tonight?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q1" value="A"> is ... starting</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="B"> does ... start</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="C"> will ... start</label>
+                    <label class="option-label"><input type="radio" name="p1q1" value="D"> is ... going to start</label>
+                </div>
+                <div class="explanation">🎬 Lịch trình chiếu phim là một thời khóa biểu cố định → dùng Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">2. I _______ to the dentist on Thursday. I've already made an appointment.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q2" value="A"> am going</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="B"> go</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="C"> will go</label>
+                    <label class="option-label"><input type="radio" name="p1q2" value="D"> shall go</label>
+                </div>
+                <div class="explanation">🦷 Đã đặt lịch hẹn với nha sĩ → kế hoạch đã sắp xếp → Hiện Tại Tiếp Diễn.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">3. The train from London _______ at 8.15 PM.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q3" value="A"> is arriving</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="B"> arrives</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="C"> will arrive</label>
+                    <label class="option-label"><input type="radio" name="p1q3" value="D"> is going to arrive</label>
+                </div>
+                <div class="explanation">🚂 Lịch trình tàu hỏa là một thời khóa biểu cố định → Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">4. We _______ to the beach this weekend. We've booked the hotel.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q4" value="A"> are going</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="B"> go</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="C"> will go</label>
+                    <label class="option-label"><input type="radio" name="p1q4" value="D"> shall go</label>
+                </div>
+                <div class="explanation">🏖️ Đã đặt khách sạn → kế hoạch đã được sắp xếp → Hiện Tại Tiếp Diễn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">5. The museum _______ at 9 AM every day, but tomorrow it _______ at 10 AM.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q5" value="A"> opens ... opens</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="B"> is opening ... opens</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="C"> opens ... is opening</label>
+                    <label class="option-label"><input type="radio" name="p1q5" value="D"> will open ... will open</label>
+                </div>
+                <div class="explanation">🏛️ Lịch trình cố định hàng ngày → Hiện Tại Đơn cho cả hai.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">6. The concert _______ at 8 PM. Don't be late!</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q6" value="A"> is starting</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="B"> starts</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="C"> will start</label>
+                    <label class="option-label"><input type="radio" name="p1q6" value="D"> is going to start</label>
+                </div>
+                <div class="explanation">🎵 Giờ bắt đầu buổi hòa nhạc là lịch trình cố định → Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">7. My sister _______ her new job next Monday.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q7" value="A"> is starting</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="B"> starts</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="C"> will start</label>
+                    <label class="option-label"><input type="radio" name="p1q7" value="D"> shall start</label>
+                </div>
+                <div class="explanation">💼 Kế hoạch cá nhân đã được sắp xếp → Hiện Tại Tiếp Diễn.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">8. The bus _______ at 6.30 AM every morning.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q8" value="A"> is leaving</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="B"> leaves</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="C"> will leave</label>
+                    <label class="option-label"><input type="radio" name="p1q8" value="D"> is going to leave</label>
+                </div>
+                <div class="explanation">🚌 Lịch trình xe buýt cố định → Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">9. I _______ my grandparents this weekend. I've already bought the tickets.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q9" value="A"> am visiting</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="B"> visit</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="C"> will visit</label>
+                    <label class="option-label"><input type="radio" name="p1q9" value="D"> shall visit</label>
+                </div>
+                <div class="explanation">👴 Đã mua vé → kế hoạch đã sắp xếp → Hiện Tại Tiếp Diễn.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">10. The plane _______ at 10.15 AM. We need to be at the airport early.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p1q10" value="A"> is taking off</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="B"> takes off</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="C"> will take off</label>
+                    <label class="option-label"><input type="radio" name="p1q10" value="D"> is going to take off</label>
+                </div>
+                <div class="explanation">✈️ Lịch trình cất cánh của máy bay → Hiện Tại Đơn.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 2: BE GOING TO VS WILL -->
+    <h2 class="section-title">📝 Phần 2: Be Going To vs Will - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 2: Dự định trước (Going to) vs Quyết định tức thời (Will)</h2>
+        <p class="sub-desc">Chọn cấu trúc đúng dựa vào ngữ cảnh</p>
+        <form id="quizForm2">
+            <div class="question" data-correct="C">
+                <p class="question-text">11. A: "I'm so hungry." B: "I _______ you a sandwich."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q1" value="A"> 'm going to make</label>
+                    <label class="option-label"><input type="radio" name="p2q1" value="B"> make</label>
+                    <label class="option-label"><input type="radio" name="p2q1" value="C"> 'll make</label>
+                    <label class="option-label"><input type="radio" name="p2q1" value="D"> am making</label>
+                </div>
+                <div class="explanation">🍞 Quyết định ngỏ ý giúp đỡ tại thời điểm nói → Will (Offering).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">12. I've been saving money for months. I _______ a new laptop.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q2" value="A"> 'm going to buy</label>
+                    <label class="option-label"><input type="radio" name="p2q2" value="B"> will buy</label>
+                    <label class="option-label"><input type="radio" name="p2q2" value="C"> buy</label>
+                    <label class="option-label"><input type="radio" name="p2q2" value="D"> am buying</label>
+                </div>
+                <div class="explanation">💻 Đã có kế hoạch từ trước (để dành tiền) → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">13. Look at the sky! It _______ rain.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q3" value="A"> 's going to</label>
+                    <label class="option-label"><input type="radio" name="p2q3" value="B"> will</label>
+                    <label class="option-label"><input type="radio" name="p2q3" value="C"> is</label>
+                    <label class="option-label"><input type="radio" name="p2q3" value="D"> shall</label>
+                </div>
+                <div class="explanation">☁️ Dựa trên dấu hiệu thực tế ở hiện tại (nhìn trời) → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">14. I promise I _______ be late again.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q4" value="A"> am not going to</label>
+                    <label class="option-label"><input type="radio" name="p2q4" value="B"> won't</label>
+                    <label class="option-label"><input type="radio" name="p2q4" value="C"> don't</label>
+                    <label class="option-label"><input type="radio" name="p2q4" value="D"> am not</label>
+                </div>
+                <div class="explanation">🤝 Lời hứa → sử dụng Will (won't).</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">15. I think the new movie _______ be very successful.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q5" value="A"> will</label>
+                    <label class="option-label"><input type="radio" name="p2q5" value="B"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p2q5" value="C"> is</label>
+                    <label class="option-label"><input type="radio" name="p2q5" value="D"> shall</label>
+                </div>
+                <div class="explanation">🎬 Dự đoán dựa trên ý kiến/niềm tin cá nhân → Will.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">16. A: "The door is locked." B: "I _______ the key for you."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q6" value="A"> 'm going to get</label>
+                    <label class="option-label"><input type="radio" name="p2q6" value="B"> 'll get</label>
+                    <label class="option-label"><input type="radio" name="p2q6" value="C"> get</label>
+                    <label class="option-label"><input type="radio" name="p2q6" value="D"> am getting</label>
+                </div>
+                <div class="explanation">🔑 Ngỏ ý giúp đỡ tại thời điểm nói → Will.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">17. She _______ study abroad next year. She's already applied to several universities.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q7" value="A"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p2q7" value="B"> will</label>
+                    <label class="option-label"><input type="radio" name="p2q7" value="C"> can</label>
+                    <label class="option-label"><input type="radio" name="p2q7" value="D"> shall</label>
+                </div>
+                <div class="explanation">🎓 Đã nộp đơn → đã có kế hoạch từ trước → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">18. A: "The phone is ringing!" B: "I _______ it."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q8" value="A"> am going to answer</label>
+                    <label class="option-label"><input type="radio" name="p2q8" value="B"> 'll answer</label>
+                    <label class="option-label"><input type="radio" name="p2q8" value="C"> answer</label>
+                    <label class="option-label"><input type="radio" name="p2q8" value="D"> am answering</label>
+                </div>
+                <div class="explanation">📞 Quyết định tức thời tại thời điểm nói → Will.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">19. The economic situation looks bad. Many people _______ their jobs.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q9" value="A"> are going to lose</label>
+                    <label class="option-label"><input type="radio" name="p2q9" value="B"> will lose</label>
+                    <label class="option-label"><input type="radio" name="p2q9" value="C"> lose</label>
+                    <label class="option-label"><input type="radio" name="p2q9" value="D"> are losing</label>
+                </div>
+                <div class="explanation">📉 Dựa trên dấu hiệu thực tế (tình hình kinh tế) → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">20. "I'm sorry I forgot to call you." - "Don't worry. I _______ you tomorrow."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p2q10" value="A"> am going to call</label>
+                    <label class="option-label"><input type="radio" name="p2q10" value="B"> 'll call</label>
+                    <label class="option-label"><input type="radio" name="p2q10" value="C"> call</label>
+                    <label class="option-label"><input type="radio" name="p2q10" value="D"> am calling</label>
+                </div>
+                <div class="explanation">📱 Lời hứa gọi lại → Will.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 3: SHALL I / SHALL WE -->
+    <h2 class="section-title">📝 Phần 3: Shall I / Shall We - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 3: Đề xuất, gợi ý, xin ý kiến</h2>
+        <p class="sub-desc">Chọn cấu trúc đúng để đưa ra đề xuất hoặc xin ý kiến</p>
+        <form id="quizForm3">
+            <div class="question" data-correct="A">
+                <p class="question-text">21. _______ I close the window? It's a bit cold in here.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q1" value="A"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q1" value="B"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q1" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q1" value="D"> Should</label>
+                </div>
+                <div class="explanation">❄️ Hỏi ý kiến người khác về việc mình làm → Shall I.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">22. Where _______ we go for dinner tonight?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q2" value="A"> will</label>
+                    <label class="option-label"><input type="radio" name="p3q2" value="B"> shall</label>
+                    <label class="option-label"><input type="radio" name="p3q2" value="C"> do</label>
+                    <label class="option-label"><input type="radio" name="p3q2" value="D"> are</label>
+                </div>
+                <div class="explanation">🍽️ Đề xuất cùng thảo luận ý kiến với nhóm → Shall we.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">23. "It's too noisy in here." - "_______ I turn off the music?"</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q3" value="A"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q3" value="B"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q3" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q3" value="D"> Should</label>
+                </div>
+                <div class="explanation">🔇 Đề nghị giúp đỡ một cách lịch sự → Shall I.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">24. What time _______ we meet tomorrow?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q4" value="A"> will</label>
+                    <label class="option-label"><input type="radio" name="p3q4" value="B"> shall</label>
+                    <label class="option-label"><input type="radio" name="p3q4" value="C"> do</label>
+                    <label class="option-label"><input type="radio" name="p3q4" value="D"> are</label>
+                </div>
+                <div class="explanation">🕐 Hỏi ý kiến nhóm về thời gian → Shall we.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">25. _______ I help you with your luggage?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q5" value="A"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q5" value="B"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q5" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q5" value="D"> Should</label>
+                </div>
+                <div class="explanation">🧳 Đề nghị giúp đỡ → Shall I.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">26. _______ we order pizza for dinner?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q6" value="A"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q6" value="B"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q6" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q6" value="D"> Should</label>
+                </div>
+                <div class="explanation">🍕 Đề xuất ý tưởng cho nhóm → Shall we.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">27. "I can't solve this problem." - "_______ I explain it again?"</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q7" value="A"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q7" value="B"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q7" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q7" value="D"> Should</label>
+                </div>
+                <div class="explanation">📖 Đề nghị giúp đỡ giải thích → Shall I.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">28. _______ we go to the park this afternoon?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q8" value="A"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q8" value="B"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q8" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q8" value="D"> Should</label>
+                </div>
+                <div class="explanation">🌳 Đề xuất hoạt động cho nhóm → Shall we.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">29. "I'm not sure what to wear." - "_______ I help you choose?"</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q9" value="A"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q9" value="B"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q9" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q9" value="D"> Should</label>
+                </div>
+                <div class="explanation">👗 Đề nghị giúp đỡ → Shall I.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">30. _______ we invite Mary to the party? She would love it.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p3q10" value="A"> Will</label>
+                    <label class="option-label"><input type="radio" name="p3q10" value="B"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p3q10" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p3q10" value="D"> Should</label>
+                </div>
+                <div class="explanation">🎉 Đề xuất mời ai đó → Shall we.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 4: WAS/WERE GOING TO -->
+    <h2 class="section-title">📝 Phần 4: Was/Were Going To - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 4: Dự định trong quá khứ nhưng không thực hiện</h2>
+        <p class="sub-desc">Chọn cấu trúc đúng để diễn tả dự định đã thay đổi</p>
+        <form id="quizForm4">
+            <div class="question" data-correct="A">
+                <p class="question-text">31. We _______ travel to Japan, but we decided to go to Korea instead.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q1" value="A"> were going to</label>
+                    <label class="option-label"><input type="radio" name="p4q1" value="B"> are going to</label>
+                    <label class="option-label"><input type="radio" name="p4q1" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q1" value="D"> would</label>
+                </div>
+                <div class="explanation">🇯🇵 Định đi Nhật nhưng cuối cùng đổi ý → were going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">32. She _______ call you, but her phone ran out of battery.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q2" value="A"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p4q2" value="B"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q2" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q2" value="D"> would</label>
+                </div>
+                <div class="explanation">📱 Định gọi nhưng không thể do hết pin → was going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">33. They _______ buy a house, but they changed their mind.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q3" value="A"> were going to</label>
+                    <label class="option-label"><input type="radio" name="p4q3" value="B"> are going to</label>
+                    <label class="option-label"><input type="radio" name="p4q3" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q3" value="D"> would</label>
+                </div>
+                <div class="explanation">🏠 Định mua nhà nhưng đổi ý → were going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">34. I _______ study law, but I decided to study business instead.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q4" value="A"> am going to</label>
+                    <label class="option-label"><input type="radio" name="p4q4" value="B"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q4" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q4" value="D"> would</label>
+                </div>
+                <div class="explanation">⚖️ Định học Luật nhưng đổi sang Kinh doanh → was going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">35. He _______ resign, but his boss convinced him to stay.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q5" value="A"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q5" value="B"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p4q5" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q5" value="D"> would</label>
+                </div>
+                <div class="explanation">💼 Định từ chức nhưng sếp thuyết phục ở lại → was going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">36. We _______ have a picnic, but it started raining.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q6" value="A"> are going to</label>
+                    <label class="option-label"><input type="radio" name="p4q6" value="B"> were going to</label>
+                    <label class="option-label"><input type="radio" name="p4q6" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q6" value="D"> would</label>
+                </div>
+                <div class="explanation">🧺 Định đi dã ngoại nhưng trời mưa → were going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">37. She _______ bake a cake, but she ran out of flour.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q7" value="A"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q7" value="B"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p4q7" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q7" value="D"> would</label>
+                </div>
+                <div class="explanation">🎂 Định làm bánh nhưng hết bột → was going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">38. I _______ tell you the secret, but I think I shouldn't.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q8" value="A"> am going to</label>
+                    <label class="option-label"><input type="radio" name="p4q8" value="B"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q8" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q8" value="D"> would</label>
+                </div>
+                <div class="explanation">🤫 Định kể bí mật nhưng quyết định không kể → was going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">39. They _______ get married in June, but they postponed to September.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q9" value="A"> were going to</label>
+                    <label class="option-label"><input type="radio" name="p4q9" value="B"> are going to</label>
+                    <label class="option-label"><input type="radio" name="p4q9" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q9" value="D"> would</label>
+                </div>
+                <div class="explanation">💍 Định cưới tháng 6 nhưng dời sang tháng 9 → were going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">40. My sister _______ move to London, but she got a job in Paris.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p4q10" value="A"> is going to</label>
+                    <label class="option-label"><input type="radio" name="p4q10" value="B"> was going to</label>
+                    <label class="option-label"><input type="radio" name="p4q10" value="C"> will</label>
+                    <label class="option-label"><input type="radio" name="p4q10" value="D"> would</label>
+                </div>
+                <div class="explanation">🇬🇧 Định chuyển đến London nhưng nhận việc ở Paris → was going to.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 5: VIẾT LẠI CÂU -->
+    <h2 class="section-title">📝 Phần 5: Viết lại câu tương đương - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 5: Biến đổi cấu trúc tương lai</h2>
+        <p class="sub-desc">Chọn câu viết lại đúng nghĩa nhất với câu gốc</p>
+        <form id="quizForm5">
+            <div class="question" data-correct="B">
+                <p class="question-text">41. Viết lại: "I'm meeting my old friend tomorrow."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q1" value="A"> I meet my old friend tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q1" value="B"> I have an arrangement to meet my old friend tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q1" value="C"> I will meet my old friend tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q1" value="D"> I am going to meet my old friend tomorrow.</label>
+                </div>
+                <div class="explanation">📅 Dạng 1: Chuyển Present Continuous → have an arrangement to V.</div>
+            </div>
+
+            <div class="question" data-correct="C">
+                <p class="question-text">42. Viết lại: "He is going to apply for the job."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q2" value="A"> He will apply for the job.</label>
+                    <label class="option-label"><input type="radio" name="p5q2" value="B"> He has applied for the job.</label>
+                    <label class="option-label"><input type="radio" name="p5q2" value="C"> He intends to apply for the job.</label>
+                    <label class="option-label"><input type="radio" name="p5q2" value="D"> He applies for the job.</label>
+                </div>
+                <div class="explanation">💼 Dạng 2: Chuyển Be going to → intend to V.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">43. Viết lại: "I promise to return the book tomorrow."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q3" value="A"> I promise I will return the book tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q3" value="B"> I promise I return the book tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q3" value="C"> I promise I am going to return the book tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q3" value="D"> I promise I returned the book tomorrow.</label>
+                </div>
+                <div class="explanation">📚 Dạng 3: Chuyển promise to V → promise S + will + V.</div>
+            </div>
+
+            <div class="question" data-correct="D">
+                <p class="question-text">44. Viết lại: "Do you want me to carry your bag?"</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q4" value="A"> Will you carry your bag?</label>
+                    <label class="option-label"><input type="radio" name="p5q4" value="B"> Can you carry your bag?</label>
+                    <label class="option-label"><input type="radio" name="p5q4" value="C"> Should I carry your bag?</label>
+                    <label class="option-label"><input type="radio" name="p5q4" value="D"> Shall I carry your bag?</label>
+                </div>
+                <div class="explanation">🎒 Dạng 4: Chuyển Do you want me to V → Shall I V.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">45. Viết lại: "They planned to have a party, but they canceled it."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q5" value="A"> They are going to have a party.</label>
+                    <label class="option-label"><input type="radio" name="p5q5" value="B"> They were going to have a party.</label>
+                    <label class="option-label"><input type="radio" name="p5q5" value="C"> They will have a party.</label>
+                    <label class="option-label"><input type="radio" name="p5q5" value="D"> They have a party.</label>
+                </div>
+                <div class="explanation">🎉 Dự định trong quá khứ nhưng hủy → were going to.</div>
+            </div>
+
+            <div class="question" data-correct="C">
+                <p class="question-text">46. Viết lại: "We have decided to buy a new car."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q6" value="A"> We will buy a new car.</label>
+                    <label class="option-label"><input type="radio" name="p5q6" value="B"> We have an arrangement to buy a new car.</label>
+                    <label class="option-label"><input type="radio" name="p5q6" value="C"> We are going to buy a new car.</label>
+                    <label class="option-label"><input type="radio" name="p5q6" value="D"> We buy a new car.</label>
+                </div>
+                <div class="explanation">🚗 Đã quyết định → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">47. Viết lại: "She has an arrangement to see the doctor tomorrow."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q7" value="A"> She is seeing the doctor tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q7" value="B"> She will see the doctor tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q7" value="C"> She sees the doctor tomorrow.</label>
+                    <label class="option-label"><input type="radio" name="p5q7" value="D"> She is going to see the doctor tomorrow.</label>
+                </div>
+                <div class="explanation">🏥 Chuyển have an arrangement to V → Present Continuous.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">48. Viết lại: "I promise I won't tell anyone your secret."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q8" value="A"> I promise to not tell anyone your secret.</label>
+                    <label class="option-label"><input type="radio" name="p5q8" value="B"> I promise not to tell anyone your secret.</label>
+                    <label class="option-label"><input type="radio" name="p5q8" value="C"> I promise I am not going to tell anyone your secret.</label>
+                    <label class="option-label"><input type="radio" name="p5q8" value="D"> I promise I don't tell anyone your secret.</label>
+                </div>
+                <div class="explanation">🔒 Chuyển promise S + won't V → promise not to V.</div>
+            </div>
+
+            <div class="question" data-correct="D">
+                <p class="question-text">49. Viết lại: "Shall I open the window?"</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q9" value="A"> Will I open the window?</label>
+                    <label class="option-label"><input type="radio" name="p5q9" value="B"> Should I open the window?</label>
+                    <label class="option-label"><input type="radio" name="p5q9" value="C"> Can I open the window?</label>
+                    <label class="option-label"><input type="radio" name="p5q9" value="D"> Do you want me to open the window?</label>
+                </div>
+                <div class="explanation">🪟 Chuyển Shall I V → Do you want me to V.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">50. Viết lại: "I intended to visit her, but I was too busy."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p5q10" value="A"> I was going to visit her, but I was too busy.</label>
+                    <label class="option-label"><input type="radio" name="p5q10" value="B"> I am going to visit her, but I was too busy.</label>
+                    <label class="option-label"><input type="radio" name="p5q10" value="C"> I will visit her, but I was too busy.</label>
+                    <label class="option-label"><input type="radio" name="p5q10" value="D"> I visit her, but I was too busy.</label>
+                </div>
+                <div class="explanation">👤 Chuyển intended to V → was going to V.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- PHẦN 6: BÀI TẬP TỔNG HỢP -->
+    <h2 class="section-title">📝 Phần 6: Bài tập tổng hợp - 10 câu</h2>
+    <div class="quiz-container">
+        <h2>🔹 Dạng 6: Lựa chọn cấu trúc phù hợp với ngữ cảnh</h2>
+        <p class="sub-desc">Đọc kỹ ngữ cảnh để chọn cấu trúc tương lai phù hợp nhất</p>
+        <form id="quizForm6">
+            <div class="question" data-correct="D">
+                <p class="question-text">51. The conference _______ at 9 AM sharp. Don't be late!</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q1" value="A"> is starting</label>
+                    <label class="option-label"><input type="radio" name="p6q1" value="B"> will start</label>
+                    <label class="option-label"><input type="radio" name="p6q1" value="C"> is going to start</label>
+                    <label class="option-label"><input type="radio" name="p6q1" value="D"> starts</label>
+                </div>
+                <div class="explanation">📅 Lịch trình cố định của hội nghị → Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">52. A: "The phone is ringing!" B: "Don't worry, I _______ it."</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q2" value="A"> 'll get</label>
+                    <label class="option-label"><input type="radio" name="p6q2" value="B"> 'm going to get</label>
+                    <label class="option-label"><input type="radio" name="p6q2" value="C"> get</label>
+                    <label class="option-label"><input type="radio" name="p6q2" value="D"> am getting</label>
+                </div>
+                <div class="explanation">📞 Quyết định tức thời tại thời điểm nói → Will.</div>
+            </div>
+
+            <div class="question" data-correct="C">
+                <p class="question-text">53. I've just bought some paints. I _______ a picture of the sunset.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q3" value="A"> will paint</label>
+                    <label class="option-label"><input type="radio" name="p6q3" value="B"> paint</label>
+                    <label class="option-label"><input type="radio" name="p6q3" value="C"> 'm going to paint</label>
+                    <label class="option-label"><input type="radio" name="p6q3" value="D"> am painting</label>
+                </div>
+                <div class="explanation">🎨 Đã mua dụng cụ → đã có ý định từ trước → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">54. _______ we invite Sarah to the party? She would love it.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q4" value="A"> Will</label>
+                    <label class="option-label"><input type="radio" name="p6q4" value="B"> Shall</label>
+                    <label class="option-label"><input type="radio" name="p6q4" value="C"> Can</label>
+                    <label class="option-label"><input type="radio" name="p6q4" value="D"> Should</label>
+                </div>
+                <div class="explanation">🎉 Đề xuất ý kiến với nhóm → Shall we.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">55. She _______ work tomorrow because she's feeling sick.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q5" value="A"> isn't going to</label>
+                    <label class="option-label"><input type="radio" name="p6q5" value="B"> won't</label>
+                    <label class="option-label"><input type="radio" name="p6q5" value="C"> doesn't</label>
+                    <label class="option-label"><input type="radio" name="p6q5" value="D"> isn't</label>
+                </div>
+                <div class="explanation">🤒 Đã có ý định nghỉ vì đang ốm → Be going to (phủ định).</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">56. I _______ call you as soon as I get home, I promise.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q6" value="A"> am going to</label>
+                    <label class="option-label"><input type="radio" name="p6q6" value="B"> will</label>
+                    <label class="option-label"><input type="radio" name="p6q6" value="C"> am</label>
+                    <label class="option-label"><input type="radio" name="p6q6" value="D"> shall</label>
+                </div>
+                <div class="explanation">📞 Lời hứa → Will.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">57. According to the weather forecast, it _______ tomorrow.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q7" value="A"> is raining</label>
+                    <label class="option-label"><input type="radio" name="p6q7" value="B"> will rain</label>
+                    <label class="option-label"><input type="radio" name="p6q7" value="C"> is going to rain</label>
+                    <label class="option-label"><input type="radio" name="p6q7" value="D"> rains</label>
+                </div>
+                <div class="explanation">🌧️ Dự báo thời tiết → dự đoán chủ quan → Will.</div>
+            </div>
+
+            <div class="question" data-correct="A">
+                <p class="question-text">58. I've decided that I _______ learn a new language this year.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q8" value="A"> 'm going to</label>
+                    <label class="option-label"><input type="radio" name="p6q8" value="B"> will</label>
+                    <label class="option-label"><input type="radio" name="p6q8" value="C"> can</label>
+                    <label class="option-label"><input type="radio" name="p6q8" value="D"> shall</label>
+                </div>
+                <div class="explanation">📚 Đã quyết định từ trước → Be going to.</div>
+            </div>
+
+            <div class="question" data-correct="C">
+                <p class="question-text">59. The shop _______ at 6 PM, so we need to hurry.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q9" value="A"> is closing</label>
+                    <label class="option-label"><input type="radio" name="p6q9" value="B"> will close</label>
+                    <label class="option-label"><input type="radio" name="p6q9" value="C"> closes</label>
+                    <label class="option-label"><input type="radio" name="p6q9" value="D"> is going to close</label>
+                </div>
+                <div class="explanation">🏪 Giờ đóng cửa cố định → Hiện Tại Đơn.</div>
+            </div>
+
+            <div class="question" data-correct="D">
+                <p class="question-text">60. I _______ my cousin at the airport at 5 PM. Her flight arrives at 4.30.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="p6q10" value="A"> meet</label>
+                    <label class="option-label"><input type="radio" name="p6q10" value="B"> will meet</label>
+                    <label class="option-label"><input type="radio" name="p6q10" value="C"> am going to meet</label>
+                    <label class="option-label"><input type="radio" name="p6q10" value="D"> am meeting</label>
+                </div>
+                <div class="explanation">✈️ Kế hoạch đã được sắp xếp → Hiện Tại Tiếp Diễn.</div>
+            </div>
+        </form>
+    </div>
+
+    <!-- NÚT NỘP BÀI TỔNG HỢP -->
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="button" class="submit-btn" onclick="checkAllQuizzes()">🎯 Nộp tất cả bài & xem kết quả</button>
+    </div>
+    <div id="quizResult" class="result-score"></div>
+</div>
+
+<footer>
+    ✨ Bài 6: Thực hành các thì tương lai (60 câu) | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function checkAllQuizzes() {
+        const allForms = document.querySelectorAll('form[id^="quizForm"]');
+        let totalQuestions = 0;
+        let totalCorrect = 0;
+
+        allForms.forEach((form) => {
+            const questions = form.querySelectorAll('.question');
+            questions.forEach((q) => {
+                totalQuestions++;
+                const correctVal = q.getAttribute('data-correct');
+                const inputs = q.querySelectorAll('input[type="radio"]');
+                let selected = null;
+                inputs.forEach(input => {
+                    if (input.checked) selected = input;
+                });
+                const explanationDiv = q.querySelector('.explanation');
+                const labels = q.querySelectorAll('.option-label');
+
+                labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+                if (explanationDiv) explanationDiv.style.display = 'block';
+
+                if (selected) {
+                    const userVal = selected.value;
+                    if (userVal === correctVal) {
+                        totalCorrect++;
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                        labels.forEach(label => {
+                            if (label.querySelector('input').value === correctVal) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            });
+        });
+
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const percent = (totalCorrect / totalQuestions) * 100;
+
+        let message = '';
+        if (percent === 100) {
+            message = '🏆 Xuất sắc! Bạn đã hoàn toàn làm chủ các thì tương lai!';
+        } else if (percent >= 80) {
+            message = '🌟 Rất tốt! Bạn đã nắm vững phần lớn kiến thức!';
+        } else if (percent >= 60) {
+            message = '📖 Khá ổn! Hãy xem lại phần lý thuyết để cải thiện thêm nhé!';
+        } else {
+            message = '💪 Đừng nản! Hãy xem kỹ lại phần lý thuyết và thử lại lần nữa!';
+        }
+
+        resultDiv.innerHTML = `📊 Kết quả tổng hợp: ${totalCorrect} / ${totalQuestions} câu đúng (${Math.round(percent)}%). ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+</body>
+</html>
