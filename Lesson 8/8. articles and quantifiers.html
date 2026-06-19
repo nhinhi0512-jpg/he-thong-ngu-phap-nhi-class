@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Bí Kíp Làm Chủ: Articles & Quantifiers | Anh Ngữ Toàn Diện</title>
+    <style>
+        /* ----- Reset & biến màu xanh lá chủ đạo ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a2f;
+            --secondary: #2d6a4f;
+            --accent: #409f7a;
+            --light-bg: #eafaf1;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --gradient-start: #1b7a4a;
+            --gradient-end: #0f4c2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----- HEADER giống Lesson 7 ----- */
+        .master-header {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .nav-home:hover {
+            background: white;
+            color: var(--gradient-start);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: fill 0.2s;
+        }
+        .nav-home:hover svg {
+            fill: var(--gradient-start);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0;
+        }
+        .title-section h1 {
+            font-size: 1.4rem;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2d6a4f, #1b4d3a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1b7a4a, #0f4c2d);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        /* ----- TABS giống Lesson 7 ----- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+            backdrop-filter: blur(2px);
+        }
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .tab-btn.active {
+            background: white;
+            color: var(--secondary);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- Card / Quiz container ----- */
+        .card,
+        .quiz-container {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+        h4 {
+            color: var(--primary);
+            margin: 1rem 0 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        th,
+        td {
+            border: 1px solid #d0e2d6;
+            padding: 12px;
+            vertical-align: top;
+        }
+        th {
+            background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+            color: white;
+        }
+
+        .note-box {
+            background: #e6f5ec;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+        .formula-box {
+            background: #f0faf4;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+        .example-box {
+            background: #edf7f1;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        .grid-item {
+            background: #f0f7f3;
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .grid-item:hover {
+            border-color: var(--secondary);
+            background: #e0f0e6;
+        }
+        .grid-item.article {
+            border-color: #2d6a4f;
+        }
+        .grid-item.quant {
+            border-color: #409f7a;
+        }
+
+        /* ----- Quiz styling (giống Lesson 7) ----- */
+        .question {
+            background: #f6fcf9;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4e8dd;
+            transition: all 0.2s;
+        }
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #1a2e24;
+        }
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f8f4;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .option-label:hover {
+            background: #dcefe4;
+            transform: scale(0.98);
+        }
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+        .correct {
+            background: #c8f0d9 !important;
+            border-color: var(--success) !important;
+            color: #155724;
+        }
+        .incorrect {
+            background: #f8d7da !important;
+            border-color: var(--danger) !important;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #e9f5ef;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1b7a4a, #0a3d24);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #e9f5ef;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="master-header">
+        <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z" />
+            </svg>
+            <span>🏠 Về trang chủ</span>
+        </a>
+        <div class="title-section">
+            <h1>📘 Articles &amp; Quantifiers</h1>
+        </div>
+        <a href="./8. practice.html" class="nav-practice">
+            ✍️ Làm bài tập
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- ===== TABS ===== -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('tong_quan')">📖 1. Articles</button>
+            <button class="tab-btn" onclick="openTab('quantifiers')">🔢 2. Quantifiers</button>
+            <button class="tab-btn" onclick="openTab('luyentap')">🎯 3. Trắc nghiệm</button>
+        </div>
+
+        <!-- ===== TAB 1: ARTICLES ===== -->
+        <div id="tong_quan" class="tab-content active">
+            <div class="card">
+                <h2>📌 Mạo từ (Articles) trong tiếng Anh</h2>
+                <p>Mạo từ là từ đứng trước danh từ để xác định danh từ đó là <strong>chung chung</strong> hay <strong>cụ thể</strong>. Có ba loại: <em>a / an</em> (không xác định) và <em>the</em> (xác định).</p>
+
+                <h3>🔹 Mạo từ không xác định: A / An</h3>
+                <div class="grid-list">
+                    <span class="grid-item article">📌 a + phụ âm: a book</span>
+                    <span class="grid-item article">🔊 an + nguyên âm (u,e,o,a,i): an apple</span>
+                    <span class="grid-item article">👨‍⚕️ trước nghề nghiệp: a doctor</span>
+                    <span class="grid-item article">🔢 cụm số lượng: a few, a little</span>
+                </div>
+
+                <h3>🔹 Mạo từ xác định: The</h3>
+                <div class="grid-list">
+                    <span class="grid-item article">🌍 đã xác định / duy nhất: the Sun</span>
+                    <span class="grid-item article">🏆 so sánh nhất: the best</span>
+                    <span class="grid-item article">👥 nhóm người: the rich</span>
+                    <span class="grid-item article">🇺🇸 tên nước số nhiều / Republic: the Philippines</span>
+                </div>
+
+                <h3>🔹 Khi nào KHÔNG dùng mạo từ</h3>
+                <div class="grid-list">
+                    <span class="grid-item">📅 tháng, thứ, mùa: in May</span>
+                    <span class="grid-item">🍽️ bữa ăn: have breakfast</span>
+                    <span class="grid-item">🏀 thể thao, môn học: play tennis</span>
+                    <span class="grid-item">🏔️ tên riêng, hồ, núi: Lake Michigan</span>
+                </div>
+
+                <div class="note-box">
+                    <strong>💡 Mẹo nhanh:</strong> A/An = lần đầu, chung chung. The = đã biết, duy nhất. Không mạo từ = danh từ số nhiều/không đếm được nghĩa chung, tên riêng, bữa ăn, môn học.
+                </div>
+
+                <h3>📊 Bảng tóm tắt mạo từ</h3>
+                <table>
+                    <thead>
+                        <tr><th>Mạo từ</th><th>Cách dùng</th><th>Ví dụ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A / An</strong></td><td>lần đầu, nghề nghiệp, số lượng (a few...)</td><td>a cat, an hour, a teacher</td></tr>
+                        <tr><td><strong>The</strong></td><td>đã xác định, duy nhất, so sánh nhất, tên nước (số nhiều / Republic)</td><td>the Earth, the first, the Netherlands</td></tr>
+                        <tr><td><strong>Không mạo từ</strong></td><td>tháng, thứ, mùa, bữa ăn, danh từ số nhiều/không đếm được nghĩa chung, tên riêng</td><td>in spring, eat dinner, love freedom</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: QUANTIFIERS ===== -->
+        <div id="quantifiers" class="tab-content">
+            <div class="card">
+                <h2>🔢 Lượng từ (Quantifiers) trong tiếng Anh</h2>
+                <p>Lượng từ là từ chỉ số lượng, đứng trước danh từ để bổ nghĩa. Phân loại theo danh từ đếm được / không đếm được.</p>
+
+                <h3>📊 Bảng lượng từ theo danh từ</h3>
+                <table>
+                    <thead>
+                        <tr><th>Đếm được</th><th>Không đếm được</th><th>Cả hai</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>many, a few, few, several, a large number of</td><td>much, a little, little, a great deal of</td><td>some, any, most, a lot of, lots of, plenty of</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>🔹 Phân biệt chi tiết</h3>
+                <div class="grid-list">
+                    <span class="grid-item quant">📈 Many + đếm được: many books</span>
+                    <span class="grid-item quant">📊 Much + không đếm được: much water</span>
+                    <span class="grid-item quant">⚖️ A lot of + cả hai: a lot of time</span>
+                    <span class="grid-item quant">🔹 A few (một vài) + đếm được</span>
+                    <span class="grid-item quant">🔸 A little (một chút) + không đếm</span>
+                    <span class="grid-item quant">❌ Few (rất ít) + đếm được</span>
+                    <span class="grid-item quant">❌ Little (rất ít) + không đếm</span>
+                </div>
+
+                <h3>🔹 Some / Any / No / None</h3>
+                <div class="example-box">
+                    <strong>Some</strong> – câu khẳng định, lời mời: <em>I have some money. Would you like some tea?</em><br />
+                    <strong>Any</strong> – phủ định, nghi vấn, khẳng định (bất cứ): <em>I don't have any. Any dictionaries can help.</em><br />
+                    <strong>No + N</strong> = none (không): <em>She has many books but I have none.</em>
+                </div>
+
+                <h3>🔹 All / Both / Neither / Either</h3>
+                <ul style="margin-left: 1.8rem; list-style-type: disc;">
+                    <li><strong>All</strong> – từ 3 trở lên: <em>All of them are expensive.</em></li>
+                    <li><strong>Both</strong> – cả hai: <em>Both hotels are good.</em></li>
+                    <li><strong>Neither</strong> – không cái nào (số ít, khẳng định): <em>I like neither of them.</em></li>
+                    <li><strong>Either</strong> – không cái nào (phủ định): <em>I don't like either of them.</em></li>
+                </ul>
+
+                <h3>🔹 Most / Most of / Almost</h3>
+                <div class="note-box">
+                    <strong>Most + N</strong> = hầu hết: <em>Most students like English.</em><br />
+                    <strong>Most of + the/ tính từ sở hữu + N</strong>: <em>Most of the students ...</em><br />
+                    <strong>Almost</strong> (gần như) + all/every/no/any: <em>Almost everyone agrees.</em>
+                </div>
+
+                <h3>🔹 Each / Every</h3>
+                <ul style="margin-left: 1.8rem; list-style-type: disc;">
+                    <li><strong>Each</strong> – từng cái (số ít): <em>Each ticket costs 200k.</em></li>
+                    <li><strong>Every</strong> – mọi (số ít): <em>Every student has a book.</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ===== TAB 3: TRẮC NGHIỆM ===== -->
+        <div id="luyentap" class="tab-content">
+            <div class="quiz-container">
+                <h2>🎯 Trắc nghiệm Articles &amp; Quantifiers</h2>
+                <p>✅ Chọn đáp án đúng, hệ thống sẽ chấm điểm và hiển thị giải thích.</p>
+                <form id="quizForm">
+                    <!-- 1 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">1. She is ______ honest person.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q1" value="A" /> an</label>
+                            <label class="option-label"><input type="radio" name="q1" value="B" /> a</label>
+                            <label class="option-label"><input type="radio" name="q1" value="C" /> the</label>
+                            <label class="option-label"><input type="radio" name="q1" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">"honest" bắt đầu bằng nguyên âm /ɒ/ → dùng "an".</div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="question" data-correct="C">
+                        <p class="question-text">2. We have ______ rice in the kitchen. (một ít)</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q2" value="A" /> few</label>
+                            <label class="option-label"><input type="radio" name="q2" value="B" /> a few</label>
+                            <label class="option-label"><input type="radio" name="q2" value="C" /> a little</label>
+                            <label class="option-label"><input type="radio" name="q2" value="D" /> little</label>
+                        </div>
+                        <div class="explanation">"rice" không đếm được, "một ít" → a little.</div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">3. I don't have ______ money left.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q3" value="A" /> some</label>
+                            <label class="option-label"><input type="radio" name="q3" value="B" /> any</label>
+                            <label class="option-label"><input type="radio" name="q3" value="C" /> a</label>
+                            <label class="option-label"><input type="radio" name="q3" value="D" /> the</label>
+                        </div>
+                        <div class="explanation">Câu phủ định dùng "any".</div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="question" data-correct="C">
+                        <p class="question-text">4. ______ of the students in my class are from Asia.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q4" value="A" /> Much</label>
+                            <label class="option-label"><input type="radio" name="q4" value="B" /> A little</label>
+                            <label class="option-label"><input type="radio" name="q4" value="C" /> Most</label>
+                            <label class="option-label"><input type="radio" name="q4" value="D" /> Every</label>
+                        </div>
+                        <div class="explanation">"students" đếm được, "hầu hết" → Most.</div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">5. He is ______ teacher at a local school.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q5" value="A" /> a</label>
+                            <label class="option-label"><input type="radio" name="q5" value="B" /> an</label>
+                            <label class="option-label"><input type="radio" name="q5" value="C" /> the</label>
+                            <label class="option-label"><input type="radio" name="q5" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">Trước nghề nghiệp dùng "a" (teacher bắt đầu phụ âm).</div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="question" data-correct="D">
+                        <p class="question-text">6. I have two shirts, but I like ______ of them.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q6" value="A" /> all</label>
+                            <label class="option-label"><input type="radio" name="q6" value="B" /> either</label>
+                            <label class="option-label"><input type="radio" name="q6" value="C" /> any</label>
+                            <label class="option-label"><input type="radio" name="q6" value="D" /> neither</label>
+                        </div>
+                        <div class="explanation">"hai cái, không cái nào" → neither (câu khẳng định).</div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">7. We need ______ information about the project.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q7" value="A" /> many</label>
+                            <label class="option-label"><input type="radio" name="q7" value="B" /> some</label>
+                            <label class="option-label"><input type="radio" name="q7" value="C" /> a few</label>
+                            <label class="option-label"><input type="radio" name="q7" value="D" /> few</label>
+                        </div>
+                        <div class="explanation">"information" không đếm được, câu khẳng định dùng some.</div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">8. ______ sun rises in the east.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q8" value="A" /> The</label>
+                            <label class="option-label"><input type="radio" name="q8" value="B" /> A</label>
+                            <label class="option-label"><input type="radio" name="q8" value="C" /> An</label>
+                            <label class="option-label"><input type="radio" name="q8" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">"sun" là duy nhất → dùng "The".</div>
+                    </div>
+                    <!-- 9 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">9. She has ______ books on her shelf. (rất ít)</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q9" value="A" /> a few</label>
+                            <label class="option-label"><input type="radio" name="q9" value="B" /> few</label>
+                            <label class="option-label"><input type="radio" name="q9" value="C" /> a little</label>
+                            <label class="option-label"><input type="radio" name="q9" value="D" /> little</label>
+                        </div>
+                        <div class="explanation">"books" đếm được, "rất ít" (gần như không) → few.</div>
+                    </div>
+                    <!-- 10 -->
+                    <div class="question" data-correct="C">
+                        <p class="question-text">10. Would you like ______ coffee?</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q10" value="A" /> any</label>
+                            <label class="option-label"><input type="radio" name="q10" value="B" /> a</label>
+                            <label class="option-label"><input type="radio" name="q10" value="C" /> some</label>
+                            <label class="option-label"><input type="radio" name="q10" value="D" /> the</label>
+                        </div>
+                        <div class="explanation">Câu mời/đề nghị dùng "some" (dù là nghi vấn).</div>
+                    </div>
+                    <!-- 11 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">11. ______ United States is a large country.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q11" value="A" /> The</label>
+                            <label class="option-label"><input type="radio" name="q11" value="B" /> A</label>
+                            <label class="option-label"><input type="radio" name="q11" value="C" /> An</label>
+                            <label class="option-label"><input type="radio" name="q11" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">Tên nước có "States" (số nhiều) → dùng The.</div>
+                    </div>
+                    <!-- 12 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">12. I have ______ interesting book to read.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q12" value="A" /> a</label>
+                            <label class="option-label"><input type="radio" name="q12" value="B" /> an</label>
+                            <label class="option-label"><input type="radio" name="q12" value="C" /> the</label>
+                            <label class="option-label"><input type="radio" name="q12" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">"interesting" bắt đầu nguyên âm /ɪ/ → an.</div>
+                    </div>
+                    <!-- 13 -->
+                    <div class="question" data-correct="D">
+                        <p class="question-text">13. Both of my parents ______ teachers.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q13" value="A" /> is</label>
+                            <label class="option-label"><input type="radio" name="q13" value="B" /> am</label>
+                            <label class="option-label"><input type="radio" name="q13" value="C" /> a</label>
+                            <label class="option-label"><input type="radio" name="q13" value="D" /> are</label>
+                        </div>
+                        <div class="explanation">Chủ ngữ "Both" số nhiều → động từ "are". (câu đánh giá lượng từ)</div>
+                    </div>
+                    <!-- 14 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">14. He has ______ money, so he can't buy that car.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q14" value="A" /> little</label>
+                            <label class="option-label"><input type="radio" name="q14" value="B" /> a little</label>
+                            <label class="option-label"><input type="radio" name="q14" value="C" /> few</label>
+                            <label class="option-label"><input type="radio" name="q14" value="D" /> a few</label>
+                        </div>
+                        <div class="explanation">"money" không đếm được, "rất ít" (không đủ) → little.</div>
+                    </div>
+                    <!-- 15 -->
+                    <div class="question" data-correct="C">
+                        <p class="question-text">15. ______ people in the room are from France.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q15" value="A" /> Much</label>
+                            <label class="option-label"><input type="radio" name="q15" value="B" /> A little</label>
+                            <label class="option-label"><input type="radio" name="q15" value="C" /> Most of the</label>
+                            <label class="option-label"><input type="radio" name="q15" value="D" /> Every</label>
+                        </div>
+                        <div class="explanation">"people" đếm được, dùng "Most of the + N" khi xác định.</div>
+                    </div>
+                    <!-- 16 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">16. I need ______ eggs for the cake.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q16" value="A" /> much</label>
+                            <label class="option-label"><input type="radio" name="q16" value="B" /> a few</label>
+                            <label class="option-label"><input type="radio" name="q16" value="C" /> little</label>
+                            <label class="option-label"><input type="radio" name="q16" value="D" /> a little</label>
+                        </div>
+                        <div class="explanation">"eggs" đếm được, "một vài" → a few.</div>
+                    </div>
+                    <!-- 17 -->
+                    <div class="question" data-correct="C">
+                        <p class="question-text">17. ______ Earth is the third planet from the sun.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q17" value="A" /> A</label>
+                            <label class="option-label"><input type="radio" name="q17" value="B" /> An</label>
+                            <label class="option-label"><input type="radio" name="q17" value="C" /> The</label>
+                            <label class="option-label"><input type="radio" name="q17" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">"Earth" là duy nhất → The.</div>
+                    </div>
+                    <!-- 18 -->
+                    <div class="question" data-correct="A">
+                        <p class="question-text">18. I have ______ questions for you. (một vài)</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q18" value="A" /> some</label>
+                            <label class="option-label"><input type="radio" name="q18" value="B" /> any</label>
+                            <label class="option-label"><input type="radio" name="q18" value="C" /> much</label>
+                            <label class="option-label"><input type="radio" name="q18" value="D" /> little</label>
+                        </div>
+                        <div class="explanation">Câu khẳng định, đếm được → some.</div>
+                    </div>
+                    <!-- 19 -->
+                    <div class="question" data-correct="D">
+                        <p class="question-text">19. She can speak ______ French.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q19" value="A" /> a</label>
+                            <label class="option-label"><input type="radio" name="q19" value="B" /> an</label>
+                            <label class="option-label"><input type="radio" name="q19" value="C" /> the</label>
+                            <label class="option-label"><input type="radio" name="q19" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">Tên ngôn ngữ không dùng mạo từ.</div>
+                    </div>
+                    <!-- 20 -->
+                    <div class="question" data-correct="B">
+                        <p class="question-text">20. ______ old in my neighborhood are very friendly.</p>
+                        <div class="options-route">
+                            <label class="option-label"><input type="radio" name="q20" value="A" /> A</label>
+                            <label class="option-label"><input type="radio" name="q20" value="B" /> The</label>
+                            <label class="option-label"><input type="radio" name="q20" value="C" /> An</label>
+                            <label class="option-label"><input type="radio" name="q20" value="D" /> (no article)</label>
+                        </div>
+                        <div class="explanation">"the + tính từ" chỉ nhóm người: the old = người già.</div>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài &amp; xem kết quả</button>
+                </form>
+                <div id="quizResult" class="result-score"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌿 Bài 8: Articles &amp; Quantifiers | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    </footer>
+
+    <script>
+        // ===== Điều hướng tabs =====
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // ===== Chấm quiz =====
+        function checkQuiz() {
+            const questions = document.querySelectorAll('#quizForm .question');
+            let score = 0;
+            questions.forEach((q, idx) => {
+                const correctVal = q.getAttribute('data-correct');
+                const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+                const explanationDiv = q.querySelector('.explanation');
+                const labels = q.querySelectorAll('.option-label');
+
+                labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+                if (explanationDiv) explanationDiv.style.display = 'block';
+
+                if (selected) {
+                    const userVal = selected.value;
+                    if (userVal === correctVal) {
+                        score++;
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                        labels.forEach(label => {
+                            if (label.querySelector('input').value === correctVal) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            const total = questions.length;
+            let msg = '';
+            if (score === total) msg = '🏆 Xuất sắc! Bạn đã nắm vững Articles & Quantifiers!';
+            else if (score >= 16) msg = '🌟 Rất tốt! Bạn hiểu bài rõ ràng!';
+            else if (score >= 12) msg = '📖 Khá ổn. Hãy xem lại lý thuyết ở Tab 1 & 2.';
+            else msg = '💪 Đừng nản! Xem kỹ phần lý thuyết và thử lại nhé!';
+            resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${msg}`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
