@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Bài tập Articles & Quantifiers | Anh Ngữ Toàn Diện</title>
+    <style>
+        /* ----- Reset & biến màu xanh lá chủ đạo ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a2f;
+            --secondary: #2d6a4f;
+            --accent: #409f7a;
+            --light-bg: #eafaf1;
+            --success: #2ecc71;
+            --warning: #f1c40f;
+            --danger: #e74c3c;
+            --gradient-start: #1b7a4a;
+            --gradient-end: #0f4c2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----- HEADER giống bài lý thuyết ----- */
+        .master-header {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+        .nav-home:hover {
+            background: white;
+            color: var(--gradient-start);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: white;
+            transition: fill 0.2s;
+        }
+        .nav-home:hover svg {
+            fill: var(--gradient-start);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0;
+        }
+        .title-section h1 {
+            font-size: 1.4rem;
+            color: white;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2d6a4f, #1b4d3a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1b7a4a, #0f4c2d);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        /* ----- TABS giống bài lý thuyết ----- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+            backdrop-filter: blur(2px);
+        }
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .tab-btn.active {
+            background: white;
+            color: var(--secondary);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- Quiz container ----- */
+        .quiz-container {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #f6fcf9;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4e8dd;
+            transition: all 0.2s;
+        }
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #1a2e24;
+        }
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f1f8f4;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .option-label:hover {
+            background: #dcefe4;
+            transform: scale(0.98);
+        }
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+        .correct {
+            background: #c8f0d9 !important;
+            border-color: var(--success) !important;
+            color: #155724;
+        }
+        .incorrect {
+            background: #f8d7da !important;
+            border-color: var(--danger) !important;
+            color: #721c24;
+        }
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #e9f5ef;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1b7a4a, #0a3d24);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #e9f5ef;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+        }
+
+        .progress-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="master-header">
+        <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z" />
+            </svg>
+            <span>🏠 Về trang chủ</span>
+        </a>
+        <div class="title-section">
+            <h1>✍️ Bài tập Articles &amp; Quantifiers</h1>
+        </div>
+        <a href="./8. articles and quantifiers.html" class="nav-theory">
+            📖 Xem lý thuyết
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- ===== TABS ===== -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('articles')">🔤 1. Mạo từ (30 câu)</button>
+            <button class="tab-btn" onclick="openTab('quantifiers')">🔢 2. Lượng từ (30 câu)</button>
+            <button class="tab-btn" onclick="openTab('mixed')">🔀 3. Trộn lẫn (30 câu)</button>
+        </div>
+
+        <!-- ===== TAB 1: ARTICLES ===== -->
+        <div id="articles" class="tab-content active">
+            <div class="quiz-container">
+                <h2>🔤 Luyện tập Mạo từ (Articles)</h2>
+                <div class="progress-info">📌 30 câu trắc nghiệm</div>
+                <form id="articlesForm">
+                    <!-- 30 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('articles')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="articlesResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: QUANTIFIERS ===== -->
+        <div id="quantifiers" class="tab-content">
+            <div class="quiz-container">
+                <h2>🔢 Luyện tập Lượng từ (Quantifiers)</h2>
+                <div class="progress-info">📌 30 câu trắc nghiệm</div>
+                <form id="quantifiersForm">
+                    <!-- 30 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('quantifiers')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="quantifiersResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 3: MIXED ===== -->
+        <div id="mixed" class="tab-content">
+            <div class="quiz-container">
+                <h2>🔀 Bài kiểm tra tổng hợp (Articles &amp; Quantifiers)</h2>
+                <div class="progress-info">📌 30 câu trộn lẫn</div>
+                <form id="mixedForm">
+                    <!-- 30 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('mixed')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="mixedResult" class="result-score"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌿 Bài tập Articles &amp; Quantifiers | Luyện tập chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    </footer>
+
+    <script>
+        // ===== Dữ liệu câu hỏi =====
+        // 30 câu về Mạo từ
+        const articleQuestions = [
+            { q: "She is ______ honest person.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"honest" bắt đầu nguyên âm /ɒ/ → dùng "an".' },
+            { q: "He is ______ teacher at a local school.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Trước nghề nghiệp dùng "a" (teacher bắt đầu phụ âm).' },
+            { q: "______ sun rises in the east.", opts: ["The", "A", "An", "(no article)"], ans: 0, exp: '"sun" là duy nhất → dùng "The".' },
+            { q: "______ United States is a large country.", opts: ["The", "A", "An", "(no article)"], ans: 0, exp: 'Tên nước có "States" (số nhiều) → dùng The.' },
+            { q: "I have ______ interesting book to read.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"interesting" bắt đầu nguyên âm /ɪ/ → an.' },
+            { q: "______ Earth is the third planet from the sun.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: '"Earth" là duy nhất → The.' },
+            { q: "She can speak ______ French.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Tên ngôn ngữ không dùng mạo từ.' },
+            { q: "______ old in my neighborhood are very friendly.", opts: ["A", "The", "An", "(no article)"], ans: 1, exp: '"the + tính từ" chỉ nhóm người: the old = người già.' },
+            { q: "My brother is ______ engineer.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"engineer" bắt đầu nguyên âm /e/ → an.' },
+            { q: "I need ______ hour to finish this report.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"hour" bắt đầu nguyên âm /aʊə/ → an.' },
+            { q: "______ Amazon River is the longest in South America.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên sông dùng "The".' },
+            { q: "We have ______ breakfast at 7:00 every day.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Bữa ăn không dùng mạo từ (trừ khi có tính từ).' },
+            { q: "He gave us ______ good breakfast.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Có tính từ "good" → dùng "a".' },
+            { q: "______ Pacific Ocean is very deep.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên đại dương dùng "The".' },
+            { q: "She is ______ most beautiful girl I know.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: 'So sánh nhất dùng "the".' },
+            { q: "I love listening to ______ music.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Danh từ trừu tượng không dùng mạo từ.' },
+            { q: "He is ______ university professor.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: '"university" bắt đầu phụ âm /juː/ → a.' },
+            { q: "______ Netherlands is famous for tulips.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên nước số nhiều dùng "The".' },
+            { q: "I saw ______ elephant at the zoo.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"elephant" bắt đầu nguyên âm /e/ → an.' },
+            { q: "We are going to ______ cinema tonight.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: 'Rạp chiếu phim xác định → the cinema.' },
+            { q: "She plays ______ piano very well.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: 'Nhạc cụ dùng "the".' },
+            { q: "He went to ______ hospital to visit his friend.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: 'Bệnh viện cụ thể → the hospital.' },
+            { q: "______ Philippines consist of many islands.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên nước số nhiều → The Philippines.' },
+            { q: "She is ______ European student.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: '"European" bắt đầu phụ âm /j/ → a.' },
+            { q: "I have ______ idea!", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"idea" bắt đầu nguyên âm /aɪ/ → an.' },
+            { q: "______ Nile is the longest river in Africa.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên sông dùng "The".' },
+            { q: "We stayed at ______ very nice hotel.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Lần đầu nhắc đến, chung chung → a.' },
+            { q: "______ rich should help the poor.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: '"the + tính từ" chỉ nhóm người.' },
+            { q: "I like to watch ______ football on TV.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Môn thể thao không dùng mạo từ.' },
+            { q: "This is ______ only chance we have.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: '"only" mang tính duy nhất → the.' }
+        ];
+
+        // 30 câu về Lượng từ
+        const quantifierQuestions = [
+            { q: "We have ______ rice in the kitchen. (một ít)", opts: ["few", "a few", "a little", "little"], ans: 2, exp: '"rice" không đếm được, "một ít" → a little.' },
+            { q: "I don't have ______ money left.", opts: ["some", "any", "a", "the"], ans: 1, exp: 'Câu phủ định dùng "any".' },
+            { q: "______ of the students in my class are from Asia.", opts: ["Much", "A little", "Most", "Every"], ans: 2, exp: '"students" đếm được, "hầu hết" → Most.' },
+            { q: "She has ______ books on her shelf. (rất ít)", opts: ["a few", "few", "a little", "little"], ans: 1, exp: '"books" đếm được, "rất ít" (gần như không) → few.' },
+            { q: "Would you like ______ coffee?", opts: ["any", "a", "some", "the"], ans: 2, exp: 'Câu mời/đề nghị dùng "some" (dù là nghi vấn).' },
+            { q: "I have ______ questions for you. (một vài)", opts: ["some", "any", "much", "little"], ans: 0, exp: 'Câu khẳng định, đếm được → some.' },
+            { q: "He has ______ money, so he can't buy that car.", opts: ["little", "a little", "few", "a few"], ans: 0, exp: '"money" không đếm được, "rất ít" (không đủ) → little.' },
+            { q: "I need ______ eggs for the cake.", opts: ["much", "a few", "little", "a little"], ans: 1, exp: '"eggs" đếm được, "một vài" → a few.' },
+            { q: "I have two shirts, but I like ______ of them.", opts: ["all", "either", "any", "neither"], ans: 3, exp: '"hai cái, không cái nào" → neither (câu khẳng định).' },
+            { q: "We need ______ information about the project.", opts: ["many", "some", "a few", "few"], ans: 1, exp: '"information" không đếm được, câu khẳng định dùng some.' },
+            { q: "______ people in the room are from France.", opts: ["Much", "A little", "Most of the", "Every"], ans: 2, exp: '"people" đếm được, dùng "Most of the + N" khi xác định.' },
+            { q: "Both of my parents ______ teachers.", opts: ["is", "am", "a", "are"], ans: 3, exp: 'Chủ ngữ "Both" số nhiều → động từ "are".' },
+            { q: "I have ______ books on my shelf. (một vài)", opts: ["a few", "few", "a little", "little"], ans: 0, exp: '"books" đếm được, "một vài" → a few.' },
+            { q: "There is ______ water in the glass. (một chút)", opts: ["a few", "few", "a little", "little"], ans: 2, exp: '"water" không đếm được, "một chút" → a little.' },
+            { q: "______ student in the class passed the exam.", opts: ["Every", "All", "Most", "Some"], ans: 0, exp: '"Every + danh từ số ít" → mọi học sinh.' },
+            { q: "I have ______ homework to do tonight.", opts: ["many", "a few", "a little", "few"], ans: 2, exp: '"homework" không đếm được → a little.' },
+            { q: "She has ______ friends in this city.", opts: ["much", "a little", "a few", "little"], ans: 2, exp: '"friends" đếm được, "một vài" → a few.' },
+            { q: "______ of the water was wasted.", opts: ["Many", "A few", "A little", "Much"], ans: 3, exp: '"water" không đếm được → Much.' },
+            { q: "I tried four hotels, but ______ of them were expensive.", opts: ["all", "both", "neither", "either"], ans: 0, exp: '"four hotels" (từ 3 trở lên) → all.' },
+            { q: "We have ______ time to finish this project.", opts: ["many", "a few", "plenty of", "few"], ans: 2, exp: '"time" không đếm được, "plenty of" dùng cho cả hai.' },
+            { q: "______ dictionaries can give you the meaning.", opts: ["Any", "No", "None", "A little"], ans: 0, exp: '"Any" trong câu khẳng định mang nghĩa "bất cứ".' },
+            { q: "She has many books but I have ______.", opts: ["no", "none", "any", "some"], ans: 1, exp: '"None" thay cho "no + N" đã được nhắc đến.' },
+            { q: "______ of the answers is correct.", opts: ["All", "Both", "Either", "None"], ans: 2, exp: '"Either" mang nghĩa "một trong hai" (số ít).' },
+            { q: "I can't decide between the two; ______ option is fine.", opts: ["all", "both", "neither", "either"], ans: 3, exp: '"either" = bất kỳ cái nào trong hai.' },
+            { q: "______ my parents are doctors.", opts: ["Both", "All", "Most", "Every"], ans: 0, exp: '"cả hai" → Both.' },
+            { q: "She drank ______ water after the long run.", opts: ["a few", "a little", "few", "many"], ans: 1, exp: '"water" không đếm được, "một ít" → a little.' },
+            { q: "We have ______ apples for the pie.", opts: ["much", "a little", "plenty of", "little"], ans: 2, exp: '"apples" đếm được, "plenty of" dùng cho cả hai.' },
+            { q: "He doesn't have ______ patience.", opts: ["many", "a few", "much", "few"], ans: 2, exp: '"patience" không đếm được, câu phủ định → much.' },
+            { q: "______ of the students have laptops.", opts: ["Most", "Much", "A little", "Every"], ans: 0, exp: '"students" đếm được → Most.' },
+            { q: "I have ______ sugar left. (một chút)", opts: ["a few", "a little", "few", "many"], ans: 1, exp: '"sugar" không đếm được → a little.' }
+        ];
+
+        // 30 câu trộn lẫn (Articles + Quantifiers)
+        const mixedQuestions = [
+            { q: "She is ______ honest person.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"honest" bắt đầu nguyên âm → an.' },
+            { q: "We have ______ rice in the kitchen. (một ít)", opts: ["few", "a few", "a little", "little"], ans: 2, exp: '"rice" không đếm được → a little.' },
+            { q: "I don't have ______ money left.", opts: ["some", "any", "a", "the"], ans: 1, exp: 'Câu phủ định dùng "any".' },
+            { q: "______ sun rises in the east.", opts: ["The", "A", "An", "(no article)"], ans: 0, exp: '"sun" là duy nhất → The.' },
+            { q: "______ of the students in my class are from Asia.", opts: ["Much", "A little", "Most", "Every"], ans: 2, exp: '"students" đếm được → Most.' },
+            { q: "He is ______ teacher at a local school.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Trước nghề nghiệp dùng "a".' },
+            { q: "She has ______ books on her shelf. (rất ít)", opts: ["a few", "few", "a little", "little"], ans: 1, exp: '"books" đếm được, "rất ít" → few.' },
+            { q: "______ United States is a large country.", opts: ["The", "A", "An", "(no article)"], ans: 0, exp: 'Tên nước số nhiều → The.' },
+            { q: "Would you like ______ coffee?", opts: ["any", "a", "some", "the"], ans: 2, exp: 'Câu mời dùng "some".' },
+            { q: "I have ______ interesting book to read.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"interesting" bắt đầu nguyên âm → an.' },
+            { q: "He has ______ money, so he can't buy that car.", opts: ["little", "a little", "few", "a few"], ans: 0, exp: '"money" không đếm được, "rất ít" → little.' },
+            { q: "______ Earth is the third planet from the sun.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: '"Earth" duy nhất → The.' },
+            { q: "I need ______ eggs for the cake.", opts: ["much", "a few", "little", "a little"], ans: 1, exp: '"eggs" đếm được → a few.' },
+            { q: "She can speak ______ French.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Tên ngôn ngữ không dùng mạo từ.' },
+            { q: "I have two shirts, but I like ______ of them.", opts: ["all", "either", "any", "neither"], ans: 3, exp: '"hai cái, không cái nào" → neither.' },
+            { q: "______ old in my neighborhood are very friendly.", opts: ["A", "The", "An", "(no article)"], ans: 1, exp: '"the + tính từ" chỉ nhóm người.' },
+            { q: "We need ______ information about the project.", opts: ["many", "some", "a few", "few"], ans: 1, exp: '"information" không đếm được → some.' },
+            { q: "My brother is ______ engineer.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"engineer" bắt đầu nguyên âm → an.' },
+            { q: "______ people in the room are from France.", opts: ["Much", "A little", "Most of the", "Every"], ans: 2, exp: '"Most of the + N" khi xác định.' },
+            { q: "I need ______ hour to finish this report.", opts: ["a", "an", "the", "(no article)"], ans: 1, exp: '"hour" bắt đầu nguyên âm → an.' },
+            { q: "Both of my parents ______ teachers.", opts: ["is", "am", "a", "are"], ans: 3, exp: '"Both" số nhiều → are.' },
+            { q: "______ Amazon River is the longest in South America.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên sông dùng "The".' },
+            { q: "I have ______ questions for you. (một vài)", opts: ["some", "any", "much", "little"], ans: 0, exp: 'Câu khẳng định, đếm được → some.' },
+            { q: "We have ______ breakfast at 7:00 every day.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Bữa ăn không dùng mạo từ.' },
+            { q: "There is ______ water in the glass. (một chút)", opts: ["a few", "few", "a little", "little"], ans: 2, exp: '"water" không đếm được → a little.' },
+            { q: "______ Pacific Ocean is very deep.", opts: ["A", "An", "The", "(no article)"], ans: 2, exp: 'Tên đại dương dùng "The".' },
+            { q: "______ student in the class passed the exam.", opts: ["Every", "All", "Most", "Some"], ans: 0, exp: '"Every + danh từ số ít".' },
+            { q: "She is ______ most beautiful girl I know.", opts: ["a", "an", "the", "(no article)"], ans: 2, exp: 'So sánh nhất dùng "the".' },
+            { q: "We have ______ apples for the pie.", opts: ["much", "a little", "plenty of", "little"], ans: 2, exp: '"apples" đếm được → plenty of.' },
+            { q: "I love listening to ______ music.", opts: ["a", "an", "the", "(no article)"], ans: 3, exp: 'Danh từ trừu tượng không dùng mạo từ.' }
+        ];
+
+        // ===== Hàm render câu hỏi =====
+        function renderQuestions(formId, questions, namePrefix) {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            let html = '';
+            questions.forEach((q, idx) => {
+                const qNum = idx + 1;
+                html += `
+                    <div class="question" data-correct="${q.ans}">
+                        <p class="question-text">${qNum}. ${q.q}</p>
+                        <div class="options-route">
+                `;
+                const letters = ['A', 'B', 'C', 'D'];
+                q.opts.forEach((opt, oi) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="${namePrefix}${qNum}" value="${oi}" />
+                            ${letters[oi]}. ${opt}
+                        </label>
+                    `;
+                });
+                html += `
+                        </div>
+                        <div class="explanation">${q.exp}</div>
+                    </div>
+                `;
+            });
+            form.innerHTML = html;
+        }
+
+        // ===== Hàm chấm bài =====
+        function checkQuiz(tab) {
+            const container = document.getElementById(tab);
+            const form = container.querySelector('form');
+            const resultDiv = container.querySelector('.result-score');
+            const questions = form.querySelectorAll('.question');
+            let score = 0;
+            let total = questions.length;
+
+            questions.forEach((q) => {
+                const correctVal = parseInt(q.getAttribute('data-correct'));
+                const selected = q.querySelector('input[type="radio"]:checked');
+                const explanationDiv = q.querySelector('.explanation');
+                const labels = q.querySelectorAll('.option-label');
+
+                labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+                if (explanationDiv) explanationDiv.style.display = 'block';
+
+                if (selected) {
+                    const userVal = parseInt(selected.value);
+                    if (userVal === correctVal) {
+                        score++;
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                        labels.forEach(label => {
+                            if (parseInt(label.querySelector('input').value) === correctVal) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    labels.forEach(label => {
+                        if (parseInt(label.querySelector('input').value) === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            resultDiv.style.display = 'block';
+            let msg = '';
+            const pct = Math.round(score / total * 100);
+            if (pct >= 90) msg = '🏆 Xuất sắc! Bạn đã nắm vững kiến thức!';
+            else if (pct >= 70) msg = '🌟 Rất tốt! Hãy xem lại một số câu sai nhé!';
+            else if (pct >= 50) msg = '📖 Khá ổn. Bạn nên ôn lại lý thuyết.';
+            else msg = '💪 Đừng nản! Xem kỹ lý thuyết ở tab "Xem lý thuyết" nhé!';
+            resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng (${pct}%). ${msg}`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // ===== Điều hướng tabs =====
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // ===== Khởi tạo câu hỏi =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestions('articlesForm', articleQuestions, 'art');
+            renderQuestions('quantifiersForm', quantifierQuestions, 'quan');
+            renderQuestions('mixedForm', mixedQuestions, 'mix');
+        });
+    </script>
+</body>
+</html>
