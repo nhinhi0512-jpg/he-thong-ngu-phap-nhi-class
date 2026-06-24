@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 12: Câu ghép & Câu phức | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a4a;
+            --secondary: #2c6e8f;
+            --accent: #4a8db7;
+            --success: #2b7a4b;
+            --warning: #d4a72c;
+            --danger: #b13e3e;
+            --light: #eef6fa;
+            --dark: #1e4a5e;
+            --gradient-start: #e3f0f7;
+            --gradient-end: #b6d4e6;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #e3f0f7 0%, #caddf0 40%, #b0cee2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #b0cee2;
+            box-shadow: 0 4px 16px rgba(44, 110, 143, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(44, 110, 143, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(44, 110, 143, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2c6e8f, #1a4a60);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(44, 110, 143, 0.25);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1e5a78, #0f3b4f);
+            box-shadow: 0 8px 18px rgba(44, 110, 143, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(44, 110, 143, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #b0cee2;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(44, 110, 143, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(44, 110, 143, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(44, 110, 143, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card, .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(44, 110, 143, 0.12);
+            border: 1px solid #d4e3ed;
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #bcd6e6;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2c6e8f, #1a4a60);
+            color: white;
+        }
+
+        .note-box {
+            background: #eef6fa;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+
+        .formula-box {
+            background: #eef6fa;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #e6f3e9;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .rule-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .rule-item {
+            background: #eef6fa;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .rule-item:hover {
+            border-color: var(--secondary);
+            background: #dcebf5;
+        }
+
+        .rule-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .question {
+            background: #f6fbfe;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4e3ed;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #eef6fa;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #dcebf5;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2e0d0 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #eef6fa;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2c6e8f, #1a4a60);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(44, 110, 143, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1e5a78, #0f3b4f);
+            box-shadow: 0 8px 18px rgba(44, 110, 143, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #eef6fa;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #b0cee2;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .compare-table td:first-child {
+            background: #eef6fa;
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .rule-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📚 Bài 12: Câu ghép & Câu phức</h1>
+        <div class="sub">Compound & Complex Sentences</div>
+    </div>
+    <a href="./12. practice.html" class="nav-practice">
+        ✍️ Làm bài tập
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('cau_ghep')">🔗 1. Câu ghép</button>
+        <button class="tab-btn" onclick="openTab('cau_phuc')">🧩 2. Câu phức</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 3. Trắc nghiệm tổng hợp</button>
+    </div>
+
+    <!-- TAB 1: CÂU GHÉP (gộp tổng quan + quy tắc chi tiết) -->
+    <div id="cau_ghep" class="tab-content active">
+        <div class="card">
+            <h2>📌 Câu ghép (Compound Sentences)</h2>
+            <div class="note-box">
+                <strong>💡 Định nghĩa:</strong>
+                <p style="font-size: 1.05rem; margin-top: 6px;">
+                    <strong>Câu ghép</strong> gồm <strong>hai mệnh đề độc lập</strong> (có chủ ngữ và vị ngữ riêng) được nối bằng <strong>liên từ kết hợp</strong> (FANBOYS) hoặc dấu chấm phẩy.
+                </p>
+            </div>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>She likes tea, <u>but</u> he prefers coffee.</em><br>
+                <em>I finished my homework, <u>so</u> I went to bed.</em>
+            </div>
+
+            <h3>🔹 Liên từ kết hợp (FANBOYS)</h3>
+            <table>
+                <thead>
+                    <tr><th style="background: #1a4a60;">Liên từ</th><th style="background: #1a4a60;">Ý nghĩa</th><th style="background: #1a4a60;">Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>F</strong>or</td><td>vì, bởi vì</td><td><em>He stayed home, for he was tired.</em></td></tr>
+                    <tr><td><strong>A</strong>nd</td><td>và</td><td><em>She sings, and he dances.</em></td></tr>
+                    <tr><td><strong>N</strong>or</td><td>cũng không</td><td><em>He didn't call, nor did he text.</em></td></tr>
+                    <tr><td><strong>B</strong>ut</td><td>nhưng</td><td><em>I tried, but I failed.</em></td></tr>
+                    <tr><td><strong>O</strong>r</td><td>hoặc, hay</td><td><em>You can go, or you can stay.</em></td></tr>
+                    <tr><td><strong>Y</strong>et</td><td>tuy nhiên, nhưng</td><td><em>She is young, yet very mature.</em></td></tr>
+                    <tr><td><strong>S</strong>o</td><td>vì vậy, cho nên</td><td><em>It rained, so we stayed inside.</em></td></tr>
+                </tbody>
+            </table>
+
+            <div class="formula-box">
+                <strong>📐 Cấu trúc:</strong><br>
+                <em>Mệnh đề 1 + , + liên từ kết hợp + mệnh đề 2.</em>
+            </div>
+
+            <h3>🟣 Đặc điểm câu ghép</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Hai mệnh đề độc lập</strong>
+                    Mỗi mệnh đề có chủ ngữ và động từ riêng.<br>
+                    <em>She reads books, and he watches movies.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Dấu phẩy trước liên từ</strong>
+                    Thường dùng dấu phẩy trước FANBOYS.<br>
+                    <em>He was hungry, so he ate a sandwich.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Có thể dùng dấu chấm phẩy</strong>
+                    Không cần liên từ khi dùng dấu chấm phẩy.<br>
+                    <em>She loves coffee; he loves tea.</em>
+                </div>
+            </div>
+
+            <h3>🟠 Lỗi thường gặp (Comma Splice & Run-on)</h3>
+            <div class="note-box">
+                <strong>⚠️ Lưu ý:</strong> Không dùng dấu phẩy để nối hai mệnh đề độc lập mà không có liên từ.<br>
+                ❌ <em>I went home, I was tired.</em><br>
+                ✅ <em>I went home, for I was tired.</em> hoặc <em>I went home; I was tired.</em>
+            </div>
+
+            <h3>🟢 Liên từ tương quan (Correlative Conjunctions)</h3>
+            <div class="rule-list">
+                <div class="rule-item"><strong>Both... and</strong> (cả... và)<br><em>Both my brother and I like sports.</em></div>
+                <div class="rule-item"><strong>Either... or</strong> (hoặc... hoặc)<br><em>You can either call or email.</em></div>
+                <div class="rule-item"><strong>Neither... nor</strong> (không... cũng không)<br><em>Neither the cat nor the dog is here.</em></div>
+                <div class="rule-item"><strong>Not only... but also</strong> (không những... mà còn)<br><em>She not only sings but also dances.</em></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: CÂU PHỨC -->
+    <div id="cau_phuc" class="tab-content">
+        <div class="card">
+            <h2>🧩 Câu phức (Complex Sentences)</h2>
+            <div class="note-box">
+                <strong>💡 Định nghĩa:</strong>
+                <p style="font-size: 1.05rem; margin-top: 6px;">
+                    <strong>Câu phức</strong> gồm <strong>một mệnh đề chính</strong> (độc lập) và <strong>ít nhất một mệnh đề phụ</strong> (không thể đứng riêng) được nối bằng <strong>liên từ phụ thuộc</strong> (subordinating conjunctions).
+                </p>
+            </div>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em><u>Because</u> it was raining, we stayed inside.</em> (Mệnh đề phụ + mệnh đề chính)<br>
+                <em>We stayed inside <u>because</u> it was raining.</em> (Mệnh đề chính + mệnh đề phụ)
+            </div>
+
+            <h3>🔹 Các liên từ phụ thuộc thường gặp</h3>
+            <table>
+                <thead>
+                    <tr><th style="background: #1a4a60;">Liên từ</th><th style="background: #1a4a60;">Ý nghĩa</th><th style="background: #1a4a60;">Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Because, since, as</strong></td><td>bởi vì</td><td><em>She stayed home because she was sick.</em></td></tr>
+                    <tr><td><strong>Although, though, even though</strong></td><td>mặc dù</td><td><em>Although it rained, we went out.</em></td></tr>
+                    <tr><td><strong>If, unless</strong></td><td>nếu, trừ khi</td><td><em>If you study, you will pass.</em></td></tr>
+                    <tr><td><strong>When, while, after, before, until</strong></td><td>thời gian</td><td><em>He called when I was eating.</em></td></tr>
+                    <tr><td><strong>So that, in order that</strong></td><td>để mà</td><td><em>She saved money so that she could travel.</em></td></tr>
+                </tbody>
+            </table>
+
+            <h3>🟣 Quy tắc dấu phẩy với câu phức</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Mệnh đề phụ đứng trước</strong>
+                    Dùng dấu phẩy ngăn cách.<br>
+                    <em>Because it was late, we went home.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Mệnh đề phụ đứng sau</strong>
+                    Không cần dấu phẩy.<br>
+                    <em>We went home because it was late.</em>
+                </div>
+            </div>
+
+            <h3>🟢 Phân biệt câu ghép và câu phức</h3>
+            <table class="compare-table">
+                <thead>
+                    <tr><th style="background: #1a4a60;">Câu ghép</th><th style="background: #1a4a60;">Câu phức</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Hai mệnh đề độc lập</td><td>Một mệnh đề độc lập + mệnh đề phụ</td></tr>
+                    <tr><td>Liên từ kết hợp (FANBOYS)</td><td>Liên từ phụ thuộc</td></tr>
+                    <tr><td><em>I like tea, but he likes coffee.</em></td><td><em>Although I like tea, he likes coffee.</em></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 3: TRẮC NGHIỆM TỔNG HỢP -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Trắc nghiệm tổng hợp: Câu ghép & Câu phức</h2>
+            <p>✅ Chọn đáp án đúng. Hệ thống sẽ chấm điểm và giải thích.</p>
+            <form id="quizForm">
+                <!-- 20 câu hỏi tích hợp cả câu ghép và câu phức -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. She wanted to go out, _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> although</label>
+                    </div>
+                    <div class="explanation">☔ Hai ý trái ngược → dùng "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. I was tired, _______ I went to bed early.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> although</label>
+                    </div>
+                    <div class="explanation">😴 Mệt → đi ngủ sớm (kết quả) → "so" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. _______ it was raining, we stayed inside.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> But</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> So</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> And</label>
+                    </div>
+                    <div class="explanation">🌧️ Lý do → "Because" (câu phức, mệnh đề phụ đứng trước).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">4. He doesn't like coffee, _______ does he like tea.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> nor</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🚫 "Nor" nối hai mệnh đề phủ định (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. You can have cake _______ ice cream for dessert.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> or</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> although</label>
+                    </div>
+                    <div class="explanation">🍰 Lựa chọn → "or" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">6. She is very young, _______ she is very wise.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🧠 Tương phản bất ngờ → "yet" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. He stayed home, _______ he was feeling unwell.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> for</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> although</label>
+                    </div>
+                    <div class="explanation">🤒 "For" = bởi vì (câu ghép, giải thích lý do).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">8. _______ the weather was bad, they went on a picnic.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> So</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> And</label>
+                    </div>
+                    <div class="explanation">🌧️ Mặc dù thời tiết xấu → "Although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. _______ my brother _______ my sister like swimming.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> Both ... and</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> Either ... or</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> Neither ... nor</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> Not only ... but also</label>
+                    </div>
+                    <div class="explanation">🏊 Cả hai đều thích → Both ... and (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">10. _______ the teacher _______ the students were in class.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> Both ... and</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> Either ... or</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> Neither ... nor</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> Not only ... but also</label>
+                    </div>
+                    <div class="explanation">🚫 Không ai ở lớp → Neither ... nor (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">11. She _______ plays piano _______ composes music.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> Both ... and</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> Either ... or</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> Neither ... nor</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> Not only ... but also</label>
+                    </div>
+                    <div class="explanation">🎹 Không những chơi đàn mà còn sáng tác (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">12. We stayed inside _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🌧️ Lý do → "because" (câu phức, mệnh đề phụ đứng sau).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. He didn't study, _______ he passed the exam.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> because</label>
+                    </div>
+                    <div class="explanation">📝 Không học nhưng vẫn đỗ → "yet" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. You can stay here, _______ you can go home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> or</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🚪 Lựa chọn → "or" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. She is intelligent, _______ she lacks experience.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🧠 Thông minh nhưng thiếu kinh nghiệm → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. _______ she was tired, she finished her homework.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> So</label>
+                        <label class="option-label"><input type="radio" name="q16" value="D"> And</label>
+                    </div>
+                    <div class="explanation">😓 Mặc dù mệt vẫn làm bài → "Although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. He is not only a teacher, _______ also a writer.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q17" value="D"> because</label>
+                    </div>
+                    <div class="explanation">✍️ Not only ... but also → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. I want to go, _______ I'm too busy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q18" value="D"> because</label>
+                    </div>
+                    <div class="explanation">⏳ Muốn đi nhưng bận → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">19. She speaks English, _______ she doesn't speak French.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q19" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🗣️ Nói tiếng Anh nhưng không nói tiếng Pháp → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">20. _______ he was hungry, he ate a sandwich.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> So</label>
+                        <label class="option-label"><input type="radio" name="q20" value="D"> But</label>
+                    </div>
+                    <div class="explanation">🍽️ Đói nên ăn sandwich → "Because" (câu phức).</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 12: Câu ghép & Câu phức | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững câu ghép và câu phức!';
+        } else if (score >= 16) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về compound & complex sentences!';
+        } else if (score >= 12) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
