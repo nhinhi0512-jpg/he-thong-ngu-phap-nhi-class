@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Bài tập Cấu trúc Tính từ & Trạng từ | Anh Ngữ Toàn Diện</title>
+    <style>
+        /* ----- Reset & biến màu vàng chủ đạo (đậm hơn) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a3a1a;
+            --secondary: #b7791f;
+            --accent: #d69e2e;
+            --light-bg: #fffbeb;
+            --success: #38a169;
+            --warning: #ecc94b;
+            --danger: #e53e3e;
+            --gradient-start: #b7791f;
+            --gradient-end: #7c5a10;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #d69e2e 0%, #b7791f 50%, #7c5a10 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----- HEADER giống bài lý thuyết ----- */
+        .master-header {
+            background: rgba(255, 255, 240, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #ecc94b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(214, 158, 46, 0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .nav-home:hover {
+            background: #d69e2e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(214, 158, 46, 0.3);
+        }
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0;
+        }
+        .title-section h1 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #b7791f, #7c5a10);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #d69e2e, #7c5a10);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        /* ----- TABS giống bài lý thuyết ----- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 240, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #ecc94b;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(214, 158, 46, 0.1);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover {
+            background: rgba(214, 158, 46, 0.25);
+            transform: translateY(-2px);
+        }
+        .tab-btn.active {
+            background: #d69e2e;
+            color: white;
+            box-shadow: 0 6px 12px rgba(214, 158, 46, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- Quiz container ----- */
+        .quiz-container {
+            background: rgba(255, 255, 245, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f6e05e;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #fffff8;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #f6e05e;
+            transition: all 0.2s;
+        }
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fefcbf;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .option-label:hover {
+            background: #f6e05e;
+            transform: scale(0.98);
+        }
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+        .correct {
+            background: #c6f6d5 !important;
+            border-color: var(--success) !important;
+            color: #22543d;
+        }
+        .incorrect {
+            background: #fed7d7 !important;
+            border-color: var(--danger) !important;
+            color: #742a2a;
+        }
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #fffff0;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #b7791f, #7c5a10);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #fffff0;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #ecc94b;
+        }
+
+        .progress-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 240, 0.9);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="master-header">
+        <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z" />
+            </svg>
+            <span>🏠 Về trang chủ</span>
+        </a>
+        <div class="title-section">
+            <h1>✍️ Bài tập Tính từ &amp; Trạng từ</h1>
+        </div>
+        <a href="./9. structures of adjectives.html" class="nav-theory">
+            📖 Xem lý thuyết
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- ===== TABS ===== -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('adj_basic')">📝 1. Tính từ cơ bản (25 câu)</button>
+            <button class="tab-btn" onclick="openTab('adv_basic')">📝 2. Trạng từ cơ bản (25 câu)</button>
+            <button class="tab-btn" onclick="openTab('adj_adv_mixed')">🔀 3. Trộn lẫn &amp; Nâng cao (25 câu)</button>
+        </div>
+
+        <!-- ===== TAB 1: ADJECTIVES BASIC ===== -->
+        <div id="adj_basic" class="tab-content active">
+            <div class="quiz-container">
+                <h2>📝 Luyện tập Tính từ cơ bản</h2>
+                <div class="progress-info">📌 25 câu trắc nghiệm</div>
+                <form id="adjBasicForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('adj_basic')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="adjBasicResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: ADVERBS BASIC ===== -->
+        <div id="adv_basic" class="tab-content">
+            <div class="quiz-container">
+                <h2>📝 Luyện tập Trạng từ cơ bản</h2>
+                <div class="progress-info">📌 25 câu trắc nghiệm</div>
+                <form id="advBasicForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('adv_basic')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="advBasicResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 3: MIXED & ADVANCED ===== -->
+        <div id="adj_adv_mixed" class="tab-content">
+            <div class="quiz-container">
+                <h2>🔀 Bài kiểm tra tổng hợp (Tính từ &amp; Trạng từ nâng cao)</h2>
+                <div class="progress-info">📌 25 câu trộn lẫn</div>
+                <form id="mixedForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('adj_adv_mixed')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="mixedResult" class="result-score"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌟 Bài tập Cấu trúc Tính từ &amp; Trạng từ | Luyện tập chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    </footer>
+
+    <script>
+        // ===== Dữ liệu câu hỏi =====
+
+        // 25 câu về Tính từ cơ bản
+        const adjBasicQuestions = [
+            { q: "She is a _______ dancer.", opts: ["good", "well", "goodly", "best"], ans: 0, exp: 'Sau danh từ "dancer" cần tính từ "good".' },
+            { q: "The soup tastes _______.", opts: ["delicious", "deliciously", "more delicious", "most delicious"], ans: 0, exp: 'Sau động từ liên kết "tastes" dùng tính từ "delicious".' },
+            { q: "He is a _______ worker.", opts: ["hard", "hardly", "harder", "hardest"], ans: 0, exp: '"hard" là tính từ khi bổ nghĩa cho danh từ "worker".' },
+            { q: "She seems _______ today.", opts: ["sad", "sadly", "sadder", "saddest"], ans: 0, exp: 'Sau động từ liên kết "seems" dùng tính từ "sad".' },
+            { q: "I feel _______ better now.", opts: ["much", "more", "most", "very"], ans: 0, exp: '"much" bổ nghĩa cho so sánh hơn "better".' },
+            { q: "This is a _______ car.", opts: ["fast", "fastly", "faster", "fastest"], ans: 0, exp: 'Trước danh từ "car" cần tính từ "fast".' },
+            { q: "She is _______ intelligent student.", opts: ["a very", "very", "much", "more"], ans: 0, exp: '"very" bổ nghĩa cho tính từ "intelligent", cần mạo từ "a".' },
+            { q: "The movie was _______ interesting.", opts: ["very", "much", "more", "most"], ans: 0, exp: '"very" bổ nghĩa cho tính từ "interesting".' },
+            { q: "He is a _______ careful driver.", opts: ["very", "much", "more", "most"], ans: 0, exp: '"very" bổ nghĩa cho cụm tính từ "careful driver".' },
+            { q: "This is _______ beautiful painting.", opts: ["a very", "very", "much", "more"], ans: 0, exp: '"very" bổ nghĩa cho tính từ, cần mạo từ "a".' },
+            { q: "She is _______ honest person.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"honest" bắt đầu nguyên âm → an.' },
+            { q: "He is _______ teacher at a local school.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Trước nghề nghiệp dùng "a".' },
+            { q: "I have _______ interesting book.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"interesting" bắt đầu nguyên âm → an.' },
+            { q: "My brother is _______ engineer.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"engineer" bắt đầu nguyên âm → an.' },
+            { q: "She is _______ most beautiful girl.", opts: ["the", "a", "an", "(no article)"], ans: 0, exp: 'So sánh nhất dùng "the".' },
+            { q: "He is _______ university professor.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: '"university" bắt đầu phụ âm /juː/ → a.' },
+            { q: "I saw _______ elephant at the zoo.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"elephant" bắt đầu nguyên âm → an.' },
+            { q: "She is _______ European student.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: '"European" bắt đầu phụ âm /j/ → a.' },
+            { q: "I have _______ idea!", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"idea" bắt đầu nguyên âm → an.' },
+            { q: "He gave us _______ good breakfast.", opts: ["a", "an", "the", "(no article)"], ans: 0, exp: 'Có tính từ "good" → dùng "a".' },
+            { q: "The food tastes _______.", opts: ["good", "well", "better", "best"], ans: 0, exp: 'Sau động từ liên kết "tastes" dùng tính từ "good".' },
+            { q: "She looks _______ in that dress.", opts: ["beautiful", "beautifully", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ liên kết "looks" dùng tính từ "beautiful".' },
+            { q: "The weather is _______ today.", opts: ["nice", "nicely", "nicer", "nicest"], ans: 0, exp: 'Sau động từ liên kết "is" dùng tính từ "nice".' },
+            { q: "He is _______ person I know.", opts: ["the kindest", "kindest", "a kindest", "most kindest"], ans: 0, exp: 'So sánh nhất dùng "the kindest".' },
+            { q: "This is _______ only chance.", opts: ["the", "a", "an", "(no article)"], ans: 0, exp: '"only" mang tính duy nhất → the.' }
+        ];
+
+        // 25 câu về Trạng từ cơ bản
+        const advBasicQuestions = [
+            { q: "She dances very _______.", opts: ["well", "good", "goodly", "best"], ans: 0, exp: 'Sau động từ "dances" cần trạng từ "well".' },
+            { q: "He works _______.", opts: ["hard", "hardly", "harder", "hardest"], ans: 0, exp: '"hard" là trạng từ (chăm chỉ), không đổi dạng.' },
+            { q: "I can _______ understand her.", opts: ["hardly", "hard", "harder", "most hard"], ans: 0, exp: '"hardly" = hầu như không, là trạng từ.' },
+            { q: "The test was _______ easy.", opts: ["really", "real", "more", "most"], ans: 0, exp: 'Trước tính từ "easy" cần trạng từ "really".' },
+            { q: "She speaks English _______.", opts: ["fluently", "fluent", "more fluent", "most fluent"], ans: 0, exp: 'Sau động từ "speaks" cần trạng từ "fluently".' },
+            { q: "He looked at me _______.", opts: ["angrily", "angry", "anger", "more angry"], ans: 0, exp: 'Sau động từ thường "looked" cần trạng từ "angrily".' },
+            { q: "He played the piano _______.", opts: ["beautifully", "beautiful", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ "played" cần trạng từ "beautifully".' },
+            { q: "She runs _______ than me.", opts: ["faster", "fast", "fastest", "more fast"], ans: 0, exp: 'So sánh hơn: "faster".' },
+            { q: "He arrived _______ than expected.", opts: ["later", "late", "lately", "latest"], ans: 0, exp: 'So sánh hơn dùng "later".' },
+            { q: "I haven't seen him _______.", opts: ["lately", "late", "later", "latest"], ans: 0, exp: '"lately" = gần đây, phù hợp với thì hiện tại hoàn thành.' },
+            { q: "She was _______ upset about the news.", opts: ["extremely", "extreme", "more", "most"], ans: 0, exp: 'Trước tính từ "upset" cần trạng từ "extremely".' },
+            { q: "He drives _______.", opts: ["carefully", "careful", "more careful", "most careful"], ans: 0, exp: 'Sau động từ "drives" cần trạng từ "carefully".' },
+            { q: "They spoke _______.", opts: ["quietly", "quiet", "quieter", "quietest"], ans: 0, exp: 'Sau động từ "spoke" cần trạng từ "quietly".' },
+            { q: "She smiled _______.", opts: ["happily", "happy", "happier", "happiest"], ans: 0, exp: 'Sau động từ "smiled" cần trạng từ "happily".' },
+            { q: "He answered _______.", opts: ["correctly", "correct", "more correct", "most correct"], ans: 0, exp: 'Sau động từ "answered" cần trạng từ "correctly".' },
+            { q: "She sings _______.", opts: ["beautifully", "beautiful", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ "sings" cần trạng từ "beautifully".' },
+            { q: "I _______ go to the gym.", opts: ["often", "oftenly", "more often", "most often"], ans: 0, exp: '"often" là trạng từ tần suất, không thêm -ly.' },
+            { q: "He _______ comes to class on time.", opts: ["usually", "usual", "more usual", "most usual"], ans: 0, exp: '"usually" là trạng từ tần suất.' },
+            { q: "She is _______ tired.", opts: ["very", "much", "more", "most"], ans: 0, exp: '"very" bổ nghĩa cho tính từ "tired".' },
+            { q: "He ran _______ to catch the bus.", opts: ["quickly", "quick", "quicker", "quickest"], ans: 0, exp: 'Sau động từ "ran" cần trạng từ "quickly".' },
+            { q: "She writes _______ than her brother.", opts: ["more neatly", "neatly", "neater", "neatest"], ans: 0, exp: 'So sánh hơn dùng "more neatly".' },
+            { q: "He spoke _______ during the meeting.", opts: ["confidently", "confident", "more confident", "most confident"], ans: 0, exp: 'Sau động từ "spoke" cần trạng từ "confidently".' },
+            { q: "They arrived _______ late.", opts: ["rather", "ratherly", "more rather", "most rather"], ans: 0, exp: '"rather" là trạng từ mức độ.' },
+            { q: "She is _______ beautiful.", opts: ["quite", "quite", "more", "most"], ans: 0, exp: '"quite" là trạng từ mức độ.' },
+            { q: "He works _______ now.", opts: ["harder", "hard", "hardly", "hardest"], ans: 0, exp: 'So sánh hơn dùng "harder".' }
+        ];
+
+        // 25 câu trộn lẫn & nâng cao
+        const mixedQuestions = [
+            { q: "She is a _______ dancer.", opts: ["good", "well", "goodly", "best"], ans: 0, exp: 'Sau danh từ dùng tính từ "good".' },
+            { q: "She dances very _______.", opts: ["well", "good", "goodly", "best"], ans: 0, exp: 'Sau động từ dùng trạng từ "well".' },
+            { q: "He is a _______ worker.", opts: ["hard", "hardly", "harder", "hardest"], ans: 0, exp: '"hard" là tính từ khi bổ nghĩa cho danh từ.' },
+            { q: "He works _______.", opts: ["hard", "hardly", "harder", "hardest"], ans: 0, exp: '"hard" là trạng từ (chăm chỉ).' },
+            { q: "I can _______ understand her.", opts: ["hardly", "hard", "harder", "most hard"], ans: 0, exp: '"hardly" = hầu như không.' },
+            { q: "The test was _______ easy.", opts: ["really", "real", "more", "most"], ans: 0, exp: 'Trước tính từ dùng trạng từ "really".' },
+            { q: "She speaks English _______.", opts: ["fluently", "fluent", "more fluent", "most fluent"], ans: 0, exp: 'Sau động từ dùng trạng từ "fluently".' },
+            { q: "The soup tastes _______.", opts: ["delicious", "deliciously", "more delicious", "most delicious"], ans: 0, exp: 'Sau động từ liên kết dùng tính từ "delicious".' },
+            { q: "He looked at me _______.", opts: ["angrily", "angry", "anger", "more angry"], ans: 0, exp: 'Sau động từ thường dùng trạng từ "angrily".' },
+            { q: "She seems _______ today.", opts: ["sad", "sadly", "sadder", "saddest"], ans: 0, exp: 'Sau động từ liên kết dùng tính từ "sad".' },
+            { q: "He played the piano _______.", opts: ["beautifully", "beautiful", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ dùng trạng từ "beautifully".' },
+            { q: "She is _______ honest person.", opts: ["an", "a", "the", "(no article)"], ans: 0, exp: '"honest" bắt đầu nguyên âm → an.' },
+            { q: "I feel _______ better now.", opts: ["much", "more", "most", "very"], ans: 0, exp: '"much" bổ nghĩa cho so sánh hơn.' },
+            { q: "He is _______ careful driver.", opts: ["a very", "very", "much", "more"], ans: 0, exp: '"very" bổ nghĩa cho cụm tính từ, cần mạo từ.' },
+            { q: "She runs _______ than me.", opts: ["faster", "fast", "fastest", "more fast"], ans: 0, exp: 'So sánh hơn dùng "faster".' },
+            { q: "He arrived _______ than expected.", opts: ["later", "late", "lately", "latest"], ans: 0, exp: 'So sánh hơn dùng "later".' },
+            { q: "I haven't seen him _______.", opts: ["lately", "late", "later", "latest"], ans: 0, exp: '"lately" = gần đây.' },
+            { q: "She was _______ upset.", opts: ["extremely", "extreme", "more", "most"], ans: 0, exp: 'Trước tính từ dùng trạng từ "extremely".' },
+            { q: "He is _______ most beautiful singer.", opts: ["the", "a", "an", "(no article)"], ans: 0, exp: 'So sánh nhất dùng "the".' },
+            { q: "The food tastes _______.", opts: ["good", "well", "better", "best"], ans: 0, exp: 'Sau động từ liên kết dùng tính từ "good".' },
+            { q: "She looks _______ in that dress.", opts: ["beautiful", "beautifully", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ liên kết dùng tính từ "beautiful".' },
+            { q: "He drives _______.", opts: ["carefully", "careful", "more careful", "most careful"], ans: 0, exp: 'Sau động từ dùng trạng từ "carefully".' },
+            { q: "This is _______ only chance.", opts: ["the", "a", "an", "(no article)"], ans: 0, exp: '"only" mang tính duy nhất → the.' },
+            { q: "She sings _______.", opts: ["beautifully", "beautiful", "more beautiful", "most beautiful"], ans: 0, exp: 'Sau động từ dùng trạng từ "beautifully".' },
+            { q: "He works _______ now.", opts: ["harder", "hard", "hardly", "hardest"], ans: 0, exp: 'So sánh hơn dùng "harder".' }
+        ];
+
+        // ===== Hàm render câu hỏi =====
+        function renderQuestions(formId, questions, namePrefix) {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            let html = '';
+            questions.forEach((q, idx) => {
+                const qNum = idx + 1;
+                html += `
+                    <div class="question" data-correct="${q.ans}">
+                        <p class="question-text">${qNum}. ${q.q}</p>
+                        <div class="options-route">
+                `;
+                const letters = ['A', 'B', 'C', 'D'];
+                q.opts.forEach((opt, oi) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="${namePrefix}${qNum}" value="${oi}" />
+                            ${letters[oi]}. ${opt}
+                        </label>
+                    `;
+                });
+                html += `
+                        </div>
+                        <div class="explanation">${q.exp}</div>
+                    </div>
+                `;
+            });
+            form.innerHTML = html;
+        }
+
+        // ===== Hàm chấm bài =====
+        function checkQuiz(tab) {
+            const container = document.getElementById(tab);
+            const form = container.querySelector('form');
+            const resultDiv = container.querySelector('.result-score');
+            const questions = form.querySelectorAll('.question');
+            let score = 0;
+            let total = questions.length;
+
+            questions.forEach((q) => {
+                const correctVal = parseInt(q.getAttribute('data-correct'));
+                const selected = q.querySelector('input[type="radio"]:checked');
+                const explanationDiv = q.querySelector('.explanation');
+                const labels = q.querySelectorAll('.option-label');
+
+                labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+                if (explanationDiv) explanationDiv.style.display = 'block';
+
+                if (selected) {
+                    const userVal = parseInt(selected.value);
+                    if (userVal === correctVal) {
+                        score++;
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                        labels.forEach(label => {
+                            if (parseInt(label.querySelector('input').value) === correctVal) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    labels.forEach(label => {
+                        if (parseInt(label.querySelector('input').value) === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            resultDiv.style.display = 'block';
+            let msg = '';
+            const pct = Math.round(score / total * 100);
+            if (pct >= 90) msg = '🏆 Xuất sắc! Bạn đã nắm vững kiến thức!';
+            else if (pct >= 70) msg = '🌟 Rất tốt! Hãy xem lại một số câu sai nhé!';
+            else if (pct >= 50) msg = '📖 Khá ổn. Bạn nên ôn lại lý thuyết.';
+            else msg = '💪 Đừng nản! Xem kỹ lý thuyết ở tab "Xem lý thuyết" nhé!';
+            resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng (${pct}%). ${msg}`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // ===== Điều hướng tabs =====
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // ===== Khởi tạo câu hỏi =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestions('adjBasicForm', adjBasicQuestions, 'adj');
+            renderQuestions('advBasicForm', advBasicQuestions, 'adv');
+            renderQuestions('mixedForm', mixedQuestions, 'mix');
+        });
+    </script>
+</body>
+</html>
