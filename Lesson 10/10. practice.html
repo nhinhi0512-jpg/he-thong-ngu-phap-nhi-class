@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Bài tập Subject & Verb Agreement | Anh Ngữ Toàn Diện</title>
+    <style>
+        /* ----- Reset & biến màu tím trắng (đậm hơn) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d1b4e;
+            --secondary: #6d28d9;
+            --accent: #8b5cf6;
+            --light-bg: #f5f3ff;
+            --success: #38a169;
+            --warning: #ecc94b;
+            --danger: #e53e3e;
+            --gradient-start: #6d28d9;
+            --gradient-end: #4c1d95;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 50%, #4c1d95 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ----- HEADER giống bài lý thuyết ----- */
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #c4b5fd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(124, 58, 237, 0.12);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .nav-home:hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(124, 58, 237, 0.3);
+        }
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0;
+        }
+        .title-section h1 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #6d28d9, #4c1d95);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #7c3aed, #4c1d95);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        /* ----- TABS giống bài lý thuyết ----- */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #c4b5fd;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(124, 58, 237, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+        }
+        .tab-btn.active {
+            background: #7c3aed;
+            color: white;
+            box-shadow: 0 6px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ----- Quiz container ----- */
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ede9fe;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #faf8ff;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ede9fe;
+            transition: all 0.2s;
+        }
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f5f3ff;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .option-label:hover {
+            background: #ede9fe;
+            transform: scale(0.98);
+        }
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+        .correct {
+            background: #c6f6d5 !important;
+            border-color: var(--success) !important;
+            color: #22543d;
+        }
+        .incorrect {
+            background: #fed7d7 !important;
+            border-color: var(--danger) !important;
+            color: #742a2a;
+        }
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #f5f3ff;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(124, 58, 237, 0.2);
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #6d28d9, #4c1d95);
+            box-shadow: 0 8px 18px rgba(124, 58, 237, 0.3);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #f5f3ff;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #c4b5fd;
+        }
+
+        .progress-info {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <div class="master-header">
+        <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z" />
+            </svg>
+            <span>🏠 Về trang chủ</span>
+        </a>
+        <div class="title-section">
+            <h1>✍️ Bài tập Subject &amp; Verb Agreement</h1>
+        </div>
+        <a href="./10. subject and verb agreement.html" class="nav-theory">
+            📖 Xem lý thuyết
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="container">
+        <!-- ===== TABS ===== -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('sv_basic')">📝 1. Quy tắc cơ bản (25 câu)</button>
+            <button class="tab-btn" onclick="openTab('sv_special')">📝 2. Quy tắc đặc biệt (25 câu)</button>
+            <button class="tab-btn" onclick="openTab('sv_mixed')">🔀 3. Trộn lẫn &amp; Nâng cao (25 câu)</button>
+        </div>
+
+        <!-- ===== TAB 1: BASIC RULES ===== -->
+        <div id="sv_basic" class="tab-content active">
+            <div class="quiz-container">
+                <h2>📝 Quy tắc cơ bản: Số ít - Số nhiều</h2>
+                <div class="progress-info">📌 25 câu trắc nghiệm</div>
+                <form id="svBasicForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('sv_basic')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="svBasicResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 2: SPECIAL RULES ===== -->
+        <div id="sv_special" class="tab-content">
+            <div class="quiz-container">
+                <h2>📝 Quy tắc đặc biệt</h2>
+                <div class="progress-info">📌 25 câu trắc nghiệm</div>
+                <form id="svSpecialForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('sv_special')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="svSpecialResult" class="result-score"></div>
+            </div>
+        </div>
+
+        <!-- ===== TAB 3: MIXED & ADVANCED ===== -->
+        <div id="sv_mixed" class="tab-content">
+            <div class="quiz-container">
+                <h2>🔀 Bài kiểm tra tổng hợp (Subject &amp; Verb Agreement)</h2>
+                <div class="progress-info">📌 25 câu trộn lẫn</div>
+                <form id="svMixedForm">
+                    <!-- 25 câu sẽ được generate bằng JS -->
+                </form>
+                <button type="button" class="submit-btn" onclick="checkQuiz('sv_mixed')">🎯 Nộp bài &amp; xem kết quả</button>
+                <div id="svMixedResult" class="result-score"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌟 Bài tập Subject &amp; Verb Agreement | Luyện tập chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    </footer>
+
+    <script>
+        // ===== Dữ liệu câu hỏi =====
+
+        // 25 câu về Quy tắc cơ bản
+        const svBasicQuestions = [
+            { q: "The dog _______ barking loudly.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The dog" số ít → "is".' },
+            { q: "The dogs _______ barking loudly.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The dogs" số nhiều → "are".' },
+            { q: "She _______ to school every day.", opts: ["goes", "go", "going", "gone"], ans: 0, exp: '"She" số ít → "goes".' },
+            { q: "They _______ to school every day.", opts: ["goes", "go", "going", "gone"], ans: 1, exp: '"They" số nhiều → "go".' },
+            { q: "My brother _______ a teacher.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"My brother" số ít → "is".' },
+            { q: "My brothers _______ teachers.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"My brothers" số nhiều → "are".' },
+            { q: "The cat _______ sleeping on the bed.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The cat" số ít → "is".' },
+            { q: "The cats _______ sleeping on the bed.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The cats" số nhiều → "are".' },
+            { q: "He _______ a new car.", opts: ["has", "have", "having", "had"], ans: 0, exp: '"He" số ít → "has".' },
+            { q: "They _______ a new car.", opts: ["has", "have", "having", "had"], ans: 1, exp: '"They" số nhiều → "have".' },
+            { q: "The book _______ on the table.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The book" số ít → "is".' },
+            { q: "The books _______ on the table.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The books" số nhiều → "are".' },
+            { q: "She _______ very happy today.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"She" số ít → "is".' },
+            { q: "We _______ very happy today.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"We" số nhiều → "are".' },
+            { q: "The boy _______ playing football.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The boy" số ít → "is".' },
+            { q: "The boys _______ playing football.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The boys" số nhiều → "are".' },
+            { q: "My sister _______ a doctor.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"My sister" số ít → "is".' },
+            { q: "My sisters _______ doctors.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"My sisters" số nhiều → "are".' },
+            { q: "The house _______ very big.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The house" số ít → "is".' },
+            { q: "The houses _______ very big.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The houses" số nhiều → "are".' },
+            { q: "It _______ raining outside.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"It" số ít → "is".' },
+            { q: "You _______ a good student.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"You" số nhiều (cả số ít) → "are".' },
+            { q: "I _______ a student.", opts: ["is", "are", "am", "were"], ans: 2, exp: '"I" đi với "am".' },
+            { q: "The water _______ cold.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Water" không đếm được → số ít "is".' },
+            { q: "The students _______ in the classroom.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The students" số nhiều → "are".' }
+        ];
+
+        // 25 câu về Quy tắc đặc biệt
+        const svSpecialQuestions = [
+            { q: "Each student _______ a notebook.", opts: ["has", "have", "are", "were"], ans: 0, exp: '"Each" luôn đi với động từ số ít → "has".' },
+            { q: "Everyone _______ excited about the trip.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Everyone" là đại từ bất định số ít → "is".' },
+            { q: "Both of my parents _______ teachers.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"Both" luôn số nhiều → "are".' },
+            { q: "Neither the teacher nor the students _______ in the room.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chia theo chủ ngữ gần nhất "students" → "are".' },
+            { q: "Neither the students nor the teacher _______ in the room.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chia theo chủ ngữ gần nhất "teacher" → "is".' },
+            { q: "Not only the students but also the teacher _______ excited.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chia theo chủ ngữ gần nhất "teacher" → "is".' },
+            { q: "Not only the teacher but also the students _______ excited.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chia theo chủ ngữ gần nhất "students" → "are".' },
+            { q: "The team _______ playing very well today.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Danh từ tập hợp coi là một nhóm → "is".' },
+            { q: "The team _______ arguing among themselves.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Danh từ tập hợp coi là từng cá nhân → "are".' },
+            { q: "Everybody _______ the answer.", opts: ["knows", "know", "knowing", "known"], ans: 0, exp: '"Everybody" số ít → "knows".' },
+            { q: "Few people _______ here.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"Few" chỉ số nhiều → "are".' },
+            { q: "Many students _______ absent today.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"Many" chỉ số nhiều → "are".' },
+            { q: "A number of students _______ in the hall.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"A number of" + danh từ số nhiều → "are".' },
+            { q: "The number of students _______ increasing.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The number of" + danh từ → động từ số ít "is".' },
+            { q: "Mathematics _______ my favorite subject.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Mathematics" là danh từ số ít → "is".' },
+            { q: "The news _______ very surprising.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"News" là danh từ số ít → "is".' },
+            { q: "A lot of water _______ wasted.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Water" không đếm được → số ít "is".' },
+            { q: "A lot of people _______ here.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"People" số nhiều → "are".' },
+            { q: "Either answer _______ correct.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Either" + danh từ số ít → "is".' },
+            { q: "Neither answer _______ correct.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Neither" + danh từ số ít → "is".' },
+            { q: "The book, along with the pens, _______ on the table.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ chính là "book" (số ít) → "is".' },
+            { q: "The teacher, together with the students, _______ in the room.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ chính là "teacher" (số ít) → "is".' },
+            { q: "There _______ a cat in the garden.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ là "a cat" (số ít) → "is".' },
+            { q: "There _______ cats in the garden.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chủ ngữ là "cats" (số nhiều) → "are".' },
+            { q: "Everyone in the class _______ the homework.", opts: ["has done", "have done", "are done", "were done"], ans: 0, exp: '"Everyone" số ít → "has done".' }
+        ];
+
+        // 25 câu trộn lẫn & nâng cao
+        const svMixedQuestions = [
+            { q: "The dog _______ barking loudly.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The dog" số ít → "is".' },
+            { q: "Each student _______ a notebook.", opts: ["has", "have", "are", "were"], ans: 0, exp: '"Each" luôn số ít → "has".' },
+            { q: "The team _______ playing very well.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Danh từ tập hợp coi là một nhóm → "is".' },
+            { q: "Both of my parents _______ teachers.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"Both" số nhiều → "are".' },
+            { q: "Neither the teacher nor the students _______ in the room.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chia theo chủ ngữ gần nhất "students" → "are".' },
+            { q: "Neither the students nor the teacher _______ in the room.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chia theo chủ ngữ gần nhất "teacher" → "is".' },
+            { q: "Not only the students but also the teacher _______ excited.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chia theo chủ ngữ gần nhất "teacher" → "is".' },
+            { q: "Not only the teacher but also the students _______ excited.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chia theo chủ ngữ gần nhất "students" → "are".' },
+            { q: "Everybody _______ the answer.", opts: ["knows", "know", "knowing", "known"], ans: 0, exp: '"Everybody" số ít → "knows".' },
+            { q: "A number of students _______ in the hall.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"A number of" + danh từ số nhiều → "are".' },
+            { q: "The number of students _______ increasing.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"The number of" → số ít "is".' },
+            { q: "Mathematics _______ my favorite subject.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Mathematics" là danh từ số ít → "is".' },
+            { q: "The news _______ very surprising.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"News" là danh từ số ít → "is".' },
+            { q: "A lot of water _______ wasted.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Water" không đếm được → số ít "is".' },
+            { q: "A lot of people _______ here.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"People" số nhiều → "are".' },
+            { q: "Either answer _______ correct.", opts: ["is", "are", "am", "were"], ans: 0, exp: '"Either" + danh từ số ít → "is".' },
+            { q: "The book, along with the pens, _______ on the table.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ chính là "book" (số ít) → "is".' },
+            { q: "There _______ a cat in the garden.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ là "a cat" (số ít) → "is".' },
+            { q: "There _______ cats in the garden.", opts: ["is", "are", "am", "was"], ans: 1, exp: 'Chủ ngữ là "cats" (số nhiều) → "are".' },
+            { q: "She _______ to school every day.", opts: ["goes", "go", "going", "gone"], ans: 0, exp: '"She" số ít → "goes".' },
+            { q: "They _______ to school every day.", opts: ["goes", "go", "going", "gone"], ans: 1, exp: '"They" số nhiều → "go".' },
+            { q: "The books _______ on the table.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"The books" số nhiều → "are".' },
+            { q: "Everyone in the class _______ the homework.", opts: ["has done", "have done", "are done", "were done"], ans: 0, exp: '"Everyone" số ít → "has done".' },
+            { q: "My sisters _______ doctors.", opts: ["is", "are", "am", "was"], ans: 1, exp: '"My sisters" số nhiều → "are".' },
+            { q: "The dog, along with the cats, _______ in the yard.", opts: ["is", "are", "am", "were"], ans: 0, exp: 'Chủ ngữ chính là "dog" (số ít) → "is".' }
+        ];
+
+        // ===== Hàm render câu hỏi =====
+        function renderQuestions(formId, questions, namePrefix) {
+            const form = document.getElementById(formId);
+            if (!form) return;
+            let html = '';
+            questions.forEach((q, idx) => {
+                const qNum = idx + 1;
+                html += `
+                    <div class="question" data-correct="${q.ans}">
+                        <p class="question-text">${qNum}. ${q.q}</p>
+                        <div class="options-route">
+                `;
+                const letters = ['A', 'B', 'C', 'D'];
+                q.opts.forEach((opt, oi) => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="${namePrefix}${qNum}" value="${oi}" />
+                            ${letters[oi]}. ${opt}
+                        </label>
+                    `;
+                });
+                html += `
+                        </div>
+                        <div class="explanation">${q.exp}</div>
+                    </div>
+                `;
+            });
+            form.innerHTML = html;
+        }
+
+        // ===== Hàm chấm bài =====
+        function checkQuiz(tab) {
+            const container = document.getElementById(tab);
+            const form = container.querySelector('form');
+            const resultDiv = container.querySelector('.result-score');
+            const questions = form.querySelectorAll('.question');
+            let score = 0;
+            let total = questions.length;
+
+            questions.forEach((q) => {
+                const correctVal = parseInt(q.getAttribute('data-correct'));
+                const selected = q.querySelector('input[type="radio"]:checked');
+                const explanationDiv = q.querySelector('.explanation');
+                const labels = q.querySelectorAll('.option-label');
+
+                labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+                if (explanationDiv) explanationDiv.style.display = 'block';
+
+                if (selected) {
+                    const userVal = parseInt(selected.value);
+                    if (userVal === correctVal) {
+                        score++;
+                        selected.parentElement.classList.add('correct');
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                        labels.forEach(label => {
+                            if (parseInt(label.querySelector('input').value) === correctVal) {
+                                label.classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    labels.forEach(label => {
+                        if (parseInt(label.querySelector('input').value) === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            resultDiv.style.display = 'block';
+            let msg = '';
+            const pct = Math.round(score / total * 100);
+            if (pct >= 90) msg = '🏆 Xuất sắc! Bạn đã nắm vững kiến thức!';
+            else if (pct >= 70) msg = '🌟 Rất tốt! Hãy xem lại một số câu sai nhé!';
+            else if (pct >= 50) msg = '📖 Khá ổn. Bạn nên ôn lại lý thuyết.';
+            else msg = '💪 Đừng nản! Xem kỹ lý thuyết ở tab "Xem lý thuyết" nhé!';
+            resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng (${pct}%). ${msg}`;
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // ===== Điều hướng tabs =====
+        function openTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        // ===== Khởi tạo câu hỏi =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestions('svBasicForm', svBasicQuestions, 'svb');
+            renderQuestions('svSpecialForm', svSpecialQuestions, 'svs');
+            renderQuestions('svMixedForm', svMixedQuestions, 'svm');
+        });
+    </script>
+</body>
+</html>
