@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 9: Cấu trúc Tính từ & Trạng từ | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Giao diện chính - tông vàng ấm, dịu nhẹ */
+        :root {
+            --primary: #3d2e1b;
+            --secondary: #b7791f;
+            --accent: #d69e2e;
+            --success: #38a169;
+            --warning: #ecc94b;
+            --danger: #e53e3e;
+            --light: #fefcbf;
+            --dark: #5f4b2c;
+            --gradient-start: #f6e05e;
+            --gradient-end: #d69e2e;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #fefcbf 0%, #f6e05e 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 240, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #ecc94b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(214, 158, 46, 0.15);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: #d69e2e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(214, 158, 46, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #2f855a, #276749);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.5rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(214, 158, 46, 0.15);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 240, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #ecc94b;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(214, 158, 46, 0.1);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(214, 158, 46, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: #d69e2e;
+            color: white;
+            box-shadow: 0 6px 12px rgba(214, 158, 46, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card, .quiz-container {
+            background: rgba(255, 255, 245, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            border: 1px solid #f6e05e;
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #ecc94b;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
+            color: white;
+        }
+
+        .note-box {
+            background: #fffbeb;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+
+        .formula-box {
+            background: #fffff0;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #f0fff4;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .word-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .word-item {
+            background: #fefcbf;
+            padding: 10px 14px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .word-item:hover {
+            border-color: var(--secondary);
+            background: #f6e05e;
+        }
+
+        .word-item.adj {
+            border-color: #d69e2e;
+        }
+
+        .word-item.adv {
+            border-color: #3b82f6;
+        }
+
+        .question {
+            background: #fffff8;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #f6e05e;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #fefcbf;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #f6e05e;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c6f6d5 !important;
+            border-color: var(--success) !important;
+            color: #22543d;
+        }
+
+        .incorrect {
+            background: #fed7d7 !important;
+            border-color: var(--danger) !important;
+            color: #742a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #fffff0;
+            border-left: 4px solid var(--warning);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #d69e2e, #b7791f);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.08);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #b7791f, #975a16);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #fffff0;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #ecc94b;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .word-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Thanh điều hướng -->
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📝 Bài 9: Cấu trúc Tính từ & Trạng từ</h1>
+        <div class="sub">Structures of Adjectives & Adverbs</div>
+    </div>
+    <a href="./7. practice.html" class="nav-practice">
+        ✍️ Làm bài tập
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('tong_quan')">📖 1. Tổng quan Adj & Adv</button>
+        <button class="tab-btn" onclick="openTab('chi_tiet')">🔍 2. Phân tích chuyên sâu</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 3. Trắc nghiệm tổng hợp</button>
+    </div>
+
+    <!-- TAB 1: TỔNG QUAN -->
+    <div id="tong_quan" class="tab-content active">
+        <div class="card">
+            <h2>📌 Tổng quan về Tính từ (Adjective) và Trạng từ (Adverb)</h2>
+            
+            <h3>🔹 Tính từ (Adjective) là gì?</h3>
+            <p><strong>Tính từ</strong> là từ dùng để miêu tả hoặc bổ nghĩa cho <strong>danh từ</strong> hoặc <strong>đại từ</strong>. Nó cho biết đặc điểm, tính chất, trạng thái của người hoặc vật.</p>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>She is a <u>beautiful</u> girl.</em> (Cô ấy là một cô gái xinh đẹp.)<br>
+                <em>The car is <u>fast</u>.</em> (Chiếc xe nhanh.)
+            </div>
+
+            <h3>🔹 Trạng từ (Adverb) là gì?</h3>
+            <p><strong>Trạng từ</strong> là từ dùng để bổ nghĩa cho <strong>động từ</strong>, <strong>tính từ</strong>, hoặc một <strong>trạng từ khác</strong>. Nó cho biết mức độ, cách thức, thời gian, địa điểm, tần suất...</p>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>She sings <u>beautifully</u>.</em> (Cô ấy hát hay.)<br>
+                <em>He runs <u>very</u> fast.</em> (Anh ấy chạy rất nhanh.)
+            </div>
+
+            <div class="note-box">
+                <strong>💡 Mẹo phân biệt nhanh:</strong>
+                <ul>
+                    <li><strong>Tính từ:</strong> bổ nghĩa cho danh từ → <em>a <u>nice</u> day</em>.</li>
+                    <li><strong>Trạng từ:</strong> bổ nghĩa cho động từ, tính từ, trạng từ → <em>drive <u>carefully</u></em>, <em><u>very</u> nice</em>.</li>
+                </ul>
+            </div>
+
+            <h3>🔹 Bảng tóm tắt vị trí</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50%; background: linear-gradient(135deg, #d69e2e, #b7791f);">Tính từ (Adj) 🟡</th>
+                        <th style="width: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb);">Trạng từ (Adv) 🔵</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Trước danh từ: <em>a <u>big</u> house</em><br> Sau động từ liên kết: <em>She is <u>happy</u></em></td>
+                        <td>Trước động từ: <em><u>quickly</u> run</em><br> Sau động từ: <em>run <u>quickly</u></em><br> Trước tính từ: <em><u>very</u> good</em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>📊 So sánh nhanh: Tính từ vs Trạng từ</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tiêu chí</th>
+                        <th style="background: linear-gradient(135deg, #d69e2e, #b7791f); color: white;">Tính từ</th>
+                        <th style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">Trạng từ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Chức năng</strong></td>
+                        <td>Bổ nghĩa cho danh từ / đại từ</td>
+                        <td>Bổ nghĩa cho động từ, tính từ, trạng từ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vị trí</strong></td>
+                        <td>Trước danh từ, sau động từ liên kết</td>
+                        <td>Trước/sau động từ, trước tính từ/trạng từ</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ví dụ</strong></td>
+                        <td><em>a <u>quick</u> response</em></td>
+                        <td><em>respond <u>quickly</u></em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 2: PHÂN TÍCH CHI TIẾT -->
+    <div id="chi_tiet" class="tab-content">
+        <div class="card">
+            <h2>🔍 Phân tích chuyên sâu về Tính từ và Trạng từ</h2>
+
+            <!-- A: Cách thành lập trạng từ -->
+            <h3>🟡 A. Cách thành lập trạng từ từ tính từ</h3>
+            <p>Thông thường, ta thêm <strong>-ly</strong> vào sau tính từ để tạo trạng từ.</p>
+            <div class="word-list">
+                <span class="word-item adj">quick → quickly</span>
+                <span class="word-item adj">careful → carefully</span>
+                <span class="word-item adj">happy → happily</span>
+                <span class="word-item adj">easy → easily</span>
+                <span class="word-item adj">terrible → terribly</span>
+                <span class="word-item adj">true → truly</span>
+            </div>
+            <div class="note-box">
+                <strong>⚠️ Lưu ý ngoại lệ:</strong><br>
+                - <strong>good</strong> (tính từ) → <strong>well</strong> (trạng từ)<br>
+                - <strong>fast, hard, early, late</strong>: giữ nguyên dạng khi làm trạng từ.<br>
+                <em>He is a <u>fast</u> runner. (adj) / He runs <u>fast</u>. (adv)</em>
+            </div>
+
+            <!-- B: Vị trí của tính từ -->
+            <h3>🟠 B. Vị trí của Tính từ</h3>
+            <ul>
+                <li><strong>Trước danh từ</strong> (bổ nghĩa trực tiếp): <em>a <u>beautiful</u> painting</em></li>
+                <li><strong>Sau động từ liên kết</strong> (be, seem, look, feel, become, get, ...): <em>She looks <u>tired</u>.</em></li>
+                <li><strong>Sau đại từ bất định</strong>: <em>something <u>new</u></em>, <em>nothing <u>interesting</u></em></li>
+            </ul>
+
+            <!-- C: Vị trí của trạng từ -->
+            <h3>🔵 C. Vị trí của Trạng từ</h3>
+            <ul>
+                <li><strong>Trước động từ thường</strong>: <em>She <u>quickly</u> left.</em></li>
+                <li><strong>Sau động từ to be</strong>: <em>He is <u>always</u> late.</em></li>
+                <li><strong>Giữa trợ động từ và động từ chính</strong>: <em>I have <u>never</u> seen it.</em></li>
+                <li><strong>Trước tính từ / trạng từ khác</strong>: <em><u>very</u> beautiful, <u>too</u> fast</em></li>
+            </ul>
+
+            <!-- D: Các loại trạng từ -->
+            <h3>🟣 D. Phân loại Trạng từ</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Loại</th>
+                        <th>Ví dụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Thời gian</strong></td><td>now, then, today, yesterday, soon, already</td></tr>
+                    <tr><td><strong>Nơi chốn</strong></td><td>here, there, inside, outside, everywhere</td></tr>
+                    <tr><td><strong>Cách thức</strong></td><td>quickly, slowly, carefully, well, hard</td></tr>
+                    <tr><td><strong>Tần suất</strong></td><td>always, usually, often, sometimes, never</td></tr>
+                    <tr><td><strong>Mức độ</strong></td><td>very, quite, too, enough, almost</td></tr>
+                </tbody>
+            </table>
+
+            <!-- E: Cặp từ dễ nhầm -->
+            <h3>🟢 E. Cặp từ dễ nhầm lẫn</h3>
+            <div class="example-box">
+                <strong>good / well</strong><br>
+                <em>She is a <u>good</u> dancer. (adj)</em><br>
+                <em>She dances <u>well</u>. (adv)</em>
+            </div>
+            <div class="example-box">
+                <strong>hard / hardly</strong><br>
+                <em>He works <u>hard</u>. (chăm chỉ)</em><br>
+                <em>I <u>hardly</u> know her. (hầu như không)</em>
+            </div>
+            <div class="example-box">
+                <strong>late / lately</strong><br>
+                <em>He arrived <u>late</u>. (muộn)</em><br>
+                <em>I haven't seen her <u>lately</u>. (gần đây)</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TRẮC NGHIỆM -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Trắc nghiệm tổng hợp: Tính từ & Trạng từ</h2>
+            <p>✅ Chọn đáp án đúng, hệ thống sẽ chấm điểm và hiển thị giải thích.</p>
+            <form id="quizForm">
+                <!-- 20 câu hỏi -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. She is a _______ dancer.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> good</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> well</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> goodly</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> best</label>
+                    </div>
+                    <div class="explanation">💃 Sau danh từ "dancer" cần tính từ "good".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. She dances very _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> good</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> well</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> goodly</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> best</label>
+                    </div>
+                    <div class="explanation">🕺 Sau động từ "dances" cần trạng từ "well".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. He is a _______ worker.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> hard</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> hardly</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> hardly</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> harder</label>
+                    </div>
+                    <div class="explanation">🔨 "hard" là tính từ khi bổ nghĩa cho danh từ "worker".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">4. He works _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> hard</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> hardly</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> hard</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> hardest</label>
+                    </div>
+                    <div class="explanation">💪 "hard" là trạng từ (chăm chỉ), không đổi dạng.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. I can _______ understand her.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> hard</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> hardly</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> hard</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> harder</label>
+                    </div>
+                    <div class="explanation">🤔 "hardly" = hầu như không, là trạng từ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. The test was _______ easy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> real</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> really</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> real</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> more</label>
+                    </div>
+                    <div class="explanation">📚 Trước tính từ "easy" cần trạng từ "really".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">7. She is a _______ beautiful girl.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> very</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> much</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> most</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> more</label>
+                    </div>
+                    <div class="explanation">🌸 "very" bổ nghĩa cho tính từ "beautiful".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. He arrived _______ than expected.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> late</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> later</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> lately</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> latest</label>
+                    </div>
+                    <div class="explanation">⏰ So sánh hơn dùng "later".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. I haven't seen him _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> lately</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> late</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> later</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> latest</label>
+                    </div>
+                    <div class="explanation">🕒 "lately" = gần đây, phù hợp với thì hiện tại hoàn thành.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">10. She speaks English _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> fluently</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> fluent</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> more fluent</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> fluent</label>
+                    </div>
+                    <div class="explanation">🗣️ Sau động từ "speaks" cần trạng từ "fluently".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">11. The food tastes _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> delicious</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> deliciously</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> more delicious</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> most delicious</label>
+                    </div>
+                    <div class="explanation">🍕 Sau động từ liên kết "tastes" dùng tính từ "delicious".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. He looked at me _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> angry</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> angrily</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> anger</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> more angry</label>
+                    </div>
+                    <div class="explanation">👀 Sau động từ thường "looked" cần trạng từ "angrily".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. She seems _______ today.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> sad</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> sadly</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> sadder</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> saddest</label>
+                    </div>
+                    <div class="explanation">😢 Sau động từ liên kết "seems" dùng tính từ "sad".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. He is _______ intelligent student.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> a very</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> very</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> much</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> more</label>
+                    </div>
+                    <div class="explanation">🧠 "very" bổ nghĩa cho tính từ "intelligent", cần mạo từ "a".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">15. She runs _______ than me.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> fast</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> faster</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> fastest</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> more fast</label>
+                    </div>
+                    <div class="explanation">🏃 So sánh hơn: "faster".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. He is a _______ careful driver.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> very</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> much</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> most</label>
+                        <label class="option-label"><input type="radio" name="q16" value="D"> more</label>
+                    </div>
+                    <div class="explanation">🚗 "very" bổ nghĩa cho cụm tính từ "careful driver".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. I feel _______ better now.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> much</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> much</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> more</label>
+                        <label class="option-label"><input type="radio" name="q17" value="D"> most</label>
+                    </div>
+                    <div class="explanation">💪 "much" bổ nghĩa cho so sánh hơn "better".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">18. She was _______ upset about the news.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> extreme</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> extremely</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> more</label>
+                        <label class="option-label"><input type="radio" name="q18" value="D"> most</label>
+                    </div>
+                    <div class="explanation">😔 Trước tính từ "upset" cần trạng từ "extremely".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">19. The soup smells _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> good</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> well</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> goodly</label>
+                        <label class="option-label"><input type="radio" name="q19" value="D"> better</label>
+                    </div>
+                    <div class="explanation">🍲 Sau động từ liên kết "smells" dùng tính từ "good".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">20. He played the piano _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> beautifully</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> beautiful</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> more beautiful</label>
+                        <label class="option-label"><input type="radio" name="q20" value="D"> most beautiful</label>
+                    </div>
+                    <div class="explanation">🎹 Sau động từ "played" cần trạng từ "beautifully".</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 9: Cấu trúc Tính từ & Trạng từ | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    // Điều hướng tabs
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Hàm chấm quiz
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Siêu hạng! Bạn đã nắm vững hoàn toàn Tính từ và Trạng từ!';
+        } else if (score >= 16) {
+            message = '🌟 Rất tốt! Bạn đã hiểu rất rõ về tính từ và trạng từ!';
+        } else if (score >= 12) {
+            message = '📖 Khá ổn! Hãy xem lại phần lý thuyết để hiểu sâu hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy xem kỹ phần lý thuyết ở Tab 1 và 2 nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
