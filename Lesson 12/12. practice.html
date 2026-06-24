@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 12: Luyện tập Câu ghép & Câu phức | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a4a;
+            --secondary: #2c6e8f;
+            --accent: #4a8db7;
+            --success: #2b7a4b;
+            --warning: #d4a72c;
+            --danger: #b13e3e;
+            --light: #eef6fa;
+            --dark: #1e4a5e;
+            --gradient-start: #e3f0f7;
+            --gradient-end: #b6d4e6;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #e3f0f7 0%, #caddf0 40%, #b0cee2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #b0cee2;
+            box-shadow: 0 4px 16px rgba(44, 110, 143, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(44, 110, 143, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(44, 110, 143, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2c6e8f, #1a4a60);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(44, 110, 143, 0.25);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1e5a78, #0f3b4f);
+            box-shadow: 0 8px 18px rgba(44, 110, 143, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(44, 110, 143, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #b0cee2;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(44, 110, 143, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(44, 110, 143, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(44, 110, 143, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(44, 110, 143, 0.12);
+            border: 1px solid #d4e3ed;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #f6fbfe;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4e3ed;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #eef6fa;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #dcebf5;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2e0d0 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #eef6fa;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2c6e8f, #1a4a60);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(44, 110, 143, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1e5a78, #0f3b4f);
+            box-shadow: 0 8px 18px rgba(44, 110, 143, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #eef6fa;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #b0cee2;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e7ef;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2c6e8f, #4a8db7);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>✍️ Bài 12: Luyện tập Câu ghép & Câu phức</h1>
+        <div class="sub">Compound & Complex Sentences Practice</div>
+    </div>
+    <a href="./12. compound sentences and complex sentences.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('cau_ghep')">🔗 1. Câu ghép</button>
+        <button class="tab-btn" onclick="openTab('cau_phuc')">🧩 2. Câu phức</button>
+        <button class="tab-btn" onclick="openTab('tong_hop')">🎯 3. Tổng hợp</button>
+    </div>
+
+    <!-- TAB 1: CÂU GHÉP (25 câu) -->
+    <div id="cau_ghep" class="tab-content active">
+        <div class="quiz-container">
+            <h2>🔗 Luyện tập: Câu ghép (Compound Sentences)</h2>
+            <p>✅ Chọn liên từ kết hợp (FANBOYS) phù hợp để hoàn thành câu ghép.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress1"></div></div>
+            <form id="quizForm1">
+                <!-- 25 câu hỏi câu ghép -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. She wanted to go out, _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_1" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="D"> or</label>
+                    </div>
+                    <div class="explanation">☔ Hai ý trái ngược → dùng "but".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. I was tired, _______ I went to bed early.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_2" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="C"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">😴 Mệt → đi ngủ sớm (kết quả) → "so".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. He doesn't like coffee, _______ does he like tea.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_3" value="A"> nor</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="D"> so</label>
+                    </div>
+                    <div class="explanation">🚫 "Nor" nối hai mệnh đề phủ định.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">4. You can have cake _______ ice cream for dessert.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_4" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="B"> or</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="D"> for</label>
+                    </div>
+                    <div class="explanation">🍰 Lựa chọn giữa hai món → "or".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">5. She is very young, _______ she is very wise.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_5" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="D"> nor</label>
+                    </div>
+                    <div class="explanation">🧠 Tương phản bất ngờ → "yet".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">6. He stayed home, _______ he was feeling unwell.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_6" value="A"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🤒 "For" = bởi vì (giải thích lý do).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. They wanted to go on a picnic, _______ the weather was bad.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_7" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="D"> for</label>
+                    </div>
+                    <div class="explanation">🌧️ Mong muốn nhưng thời tiết xấu → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">8. I was late, _______ I missed the bus.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_8" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="C"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">🚌 Trễ → lỡ xe buýt (kết quả) → "so".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. He didn't study, _______ he passed the exam.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_9" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="D"> for</label>
+                    </div>
+                    <div class="explanation">📝 Không học nhưng vẫn đỗ → "yet".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. You can stay here, _______ you can go home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_10" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="B"> or</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="D"> nor</label>
+                    </div>
+                    <div class="explanation">🚪 Lựa chọn giữa hai hành động → "or".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">11. She is intelligent, _______ she lacks experience.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_11" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="D"> for</label>
+                    </div>
+                    <div class="explanation">🧠 Thông minh nhưng thiếu kinh nghiệm → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">12. I like tea, _______ he likes coffee.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_12" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">☕ Thêm thông tin tương đồng → "and".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. We can go to the beach, _______ we can stay home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_13" value="A"> or</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="D"> so</label>
+                    </div>
+                    <div class="explanation">🏖️ Hai lựa chọn → "or".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. I want to go, _______ I'm too busy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_14" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="D"> for</label>
+                    </div>
+                    <div class="explanation">⏳ Muốn đi nhưng bận → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. She speaks English, _______ she doesn't speak French.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_15" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🗣️ Nói tiếng Anh nhưng không nói tiếng Pháp → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. He didn't eat breakfast, _______ he was hungry.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_16" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="C"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">🍽️ Không ăn sáng nên đói → "so".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. She studied hard, _______ she passed the test.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_17" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="C"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">📚 Học chăm nên đỗ → "so".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. He is rich, _______ he is not happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_18" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="D"> or</label>
+                    </div>
+                    <div class="explanation">💰 Giàu nhưng không hạnh phúc → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">19. She can sing, _______ she can dance.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_19" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">🎤 Vừa hát vừa nhảy → "and".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. He didn't call, _______ did he send a message.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_20" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="B"> nor</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="D"> so</label>
+                    </div>
+                    <div class="explanation">📱 Không gọi cũng không nhắn → "nor".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">21. She was tired, _______ she kept working.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_21" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="D"> for</label>
+                    </div>
+                    <div class="explanation">😓 Mệt nhưng vẫn làm việc → "yet".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">22. I woke up late, _______ I missed the bus.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_22" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="C"> for</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="D"> yet</label>
+                    </div>
+                    <div class="explanation">⏰ Dậy muộn nên lỡ xe → "so".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">23. He loves her, _______ she doesn't love him.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_23" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="D"> or</label>
+                    </div>
+                    <div class="explanation">💔 Yêu nhưng không được đáp lại → "but".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">24. We can go now, _______ we can wait.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_24" value="A"> or</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="D"> so</label>
+                    </div>
+                    <div class="explanation">⏳ Lựa chọn đi ngay hay chờ → "or".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">25. She is both smart _______ hardworking.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_25" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🧠 Both... and → "and".</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm1', 'progress1', 'result1')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result1" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: CÂU PHỨC (25 câu) -->
+    <div id="cau_phuc" class="tab-content">
+        <div class="quiz-container">
+            <h2>🧩 Luyện tập: Câu phức (Complex Sentences)</h2>
+            <p>✅ Chọn liên từ phụ thuộc phù hợp để hoàn thành câu phức.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress2"></div></div>
+            <form id="quizForm2">
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. _______ it was raining, we stayed inside.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_1" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">🌧️ Lý do → "Because".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. We stayed inside _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_2" value="A"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="D"> unless</label>
+                    </div>
+                    <div class="explanation">🌧️ Lý do → "because".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. _______ she was tired, she finished her homework.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_3" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">😓 Mặc dù mệt vẫn làm bài → "Although".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">4. She finished her homework _______ she was tired.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_4" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="D"> unless</label>
+                    </div>
+                    <div class="explanation">😓 Mặc dù mệt → "although".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">5. _______ you study, you will pass the exam.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_5" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="C"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">📚 Điều kiện → "If".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">6. He called me _______ I was eating.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_6" value="A"> when</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="D"> if</label>
+                    </div>
+                    <div class="explanation">🍽️ Thời điểm → "when".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">7. _______ it was late, we went home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_7" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">🌙 Lý do → "Because".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. She saved money _______ she could travel.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_8" value="A"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="B"> so that</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="D"> if</label>
+                    </div>
+                    <div class="explanation">✈️ Mục đích → "so that".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. _______ the weather was bad, they went on a picnic.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_9" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">🌧️ Mặc dù thời tiết xấu → "Although".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. We went out _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_10" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="D"> unless</label>
+                    </div>
+                    <div class="explanation">🌧️ Mặc dù mưa vẫn đi → "although".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">11. _______ you don't study, you will fail.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_11" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="C"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">📚 Điều kiện → "If".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">12. He left _______ I arrived.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_12" value="A"> before</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="B"> after</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="D"> while</label>
+                    </div>
+                    <div class="explanation">⏰ Thời gian → "before".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">13. She called me _______ I had left.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_13" value="A"> before</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="B"> after</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="D"> while</label>
+                    </div>
+                    <div class="explanation">⏰ Thời gian → "after".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. _______ he was hungry, he ate a sandwich.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_14" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">🍽️ Lý do → "Because".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">15. He ate a sandwich _______ he was hungry.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_15" value="A"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="D"> unless</label>
+                    </div>
+                    <div class="explanation">🍽️ Lý do → "because".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. _______ she was sick, she went to school.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_16" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">🤒 Mặc dù ốm vẫn đi học → "Although".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">17. We waited _______ he arrived.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_17" value="A"> until</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="B"> after</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="C"> before</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="D"> while</label>
+                    </div>
+                    <div class="explanation">⏳ Thời gian → "until".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. _______ you are ready, we will start.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_18" value="A"> When</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="C"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">⏰ Thời điểm → "When".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">19. He studied hard _______ he could get a scholarship.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_19" value="A"> so that</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="D"> if</label>
+                    </div>
+                    <div class="explanation">🎓 Mục đích → "so that".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. _______ it was sunny, we stayed inside.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_20" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">☀️ Mặc dù trời nắng vẫn ở trong → "Although".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">21. _______ you apologize, I won't forgive you.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_21" value="A"> Unless</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="B"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="D"> Because</label>
+                    </div>
+                    <div class="explanation">😤 Trừ khi xin lỗi → "Unless".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">22. She was singing _______ she was cooking.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_22" value="A"> while</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="B"> before</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="C"> after</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="D"> until</label>
+                    </div>
+                    <div class="explanation">🎵 Cùng lúc → "while".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">23. _______ you finish your homework, you can watch TV.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_23" value="A"> After</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="B"> Before</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="C"> While</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">📺 Thời gian → "After".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">24. He ran fast _______ he could catch the train.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_24" value="A"> so that</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="D"> if</label>
+                    </div>
+                    <div class="explanation">🚄 Mục đích → "so that".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">25. _______ he is rich, he is not happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_25" value="A"> Although</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="D"> Unless</label>
+                    </div>
+                    <div class="explanation">💰 Mặc dù giàu không hạnh phúc → "Although".</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm2', 'progress2', 'result2')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result2" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TỔNG HỢP (25 câu) -->
+    <div id="tong_hop" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Luyện tập tổng hợp: Câu ghép & Câu phức</h2>
+            <p>✅ Chọn đáp án đúng (có thể là liên từ kết hợp hoặc phụ thuộc).</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress3"></div></div>
+            <form id="quizForm3">
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. She was tired, _______ she went to bed early.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_1" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="C"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="D"> if</label>
+                    </div>
+                    <div class="explanation">😴 Mệt nên đi ngủ → "so" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. _______ she was tired, she went to bed early.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_2" value="A"> So</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="D"> If</label>
+                    </div>
+                    <div class="explanation">😴 Vì mệt nên đi ngủ → "Because" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">3. He is rich, _______ he is not happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_3" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="C"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="D"> although</label>
+                    </div>
+                    <div class="explanation">💰 Giàu nhưng không hạnh phúc → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">4. _______ he is rich, he is not happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_4" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="B"> If</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="C"> So</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="D"> Although</label>
+                    </div>
+                    <div class="explanation">💰 Mặc dù giàu không hạnh phúc → "Although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">5. I woke up late, _______ I missed the bus.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_5" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="C"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="D"> if</label>
+                    </div>
+                    <div class="explanation">⏰ Dậy muộn nên lỡ xe → "so" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. _______ I woke up late, I missed the bus.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_6" value="A"> So</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="D"> If</label>
+                    </div>
+                    <div class="explanation">⏰ Vì dậy muộn nên lỡ xe → "Because" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">7. You can have tea _______ coffee.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_7" value="A"> or</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="D"> so</label>
+                    </div>
+                    <div class="explanation">☕ Lựa chọn → "or" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">8. She studied hard, _______ she passed the test.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_8" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="C"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="D"> if</label>
+                    </div>
+                    <div class="explanation">📚 Học chăm nên đỗ → "so" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">9. _______ she studied hard, she passed the test.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_9" value="A"> So</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="B"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="D"> If</label>
+                    </div>
+                    <div class="explanation">📚 Vì học chăm nên đỗ → "Because" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">10. He doesn't like tea, _______ does he like coffee.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_10" value="A"> nor</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="D"> so</label>
+                    </div>
+                    <div class="explanation">🚫 Không thích cả hai → "nor" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">11. _______ it was raining, we went out.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_11" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="D"> So</label>
+                    </div>
+                    <div class="explanation">🌧️ Mặc dù mưa vẫn đi → "Although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. We went out _______ it was raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_12" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="D"> so</label>
+                    </div>
+                    <div class="explanation">🌧️ Mặc dù mưa → "although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. She is young, _______ she is very wise.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_13" value="A"> yet</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="D"> because</label>
+                    </div>
+                    <div class="explanation">🧠 Trẻ nhưng khôn ngoan → "yet" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. _______ you work hard, you will succeed.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_14" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="C"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="D"> So</label>
+                    </div>
+                    <div class="explanation">💪 Điều kiện → "If" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. He called me _______ I was sleeping.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_15" value="A"> while</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="B"> before</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="C"> after</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="D"> until</label>
+                    </div>
+                    <div class="explanation">😴 Cùng lúc → "while" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. She wanted to go, _______ she was too busy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_16" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="D"> or</label>
+                    </div>
+                    <div class="explanation">⏳ Muốn đi nhưng bận → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. _______ she was busy, she helped me.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_17" value="A"> Because</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="B"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="D"> So</label>
+                    </div>
+                    <div class="explanation">🤝 Mặc dù bận vẫn giúp → "Although" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. I like tea, _______ he likes coffee.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_18" value="A"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="B"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="D"> or</label>
+                    </div>
+                    <div class="explanation">☕ Thêm thông tin → "and" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">19. She not only sings _______ also dances.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_19" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🎤 Not only... but also → "but" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">20. _______ you apologize, I won't forgive you.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_20" value="A"> Unless</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="B"> If</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="D"> Because</label>
+                    </div>
+                    <div class="explanation">😤 Trừ khi xin lỗi → "Unless" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">21. He is both smart _______ hardworking.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_21" value="A"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="B"> and</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="C"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🧠 Both... and → "and" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">22. She stayed home _______ she was sick.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_22" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="B"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="C"> if</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="D"> unless</label>
+                    </div>
+                    <div class="explanation">🤒 Vì ốm → "because" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">23. She was sick, _______ she stayed home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_23" value="A"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="B"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="C"> but</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="D"> or</label>
+                    </div>
+                    <div class="explanation">🤒 Ốm nên ở nhà → "so" (câu ghép).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">24. We waited _______ he arrived.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_24" value="A"> until</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="B"> after</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="C"> before</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="D"> while</label>
+                    </div>
+                    <div class="explanation">⏳ Chờ đến khi → "until" (câu phức).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">25. She ran fast, _______ she caught the train.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_25" value="A"> so</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="C"> although</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="D"> if</label>
+                    </div>
+                    <div class="explanation">🏃 Chạy nhanh nên bắt kịp → "so" (câu ghép).</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm3', 'progress3', 'result3')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result3" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 12: Luyện tập Câu ghép & Câu phức | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+        
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững kiến thức!';
+        } else if (score >= 20) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về câu ghép và câu phức!';
+        } else if (score >= 15) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
