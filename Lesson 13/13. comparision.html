@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 13: Câu so sánh | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e4a3a;
+            --secondary: #2d7a5a;
+            --accent: #3fa07a;
+            --success: #1f6d47;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #ecf6f0;
+            --dark: #1a4032;
+            --gradient-start: #e0f0e6;
+            --gradient-end: #b8dac8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #e0f0e6 0%, #c5e0d2 40%, #aacbbe 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #aacbbe;
+            box-shadow: 0 4px 16px rgba(45, 122, 90, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(45, 122, 90, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(45, 122, 90, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2d7a5a, #1a4a3a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(45, 122, 90, 0.25);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f6d47, #0f3a2a);
+            box-shadow: 0 8px 18px rgba(45, 122, 90, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(45, 122, 90, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #aacbbe;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(45, 122, 90, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(45, 122, 90, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(45, 122, 90, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card, .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(45, 122, 90, 0.12);
+            border: 1px solid #cce0d4;
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #b8d4c4;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2d7a5a, #1a4a3a);
+            color: white;
+        }
+
+        .note-box {
+            background: #ecf6f0;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+
+        .formula-box {
+            background: #ecf6f0;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #e0f0e6;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .rule-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .rule-item {
+            background: #ecf6f0;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .rule-item:hover {
+            border-color: var(--secondary);
+            background: #d8ebe0;
+        }
+
+        .rule-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .question {
+            background: #f3faf6;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #cce0d4;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #ecf6f0;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #d8ebe0;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2e0d0 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #ecf6f0;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2d7a5a, #1a4a3a);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(45, 122, 90, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f6d47, #0f3a2a);
+            box-shadow: 0 8px 18px rgba(45, 122, 90, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #ecf6f0;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #aacbbe;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .compare-table td:first-child {
+            background: #ecf6f0;
+            font-weight: 600;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .rule-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📚 Bài 13: Câu so sánh</h1>
+        <div class="sub">Comparison of adjectives & adverbs</div>
+    </div>
+    <a href="./13. practice.html" class="nav-practice">
+        ✍️ Làm bài tập
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('so_sanh_bang')">⚖️ 1. So sánh bằng</button>
+        <button class="tab-btn" onclick="openTab('so_sanh_hon')">📈 2. So sánh hơn</button>
+        <button class="tab-btn" onclick="openTab('so_sanh_nhat')">🏆 3. So sánh nhất</button>
+        <button class="tab-btn" onclick="openTab('so_sanh_dac_biet')">✨ 4. So sánh đặc biệt</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 5. Trắc nghiệm</button>
+    </div>
+
+    <!-- TAB 1: SO SÁNH BẰNG -->
+    <div id="so_sanh_bang" class="tab-content active">
+        <div class="card">
+            <h2>⚖️ So sánh bằng (Equality)</h2>
+            <div class="note-box">
+                <strong>💡 Dùng để so sánh hai đối tượng có mức độ ngang nhau.</strong>
+                <p style="font-size: 1.05rem; margin-top: 6px;">
+                    Công thức chung: <strong>as + adj/adv + as</strong>
+                </p>
+            </div>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>She is <u>as tall as</u> her brother.</em> (Cô ấy cao bằng anh trai.)<br>
+                <em>He runs <u>as fast as</u> his friend.</em> (Anh ấy chạy nhanh bằng bạn.)
+            </div>
+
+            <h3>🔹 Với danh từ: as much/many + noun + as</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 as much + danh từ không đếm được</strong>
+                    <em>I have <u>as much money as</u> you.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 as many + danh từ đếm được số nhiều</strong>
+                    <em>She has <u>as many books as</u> I do.</em>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <strong>📐 Cấu trúc phủ định:</strong><br>
+                <em>not as/so + adj/adv + as</em> (không bằng)<br>
+                <em>This film is <u>not as interesting as</u> the book.</em>
+            </div>
+            <div class="note-box">
+                <strong>📌 Lưu ý:</strong> Trong câu phủ định, ta có thể dùng <em>so ... as</em> thay cho <em>as ... as</em>.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: SO SÁNH HƠN -->
+    <div id="so_sanh_hon" class="tab-content">
+        <div class="card">
+            <h2>📈 So sánh hơn (Comparative)</h2>
+            <div class="note-box">
+                <strong>💡 Dùng để so sánh hai đối tượng với mức độ khác nhau.</strong>
+            </div>
+
+            <h3>🔹 Với tính từ/trạng từ ngắn (1 âm tiết)</h3>
+            <div class="formula-box">
+                <strong>adj/adv + -er + than</strong><br>
+                <em>He is <u>taller than</u> me.</em><br>
+                <em>She runs <u>faster than</u> him.</em>
+            </div>
+
+            <h3>🔹 Với tính từ/trạng từ dài (≥ 2 âm tiết)</h3>
+            <div class="formula-box">
+                <strong>more + adj/adv + than</strong><br>
+                <em>This task is <u>more difficult than</u> that one.</em><br>
+                <em>He speaks <u>more fluently than</u> his sister.</em>
+            </div>
+
+            <h3>🔹 Ngoại lệ (bất quy tắc)</h3>
+            <table>
+                <thead>
+                    <tr><th style="background: #1a4a3a;">Tính từ/trạng từ</th><th style="background: #1a4a3a;">So sánh hơn</th><th style="background: #1a4a3a;">Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>good / well</td><td>better</td><td><em>Her English is better than mine.</em></td></tr>
+                    <tr><td>bad / badly</td><td>worse</td><td><em>His condition is worse than before.</em></td></tr>
+                    <tr><td>far</td><td>farther / further</td><td><em>It's farther than I thought.</em></td></tr>
+                    <tr><td>many / much</td><td>more</td><td><em>I have more time than you.</em></td></tr>
+                    <tr><td>little</td><td>less</td><td><em>She has less money than him.</em></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 3: SO SÁNH NHẤT -->
+    <div id="so_sanh_nhat" class="tab-content">
+        <div class="card">
+            <h2>🏆 So sánh nhất (Superlative)</h2>
+            <div class="note-box">
+                <strong>💡 Dùng để so sánh một đối tượng với tất cả các đối tượng còn lại trong nhóm.</strong>
+            </div>
+
+            <h3>🔹 Với tính từ/trạng từ ngắn</h3>
+            <div class="formula-box">
+                <strong>the + adj/adv + -est</strong><br>
+                <em>She is <u>the tallest</u> in the class.</em><br>
+                <em>He runs <u>the fastest</u> among us.</em>
+            </div>
+
+            <h3>🔹 Với tính từ/trạng từ dài</h3>
+            <div class="formula-box">
+                <strong>the most + adj/adv</strong><br>
+                <em>This is <u>the most expensive</u> car.</em><br>
+                <em>She sings <u>the most beautifully</u> of all.</em>
+            </div>
+
+            <h3>🔹 Ngoại lệ</h3>
+            <table>
+                <thead>
+                    <tr><th style="background: #1a4a3a;">Tính từ/trạng từ</th><th style="background: #1a4a3a;">So sánh nhất</th><th style="background: #1a4a3a;">Ví dụ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>good / well</td><td>the best</td><td><em>She is the best student.</em></td></tr>
+                    <tr><td>bad / badly</td><td>the worst</td><td><em>That's the worst movie ever.</em></td></tr>
+                    <tr><td>far</td><td>the farthest / furthest</td><td><em>That's the furthest I've run.</em></td></tr>
+                    <tr><td>much / many</td><td>the most</td><td><em>He has the most experience.</em></td></tr>
+                    <tr><td>little</td><td>the least</td><td><em>She has the least time.</em></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 4: SO SÁNH ĐẶC BIỆT (bội số, cấp tiến, kép) -->
+    <div id="so_sanh_dac_biet" class="tab-content">
+        <div class="card">
+            <h2>✨ So sánh đặc biệt</h2>
+            
+            <h3>🔹 So sánh bội số (multiple)</h3>
+            <div class="formula-box">
+                <strong>twice / three times / half + as + adj + as</strong><br>
+                <em>This box is <u>twice as heavy as</u> that one.</em><br>
+                <em>My salary is <u>three times as high as</u> his.</em>
+            </div>
+
+            <h3>🔹 So sánh cấp tiến (càng ngày càng)</h3>
+            <div class="formula-box">
+                <strong>adj/adv + -er and adj/adv + -er</strong> (ngắn)<br>
+                <em>It's <u>getting colder and colder</u>.</em><br>
+                <strong>more and more + adj/adv</strong> (dài)<br>
+                <em>She becomes <u>more and more beautiful</u>.</em>
+            </div>
+
+            <h3>🔹 So sánh kép (càng ... càng)</h3>
+            <div class="formula-box">
+                <strong>The + so sánh hơn (+ S + V), the + so sánh hơn (+ S + V)</strong><br>
+                <em><u>The more</u> you study, <u>the smarter</u> you become.</em><br>
+                <em><u>The faster</u> you run, <u>the more tired</u> you feel.</em>
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Lưu ý:</strong> So sánh bội số có thể dùng với <em>as ... as</em> hoặc <em>more ... than</em>.<br>
+                <em>He is <u>twice as old as</u> his sister. / He is <u>twice older than</u> his sister.</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 5: TRẮC NGHIỆM TỔNG HỢP -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Trắc nghiệm: Câu so sánh</h2>
+            <p>✅ Chọn đáp án đúng. Hệ thống sẽ chấm điểm và giải thích.</p>
+            <form id="quizForm">
+                <!-- 20 câu hỏi về so sánh -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. She is _______ her sister.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> as tall as</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> taller as</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> the tallest</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> more tall</label>
+                    </div>
+                    <div class="explanation">📏 So sánh bằng: as + adj + as.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. He runs _______ than me.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> more fast</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> faster</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> as fast as</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> fast</label>
+                    </div>
+                    <div class="explanation">🏃 So sánh hơn của trạng từ ngắn: fast → faster.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. This book is _______ than that one.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> more interesting</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> interestinger</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> most interesting</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> as interesting</label>
+                    </div>
+                    <div class="explanation">📖 Tính từ dài (3 âm tiết) → more + adj.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">4. She is _______ student in the class.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> better</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> more good</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> the best</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> the better</label>
+                    </div>
+                    <div class="explanation">🏆 So sánh nhất của good → the best.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">5. He has _______ money than I do.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> less</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> fewer</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> little</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> more less</label>
+                    </div>
+                    <div class="explanation">💰 little → less (so sánh hơn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. She sings _______ of all.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> beautiful</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> most beautifully</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> more beautifully</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> as beautiful</label>
+                    </div>
+                    <div class="explanation">🎤 Trạng từ dài → the most + adv.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">7. This box is _______ that one.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> twice as heavy as</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> twice as heavier as</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> two times heavy</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> as twice heavy</label>
+                    </div>
+                    <div class="explanation">📦 So sánh bội số: twice as + adj + as.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. It is getting _______ and _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> cold ... cold</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> colder ... colder</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> more cold ... more cold</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> coldest ... coldest</label>
+                    </div>
+                    <div class="explanation">❄️ Cấp tiến (càng ngày càng) của adj ngắn: adj-er and adj-er.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. _______ you study, _______ you become.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> The more ... the smarter</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> More ... smarter</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> The most ... the smartest</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> As ... as</label>
+                    </div>
+                    <div class="explanation">📚 So sánh kép: The + comparative, the + comparative.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">10. She is not _______ her mother.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> as tall as</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> so tall than</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> taller than</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> the tallest</label>
+                    </div>
+                    <div class="explanation">📏 Phủ định so sánh bằng: not as/so + adj + as.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">11. This is _______ dress I have ever seen.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> more beautiful</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> the most beautiful</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> beautiful</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> as beautiful</label>
+                    </div>
+                    <div class="explanation">👗 So sánh nhất với tính từ dài: the most + adj.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. He is _______ than his brother.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> more tall</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> taller</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> tallest</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> as tall</label>
+                    </div>
+                    <div class="explanation">📏 tall → taller (so sánh hơn).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. She has _______ books than I do.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> more</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> many</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> most</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> much</label>
+                    </div>
+                    <div class="explanation">📚 many → more (so sánh hơn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. He drove _______ than usual.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> more careful</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> more carefully</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> carefuler</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> most carefully</label>
+                    </div>
+                    <div class="explanation">🚗 Trạng từ dài → more + adv.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. That was _______ day of my life.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> the happiest</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> more happy</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> happier</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> as happy</label>
+                    </div>
+                    <div class="explanation">😊 happy → the happiest (so sánh nhất).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. She is _______ her sister.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q16" value="A"> as old as</label>
+                        <label class="option-label"><input type="radio" name="q16" value="B"> older as</label>
+                        <label class="option-label"><input type="radio" name="q16" value="C"> oldest</label>
+                        <label class="option-label"><input type="radio" name="q16" value="D"> more old</label>
+                    </div>
+                    <div class="explanation">🎂 So sánh bằng: as + adj + as.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. The weather is getting _______ and _______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q17" value="A"> bad ... bad</label>
+                        <label class="option-label"><input type="radio" name="q17" value="B"> worse ... worse</label>
+                        <label class="option-label"><input type="radio" name="q17" value="C"> more bad ... more bad</label>
+                        <label class="option-label"><input type="radio" name="q17" value="D"> worst ... worst</label>
+                    </div>
+                    <div class="explanation">🌧️ bad → worse (cấp tiến).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. He has _______ experience than his colleague.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q18" value="A"> less</label>
+                        <label class="option-label"><input type="radio" name="q18" value="B"> fewer</label>
+                        <label class="option-label"><input type="radio" name="q18" value="C"> little</label>
+                        <label class="option-label"><input type="radio" name="q18" value="D"> least</label>
+                    </div>
+                    <div class="explanation">💼 little (không đếm được) → less.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">19. She speaks English _______ than her friend.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q19" value="A"> fluent</label>
+                        <label class="option-label"><input type="radio" name="q19" value="B"> more fluently</label>
+                        <label class="option-label"><input type="radio" name="q19" value="C"> fluently</label>
+                        <label class="option-label"><input type="radio" name="q19" value="D"> most fluently</label>
+                    </div>
+                    <div class="explanation">🗣️ Trạng từ dài → more + adv.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">20. This is _______ expensive car in the showroom.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q20" value="A"> the most</label>
+                        <label class="option-label"><input type="radio" name="q20" value="B"> more</label>
+                        <label class="option-label"><input type="radio" name="q20" value="C"> as</label>
+                        <label class="option-label"><input type="radio" name="q20" value="D"> less</label>
+                    </div>
+                    <div class="explanation">🚗 So sánh nhất: the most + adj.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 13: Câu so sánh | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững các dạng so sánh!';
+        } else if (score >= 16) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về câu so sánh!';
+        } else if (score >= 12) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
