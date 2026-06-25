@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài tập Phrasal Verbs | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7a6b3d;
+            --secondary: #b3985a;
+            --accent: #c9b07b;
+            --success: #8f7a3e;
+            --danger: #a57a4a;
+            --light: #fcf7ec;
+            --dark: #4f4228;
+            --card-bg: rgba(255, 251, 240, 0.92);
+            --border-soft: #ddd0b6;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #f5edd9 0%, #e3d5b0 40%, #d4c29a 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 251, 240, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #d4c29a;
+            box-shadow: 0 4px 16px rgba(122, 107, 61, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(179, 152, 90, 0.12);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(179, 152, 90, 0.3);
+        }
+        .nav-home svg { width: 22px; height: 22px; fill: var(--primary); transition: fill 0.2s; }
+        .nav-home:hover svg { fill: white; }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #b3985a, #7a6b3d);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(179, 152, 90, 0.25);
+        }
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #9e854a, #5f522f);
+            box-shadow: 0 8px 18px rgba(179, 152, 90, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+        .title-section h1 { font-size: 1.6rem; color: var(--primary); }
+        .title-section .sub { color: var(--dark); font-size: 0.9rem; font-weight: 500; }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 251, 240, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #d4c29a;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(179, 152, 90, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { background: rgba(179, 152, 90, 0.20); transform: translateY(-2px); }
+        .tab-btn.active { background: var(--secondary); color: white; box-shadow: 0 6px 12px rgba(179, 152, 90, 0.25); }
+
+        .tab-content { display: none; animation: fadeSlide 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(122, 107, 61, 0.12);
+            border: 1px solid var(--border-soft);
+        }
+
+        h2 { color: var(--primary); border-left: 6px solid var(--secondary); padding-left: 18px; margin-bottom: 1rem; }
+        h3 { color: var(--secondary); margin: 1.5rem 0 0.8rem; }
+
+        .exercise-box {
+            background: #fcf7ec;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin-bottom: 1.8rem;
+            border: 1px solid #ddd0b6;
+        }
+        .exercise-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 16px;
+        }
+        .word-bank .drag-word {
+            background: #ede3c8;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: grab;
+            font-weight: 600;
+            color: var(--dark);
+            border: 2px solid #d4c29a;
+            transition: 0.15s;
+            user-select: none;
+        }
+        .word-bank .drag-word:active { cursor: grabbing; opacity: 0.6; }
+        .word-bank .drag-word.dragging { opacity: 0.4; }
+        .word-bank .drag-word.placed { background: #c9d4b0; border-color: var(--success); cursor: default; opacity: 0.7; }
+
+        .match-item, .fill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #f5edd9;
+            border-radius: 16px;
+            flex-wrap: wrap;
+        }
+        .match-item .def {
+            flex: 1;
+            min-width: 150px;
+            color: var(--dark);
+        }
+        .match-item .drop-zone, .fill-item .drop-zone {
+            min-width: 140px;
+            min-height: 44px;
+            border: 2px dashed #b3985a;
+            border-radius: 40px;
+            padding: 6px 16px;
+            background: #fcf7ec;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .match-item .drop-zone.drag-over, .fill-item .drop-zone.drag-over {
+            background: #ede3c8;
+            border-color: var(--success);
+            transform: scale(1.02);
+        }
+        .match-item .drop-zone.filled, .fill-item .drop-zone.filled {
+            border-style: solid;
+            border-color: var(--success);
+            background: #e6f0d6;
+        }
+        .match-item .drop-zone.wrong, .fill-item .drop-zone.wrong {
+            border-color: var(--danger);
+            background: #f5d6d6;
+        }
+
+        .fill-item .sentence {
+            flex: 1;
+            min-width: 200px;
+            color: var(--dark);
+        }
+        .fill-item .sentence .blank {
+            display: inline-block;
+            min-width: 120px;
+            border-bottom: 2px dashed var(--secondary);
+            margin: 0 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .check-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 10px 28px;
+            border: none;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 12px;
+        }
+        .check-btn:hover { background: #7a6b3d; transform: scale(1.02); }
+
+        .result-msg {
+            margin-top: 12px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .result-msg.correct { background: #d4c9a8; color: #3f351e; }
+        .result-msg.wrong { background: #ecd6c0; color: #5f3d2b; }
+
+        .quiz-container .question {
+            background: #fcf7ec;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4c29a;
+        }
+        .question-text { font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; }
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f5edd9;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.15s;
+        }
+        .option-label:hover { background: #ede3c8; }
+        .option-label input { accent-color: var(--secondary); width: 18px; height: 18px; }
+        .option-label.correct { background: #d4c9a8 !important; border-color: var(--success); }
+        .option-label.incorrect { background: #ecd6c0 !important; border-color: var(--danger); }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #b3985a, #7a6b3d);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(179, 152, 90, 0.25);
+        }
+        .submit-btn:hover { transform: scale(1.02); background: linear-gradient(135deg, #9e854a, #5f522f); }
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #f5edd9;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #d4c29a;
+        }
+        .pagination {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .page-btn {
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid #d4c29a;
+            background: #fcf7ec;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .page-btn.active { background: var(--secondary); color: white; border-color: var(--secondary); }
+        .page-btn:hover { background: #ede3c8; }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header { padding: 1rem; }
+            .tab-btn { padding: 8px 16px; font-size: 0.8rem; }
+            .card { padding: 1.2rem; }
+            .match-item, .fill-item { flex-direction: column; align-items: stretch; }
+            .word-bank .drag-word { font-size: 0.85rem; padding: 6px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📝 Bài tập Phrasal Verbs</h1>
+        <div class="sub">Luyện tập kéo thả & trắc nghiệm</div>
+    </div>
+    <a href="./14. phrasal verbs.html" class="nav-theory">
+        📘 Xem lý thuyết
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('tab1')">🔗 1. Ghép định nghĩa</button>
+        <button class="tab-btn" onclick="openTab('tab2')">✍️ 2. Hoàn thành câu</button>
+        <button class="tab-btn" onclick="openTab('tab3')">🎯 3. Trắc nghiệm (60 câu)</button>
+    </div>
+
+    <!-- TAB 1: GHÉP ĐỊNH NGHĨA -->
+    <div id="tab1" class="tab-content active">
+        <div class="card">
+            <h2>🔗 Ghép phrasal verb với định nghĩa</h2>
+            <p style="margin-bottom: 1rem;">📌 Kéo thả từ ở phía trên vào ô trống bên cạnh định nghĩa phù hợp.</p>
+            <div id="matchContainer"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: HOÀN THÀNH CÂU -->
+    <div id="tab2" class="tab-content">
+        <div class="card">
+            <h2>✍️ Điền phrasal verb vào câu</h2>
+            <p style="margin-bottom: 1rem;">📌 Kéo thả từ ở phía trên vào câu .</p>
+            <div id="fillContainer"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TRẮC NGHIỆM 60 CÂU -->
+    <div id="tab3" class="tab-content">
+        <div class="card">
+            <h2>🎯 Trắc nghiệm Phrasal Verbs</h2>
+            <p>✅ Chọn đáp án đúng. Hệ thống sẽ chấm điểm sau khi nộp.</p>
+            <div id="quizContainer"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài tập Phrasal Verbs | Luyện tập chủ động – Nắm chắc kiến thức | Lớp Tiếng Anh cô Quỳnh Nhi ✨
+</footer>
+
+<script>
+    // ===== DỮ LIỆU =====
+    const exerciseWords = [
+        { verb: "break down", meaning: "bị hư hỏng", paraphrase: "My car stopped working on the highway." },
+        { verb: "bring up", meaning: "nuôi nấng", paraphrase: "She raised three children on her own." },
+        { verb: "call off", meaning: "hủy bỏ", paraphrase: "They canceled the meeting due to rain." },
+        { verb: "carry out", meaning: "thực hiện", paraphrase: "We need to execute the plan carefully." },
+        { verb: "come across", meaning: "tình cờ gặp", paraphrase: "I unexpectedly met an old friend." },
+        { verb: "cut down on", meaning: "cắt giảm", paraphrase: "You should reduce the amount of sugar you eat." },
+        { verb: "deal with", meaning: "giải quyết", paraphrase: "We have to handle this problem immediately." },
+        { verb: "drop by", meaning: "ghé qua", paraphrase: "Feel free to visit my office anytime." },
+        { verb: "figure out", meaning: "tìm ra", paraphrase: "I can't understand why she did that." },
+        { verb: "get over", meaning: "vượt qua", paraphrase: "She finally recovered from her fear of heights." },
+        { verb: "give up", meaning: "từ bỏ", paraphrase: "Never abandon your dreams." },
+        { verb: "look after", meaning: "chăm sóc", paraphrase: "Can you take care of my cat while I'm away?" },
+        { verb: "look up", meaning: "tra cứu", paraphrase: "Find the meaning of this word in the dictionary." },
+        { verb: "put off", meaning: "trì hoãn", paraphrase: "Don't postpone your homework until the last minute." },
+        { verb: "put up with", meaning: "chịu đựng", paraphrase: "I can't tolerate this noise anymore." },
+        { verb: "run into", meaning: "tình cờ gặp", paraphrase: "I unexpectedly met an old classmate at the mall." },
+        { verb: "set up", meaning: "thành lập", paraphrase: "They established a new business last year." },
+        { verb: "show off", meaning: "khoe khoang", paraphrase: "He loves to boast about his new car." },
+        { verb: "take after", meaning: "giống ai", paraphrase: "She resembles her grandmother in looks." },
+        { verb: "turn down", meaning: "từ chối", paraphrase: "She rejected the job offer because it was low-paying." }
+    ];
+
+    // 60 câu trắc nghiệm - TẤT CẢ ĐÁP ÁN ĐỀU LÀ PHRASAL VERBS KHÁC NHAU
+    const quizData = [
+        // Câu 1-41: giữ nguyên (mỗi câu 4 đáp án khác nhau)
+        { q: "My car _____ on the highway.", a: "broke down", b: "broke up", c: "broke in", d: "broke out", correct: "a" },
+        { q: "She _____ three children on her own.", a: "brought up", b: "brought in", c: "brought out", d: "brought over", correct: "a" },
+        { q: "They _____ the meeting due to bad weather.", a: "called off", b: "called on", c: "called out", d: "called up", correct: "a" },
+        { q: "We need to _____ the plan carefully.", a: "carry out", b: "carry on", c: "carry over", d: "carry off", correct: "a" },
+        { q: "I _____ an old photo while cleaning.", a: "came across", b: "came over", c: "came up", d: "came out", correct: "a" },
+        { q: "You should _____ sugar to stay healthy.", a: "cut down on", b: "cut off", c: "cut in", d: "cut out", correct: "a" },
+        { q: "We need to _____ this issue immediately.", a: "deal with", b: "deal in", c: "deal out", d: "deal up", correct: "a" },
+        { q: "Feel free to _____ my office anytime.", a: "drop by", b: "drop off", c: "drop out", d: "drop in", correct: "a" },
+        { q: "I can't _____ why she did that.", a: "figure out", b: "figure in", c: "figure on", d: "figure up", correct: "a" },
+        { q: "She finally _____ her fear of heights.", a: "got over", b: "got along", c: "got away", d: "got back", correct: "a" },
+        { q: "Never _____ on your dreams.", a: "give up", b: "give in", c: "give out", d: "give off", correct: "a" },
+        { q: "Can you _____ my cat while I'm away?", a: "look after", b: "look for", c: "look up", d: "look over", correct: "a" },
+        { q: "_____ this word in the dictionary.", a: "Look up", b: "Look after", c: "Look for", d: "Look into", correct: "a" },
+        { q: "Don't _____ your homework until the last minute.", a: "put off", b: "put on", c: "put out", d: "put up", correct: "a" },
+        { q: "I can't _____ this noise anymore.", a: "put up with", b: "put up", c: "put on", d: "put off", correct: "a" },
+        { q: "I _____ an old classmate at the mall.", a: "ran into", b: "ran out", c: "ran over", d: "ran after", correct: "a" },
+        { q: "They _____ a new business last year.", a: "set up", b: "set off", c: "set out", d: "set in", correct: "a" },
+        { q: "He loves to _____ his new car.", a: "show off", b: "show up", c: "show out", d: "show in", correct: "a" },
+        { q: "She _____ her grandmother in looks.", a: "takes after", b: "takes over", c: "takes up", d: "takes on", correct: "a" },
+        { q: "She _____ the job offer because it was low-paying.", a: "turned down", b: "turned up", c: "turned off", d: "turned on", correct: "a" },
+        { q: "We need to _____ the old building.", a: "pull down", b: "pull off", c: "pull over", d: "pull through", correct: "a" },
+        { q: "The plane _____ at 6 p.m.", a: "took off", b: "took on", c: "took over", d: "took up", correct: "a" },
+        { q: "He _____ his father in personality.", a: "takes after", b: "takes over", c: "takes on", d: "takes up", correct: "a" },
+        { q: "Please _____ your shoes before entering.", a: "take off", b: "take on", c: "take over", d: "take up", correct: "a" },
+        { q: "The company _____ 20 new staff.", a: "took on", b: "took off", c: "took over", d: "took up", correct: "a" },
+        { q: "He _____ the business after his father.", a: "took over", b: "took on", c: "took off", d: "took up", correct: "a" },
+        { q: "The teacher _____ the student for being late.", a: "told off", b: "told on", c: "told out", d: "told up", correct: "a" },
+        { q: "I need to _____ the offer before deciding.", a: "think over", b: "think about", c: "think up", d: "think out", correct: "a" },
+        { q: "_____ the lights when you leave.", a: "Turn off", b: "Turn on", c: "Turn up", d: "Turn down", correct: "a" },
+        { q: "He _____ late again this morning.", a: "turned up", b: "turned on", c: "turned off", d: "turned down", correct: "a" },
+        { q: "I _____ at 6 a.m. every day.", a: "wake up", b: "wake off", c: "wake on", d: "wake out", correct: "a" },
+        { q: "_____ before the match to avoid injury.", a: "Warm up", b: "Warm down", c: "Warm over", d: "Warm in", correct: "a" },
+        { q: "These shoes are _____ out.", a: "worn out", b: "wearing out", c: "wear out", d: "wears out", correct: "a" },
+        { q: "I _____ at the gym every morning.", a: "work out", b: "work on", c: "work in", d: "work over", correct: "a" },
+        { q: "She _____ a solution to the problem.", a: "came up with", b: "came up", c: "came over", d: "came out", correct: "a" },
+        { q: "We need to _____ the facts.", a: "check out", b: "check in", c: "check over", d: "check up", correct: "a" },
+        { q: "He _____ a story to explain his absence.", a: "made up", b: "made out", c: "made over", d: "made off", correct: "a" },
+        { q: "The tradition was _____ down.", a: "passed down", b: "passing down", c: "pass down", d: "passes down", correct: "a" },
+        { q: "I'll _____ you up at 7.", a: "pick up", b: "pick out", c: "pick on", d: "pick over", correct: "a" },
+        { q: "_____ your toys away.", a: "Put away", b: "Put up", c: "Put off", d: "Put on", correct: "a" },
+        { q: "_____ your name here.", a: "Put down", b: "Put up", c: "Put on", d: "Put off", correct: "a" },
+        // Câu 42-60: MỖI CÂU 4 ĐÁP ÁN LÀ 4 PHRASAL VERBS KHÁC NHAU
+        { q: "The power was _____ off.", a: "cut off", b: "put on", c: "turn down", d: "get in", correct: "a" },
+        { q: "We _____ out of milk.", a: "ran out", b: "got up", c: "put off", d: "gave in", correct: "a" },
+        { q: "They _____ the old rules.", a: "did away with", b: "looked after", c: "broke into", d: "carried on", correct: "a" },
+        { q: "She _____ down on sugar.", a: "cut down", b: "took up", c: "set off", d: "ran into", correct: "a" },
+        { q: "I _____ on you to help me.", a: "count on", b: "give up", c: "turn off", d: "look for", correct: "a" },
+        { q: "He _____ down on the bed.", a: "lay down", b: "stood up", c: "sat in", d: "went out", correct: "a" },
+        { q: "She _____ out the candles.", a: "blew out", b: "took off", c: "put on", d: "ran away", correct: "a" },
+        { q: "We _____ off early in the morning.", a: "set off", b: "got in", c: "put down", d: "looked up", correct: "a" },
+        { q: "He _____ out to be a doctor.", a: "ended up", b: "started out", c: "gave up", d: "took over", correct: "a" },
+        { q: "I _____ along with my classmates.", a: "get along", b: "run into", c: "put up", d: "turn down", correct: "a" },
+        { q: "She _____ in the car.", a: "got in", b: "put on", c: "took off", d: "set up", correct: "a" },
+        { q: "_____ off at the next stop.", a: "Get off", b: "Put on", c: "Look up", d: "Give in", correct: "a" },
+        { q: "He _____ on the bus.", a: "got on", b: "took off", c: "put down", d: "ran out", correct: "a" },
+        { q: "They _____ on with their project.", a: "got on", b: "gave up", c: "took over", d: "set off", correct: "a" },
+        { q: "_____ out of here!", a: "Get out", b: "Put on", c: "Look up", d: "Give in", correct: "a" },
+        { q: "She _____ the flu.", a: "got over", b: "gave up", c: "took after", d: "ran into", correct: "a" },
+        { q: "_____ rid of old clothes.", a: "Get rid of", b: "Put on", c: "Look up", d: "Give in", correct: "a" },
+        { q: "I _____ up at 6.", a: "get up", b: "put on", c: "take off", d: "run out", correct: "a" },
+        { q: "The alarm _____ off.", a: "went off", b: "put on", c: "took off", d: "ran out", correct: "a" }
+    ];
+
+    // Đảm bảo đúng 60 câu
+    console.log('Tổng số câu quiz:', quizData.length);
+
+    function chunkArray(arr, size) {
+        const result = [];
+        for (let i = 0; i < arr.length; i += size) {
+            result.push(arr.slice(i, i + size));
+        }
+        return result;
+    }
+    const matchChunks = chunkArray(exerciseWords, 5);
+    const fillChunks = chunkArray(exerciseWords, 5);
+
+    // ===== RENDER MATCH =====
+    function renderMatch() {
+        let html = '';
+        matchChunks.forEach((chunk, idx) => {
+            const shuffledDefs = [...chunk].sort(() => Math.random() - 0.5);
+            html += `
+                <div class="exercise-box" data-exercise="match-${idx}">
+                    <div class="exercise-title">📌 Bài ${idx+1}</div>
+                    <div class="word-bank" id="matchBank-${idx}">
+                        ${chunk.map(w => `<span class="drag-word" draggable="true" data-verb="${w.verb}" data-exercise="match-${idx}">${w.verb}</span>`).join('')}
+                    </div>
+                    <div class="match-items" id="matchItems-${idx}">
+                        ${shuffledDefs.map((w, i) => `
+                            <div class="match-item">
+                                <span class="def">${w.meaning}</span>
+                                <span class="drop-zone" data-expected="${w.verb}" data-exercise="match-${idx}" data-index="${i}">⬇️ Thả vào đây</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="check-btn" onclick="checkMatch(${idx})">✅ Kiểm tra bài ${idx+1}</button>
+                    <div id="matchResult-${idx}" class="result-msg"></div>
+                </div>
+            `;
+        });
+        document.getElementById('matchContainer').innerHTML = html;
+        initDragDrop();
+    }
+
+    // ===== RENDER FILL =====
+    function renderFill() {
+        let html = '';
+        fillChunks.forEach((chunk, idx) => {
+            const shuffled = [...chunk].sort(() => Math.random() - 0.5);
+            html += `
+                <div class="exercise-box" data-exercise="fill-${idx}">
+                    <div class="exercise-title">📌 Bài ${idx+1}</div>
+                    <div class="word-bank" id="fillBank-${idx}">
+                        ${chunk.map(w => `<span class="drag-word" draggable="true" data-verb="${w.verb}" data-exercise="fill-${idx}">${w.verb}</span>`).join('')}
+                    </div>
+                    <div class="fill-items" id="fillItems-${idx}">
+                        ${shuffled.map((w, i) => `
+                            <div class="fill-item">
+                                <span class="sentence">${w.paraphrase}</span>
+                                <span class="drop-zone" data-expected="${w.verb}" data-exercise="fill-${idx}" data-index="${i}">⬇️ Thả vào đây</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="check-btn" onclick="checkFill(${idx})">✅ Kiểm tra bài ${idx+1}</button>
+                    <div id="fillResult-${idx}" class="result-msg"></div>
+                </div>
+            `;
+        });
+        document.getElementById('fillContainer').innerHTML = html;
+        initDragDrop();
+    }
+
+    // ===== DRAG & DROP =====
+    function initDragDrop() {
+        document.querySelectorAll('.drag-word').forEach(el => {
+            el.addEventListener('dragstart', handleDragStart);
+            el.addEventListener('dragend', handleDragEnd);
+        });
+        document.querySelectorAll('.drop-zone').forEach(el => {
+            el.addEventListener('dragover', handleDragOver);
+            el.addEventListener('dragenter', handleDragEnter);
+            el.addEventListener('dragleave', handleDragLeave);
+            el.addEventListener('drop', handleDrop);
+        });
+    }
+
+    let draggedVerb = null;
+    let draggedExercise = null;
+
+    function handleDragStart(e) {
+        draggedVerb = e.target.dataset.verb;
+        draggedExercise = e.target.dataset.exercise;
+        e.target.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', draggedVerb);
+    }
+
+    function handleDragEnd(e) {
+        e.target.classList.remove('dragging');
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleDragEnter(e) {
+        e.preventDefault();
+        const zone = e.target.closest('.drop-zone');
+        if (zone) zone.classList.add('drag-over');
+    }
+
+    function handleDragLeave(e) {
+        const zone = e.target.closest('.drop-zone');
+        if (zone) zone.classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        const zone = e.target.closest('.drop-zone');
+        if (!zone) return;
+        zone.classList.remove('drag-over');
+        const verb = e.dataTransfer.getData('text/plain');
+        const exercise = zone.dataset.exercise;
+        if (exercise !== draggedExercise) {
+            alert('⚠️ Vui lòng kéo thả trong cùng một bài!');
+            return;
+        }
+        if (zone.dataset.filled === 'true') {
+            alert('⚠️ Ô này đã được điền!');
+            return;
+        }
+        const bankId = zone.dataset.exercise.startsWith('match') ? 'matchBank' : 'fillBank';
+        const exIdx = zone.dataset.exercise.split('-')[1];
+        const bank = document.querySelector(`#${bankId}-${exIdx}`);
+        const wordEl = bank ? bank.querySelector(`[data-verb="${verb}"]`) : null;
+        if (wordEl && !wordEl.classList.contains('placed')) {
+            wordEl.classList.add('placed');
+            zone.textContent = verb;
+            zone.dataset.filled = 'true';
+            zone.dataset.placedVerb = verb;
+            zone.classList.add('filled');
+        } else {
+            alert('⚠️ Từ này đã được sử dụng hoặc không hợp lệ!');
+        }
+    }
+
+    // ===== CHECK MATCH =====
+    function checkMatch(idx) {
+        const zones = document.querySelectorAll(`#matchItems-${idx} .drop-zone`);
+        let correct = 0;
+        zones.forEach(zone => {
+            const expected = zone.dataset.expected;
+            const placed = zone.dataset.placedVerb || '';
+            if (placed === expected) {
+                correct++;
+                zone.classList.add('filled');
+                zone.classList.remove('wrong');
+            } else {
+                zone.classList.add('wrong');
+                zone.classList.remove('filled');
+            }
+        });
+        const result = document.getElementById(`matchResult-${idx}`);
+        if (correct === zones.length) {
+            result.textContent = `🎉 Tuyệt vời! Bạn đã ghép đúng cả ${zones.length} câu!`;
+            result.className = 'result-msg correct';
+        } else {
+            result.textContent = `📝 Bạn đã ghép đúng ${correct}/${zones.length}. Hãy thử lại!`;
+            result.className = 'result-msg wrong';
+        }
+    }
+
+    // ===== CHECK FILL =====
+    function checkFill(idx) {
+        const zones = document.querySelectorAll(`#fillItems-${idx} .drop-zone`);
+        let correct = 0;
+        zones.forEach(zone => {
+            const expected = zone.dataset.expected;
+            const placed = zone.dataset.placedVerb || '';
+            if (placed === expected) {
+                correct++;
+                zone.classList.add('filled');
+                zone.classList.remove('wrong');
+            } else {
+                zone.classList.add('wrong');
+                zone.classList.remove('filled');
+            }
+        });
+        const result = document.getElementById(`fillResult-${idx}`);
+        if (correct === zones.length) {
+            result.textContent = `🎉 Xuất sắc! Bạn đã điền đúng cả ${zones.length} câu!`;
+            result.className = 'result-msg correct';
+        } else {
+            result.textContent = `📝 Bạn đã điền đúng ${correct}/${zones.length}. Hãy thử lại!`;
+            result.className = 'result-msg wrong';
+        }
+    }
+
+    // ===== RENDER QUIZ =====
+    const QUIZ_PER_PAGE = 10;
+    let currentQuizPage = 0;
+
+    function renderQuiz(page) {
+        currentQuizPage = page;
+        const start = page * QUIZ_PER_PAGE;
+        const end = Math.min(start + QUIZ_PER_PAGE, quizData.length);
+        const pageData = quizData.slice(start, end);
+        let html = `<div class="pagination">`;
+        const totalPages = Math.ceil(quizData.length / QUIZ_PER_PAGE);
+        for (let i = 0; i < totalPages; i++) {
+            html += `<button class="page-btn ${i === page ? 'active' : ''}" onclick="renderQuiz(${i})">${i+1}</button>`;
+        }
+        html += `</div>`;
+        html += `<form id="quizForm">`;
+        pageData.forEach((item, idx) => {
+            const qIdx = start + idx;
+            html += `
+                <div class="question" data-correct="${item.correct}">
+                    <p class="question-text">${qIdx+1}. ${item.q}</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q${qIdx}" value="a"> ${item.a}</label>
+                        <label class="option-label"><input type="radio" name="q${qIdx}" value="b"> ${item.b}</label>
+                        <label class="option-label"><input type="radio" name="q${qIdx}" value="c"> ${item.c}</label>
+                        <label class="option-label"><input type="radio" name="q${qIdx}" value="d"> ${item.d}</label>
+                    </div>
+                </div>
+            `;
+        });
+        html += `<button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>`;
+        html += `</form>`;
+        html += `<div id="quizResult" class="result-score"></div>`;
+        document.getElementById('quizContainer').innerHTML = html;
+    }
+
+    // ===== CHECK QUIZ =====
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q) => {
+            const correctVal = q.dataset.correct;
+            const selected = q.querySelector('input:checked');
+            const labels = q.querySelectorAll('.option-label');
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.closest('.option-label').classList.add('correct');
+                } else {
+                    selected.closest('.option-label').classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Xuất sắc! Bạn đã trả lời đúng tất cả!';
+        } else if (score >= total * 0.7) {
+            message = '🌟 Rất tốt! Bạn nắm vững phrasal verbs!';
+        } else if (score >= total * 0.4) {
+            message = '📖 Khá ổn. Hãy xem lại lý thuyết nhé!';
+        } else {
+            message = '💪 Đừng nản! Học kỹ lại danh sách phrasal verbs.';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // ===== TAB SWITCH =====
+    function openTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+        if (tabId === 'tab3' && !document.querySelector('#quizContainer .question')) {
+            renderQuiz(0);
+        }
+    }
+
+    // ===== INIT =====
+    renderMatch();
+    renderFill();
+</script>
+</body>
+</html>
