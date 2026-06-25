@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 14: Phrasal Verbs | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7a6b3d;        /* vàng trầm chủ đạo */
+            --secondary: #b3985a;
+            --accent: #c9b07b;
+            --success: #8f7a3e;
+            --warning: #bfa25a;
+            --danger: #a57a4a;
+            --light: #fcf7ec;
+            --dark: #4f4228;
+            --gradient-start: #f5edd9;
+            --gradient-end: #e3d5b0;
+            --card-bg: rgba(255, 251, 240, 0.92);
+            --border-soft: #ddd0b6;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #f5edd9 0%, #e3d5b0 40%, #d4c29a 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 251, 240, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #d4c29a;
+            box-shadow: 0 4px 16px rgba(122, 107, 61, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(179, 152, 90, 0.12);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(179, 152, 90, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #b3985a, #7a6b3d);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(179, 152, 90, 0.25);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #9e854a, #5f522f);
+            box-shadow: 0 8px 18px rgba(179, 152, 90, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(122, 107, 61, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 251, 240, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #d4c29a;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(179, 152, 90, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(179, 152, 90, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(179, 152, 90, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card, .quiz-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(122, 107, 61, 0.12);
+            border: 1px solid var(--border-soft);
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #d4c29a;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        th {
+            background: linear-gradient(135deg, #b3985a, #7a6b3d);
+            color: white;
+        }
+
+        .note-box {
+            background: #f5edd9;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+
+        .formula-box {
+            background: #f5edd9;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #ede3c8;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .rule-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .rule-item {
+            background: #f5edd9;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .rule-item:hover {
+            border-color: var(--secondary);
+            background: #ede3c8;
+        }
+
+        .rule-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .question {
+            background: #fcf7ec;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4c29a;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f5edd9;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #ede3c8;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #d4c9a8 !important;
+            border-color: var(--success) !important;
+            color: #3f351e;
+        }
+
+        .incorrect {
+            background: #ecd6c0 !important;
+            border-color: var(--danger) !important;
+            color: #5f3d2b;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #f5edd9;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #b3985a, #7a6b3d);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(179, 152, 90, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #9e854a, #5f522f);
+            box-shadow: 0 8px 18px rgba(179, 152, 90, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #f5edd9;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #d4c29a;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .compare-table td:first-child {
+            background: #f5edd9;
+            font-weight: 600;
+        }
+
+        .phrasal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+            margin: 1.2rem 0;
+        }
+        .phrasal-item {
+            background: #fcf7ec;
+            padding: 14px 18px;
+            border-radius: 20px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: 0.15s;
+        }
+        .phrasal-item:hover {
+            background: #f5edd9;
+            transform: translateX(4px);
+        }
+        .phrasal-item strong {
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+        .phrasal-item em {
+            color: var(--dark);
+            display: block;
+            margin-top: 4px;
+            font-size: 0.92rem;
+        }
+        .phrasal-item .meaning {
+            color: #5f522f;
+            font-weight: 500;
+        }
+        .phrasal-item .example {
+            color: #3f351e;
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        /* Search box */
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 60px;
+            border: 2px solid #d4c29a;
+            background: #fcf7ec;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            min-width: 200px;
+        }
+        .search-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(179,152,90,0.2);
+        }
+        .search-box button {
+            padding: 12px 28px;
+            border: none;
+            background: var(--secondary);
+            color: white;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-box button:hover {
+            background: #7a6b3d;
+            transform: scale(1.02);
+        }
+        .search-box .clear-btn {
+            background: #b0a090;
+        }
+        .search-box .clear-btn:hover {
+            background: #8f7a6b;
+        }
+        .highlight {
+            background: #f5e56b;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .no-result {
+            text-align: center;
+            padding: 2rem;
+            color: var(--dark);
+            font-size: 1.1rem;
+            background: #f5edd9;
+            border-radius: 30px;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .rule-list {
+                grid-template-columns: 1fr;
+            }
+            .phrasal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📚 Bài 14: Phrasal Verbs</h1>
+        <div class="sub">Cụm động từ – Ôn tập toàn diện</div>
+    </div>
+    <a href="./14. practice.html" class="nav-practice">
+        ✍️ Làm bài tập
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('lythuyet')">📘 1. Lý thuyết</button>
+        <button class="tab-btn" onclick="openTab('danhsach')">📋 2. Danh sách (A-Z)</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 3. Trắc nghiệm</button>
+    </div>
+
+    <!-- TAB 1: LÝ THUYẾT -->
+    <div id="lythuyet" class="tab-content active">
+        <div class="card">
+            <h2>📌 Phrasal Verbs là gì?</h2>
+            <div class="note-box">
+                <strong>💡 Định nghĩa:</strong>
+                <p style="font-size: 1.05rem; margin-top: 6px;">
+                    <strong>Phrasal verb</strong> (cụm động từ) là sự kết hợp giữa một động từ và một tiểu từ (giới từ hoặc trạng từ) tạo thành một nghĩa mới, thường khác xa nghĩa gốc của động từ.
+                </p>
+            </div>
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>Look up</em> – tra cứu (không phải "nhìn lên")<br>
+                <em>Give up</em> – từ bỏ (không phải "cho lên")<br>
+                <em>Turn down</em> – từ chối / vặn nhỏ (không phải "quay xuống")
+            </div>
+
+            <h3>🔹 Phân loại</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Intransitive (nội động)</strong>
+                    Không cần tân ngữ.<br>
+                    <em>He <u>grew up</u> in Hanoi.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Transitive (ngoại động)</strong>
+                    Cần tân ngữ.<br>
+                    <em>She <u>looked up</u> the word.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Separable (tách được)</strong>
+                    Tân ngữ có thể ở giữa.<br>
+                    <em>Turn <u>the music</u> down.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Inseparable (không tách)</strong>
+                    Tân ngữ luôn sau.<br>
+                    <em>Look <u>after</u> the children.</em>
+                </div>
+            </div>
+
+            <div class="formula-box">
+                <strong>📐 Mẹo ghi nhớ:</strong><br>
+                Hãy học cụm động từ theo <strong>ngữ cảnh</strong>, không học vẹt. Mỗi cụm thường có 2–3 nghĩa, nhưng ở lớp 9–12 chúng ta tập trung vào nghĩa phổ biến nhất.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: DANH SÁCH A-Z (tổng hợp từ 2 nguồn) -->
+    <div id="danhsach" class="tab-content">
+        <div class="card">
+            <h2>📋 Danh sách Phrasal Verbs (A-Z)</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Tìm cụm động từ (VD: look, give, turn...)" onkeyup="searchPhrasal()">
+                <button onclick="searchPhrasal()">Tìm</button>
+                <button class="clear-btn" onclick="clearSearch()">Xóa</button>
+                <span style="margin-left: auto; color: var(--dark); font-weight: 500;" id="countDisplay">Hiển thị tất cả</span>
+            </div>
+            <div id="phrasalList" class="phrasal-grid">
+                <!-- Dữ liệu sẽ được render bởi JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TRẮC NGHIỆM (giữ nguyên 15 câu) -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Trắc nghiệm Phrasal Verbs</h2>
+            <p>✅ Chọn cụm động từ thích hợp điền vào chỗ trống.</p>
+            <form id="quizForm">
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. I can't _____ this noise anymore. It's too loud.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> put up with</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> get over</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> look forward to</label>
+                    </div>
+                    <div class="explanation">👂 "put up with" = chịu đựng. Dịch: Tôi không thể chịu đựng tiếng ồn này nữa.</div>
+                </div>
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. We _____ of milk, so I need to buy some.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> ran away</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> ran out</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> ran into</label>
+                    </div>
+                    <div class="explanation">🥛 "run out of" = hết. Chúng tôi hết sữa.</div>
+                </div>
+                <div class="question" data-correct="C">
+                    <p class="question-text">3. She _____ her mother; they both have the same smile.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> takes over</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> looks up</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> takes after</label>
+                    </div>
+                    <div class="explanation">😊 "take after" = giống ai. Cô ấy giống mẹ mình.</div>
+                </div>
+                <div class="question" data-correct="A">
+                    <p class="question-text">4. Please _____ your shoes before entering the house.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> take off</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> put on</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> look after</label>
+                    </div>
+                    <div class="explanation">👟 "take off" = cởi. Cởi giày trước khi vào nhà.</div>
+                </div>
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. I _____ an old friend at the supermarket yesterday.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> ran out</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> ran into</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> ran over</label>
+                    </div>
+                    <div class="explanation">🤝 "run into" = tình cờ gặp. Tôi tình cờ gặp một người bạn cũ.</div>
+                </div>
+                <div class="question" data-correct="A">
+                    <p class="question-text">6. The plane will _____ in 20 minutes.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> take off</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> put off</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> go off</label>
+                    </div>
+                    <div class="explanation">✈️ "take off" = cất cánh. Máy bay sẽ cất cánh trong 20 phút.</div>
+                </div>
+                <div class="question" data-correct="C">
+                    <p class="question-text">7. My car _____ on the highway, so I was late.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> broke up</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> broke in</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> broke down</label>
+                    </div>
+                    <div class="explanation">🚗 "break down" = hỏng. Xe tôi hỏng trên đường cao tốc.</div>
+                </div>
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. We need to _____ a solution to this problem.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> work in</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> work out</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> work on</label>
+                    </div>
+                    <div class="explanation">🧩 "work out" = tìm ra giải pháp. Chúng ta cần tìm ra giải pháp.</div>
+                </div>
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. The company _____ a new manager to replace the old one.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> took on</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> took in</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> took up</label>
+                    </div>
+                    <div class="explanation">👔 "take on" = thuê. Công ty thuê một giám đốc mới.</div>
+                </div>
+                <div class="question" data-correct="C">
+                    <p class="question-text">10. My grandmother _____ us when our parents were away.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> looked up</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> looked for</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> looked after</label>
+                    </div>
+                    <div class="explanation">👵 "look after" = chăm sóc. Bà tôi chăm sóc chúng tôi.</div>
+                </div>
+                <div class="question" data-correct="B">
+                    <p class="question-text">11. She _____ the job offer because it didn't pay well.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> turned up</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> turned down</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> turned off</label>
+                    </div>
+                    <div class="explanation">❌ "turn down" = từ chối. Cô ấy từ chối lời mời làm việc.</div>
+                </div>
+                <div class="question" data-correct="A">
+                    <p class="question-text">12. I have to _____ early tomorrow for the exam.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> get up</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> give up</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> grow up</label>
+                    </div>
+                    <div class="explanation">⏰ "get up" = thức dậy. Tôi phải dậy sớm cho kỳ thi.</div>
+                </div>
+                <div class="question" data-correct="C">
+                    <p class="question-text">13. He's very arrogant and _____ everyone.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> looks up to</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> looks forward to</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> looks down on</label>
+                    </div>
+                    <div class="explanation">😤 "look down on" = coi thường. Anh ta coi thường mọi người.</div>
+                </div>
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. Can you _____ this word in the dictionary?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> look after</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> look up</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> look for</label>
+                    </div>
+                    <div class="explanation">📖 "look up" = tra cứu. Bạn có thể tra từ này trong từ điển không?</div>
+                </div>
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. We have to _____ our trip because of the storm.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> put off</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> put on</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> put out</label>
+                    </div>
+                    <div class="explanation">⏳ "put off" = hoãn lại. Chúng tôi phải hoãn chuyến đi vì bão.</div>
+                </div>
+                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 14: Phrasal Verbs | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    // ===== DỮ LIỆU PHRASAL VERBS (tổng hợp từ 2 nguồn, sắp xếp A-Z, loại trùng) =====
+    const phrasalData = [
+        { verb: "apply for", meaning: "nộp đơn xin (việc, học bổng)", example: "I applied for a scholarship." },
+        { verb: "break down", meaning: "bị hư hỏng, đổ vỡ", example: "My car broke down on the highway." },
+        { verb: "break in/into", meaning: "đột nhập vào", example: "Someone broke into my house." },
+        { verb: "break up with", meaning: "chia tay ai", example: "She broke up with her boyfriend." },
+        { verb: "bring out", meaning: "xuất bản, phát hành", example: "They brought out a new album." },
+        { verb: "bring up", meaning: "nuôi nấng (con cái); đề cập", example: "She brought up three children." },
+        { verb: "brush up on", meaning: "ôn lại (kiến thức)", example: "I need to brush up on my French." },
+        { verb: "call for", meaning: "cần, yêu cầu; đến tìm ai", example: "The situation calls for action." },
+        { verb: "call off", meaning: "hủy bỏ", example: "They called off the meeting." },
+        { verb: "carry on", meaning: "tiếp tục", example: "Carry on with your work." },
+        { verb: "carry out", meaning: "thực hiện, tiến hành", example: "Carry out the plan." },
+        { verb: "catch up with", meaning: "theo kịp, đuổi kịp", example: "I need to catch up with the homework." },
+        { verb: "check in", meaning: "làm thủ tục nhận phòng/soát vé", example: "We checked in at 3 p.m." },
+        { verb: "check out", meaning: "làm thủ tục trả phòng", example: "Check out before noon." },
+        { verb: "cheer up", meaning: "động viên, làm ai vui", example: "Cheer up! It'll be okay." },
+        { verb: "clean up", meaning: "lau chùi, dọn dẹp", example: "Clean up your room." },
+        { verb: "close down", meaning: "đóng cửa, ngừng hoạt động", example: "The shop closed down." },
+        { verb: "come across as", meaning: "có vẻ (đối với người khác)", example: "She comes across as confident." },
+        { verb: "come across", meaning: "tình cờ gặp, thấy", example: "I came across an old photo." },
+        { verb: "come off", meaning: "bong ra, rời ra; thành công", example: "The sticker came off easily." },
+        { verb: "come up against", meaning: "đối mặt với", example: "We came up against some difficulties." },
+        { verb: "come up with", meaning: "nghĩ ra (ý tưởng, giải pháp)", example: "She came up with a great idea." },
+        { verb: "cook up / make up", meaning: "bịa ra (chuyện)", example: "He cooked up a story." },
+        { verb: "cool down", meaning: "nguôi đi, bình tĩnh lại", example: "Cool down after the argument." },
+        { verb: "count on", meaning: "tin cậy, dựa vào", example: "You can count on me." },
+        { verb: "cut down on", meaning: "cắt giảm", example: "Cut down on sugar." },
+        { verb: "cut off", meaning: "cắt đứt, chặt ra", example: "The power was cut off." },
+        { verb: "deal with", meaning: "giải quyết, đối phó", example: "Deal with the problem." },
+        { verb: "do away with", meaning: "bỏ, loại bỏ", example: "They did away with the old rules." },
+        { verb: "do without", meaning: "làm gì mà không cần", example: "We can't do without water." },
+        { verb: "dress up", meaning: "ăn mặc đẹp, diện", example: "Dress up for the party." },
+        { verb: "drop by", meaning: "ghé qua", example: "Drop by my house anytime." },
+        { verb: "drop off", meaning: "thả ai xuống xe", example: "Drop me off at the corner." },
+        { verb: "end up", meaning: "kết thúc, kết cục là", example: "He ended up apologizing." },
+        { verb: "face up to", meaning: "đối mặt, chấp nhận", example: "Face up to the truth." },
+        { verb: "fall out", meaning: "rơi ra ngoài; cãi nhau", example: "They fell out over money." },
+        { verb: "figure out", meaning: "suy ra, tìm ra", example: "Figure out the answer." },
+        { verb: "find out", meaning: "tìm ra, phát hiện", example: "Find out the truth." },
+        { verb: "get along (with)", meaning: "hợp nhau, hòa thuận", example: "I get along with my sister." },
+        { verb: "get in", meaning: "đi vào (xe ô tô, taxi)", example: "Get in the car." },
+        { verb: "get off", meaning: "xuống xe", example: "Get off at the next stop." },
+        { verb: "get on", meaning: "lên xe (buýt, tàu)", example: "Get on the bus." },
+        { verb: "get on with", meaning: "hòa hợp, tiến triển", example: "How are you getting on with your project?" },
+        { verb: "get out", meaning: "rời khỏi, thoát ra", example: "Get out of here!" },
+        { verb: "get over", meaning: "vượt qua, khỏi (bệnh)", example: "She got over the flu." },
+        { verb: "get rid of", meaning: "từ bỏ, loại bỏ", example: "Get rid of old clothes." },
+        { verb: "get up", meaning: "thức dậy (ra khỏi giường)", example: "I get up at 6 a.m." },
+        { verb: "give up", meaning: "từ bỏ", example: "Never give up." },
+        { verb: "go around", meaning: "đi vòng vòng, lan truyền", example: "A rumor is going around." },
+        { verb: "go down", meaning: "giảm, đi xuống", example: "Prices went down." },
+        { verb: "go off", meaning: "reo (chuông), nổ, ôi thiu", example: "The alarm went off." },
+        { verb: "go on", meaning: "tiếp tục", example: "Go on with your story." },
+        { verb: "go out", meaning: "đi ra ngoài, đi chơi", example: "Let's go out tonight." },
+        { verb: "go over", meaning: "kiểm tra, xem xét", example: "Go over your answers." },
+        { verb: "go up", meaning: "tăng, đi lên", example: "The price went up." },
+        { verb: "grow up", meaning: "lớn lên, trưởng thành", example: "He grew up in London." },
+        { verb: "hold on", meaning: "chờ đợi", example: "Hold on a moment." },
+        { verb: "keep on", meaning: "tiếp tục làm gì", example: "Keep on trying." },
+        { verb: "keep up", meaning: "tiếp tục phát huy, duy trì", example: "Keep up the good work." },
+        { verb: "let down", meaning: "làm ai thất vọng", example: "Don't let me down." },
+        { verb: "live on", meaning: "sống nhờ vào, phụ thuộc", example: "He lives on a small pension." },
+        { verb: "look after", meaning: "chăm sóc", example: "Look after your little sister." },
+        { verb: "look around", meaning: "nhìn xung quanh", example: "Look around the shop." },
+        { verb: "look at", meaning: "nhìn vào", example: "Look at the board." },
+        { verb: "look down on", meaning: "coi thường, khinh", example: "Don't look down on others." },
+        { verb: "look for", meaning: "tìm kiếm", example: "I'm looking for my keys." },
+        { verb: "look forward to", meaning: "mong chờ, trông mong", example: "I look forward to meeting you." },
+        { verb: "look into", meaning: "nghiên cứu, điều tra", example: "The police are looking into it." },
+        { verb: "look up", meaning: "tra cứu (từ)", example: "Look up the word in a dictionary." },
+        { verb: "look up to", meaning: "tôn trọng, ngưỡng mộ", example: "I look up to my teacher." },
+        { verb: "make up", meaning: "bịa đặt, trang điểm; làm hòa", example: "She made up a story." },
+        { verb: "make up one's mind", meaning: "quyết định", example: "Make up your mind now." },
+        { verb: "move on to", meaning: "chuyển tiếp sang", example: "Let's move on to the next topic." },
+        { verb: "pass down", meaning: "lưu truyền", example: "The tradition was passed down." },
+        { verb: "pick up", meaning: "đón ai; nhặt lên", example: "I'll pick you up at 7." },
+        { verb: "pull down", meaning: "phá hủy, dỡ bỏ", example: "They pulled down the old building." },
+        { verb: "put away", meaning: "cất đi", example: "Put away your toys." },
+        { verb: "put down", meaning: "ghi chú; hạ thấp ai", example: "Put down your name here." },
+        { verb: "put off", meaning: "trì hoãn; làm mất hứng", example: "Don't put off your homework." },
+        { verb: "put on", meaning: "mặc (quần áo)", example: "Put on your coat." },
+        { verb: "put out", meaning: "dập tắt (lửa)", example: "Put out the fire." },
+        { verb: "put up with", meaning: "chịu đựng", example: "I can't put up with this noise." },
+        { verb: "run into", meaning: "tình cờ gặp", example: "I ran into an old friend." },
+        { verb: "run out", meaning: "cạn kiệt, hết", example: "We ran out of milk." },
+        { verb: "set off/out", meaning: "khởi hành", example: "We set off early." },
+        { verb: "set up", meaning: "thành lập, thiết lập", example: "Set up a company." },
+        { verb: "settle down", meaning: "ổn định cuộc sống", example: "They settled down in the countryside." },
+        { verb: "show off", meaning: "khoe khoang", example: "He always shows off." },
+        { verb: "show up", meaning: "xuất hiện, có mặt", example: "She showed up late." },
+        { verb: "slow down", meaning: "chậm lại", example: "Slow down! You're driving too fast." },
+        { verb: "speed up", meaning: "tăng tốc", example: "Speed up or we'll be late." },
+        { verb: "stand for", meaning: "viết tắt cho; đại diện", example: "UN stands for United Nations." },
+        { verb: "take after", meaning: "giống ai (ngoại hình, tính cách)", example: "She takes after her mother." },
+        { verb: "take away", meaning: "lấy đi, mang đi", example: "Take away the trash." },
+        { verb: "take off", meaning: "cất cánh; cởi; thịnh hành", example: "The plane took off." },
+        { verb: "take on", meaning: "đảm nhận, thuê", example: "The company took on new staff." },
+        { verb: "take over", meaning: "tiếp quản, kế thừa", example: "He took over the business." },
+        { verb: "tell off", meaning: "la rầy ai", example: "The teacher told him off." },
+        { verb: "think over", meaning: "cân nhắc, suy nghĩ kỹ", example: "Think over the offer." },
+        { verb: "turn around", meaning: "quay đầu lại", example: "Turn around and look." },
+        { verb: "turn down", meaning: "từ chối; vặn nhỏ", example: "She turned down the job." },
+        { verb: "turn off", meaning: "tắt (thiết bị)", example: "Turn off the lights." },
+        { verb: "turn on", meaning: "bật (thiết bị)", example: "Turn on the TV." },
+        { verb: "turn up", meaning: "xuất hiện; vặn lớn", example: "He turned up late." },
+        { verb: "wake up", meaning: "(tự) thức dậy", example: "I wake up at 6." },
+        { verb: "warm up", meaning: "khởi động; hâm nóng", example: "Warm up before exercise." },
+        { verb: "wear out", meaning: "làm mòn, mệt mỏi", example: "These shoes are worn out." },
+        { verb: "work out", meaning: "tập thể dục; có kết quả tốt", example: "I work out every day." }
+    ];
+
+    // Loại bỏ trùng lặp theo verb (giữ lại cái đầu tiên)
+    const seen = new Set();
+    const uniqueData = phrasalData.filter(item => {
+        if (seen.has(item.verb)) return false;
+        seen.add(item.verb);
+        return true;
+    });
+
+    // Sắp xếp alphabet
+    uniqueData.sort((a, b) => a.verb.localeCompare(b.verb));
+
+    // Render danh sách
+    const phrasalList = document.getElementById('phrasalList');
+    let currentItems = [...uniqueData];
+
+    function renderList(items) {
+        if (items.length === 0) {
+            phrasalList.innerHTML = `<div class="no-result">😕 Không tìm thấy cụm động từ nào. Vui lòng thử lại!</div>`;
+            document.getElementById('countDisplay').textContent = '0 kết quả';
+            return;
+        }
+        let html = '';
+        items.forEach(item => {
+            html += `
+                <div class="phrasal-item">
+                    <strong>${item.verb}</strong>
+                    <span class="meaning">${item.meaning}</span>
+                    <div class="example">📌 ${item.example}</div>
+                </div>
+            `;
+        });
+        phrasalList.innerHTML = html;
+        document.getElementById('countDisplay').textContent = `Hiển thị ${items.length} / ${uniqueData.length}`;
+    }
+
+    // Search
+    function searchPhrasal() {
+        const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (keyword === '') {
+            renderList(uniqueData);
+            return;
+        }
+        const filtered = uniqueData.filter(item => 
+            item.verb.includes(keyword) || 
+            item.meaning.includes(keyword) || 
+            item.example.toLowerCase().includes(keyword)
+        );
+        renderList(filtered);
+    }
+
+    function clearSearch() {
+        document.getElementById('searchInput').value = '';
+        renderList(uniqueData);
+    }
+
+    // Render ban đầu
+    renderList(uniqueData);
+
+    // ===== TAB & QUIZ =====
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Xuất sắc! Bạn đã nắm vững phrasal verbs!';
+        } else if (score >= 12) {
+            message = '🌟 Rất tốt! Cần ôn thêm một vài cụm nữa nhé.';
+        } else if (score >= 8) {
+            message = '📖 Khá ổn. Xem lại danh sách phrasal verbs để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ Tab danh sách nhé.';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
