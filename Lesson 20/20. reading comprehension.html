@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 20: Reading Comprehension | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a4a;
+            --secondary: #2a5f7a;
+            --accent: #3a7f9a;
+            --success: #1f6d47;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #eaf0f5;
+            --dark: #142c3a;
+            --gradient-start: #dce8f0;
+            --gradient-end: #b8cedc;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(145deg, #dce8f0 0%, #c5dae6 40%, #b0c8d8 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #b0c8d8;
+            box-shadow: 0 4px 16px rgba(42, 95, 122, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(42, 95, 122, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(42, 95, 122, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(42, 95, 122, 0.25);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
+            box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(42, 95, 122, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #b0c8d8;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(42, 95, 122, 0.08);
+            font-weight: bold;
+            font-size: 0.9rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(42, 95, 122, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(42, 95, 122, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .card, .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(42, 95, 122, 0.12);
+            border: 1px solid #c0d6e2;
+            transition: transform 0.2s;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1.2rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        h4 {
+            color: var(--dark);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .note-box {
+            background: #eaf0f5;
+            border-left: 5px solid var(--secondary);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+
+        .formula-box {
+            background: #eaf0f5;
+            border-left: 5px solid var(--accent);
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+        }
+
+        .example-box {
+            background: #dce8f0;
+            border-left: 5px solid var(--success);
+            padding: 1rem;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .rule-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .rule-item {
+            background: #eaf0f5;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 500;
+            color: var(--dark);
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .rule-item:hover {
+            border-color: var(--secondary);
+            background: #d4e2ec;
+        }
+
+        .rule-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .question {
+            background: #f3f8fc;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c0d6e2;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #eaf0f5;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #d4e2ec;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2dce8 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #eaf0f5;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(42, 95, 122, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
+            box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #eaf0f5;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #b0c8d8;
+        }
+
+        .reading-passage {
+            background: #f3f8fc;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem;
+            border: 1px solid #c0d6e2;
+        }
+
+        .reading-passage h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 0.6rem;
+        }
+
+        .highlight {
+            background: rgba(42, 95, 122, 0.12);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .rule-list {
+                grid-template-columns: 1fr;
+            }
+            .reading-passage {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>📖 Bài 20: Reading Comprehension</h1>
+        <div class="sub">Kỹ năng đọc hiểu & điền từ</div>
+    </div>
+    <a href="./20. practice.html" class="nav-practice">
+        ✍️ Làm bài tập
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('reading_tips')">📘 1. Chiến lược đọc hiểu</button>
+        <button class="tab-btn" onclick="openTab('main_idea')">🎯 2. Ý chính & chi tiết</button>
+        <button class="tab-btn" onclick="openTab('cloze')">✏️ 3. Điền từ vào đoạn văn</button>
+        <button class="tab-btn" onclick="openTab('sentence_insertion')">🧩 4. Điền câu vào đoạn</button>
+        <button class="tab-btn" onclick="openTab('inference')">🔍 5. Suy luận & ngụ ý</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 6. Trắc nghiệm</button>
+    </div>
+
+    <!-- TAB 1: CHIẾN LƯỢC ĐỌC HIỂU -->
+    <div id="reading_tips" class="tab-content active">
+        <div class="card">
+            <h2>📘 Kỹ năng đọc hiểu – Chiến lược cơ bản</h2>
+            <div class="note-box">
+                <strong>💡 Đọc hiểu là kỹ năng quan trọng trong các kỳ thi.</strong>
+                <p style="margin-top: 6px;">Không chỉ đọc để hiểu nội dung, bạn cần nắm được cấu trúc, ý chính, và suy luận từ ngữ cảnh.</p>
+            </div>
+
+            <h3>🔹 Các bước đọc hiểu hiệu quả</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>1️⃣ Đọc lướt (Skimming)</strong>
+                    Đọc nhanh để nắm ý chính, cấu trúc bài viết. Chú ý tiêu đề, câu đầu và cuối mỗi đoạn.
+                </div>
+                <div class="rule-item">
+                    <strong>2️⃣ Đọc kỹ (Scanning)</strong>
+                    Tìm thông tin chi tiết, từ khóa, số liệu, tên riêng. Dùng mắt dò tìm nhanh.
+                </div>
+                <div class="rule-item">
+                    <strong>3️⃣ Đọc hiểu ngữ cảnh</strong>
+                    Suy luận nghĩa từ vựng dựa vào câu xung quanh, không cần từ điển.
+                </div>
+                <div class="rule-item">
+                    <strong>4️⃣ Phân tích cấu trúc</strong>
+                    Nhận biết câu chủ đề, câu hỗ trợ, các đoạn văn và cách tổ chức bài viết.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <strong>📌 Ví dụ về đọc lướt:</strong><br>
+                Nhìn vào tiêu đề <em>"The Benefits of Regular Exercise"</em> → Đoán nội dung nói về lợi ích của tập thể dục.<br>
+                Đọc câu đầu: <em>"Regular exercise is essential for maintaining good health."</em> → Ý chính của bài.
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Mẹo:</strong> Luôn đọc câu hỏi trước khi đọc đoạn văn để biết cần tìm thông tin gì.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: Ý CHÍNH & CHI TIẾT -->
+    <div id="main_idea" class="tab-content">
+        <div class="card">
+            <h2>🎯 Tìm ý chính và chi tiết trong bài đọc</h2>
+            
+            <h3>🔹 Ý chính (Main Idea)</h3>
+            <div class="formula-box">
+                <strong>💡 Ý chính là thông điệp quan trọng nhất của toàn bài hoặc một đoạn văn.</strong><br>
+                Thường xuất hiện ở <span class="highlight">câu đầu</span> hoặc <span class="highlight">câu cuối</span> của đoạn văn.
+            </div>
+
+            <div class="example-box">
+                <strong>Ví dụ:</strong><br>
+                <em>"Global warming is one of the most serious environmental issues we face today. Rising temperatures are causing ice caps to melt, sea levels to rise, and weather patterns to change."</em><br>
+                → <strong>Ý chính:</strong> Global warming is a serious issue.<br>
+                → <strong>Chi tiết hỗ trợ:</strong> Ice caps melting, sea levels rising, weather changing.
+            </div>
+
+            <h3>🔹 Chi tiết (Details)</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Sự kiện, số liệu</strong>
+                    <em>According to the article, 70% of the Earth's surface is water.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Ví dụ, bằng chứng</strong>
+                    <em>For example, many studies show that exercise improves mood.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Lời giải thích</strong>
+                    <em>This is because exercise releases endorphins.</em>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Mẹo:</strong> Khi tìm ý chính, hãy hỏi: "Tác giả muốn truyền tải điều gì?" Với chi tiết, hỏi: "Thông tin này ủng hộ ý chính như thế nào?"
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: ĐIỀN TỪ VÀO ĐOẠN VĂN -->
+    <div id="cloze" class="tab-content">
+        <div class="card">
+            <h2>✏️ Điền từ thích hợp vào chỗ trống (Cloze Test)</h2>
+            <div class="note-box">
+                <strong>💡 Dạng bài kiểm tra khả năng hiểu ngữ cảnh và từ vựng.</strong>
+                <p style="margin-top: 6px;">Bạn cần chọn từ phù hợp cả về nghĩa và ngữ pháp trong đoạn văn.</p>
+            </div>
+
+            <h3>🔹 Các bước làm bài điền từ</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>1️⃣ Đọc toàn bộ đoạn</strong>
+                    Đọc nhanh để hiểu nội dung tổng quát trước khi điền từ.
+                </div>
+                <div class="rule-item">
+                    <strong>2️⃣ Xác định từ loại</strong>
+                    Chỗ trống cần danh từ, động từ, tính từ hay trạng từ? Dựa vào vị trí trong câu.
+                </div>
+                <div class="rule-item">
+                    <strong>3️⃣ Đọc ngữ cảnh xung quanh</strong>
+                    Các câu trước và sau giúp suy luận nghĩa của từ cần điền.
+                </div>
+                <div class="rule-item">
+                    <strong>4️⃣ Kiểm tra sự hợp lý</strong>
+                    Sau khi chọn, đọc lại cả câu để đảm bảo ngữ pháp và ý nghĩa.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <strong>📌 Ví dụ:</strong><br>
+                <em>"Many students find that listening to music helps them (1) _______ better. However, others prefer complete silence when they (2) _______."</em><br>
+                (1) <u>concentrate</u> (vì động từ theo sau "helps them")<br>
+                (2) <u>study</u> (vì chủ ngữ "they" và ngữ cảnh học tập)
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Mẹo:</strong> Chú ý các từ nối (however, therefore, because) để xác định mối quan hệ giữa các câu.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 4: ĐIỀN CÂU VÀO ĐOẠN VĂN -->
+    <div id="sentence_insertion" class="tab-content">
+        <div class="card">
+            <h2>🧩 Điền câu thích hợp vào đoạn văn</h2>
+            <div class="note-box">
+                <strong>💡 Dạng bài yêu cầu đặt một câu vào vị trí thích hợp trong đoạn.</strong>
+                <p style="margin-top: 6px;">Kiểm tra khả năng hiểu mạch lạc và liên kết ý tưởng.</p>
+            </div>
+
+            <h3>🔹 Chiến lược làm bài</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>1️⃣ Đọc câu cần điền</strong>
+                    Xác định nội dung và vai trò của câu đó trong đoạn (câu chủ đề, câu hỗ trợ, câu kết luận).
+                </div>
+                <div class="rule-item">
+                    <strong>2️⃣ Tìm từ khóa hoặc từ nối</strong>
+                    Từ như "however", "therefore", "for example" giúp xác định vị trí logic.
+                </div>
+                <div class="rule-item">
+                    <strong>3️⃣ Kiểm tra liên kết</strong>
+                    Đảm bảo câu điền vào kết nối mượt mà với câu trước và sau.
+                </div>
+            </div>
+
+            <div class="example-box">
+                <strong>📌 Ví dụ:</strong><br>
+                <em>"Many people believe that technology is making our lives easier. _______ However, others argue that it has made us more dependent and less sociable."</em><br>
+                → Câu cần điền có thể là: <u>"While this may be true in some cases, it also has negative effects."</u><br>
+                → Từ khóa "However" ở câu sau cho thấy câu cần điền là một ý kiến đối lập.
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Mẹo:</strong> Chú ý các đại từ (it, they, this) – chúng phải tham chiếu đến một danh từ đã được đề cập trước đó.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 5: SUY LUẬN & NGỤ Ý -->
+    <div id="inference" class="tab-content">
+        <div class="card">
+            <h2>🔍 Suy luận và hiểu ngụ ý (Inference)</h2>
+            <div class="note-box">
+                <strong>💡 Không phải mọi thông tin đều được nói trực tiếp.</strong>
+                <p style="margin-top: 6px;">Bạn cần đọc giữa các dòng để hiểu ý tác giả muốn truyền tải.</p>
+            </div>
+
+            <h3>🔹 Các loại suy luận thường gặp</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Suy luận về mục đích</strong>
+                    Tại sao tác giả viết bài này? (thuyết phục, giải thích, miêu tả, v.v.)
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Suy luận về thái độ</strong>
+                    Tác giả có thái độ tích cực, tiêu cực hay trung lập với vấn đề?
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Suy luận về hàm ý</strong>
+                    Thông tin nào được ngầm hiểu mà không cần nói thẳng?
+                </div>
+            </div>
+
+            <div class="example-box">
+                <strong>📌 Ví dụ:</strong><br>
+                Đoạn văn: <em>"Although the new policy has been implemented for three months, the number of complaints has not decreased. Many employees still find it confusing and ineffective."</em><br>
+                → <strong>Suy luận:</strong> Tác giả không hài lòng với chính sách mới. (Thái độ tiêu cực)<br>
+                → <strong>Hàm ý:</strong> Chính sách này có thể cần được thay đổi hoặc cải thiện.
+            </div>
+
+            <div class="note-box">
+                <strong>📌 Mẹo:</strong> Khi gặp câu hỏi suy luận, hãy tìm bằng chứng trong bài đọc để hỗ trợ cho dự đoán của bạn.
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 6: TRẮC NGHIỆM TỔNG HỢP -->
+    <div id="luyentap" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Trắc nghiệm: Reading Comprehension</h2>
+            <p>✅ Đọc đoạn văn và chọn đáp án đúng cho các câu hỏi bên dưới.</p>
+
+            <!-- ĐOẠN VĂN 1 -->
+            <div class="reading-passage">
+                <h4>📄 Passage 1: The Importance of Sleep</h4>
+                <p>Sleep is a vital part of our daily lives, yet many people underestimate its importance. During sleep, our bodies repair cells, consolidate memories, and release essential hormones. Studies show that adults need between seven and nine hours of sleep per night for optimal health. Lack of sleep can lead to a variety of health problems, including heart disease, diabetes, and depression. Additionally, it affects cognitive functions such as concentration and decision-making. Despite these well-known benefits, modern lifestyles often reduce sleep time. Many people stay up late for work or entertainment, sacrificing sleep without realizing the long-term consequences.</p>
+            </div>
+
+            <form id="quizForm">
+                <!-- Các câu hỏi dựa trên đoạn văn -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. What is the main idea of the passage?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1" value="A"> Sleep is not important for health.</label>
+                        <label class="option-label"><input type="radio" name="q1" value="B"> Adults need less than seven hours of sleep.</label>
+                        <label class="option-label"><input type="radio" name="q1" value="C"> Sleep is essential for health and is often neglected.</label>
+                        <label class="option-label"><input type="radio" name="q1" value="D"> Modern lifestyles have improved sleep quality.</label>
+                    </div>
+                    <div class="explanation">📘 Ý chính: Sleep is essential and often neglected. Câu đầu và cuối đoạn đều nhấn mạnh điều này.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. According to the passage, how many hours of sleep do adults need?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2" value="A"> Five to six hours</label>
+                        <label class="option-label"><input type="radio" name="q2" value="B"> Seven to nine hours</label>
+                        <label class="option-label"><input type="radio" name="q2" value="C"> Eight to ten hours</label>
+                        <label class="option-label"><input type="radio" name="q2" value="D"> More than ten hours</label>
+                    </div>
+                    <div class="explanation">📊 Chi tiết trong bài: "adults need between seven and nine hours of sleep".</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">3. Which of the following is NOT mentioned as a consequence of lack of sleep?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3" value="A"> Heart disease</label>
+                        <label class="option-label"><input type="radio" name="q3" value="B"> Depression</label>
+                        <label class="option-label"><input type="radio" name="q3" value="C"> Diabetes</label>
+                        <label class="option-label"><input type="radio" name="q3" value="D"> Obesity</label>
+                    </div>
+                    <div class="explanation">🔍 Obesity không được đề cập trong bài. Các bệnh khác đều có trong đoạn.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">4. The word "consolidate" in the passage is closest in meaning to:</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4" value="A"> strengthen</label>
+                        <label class="option-label"><input type="radio" name="q4" value="B"> forget</label>
+                        <label class="option-label"><input type="radio" name="q4" value="C"> collect</label>
+                        <label class="option-label"><input type="radio" name="q4" value="D"> create</label>
+                    </div>
+                    <div class="explanation">📖 "Consolidate memories" có nghĩa là củng cố, làm cho chắc chắn hơn → strengthen.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">5. What can be inferred from the passage?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q5" value="A"> People are fully aware of the importance of sleep.</label>
+                        <label class="option-label"><input type="radio" name="q5" value="B"> Sleep has no effect on cognitive functions.</label>
+                        <label class="option-label"><input type="radio" name="q5" value="C"> Many people sacrifice sleep for work or entertainment.</label>
+                        <label class="option-label"><input type="radio" name="q5" value="D"> Sleep problems are easy to solve.</label>
+                    </div>
+                    <div class="explanation">🔍 Suy luận từ câu cuối: "Many people stay up late for work or entertainment, sacrificing sleep".</div>
+                </div>
+
+                <!-- ĐOẠN VĂN 2 -->
+                <div class="reading-passage">
+                    <h4>📄 Passage 2: The Rise of E-commerce</h4>
+                    <p>In recent years, e-commerce has grown exponentially, transforming the way people shop. Online shopping offers convenience, allowing customers to purchase products from the comfort of their homes. This has led to a decline in traditional brick-and-mortar stores, as more consumers prefer to shop online. However, e-commerce also faces challenges, such as shipping costs, delivery times, and the inability to physically examine products before purchase. Despite these drawbacks, the trend shows no signs of slowing down. With the rise of mobile shopping and personalized recommendations, the e-commerce industry continues to expand rapidly.</p>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. What is the passage mainly about?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q6" value="A"> The decline of traditional shopping</label>
+                        <label class="option-label"><input type="radio" name="q6" value="B"> The growth and impact of e-commerce</label>
+                        <label class="option-label"><input type="radio" name="q6" value="C"> The challenges faced by online shoppers</label>
+                        <label class="option-label"><input type="radio" name="q6" value="D"> The advantages of mobile shopping</label>
+                    </div>
+                    <div class="explanation">📘 Ý chính bao quát: sự phát triển và tác động của thương mại điện tử.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">7. According to the passage, what is a drawback of e-commerce?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q7" value="A"> Low product quality</label>
+                        <label class="option-label"><input type="radio" name="q7" value="B"> Lack of variety</label>
+                        <label class="option-label"><input type="radio" name="q7" value="C"> High product prices</label>
+                        <label class="option-label"><input type="radio" name="q7" value="D"> Inability to examine products physically</label>
+                    </div>
+                    <div class="explanation">📊 "inability to physically examine products before purchase" – đây là một bất lợi.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. The word "exponentially" in the passage is closest in meaning to:</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q8" value="A"> slowly</label>
+                        <label class="option-label"><input type="radio" name="q8" value="B"> steadily</label>
+                        <label class="option-label"><input type="radio" name="q8" value="C"> rapidly</label>
+                        <label class="option-label"><input type="radio" name="q8" value="D"> gradually</label>
+                    </div>
+                    <div class="explanation">📖 "Exponentially" = với tốc độ rất nhanh, tăng trưởng mạnh → rapidly.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">9. Which of the following is mentioned as a reason for the decline of brick-and-mortar stores?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q9" value="A"> Consumers prefer online shopping</label>
+                        <label class="option-label"><input type="radio" name="q9" value="B"> Higher shipping costs</label>
+                        <label class="option-label"><input type="radio" name="q9" value="C"> Lack of product variety</label>
+                        <label class="option-label"><input type="radio" name="q9" value="D"> Poor customer service</label>
+                    </div>
+                    <div class="explanation">🔍 "as more consumers prefer to shop online" – đây là nguyên nhân dẫn đến sự suy giảm.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. What can be inferred from the passage about the future of e-commerce?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q10" value="A"> It will eventually decline.</label>
+                        <label class="option-label"><input type="radio" name="q10" value="B"> It will continue to grow.</label>
+                        <label class="option-label"><input type="radio" name="q10" value="C"> It will replace all traditional stores.</label>
+                        <label class="option-label"><input type="radio" name="q10" value="D"> It will face more challenges.</label>
+                    </div>
+                    <div class="explanation">🔍 "the trend shows no signs of slowing down" và "continues to expand rapidly" – ám chỉ sự tăng trưởng tiếp tục.</div>
+                </div>
+
+                <!-- ĐOẠN VĂN 3 (điền từ) -->
+                <div class="reading-passage">
+                    <h4>✏️ Passage 3: Fill in the Blanks</h4>
+                    <p>Many people believe that (11) _______ a foreign language is a valuable skill. It opens up new opportunities in both personal and professional life. However, learning a new language can be challenging. It requires time, (12) _______, and a good memory. One of the most effective ways to learn is to practice (13) _______ with native speakers. This helps improve pronunciation and listening skills. Additionally, (14) _______ to music and watching movies in the target language can make learning more enjoyable. (15) _______, the key to success is consistency and regular practice.</p>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. (11) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q11" value="A"> speaking</label>
+                        <label class="option-label"><input type="radio" name="q11" value="B"> read</label>
+                        <label class="option-label"><input type="radio" name="q11" value="C"> learning</label>
+                        <label class="option-label"><input type="radio" name="q11" value="D"> learned</label>
+                    </div>
+                    <div class="explanation">✏️ "learning a foreign language" – cụm từ quen thuộc, động từ + danh từ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. (12) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q12" value="A"> money</label>
+                        <label class="option-label"><input type="radio" name="q12" value="B"> effort</label>
+                        <label class="option-label"><input type="radio" name="q12" value="C"> luck</label>
+                        <label class="option-label"><input type="radio" name="q12" value="D"> talent</label>
+                    </div>
+                    <div class="explanation">✏️ "requires time, effort, and a good memory" – ba yếu tố cần thiết.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">13. (13) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q13" value="A"> speak</label>
+                        <label class="option-label"><input type="radio" name="q13" value="B"> to speak</label>
+                        <label class="option-label"><input type="radio" name="q13" value="C"> spoken</label>
+                        <label class="option-label"><input type="radio" name="q13" value="D"> speaking</label>
+                    </div>
+                    <div class="explanation">✏️ "practice + V-ing" – practice speaking với người bản xứ.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">14. (14) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q14" value="A"> listening</label>
+                        <label class="option-label"><input type="radio" name="q14" value="B"> listen</label>
+                        <label class="option-label"><input type="radio" name="q14" value="C"> listened</label>
+                        <label class="option-label"><input type="radio" name="q14" value="D"> to listen</label>
+                    </div>
+                    <div class="explanation">✏️ "listening to music" – danh động từ sau giới từ "to".</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. (15) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q15" value="A"> Therefore</label>
+                        <label class="option-label"><input type="radio" name="q15" value="B"> However</label>
+                        <label class="option-label"><input type="radio" name="q15" value="C"> In conclusion</label>
+                        <label class="option-label"><input type="radio" name="q15" value="D"> For example</label>
+                    </div>
+                    <div class="explanation">✏️ "In conclusion" – từ nối kết luận cho đoạn văn.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 20: Reading Comprehension | Học chủ động – Nắm chắc kỹ năng đọc | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz() {
+        const questions = document.querySelectorAll('#quizForm .question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        const resultDiv = document.getElementById('quizResult');
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững kỹ năng đọc hiểu!';
+        } else if (score >= 12) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ các dạng bài đọc hiểu!';
+        } else if (score >= 8) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết và luyện tập thêm nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
