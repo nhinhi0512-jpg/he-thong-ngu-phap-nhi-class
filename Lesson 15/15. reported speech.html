@@ -12,22 +12,24 @@
         }
 
         :root {
-            --primary: #4a4f5a;
-            --secondary: #7a8291;
-            --accent: #9aa3b3;
-            --success: #6b7f82;
-            --warning: #8f8a6b;
-            --danger: #8f5e5a;
-            --light: #f2f4f8;
-            --dark: #343a45;
-            --gradient-start: #f0f2f7;
-            --gradient-end: #daddf0;
+            --primary: #4A2C6D;        /* Tím đậm chính */
+            --secondary: #7E4A9B;      /* Tím trung bình */
+            --accent: #B28AD5;         /* Tím nhạt */
+            --success: #6B4F8C;        /* Tím xám thanh lịch */
+            --warning: #9B7BB5;
+            --danger: #A66B8A;
+            --light: #F4EEFA;          /* Nền tím cực nhạt */
+            --dark: #2E1B47;           /* Gần đen ánh tím */
+            --gradient-start: #EDE4F5; 
+            --gradient-end: #D5C4E8;
+            --white-glass: rgba(255, 255, 255, 0.92);
+            --shadow-color: rgba(74, 44, 109, 0.10);
         }
 
         body {
             font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(145deg, #f0f2f7 0%, #e2e6f0 40%, #d2d7e8 100%);
+            background: linear-gradient(145deg, #EDE4F5 0%, #D5C4E8 40%, #C2ABDA 100%);
             min-height: 100vh;
             margin: 0;
             padding: 0;
@@ -42,15 +44,15 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            border-bottom: 2px solid #d2d7e8;
-            box-shadow: 0 4px 16px rgba(74, 79, 90, 0.06);
+            border-bottom: 2px solid #C2ABDA;
+            box-shadow: 0 4px 16px rgba(74, 44, 109, 0.08);
         }
 
         .nav-home {
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(122, 130, 145, 0.10);
+            background: rgba(126, 74, 155, 0.10);
             padding: 8px 20px;
             border-radius: 60px;
             transition: all 0.2s ease;
@@ -63,7 +65,7 @@
             background: var(--secondary);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(122, 130, 145, 0.25);
+            box-shadow: 0 6px 14px rgba(126, 74, 155, 0.25);
         }
 
         .nav-home svg {
@@ -81,7 +83,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #7a8291, #4a4f5a);
+            background: linear-gradient(135deg, #7E4A9B, #4A2C6D);
             padding: 8px 24px;
             border-radius: 60px;
             text-decoration: none;
@@ -89,13 +91,13 @@
             font-weight: 700;
             font-size: 1rem;
             transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(122, 130, 145, 0.2);
+            box-shadow: 0 4px 10px rgba(126, 74, 155, 0.2);
         }
 
         .nav-practice:hover {
             transform: scale(1.02);
-            background: linear-gradient(135deg, #6b7f82, #343a45);
-            box-shadow: 0 8px 18px rgba(122, 130, 145, 0.3);
+            background: linear-gradient(135deg, #6B3F8A, #3A1F57);
+            box-shadow: 0 8px 18px rgba(126, 74, 155, 0.3);
         }
 
         .title-section {
@@ -106,7 +108,7 @@
         .title-section h1 {
             font-size: 1.6rem;
             color: var(--primary);
-            text-shadow: 0 2px 4px rgba(122, 130, 145, 0.08);
+            text-shadow: 0 2px 4px rgba(126, 74, 155, 0.08);
             letter-spacing: -0.3px;
         }
 
@@ -132,13 +134,13 @@
             padding: 8px 12px;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            border: 1px solid #d2d7e8;
+            border: 1px solid #C2ABDA;
         }
 
         .tab-btn {
             padding: 12px 24px;
             border: none;
-            background: rgba(122, 130, 145, 0.08);
+            background: rgba(126, 74, 155, 0.08);
             font-weight: bold;
             font-size: 0.95rem;
             color: var(--primary);
@@ -148,14 +150,14 @@
         }
 
         .tab-btn:hover {
-            background: rgba(122, 130, 145, 0.18);
+            background: rgba(126, 74, 155, 0.18);
             transform: translateY(-2px);
         }
 
         .tab-btn.active {
             background: var(--secondary);
             color: white;
-            box-shadow: 0 6px 12px rgba(122, 130, 145, 0.2);
+            box-shadow: 0 6px 12px rgba(126, 74, 155, 0.2);
         }
 
         .tab-content {
@@ -178,8 +180,8 @@
             border-radius: 32px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(74, 79, 90, 0.08);
-            border: 1px solid #e2e6f0;
+            box-shadow: 0 20px 35px -12px rgba(74, 44, 109, 0.08);
+            border: 1px solid #D5C4E8;
             transition: transform 0.2s;
         }
 
@@ -209,18 +211,18 @@
         }
 
         th, td {
-            border: 1px solid #d2d7e8;
+            border: 1px solid #C2ABDA;
             padding: 12px;
             vertical-align: top;
         }
 
         th {
-            background: linear-gradient(135deg, #7a8291, #4a4f5a);
+            background: linear-gradient(135deg, #7E4A9B, #4A2C6D);
             color: white;
         }
 
         .note-box {
-            background: #f2f4f8;
+            background: #F4EEFA;
             border-left: 5px solid var(--secondary);
             padding: 1.2rem;
             border-radius: 20px;
@@ -228,7 +230,7 @@
         }
 
         .formula-box {
-            background: #f2f4f8;
+            background: #F4EEFA;
             border-left: 5px solid var(--accent);
             padding: 1.2rem;
             border-radius: 20px;
@@ -236,7 +238,7 @@
         }
 
         .example-box {
-            background: #e8ecf5;
+            background: #EBE0F5;
             border-left: 5px solid var(--success);
             padding: 1rem;
             border-radius: 16px;
@@ -251,7 +253,7 @@
         }
 
         .rule-item {
-            background: #f2f4f8;
+            background: #F4EEFA;
             padding: 14px 18px;
             border-radius: 16px;
             font-weight: 500;
@@ -262,7 +264,7 @@
 
         .rule-item:hover {
             border-color: var(--secondary);
-            background: #e8ecf5;
+            background: #EBE0F5;
         }
 
         .rule-item strong {
@@ -272,11 +274,11 @@
         }
 
         .question {
-            background: #f5f7fb;
+            background: #F8F4FC;
             border-radius: 24px;
             padding: 1.2rem;
             margin-bottom: 1.5rem;
-            border: 1px solid #e2e6f0;
+            border: 1px solid #D5C4E8;
             transition: all 0.2s;
         }
 
@@ -297,7 +299,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: #f2f4f8;
+            background: #F4EEFA;
             padding: 10px 16px;
             border-radius: 40px;
             cursor: pointer;
@@ -306,7 +308,7 @@
         }
 
         .option-label:hover {
-            background: #e8ecf5;
+            background: #EBE0F5;
             transform: scale(0.98);
         }
 
@@ -318,21 +320,21 @@
         }
 
         .correct {
-            background: #d5e0e0 !important;
+            background: #D9CDE8 !important;
             border-color: var(--success) !important;
-            color: #2d4545;
+            color: #2E1B47;
         }
 
         .incorrect {
-            background: #f0dcd8 !important;
+            background: #F0DCE8 !important;
             border-color: var(--danger) !important;
-            color: #6b3a3a;
+            color: #5E3A4A;
         }
 
         .explanation {
             margin-top: 14px;
             padding: 12px;
-            background: #f2f4f8;
+            background: #F4EEFA;
             border-left: 4px solid var(--accent);
             border-radius: 16px;
             font-size: 0.9rem;
@@ -340,7 +342,7 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #7a8291, #4a4f5a);
+            background: linear-gradient(135deg, #7E4A9B, #4A2C6D);
             color: white;
             padding: 14px 32px;
             border: none;
@@ -351,13 +353,13 @@
             display: block;
             margin: 2rem auto 0;
             transition: 0.2s;
-            box-shadow: 0 5px 12px rgba(122, 130, 145, 0.2);
+            box-shadow: 0 5px 12px rgba(126, 74, 155, 0.2);
         }
 
         .submit-btn:hover {
             transform: scale(1.02);
-            background: linear-gradient(135deg, #6b7f82, #343a45);
-            box-shadow: 0 8px 18px rgba(122, 130, 145, 0.3);
+            background: linear-gradient(135deg, #6B3F8A, #3A1F57);
+            box-shadow: 0 8px 18px rgba(126, 74, 155, 0.3);
         }
 
         .result-score {
@@ -365,11 +367,11 @@
             font-size: 1.3rem;
             font-weight: bold;
             margin-top: 1.8rem;
-            background: #f2f4f8;
+            background: #F4EEFA;
             padding: 1rem;
             border-radius: 40px;
             display: none;
-            border: 2px solid #d2d7e8;
+            border: 2px solid #C2ABDA;
         }
 
         footer {
@@ -467,7 +469,7 @@
             </div>
             <table>
                 <thead>
-                    <tr><th style="background: #4a4f5a;">Direct speech</th><th style="background: #4a4f5a;">Reported speech</th></tr>
+                    <tr><th style="background: #4A2C6D;">Direct speech</th><th style="background: #4A2C6D;">Reported speech</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>Hiện tại đơn (am/is/are, V-s/es)</td><td>Quá khứ đơn (was/were, V-ed)</td></tr>
