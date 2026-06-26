@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 16: Luyện tập Mệnh đề quan hệ | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7a3a3a;
+            --secondary: #b54a4a;
+            --accent: #d16a6a;
+            --success: #8f4a4a;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #f8ecec;
+            --dark: #4a2a2a;
+            --gradient-start: #f8ecec;
+            --gradient-end: #e8d0d0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #f8ecec 0%, #e8d5d5 40%, #dcc0c0 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #dcc0c0;
+            box-shadow: 0 4px 16px rgba(122, 58, 58, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(181, 74, 74, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(181, 74, 74, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #b54a4a, #7a3a3a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(181, 74, 74, 0.25);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #8f4a4a, #4a2a2a);
+            box-shadow: 0 8px 18px rgba(181, 74, 74, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(181, 74, 74, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #dcc0c0;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(181, 74, 74, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(181, 74, 74, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(181, 74, 74, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(122, 58, 58, 0.10);
+            border: 1px solid #e8d5d5;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #faf0f0;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e8d5d5;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8ecec;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #f0e0e0;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #dcc8c8 !important;
+            border-color: var(--success) !important;
+            color: #3a2a2a;
+        }
+
+        .incorrect {
+            background: #f0d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #6b2a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #f8ecec;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #b54a4a, #7a3a3a);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(181, 74, 74, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #8f4a4a, #4a2a2a);
+            box-shadow: 0 8px 18px rgba(181, 74, 74, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #f8ecec;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #dcc0c0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0e0e0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b54a4a, #d16a6a);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>✍️ Bài 16: Luyện tập Mệnh đề quan hệ</h1>
+        <div class="sub">Relative Clauses Practice</div>
+    </div>
+    <a href="./16. relative clause.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('who_which_that')">👤 1. who / which / that</button>
+        <button class="tab-btn" onclick="openTab('whose_whom')">📌 2. whose / whom & Giới từ</button>
+        <button class="tab-btn" onclick="openTab('tong_hop')">🎯 3. Tổng hợp</button>
+    </div>
+
+    <!-- TAB 1: WHO / WHICH / THAT (30 câu) -->
+    <div id="who_which_that" class="tab-content active">
+        <div class="quiz-container">
+            <h2>👤 Luyện tập: who, which, that</h2>
+            <p>✅ Chọn đại từ quan hệ đúng để hoàn thành câu.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress1"></div></div>
+            <form id="quizForm1">
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. A thief is a person _______ steals things.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_1" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. An aeroplane is a machine _______ flies.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_2" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="D"> which</label>
+                    </div>
+                    <div class="explanation">✈️ which dùng cho vật, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">3. The woman _______ opened the door was wearing a yellow dress.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_3" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">4. The book _______ I read was very interesting.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_4" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="D"> which</label>
+                    </div>
+                    <div class="explanation">📖 which dùng cho vật (book), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. I have a friend _______ can repair cars.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_5" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">6. Did you find the book _______ you wanted?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_6" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📖 that dùng cho vật, làm tân ngữ (có thể bỏ).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. The people _______ we met were very nice.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_7" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm tân ngữ (có thể bỏ).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">8. The film _______ we saw was very boring.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_8" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="D"> that</label>
+                    </div>
+                    <div class="explanation">🎬 that dùng cho vật, làm tân ngữ (có thể bỏ).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">9. Do you know anybody _______ can play the piano?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_9" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">10. The dress _______ she wore was very beautiful.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_10" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="D"> which</label>
+                    </div>
+                    <div class="explanation">👗 which dùng cho vật (dress).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">11. The student _______ won the prize is very talented.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_11" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">12. The car _______ is parked outside is mine.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_12" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🚗 which dùng cho vật (car), làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">13. The people _______ live next door are very friendly.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_13" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. The house _______ has a red roof is ours.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_14" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🏠 which dùng cho vật (house), làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. The teacher _______ gave us a test is very strict.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_15" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">16. The phone _______ I bought is very expensive.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_16" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="D"> which</label>
+                    </div>
+                    <div class="explanation">📱 which dùng cho vật (phone), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. The man _______ called you is my uncle.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_17" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">18. The cake _______ she made was delicious.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_18" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🍰 that dùng cho vật, làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. The students _______ passed the exam were happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_19" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. The tree _______ is in the garden is very old.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_20" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🌳 which dùng cho vật (tree), làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">21. The dog _______ barked loudly woke me up.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_21" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🐕 that dùng cho vật (dog), làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">22. The woman _______ lives next door is a doctor.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_22" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">23. The movie _______ we watched was exciting.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_23" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🎬 which dùng cho vật (movie), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">24. The boy _______ helped me was very kind.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_24" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">25. The computer _______ I use is very fast.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_25" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="D"> which</label>
+                    </div>
+                    <div class="explanation">💻 which dùng cho vật (computer), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">26. The girl _______ is singing is my sister.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_26" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">27. The book _______ I bought is very cheap.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_27" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📖 that dùng cho vật, làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">28. The man _______ spoke to me was very polite.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_28" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">29. The garden _______ has beautiful flowers is hers.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_29" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🌺 which dùng cho vật (garden), làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">30. The singer _______ performed last night was amazing.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_30" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🎤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm1', 'progress1', 'result1')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result1" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: WHOSE / WHOM & GIỚI TỪ (30 câu) -->
+    <div id="whose_whom" class="tab-content">
+        <div class="quiz-container">
+            <h2>📌 Luyện tập: whose, whom & Giới từ</h2>
+            <p>✅ Chọn đáp án đúng để hoàn thành câu.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress2"></div></div>
+            <form id="quizForm2">
+                <div class="question" data-correct="B">
+                    <p class="question-text">1. Do you know the man _______ daughter is a doctor?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_1" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (daughter của ai).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. The girl _______ you met yesterday is my sister.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_2" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ (trang trọng).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">3. This is the house _______ roof is red.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_3" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (roof của house).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">4. The boy _______ bike was stolen is my neighbor.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_4" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (bike của boy).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">5. The man _______ she is talking to is my boss.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_5" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ (trang trọng).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">6. The woman _______ car was stolen called the police.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_6" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (car của woman).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. The hotel _______ we stayed was very comfortable.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_7" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📍 where = at which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. I remember the day _______ we first met.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_8" value="A"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="D"> who</label>
+                    </div>
+                    <div class="explanation">📅 when = on which (chỉ thời gian).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">9. Do you know the man _______ you were talking to?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_9" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. The book _______ cover is torn is mine.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_10" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (cover của book).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. The house _______ I live in is very old.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_11" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🏠 which dùng cho vật, làm tân ngữ (có giới từ).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">12. The person _______ you spoke to is my teacher.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_12" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">13. The restaurant _______ we had dinner was expensive.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_13" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📍 where = at which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">14. The boy _______ father is a pilot wants to be a pilot too.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_14" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (father của boy).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">15. The woman _______ you saw yesterday is my aunt.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_15" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">16. The movie _______ we watched last night was scary.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_16" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🎬 which dùng cho vật, làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">17. The student _______ essay won the prize is very proud.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_17" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (essay của student).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">18. The park _______ we played is very large.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_18" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="D"> where</label>
+                    </div>
+                    <div class="explanation">📍 where = at/in which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">19. The man _______ house we visited is famous.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_19" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (house của man).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">20. The time _______ we went to Paris was wonderful.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_20" value="A"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="D"> who</label>
+                    </div>
+                    <div class="explanation">📅 when = at which (chỉ thời gian).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">21. The girl _______ bag was lost is very upset.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_21" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (bag của girl).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">22. The school _______ I studied is very famous.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_22" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📍 where = at/in which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">23. The actor _______ you admire is very talented.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_23" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">24. The garden _______ flowers are beautiful is hers.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_24" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (flowers của garden).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">25. The company _______ she works for is very large.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_25" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🏢 which dùng cho vật (company), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">26. The singer _______ song I like is performing tonight.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_26" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (song của singer).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">27. The museum _______ we visited is very old.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_27" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="D"> which</label>
+                    </div>
+                    <div class="explanation">🏛️ which dùng cho vật (museum), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">28. The teacher _______ students love her is very kind.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_28" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (students của teacher).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">29. The city _______ I was born is very beautiful.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_29" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="C"> where</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📍 where = in which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">30. The man _______ you were waiting for has arrived.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_30" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ (có giới từ).</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm2', 'progress2', 'result2')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result2" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: TỔNG HỢP (30 câu) -->
+    <div id="tong_hop" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Luyện tập tổng hợp: Tất cả các dạng</h2>
+            <p>✅ Chọn đáp án đúng để hoàn thành câu.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress3"></div></div>
+            <form id="quizForm3">
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. A thief is a person _______ steals things.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_1" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. An aeroplane is a machine _______ flies.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_2" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="D"> which</label>
+                    </div>
+                    <div class="explanation">✈️ which dùng cho vật, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">3. Do you know the man _______ daughter is a doctor?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_3" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (daughter của ai).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">4. The book _______ I read was very interesting.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_4" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="D"> which</label>
+                    </div>
+                    <div class="explanation">📖 which dùng cho vật (book), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">5. The girl _______ you met yesterday is my sister.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_5" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ (trang trọng).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">6. This is the house _______ roof is red.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_6" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (roof của house).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">7. I have a friend _______ can repair cars.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_7" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. Did you find the book _______ you wanted?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_8" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📖 that dùng cho vật, làm tân ngữ (có thể bỏ).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">9. The hotel _______ we stayed was very comfortable.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_9" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="D"> where</label>
+                    </div>
+                    <div class="explanation">📍 where = at which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. I remember the day _______ we first met.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_10" value="A"> where</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="B"> when</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="D"> who</label>
+                    </div>
+                    <div class="explanation">📅 when = on which (chỉ thời gian).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. The boy _______ bike was stolen is my neighbor.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_11" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (bike của boy).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">12. The dress _______ she wore was very beautiful.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_12" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="D"> which</label>
+                    </div>
+                    <div class="explanation">👗 which dùng cho vật (dress).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">13. The man _______ she is talking to is my boss.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_13" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">14. The film _______ we saw was very boring.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_14" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="C"> that</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🎬 that dùng cho vật, làm tân ngữ (có thể bỏ).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">15. The woman _______ car was stolen called the police.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_15" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (car của woman).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">16. Do you know anybody _______ can play the piano?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_16" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="B"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">17. The student _______ won the prize is very talented.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_17" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="C"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">👤 who dùng cho người, làm chủ ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">18. The restaurant _______ we had dinner was expensive.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_18" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="D"> where</label>
+                    </div>
+                    <div class="explanation">📍 where = at which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">19. The boy _______ father is a pilot wants to be a pilot too.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_19" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (father của boy).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">20. The book _______ cover is torn is mine.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_20" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (cover của book).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">21. The park _______ we played is very large.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_21" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="D"> where</label>
+                    </div>
+                    <div class="explanation">📍 where = at/in which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">22. The man _______ house we visited is famous.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_22" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (house của man).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">23. The girl _______ bag was lost is very upset.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_23" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (bag của girl).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">24. The school _______ I studied is very famous.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_24" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="D"> where</label>
+                    </div>
+                    <div class="explanation">📍 where = at/in which (chỉ nơi chốn).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">25. The actor _______ you admire is very talented.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_25" value="A"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="D"> who</label>
+                    </div>
+                    <div class="explanation">👤 whom dùng cho người làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">26. The garden _______ flowers are beautiful is hers.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_26" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (flowers của garden).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">27. The company _______ she works for is very large.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_27" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="C"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="D"> which</label>
+                    </div>
+                    <div class="explanation">🏢 which dùng cho vật (company), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">28. The singer _______ song I like is performing tonight.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_28" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="B"> whose</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="D"> whom</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (song của singer).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">29. The museum _______ we visited is very old.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_29" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🏛️ which dùng cho vật (museum), làm tân ngữ.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">30. The teacher _______ students love her is very kind.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_30" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="C"> whom</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">📌 whose chỉ sở hữu (students của teacher).</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm3', 'progress3', 'result3')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result3" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 16: Luyện tập Mệnh đề quan hệ | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+        
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững mệnh đề quan hệ!';
+        } else if (score >= 24) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về relative clauses!';
+        } else if (score >= 18) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
