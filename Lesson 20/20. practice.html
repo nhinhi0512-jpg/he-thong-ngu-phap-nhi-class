@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 20: Luyện tập Reading Comprehension | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a4a;
+            --secondary: #2a5f7a;
+            --accent: #3a7f9a;
+            --success: #1f6d47;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #eaf0f5;
+            --dark: #142c3a;
+            --gradient-start: #dce8f0;
+            --gradient-end: #b8cedc;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(145deg, #dce8f0 0%, #c5dae6 40%, #b0c8d8 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #b0c8d8;
+            box-shadow: 0 4px 16px rgba(42, 95, 122, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(42, 95, 122, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(42, 95, 122, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(42, 95, 122, 0.25);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
+            box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(42, 95, 122, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #b0c8d8;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            border: none;
+            background: rgba(42, 95, 122, 0.08);
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(42, 95, 122, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(42, 95, 122, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(42, 95, 122, 0.12);
+            border: 1px solid #c0d6e2;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1.2rem;
+        }
+
+        .question {
+            background: #f3f8fc;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c0d6e2;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #eaf0f5;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #d4e2ec;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2dce8 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #eaf0f5;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(42, 95, 122, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
+            box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #eaf0f5;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #b0c8d8;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #dce8f0;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2a5f7a, #3a7f9a);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .reading-passage {
+            background: #f3f8fc;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem;
+            border: 1px solid #c0d6e2;
+        }
+
+        .reading-passage h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .reading-passage p {
+            margin-bottom: 0.6rem;
+        }
+
+        .drop-zone {
+            display: inline-block;
+            min-width: 120px;
+            padding: 0.2rem 0.8rem;
+            background: #dce8f0;
+            border: 2px dashed var(--secondary);
+            border-radius: 12px;
+            text-align: center;
+            color: var(--secondary);
+            font-weight: 500;
+            margin: 0 0.2rem;
+        }
+
+        .sentence-option {
+            display: inline-block;
+            background: #eaf0f5;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sentence-option:hover {
+            background: #d4e2ec;
+            transform: scale(1.02);
+        }
+
+        .sentence-option.selected {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .sentence-pool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: #eaf0f5;
+            border-radius: 16px;
+            margin: 0.8rem 0;
+        }
+
+        .drag-item {
+            background: #eaf0f5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            cursor: grab;
+            transition: all 0.2s;
+            margin: 4px;
+        }
+
+        .drag-item:active {
+            cursor: grabbing;
+            opacity: 0.6;
+        }
+
+        .drag-item.dropped {
+            background: #c2dce8;
+            border-color: var(--success);
+        }
+
+        .ordering-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 0.8rem 0;
+        }
+
+        .order-btn {
+            background: #eaf0f5;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 8px 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .order-btn:hover {
+            background: #d4e2ec;
+            transform: scale(1.05);
+        }
+
+        .order-btn.selected-order {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .order-btn.used {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .order-slot {
+            display: inline-block;
+            min-width: 40px;
+            padding: 8px 12px;
+            background: #dce8f0;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            margin: 4px;
+            border: 2px dashed var(--secondary);
+            min-height: 42px;
+        }
+
+        .order-slot.filled {
+            border: 2px solid var(--success);
+            background: #c2dce8;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 6px 12px;
+                font-size: 0.7rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+            .reading-passage {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>✍️ Bài 20: Luyện tập Reading Comprehension</h1>
+        <div class="sub">Đọc hiểu – Điền từ – Sắp xếp – Kéo thả</div>
+    </div>
+    <a href="./20. reading comprehension.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('cloze')">✏️ 1. Điền từ (Cloze)</button>
+        <button class="tab-btn" onclick="openTab('ordering')">🔢 2. Sắp xếp câu</button>
+        <button class="tab-btn" onclick="openTab('comprehension')">📖 3. Đọc hiểu</button>
+        <button class="tab-btn" onclick="openTab('drag_drop')">🧩 4. Chọn câu</button>
+    </div>
+
+    <!-- ======================== TAB 1: CLOZE ======================== -->
+    <div id="cloze" class="tab-content active">
+        <div class="quiz-container">
+            <h2>✏️ Dạng 1: Điền từ vào chỗ trống (Cloze Test)</h2>
+            <p>✅ Đọc đoạn văn và chọn đáp án đúng để điền vào chỗ trống.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress1"></div></div>
+            <form id="quizForm1">
+                <!-- Bài Cloze 1: Coronavirus (BT14) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 1: Coronavirus</h4>
+                    <p>The coronavirus is a kind of virus. Viruses are tiny germs that are so small that you can't see them. They are so <span class="drop-zone">(1)</span> that they can float through the air in tiny drops of water, and they can sit on your skin without you feeling them. If some of these germs get inside you, they can use your body to make more germs, and that can make you ill.</p>
+                    <p>There are lots of different sorts <span class="drop-zone">(2)</span> coronavirus and some of them infect people. If you have been infected with one of these coronaviruses, all you probably <span class="drop-zone">(3)</span> was a snotty nose or a cough.</p>
+                    <p>But when this completely new coronavirus germ gets inside a human body, it causes <span class="drop-zone">(4)</span> illness called COVID-19. When people talk about "catching the coronavirus", they are talking about this illness. Because this coronavirus is new, scientists don't know everything about it yet. But they think that there are two main <span class="drop-zone">(5)</span> that people can catch it.</p>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">1. (1) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_1" value="A"> big</label>
+                        <label class="option-label"><input type="radio" name="c1_1" value="B"> small</label>
+                        <label class="option-label"><input type="radio" name="c1_1" value="C"> light</label>
+                        <label class="option-label"><input type="radio" name="c1_1" value="D"> heavy</label>
+                    </div>
+                    <div class="explanation">🔍 "Tiny" → nhỏ, và "so small that you can't see them" → small là phù hợp nhất.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. (2) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_2" value="A"> about</label>
+                        <label class="option-label"><input type="radio" name="c1_2" value="B"> for</label>
+                        <label class="option-label"><input type="radio" name="c1_2" value="C"> with</label>
+                        <label class="option-label"><input type="radio" name="c1_2" value="D"> of</label>
+                    </div>
+                    <div class="explanation">📘 Cấu trúc "sorts of" = các loại của. "different sorts of coronavirus".</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">3. (3) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_3" value="A"> had</label>
+                        <label class="option-label"><input type="radio" name="c1_3" value="B"> made</label>
+                        <label class="option-label"><input type="radio" name="c1_3" value="C"> took</label>
+                        <label class="option-label"><input type="radio" name="c1_3" value="D"> caught</label>
+                    </div>
+                    <div class="explanation">🧬 "all you probably had" – had a snotty nose or a cough (bị sổ mũi hoặc ho).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">4. (4) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_4" value="A"> a</label>
+                        <label class="option-label"><input type="radio" name="c1_4" value="B"> an</label>
+                        <label class="option-label"><input type="radio" name="c1_4" value="C"> the</label>
+                        <label class="option-label"><input type="radio" name="c1_4" value="D"> no article</label>
+                    </div>
+                    <div class="explanation">📚 "illness" bắt đầu bằng nguyên âm "i" → dùng mạo từ "an".</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. (5) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_5" value="A"> roads</label>
+                        <label class="option-label"><input type="radio" name="c1_5" value="B"> ways</label>
+                        <label class="option-label"><input type="radio" name="c1_5" value="C"> behaviours</label>
+                        <label class="option-label"><input type="radio" name="c1_5" value="D"> habits</label>
+                    </div>
+                    <div class="explanation">🦠 "two main ways that people can catch it" – hai cách chính mà mọi người có thể nhiễm.</div>
+                </div>
+
+                <!-- Bài Cloze 2: Urban problems (BT15) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 2: Urban Problems</h4>
+                    <p>Nowadays more and more people are moving to live in the cities because of the facilities that they find there. Many people prefer living in cities <span class="drop-zone">(6)</span> the opportunities of jobs, market places, big houses and buildings including schools and hospitals. But as the population in the city increases, the <span class="drop-zone">(7)</span> of cars, raw materials and others increases too. All this contributes to the pollution of the city and increases the size of the <span class="drop-zone">(8)</span> faced by individuals. Our problems in the city contribute to the destruction of the city and the spread of corruption. Also, these problems are <span class="drop-zone">(9)</span> an atmosphere of discomfort and the inability of the individual to adapt and live in peace in his home town. However, there are many solutions <span class="drop-zone">(10)</span> can be used and applied to contribute to reducing the number of problems, such as increasing the number of police members, providing employment opportunities and spreading awareness among members of the society.</p>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. (6) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_6" value="A"> because of</label>
+                        <label class="option-label"><input type="radio" name="c1_6" value="B"> because</label>
+                        <label class="option-label"><input type="radio" name="c1_6" value="C"> in spite of</label>
+                        <label class="option-label"><input type="radio" name="c1_6" value="D"> with</label>
+                    </div>
+                    <div class="explanation">🏙️ "because" + mệnh đề → vì cơ hội việc làm... (sau "because" là một mệnh đề đầy đủ).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">7. (7) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_7" value="A"> selling</label>
+                        <label class="option-label"><input type="radio" name="c1_7" value="B"> buying</label>
+                        <label class="option-label"><input type="radio" name="c1_7" value="C"> consumption</label>
+                        <label class="option-label"><input type="radio" name="c1_7" value="D"> conservation</label>
+                    </div>
+                    <div class="explanation">🚗 "consumption of cars" = sự tiêu thụ xe hơi → phù hợp với ngữ cảnh.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. (8) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_8" value="A"> harms</label>
+                        <label class="option-label"><input type="radio" name="c1_8" value="B"> problems</label>
+                        <label class="option-label"><input type="radio" name="c1_8" value="C"> troubles</label>
+                        <label class="option-label"><input type="radio" name="c1_8" value="D"> damages</label>
+                    </div>
+                    <div class="explanation">⚠️ "increases the size of the problems" = gia tăng quy mô các vấn đề.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">9. (9) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_9" value="A"> making</label>
+                        <label class="option-label"><input type="radio" name="c1_9" value="B"> producing</label>
+                        <label class="option-label"><input type="radio" name="c1_9" value="C"> generating</label>
+                        <label class="option-label"><input type="radio" name="c1_9" value="D"> creating</label>
+                    </div>
+                    <div class="explanation">🌪️ "creating an atmosphere" = tạo ra bầu không khí (thường dùng với atmosphere).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">10. (10) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_10" value="A"> that</label>
+                        <label class="option-label"><input type="radio" name="c1_10" value="B"> what</label>
+                        <label class="option-label"><input type="radio" name="c1_10" value="C"> this</label>
+                        <label class="option-label"><input type="radio" name="c1_10" value="D"> whether</label>
+                    </div>
+                    <div class="explanation">📌 Đại từ quan hệ "that" thay thế cho "solutions" – many solutions that can be used.</div>
+                </div>
+
+                <!-- Bài Cloze 3: Music and health (BT16) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 3: Music and Health</h4>
+                    <p>Most people enjoy listening to music but few realise the important and largely positive effects it can have on us. We know that certain <span class="drop-zone">(11)</span> of music are used to influence our emotions and our behaviour. For example, airlines use soothing music before a flight to <span class="drop-zone">(12)</span> passengers, especially those who may feel nervous about flying. You may have noticed how shops often play fast, rousing music – this tends to make us feel <span class="drop-zone">(13)</span> and more likely to spend money!</p>
+                    <p>Music is also being used now as a psychiatric therapy. It seems to be particularly <span class="drop-zone">(14)</span> for eating disorders and addictions, but also for sufferers of post-traumatic stress syndrome. People attending group therapy sessions are invited to bring along their favourite tracks. Not everyone does, but those <span class="drop-zone">(15)</span> do so play them for the group. This creates a sense of belonging, as well as a more relaxed atmosphere for the therapy session.</p>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">11. (11) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_11" value="A"> forms</label>
+                        <label class="option-label"><input type="radio" name="c1_11" value="B"> types</label>
+                        <label class="option-label"><input type="radio" name="c1_11" value="C"> brands</label>
+                        <label class="option-label"><input type="radio" name="c1_11" value="D"> manners</label>
+                    </div>
+                    <div class="explanation">🎵 "certain forms of music" = những hình thức âm nhạc nhất định.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">12. (12) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_12" value="A"> relax</label>
+                        <label class="option-label"><input type="radio" name="c1_12" value="B"> speed up</label>
+                        <label class="option-label"><input type="radio" name="c1_12" value="C"> cheer up</label>
+                        <label class="option-label"><input type="radio" name="c1_12" value="D"> irritate</label>
+                    </div>
+                    <div class="explanation">😌 "soothing music" → giúp thư giãn (relax) hành khách.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">13. (13) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_13" value="A"> more confident</label>
+                        <label class="option-label"><input type="radio" name="c1_13" value="B"> less negative</label>
+                        <label class="option-label"><input type="radio" name="c1_13" value="C"> happier</label>
+                        <label class="option-label"><input type="radio" name="c1_13" value="D"> funnier</label>
+                    </div>
+                    <div class="explanation">🎶 Fast, rousing music → khiến ta cảm thấy vui vẻ (happier) và dễ tiêu tiền hơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">14. (14) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_14" value="A"> practical</label>
+                        <label class="option-label"><input type="radio" name="c1_14" value="B"> convenient</label>
+                        <label class="option-label"><input type="radio" name="c1_14" value="C"> caring</label>
+                        <label class="option-label"><input type="radio" name="c1_14" value="D"> useful</label>
+                    </div>
+                    <div class="explanation">💊 "particularly useful for eating disorders" = đặc biệt hữu ích cho rối loạn ăn uống.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">15. (15) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_15" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="c1_15" value="B"> whom</label>
+                        <label class="option-label"><input type="radio" name="c1_15" value="C"> which</label>
+                        <label class="option-label"><input type="radio" name="c1_15" value="D"> what</label>
+                    </div>
+                    <div class="explanation">🧑‍🤝‍🧑 "those who do so" – đại từ quan hệ "who" thay thế cho người.</div>
+                </div>
+
+                <!-- Bài Cloze 4: Culture shock (BT22) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 4: Culture Shock</h4>
+                    <p>Many people dream of living in a foreign country. It can be an amazing experience for those <span class="drop-zone">(16)</span> are willing to settle down in a new place. <span class="drop-zone">(17)</span> there's one potential problem you should be aware of: culture shock. Culture shock is the feeling we get from living in a place that is so different to where we grew up that we are not sure <span class="drop-zone">(18)</span> to deal with it. Societies are <span class="drop-zone">(19)</span> in many different ways. Customs and traditions can be very different and that can sometimes make it difficult to get on with local people who might not approve of things you do and might object to things you say. You might be banned from doing things in another country that are perfectly legal in your own. For example, in Singapore people can be forced to <span class="drop-zone">(20)</span> a large fine just for dropping rubbish. Eventually, though, most people who live abroad fall in love with their adopted country and learn to accept its differences.</p>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">16. (16) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_16" value="A"> who</label>
+                        <label class="option-label"><input type="radio" name="c1_16" value="B"> which</label>
+                        <label class="option-label"><input type="radio" name="c1_16" value="C"> what</label>
+                        <label class="option-label"><input type="radio" name="c1_16" value="D"> whose</label>
+                    </div>
+                    <div class="explanation">🧑 "those who are willing" – đại từ quan hệ "who" thay thế cho người.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. (17) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_17" value="A"> Therefore</label>
+                        <label class="option-label"><input type="radio" name="c1_17" value="B"> However</label>
+                        <label class="option-label"><input type="radio" name="c1_17" value="C"> Although</label>
+                        <label class="option-label"><input type="radio" name="c1_17" value="D"> Moreover</label>
+                    </div>
+                    <div class="explanation">⚠️ "However" – tuy nhiên, có một vấn đề tiềm ẩn (thể hiện sự đối lập).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">18. (18) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_18" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="c1_18" value="B"> when</label>
+                        <label class="option-label"><input type="radio" name="c1_18" value="C"> how</label>
+                        <label class="option-label"><input type="radio" name="c1_18" value="D"> why</label>
+                    </div>
+                    <div class="explanation">🤔 "not sure how to deal with it" – không biết làm thế nào để đối phó.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. (19) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_19" value="A"> organize</label>
+                        <label class="option-label"><input type="radio" name="c1_19" value="B"> organizing</label>
+                        <label class="option-label"><input type="radio" name="c1_19" value="C"> organization</label>
+                        <label class="option-label"><input type="radio" name="c1_19" value="D"> organized</label>
+                    </div>
+                    <div class="explanation">🏛️ "Societies are organized" – xã hội được tổ chức (dạng bị động, quá khứ phân từ).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">20. (20) ______</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="c1_20" value="A"> spend</label>
+                        <label class="option-label"><input type="radio" name="c1_20" value="B"> waste</label>
+                        <label class="option-label"><input type="radio" name="c1_20" value="C"> pay</label>
+                        <label class="option-label"><input type="radio" name="c1_20" value="D"> borrow</label>
+                    </div>
+                    <div class="explanation">💰 "pay a large fine" – trả một khoản tiền phạt lớn.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm1', 'progress1', 'result1')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result1" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- ======================== TAB 2: ORDERING ======================== -->
+    <div id="ordering" class="tab-content">
+        <div class="quiz-container">
+            <h2>🔢 Dạng 2: Sắp xếp câu thành đoạn văn hoàn chỉnh</h2>
+            <p>✅ Sắp xếp các câu A, B, C, D, E theo thứ tự đúng để tạo thành một đoạn văn có nghĩa.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress2"></div></div>
+            <form id="quizForm2">
+
+                <!-- Bài 1: Mark Twain -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 1: Mark Twain</h4>
+                    <p><strong>Hãy sắp xếp các câu sau thành đoạn văn hoàn chỉnh:</strong></p>
+                    <div class="ordering-options" data-answer="A,C,D,B,E">
+                        <span class="order-btn" data-letter="A">A. By 1887, the 49-year-old author had invested most of his money in one project, the Paige typesetting machine.</span><br>
+                        <span class="order-btn" data-letter="B">B. He worked hard to take care of his problems by producing a number of books in a row.</span><br>
+                        <span class="order-btn" data-letter="C">C. Twain expected the Paige machine to be completed in 1889, but it was never finished.</span><br>
+                        <span class="order-btn" data-letter="D">D. From the start of his career, Mark Twain was fascinated with inventions and spent much of his income on them without much success.</span><br>
+                        <span class="order-btn" data-letter="E">E. He wrote several books, but they didn't solve his financial problems, and he was forced to declare bankruptcy.</span>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <label>Thứ tự của bạn: <input type="text" id="order1" placeholder="VD: A,B,C,D,E" style="padding:8px 14px;border-radius:12px;border:2px solid #b0c8d8;width:200px;font-size:1rem;"></label>
+                    </div>
+                    <div class="explanation" style="display:none;margin-top:12px;">
+                        ✅ Đáp án đúng: <strong>A, C, D, B, E</strong>.<br>
+                        Giải thích: D (giới thiệu chung) → A (chi tiết về đầu tư) → C (kỳ vọng và thất bại) → B (nỗ lực viết sách) → E (kết quả thất bại).
+                    </div>
+                </div>
+
+                <!-- Bài 2: Sydney -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 2: Sydney</h4>
+                    <p><strong>Hãy sắp xếp các câu sau thành đoạn văn hoàn chỉnh:</strong></p>
+                    <div class="ordering-options" data-answer="A,D,B,C,E">
+                        <span class="order-btn" data-letter="A">A. Sydney is Australia's most exciting city.</span><br>
+                        <span class="order-btn" data-letter="B">B. There are over 20 excellent beaches close to Sydney and its warm climate has made it a favorite city for immigrants.</span><br>
+                        <span class="order-btn" data-letter="C">C. The Sydney Harbor Bridge was built in 1932 and the Opera House was opened in 1973.</span><br>
+                        <span class="order-btn" data-letter="D">D. The history of Australia begins here with Captain Arthur Philips' arrival in 1788.</span><br>
+                        <span class="order-btn" data-letter="E">E. Sydney is the biggest city in Australia, the busiest port in the South Pacific, and one of the most beautiful cities in the world.</span>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <label>Thứ tự của bạn: <input type="text" id="order2" placeholder="VD: A,B,C,D,E" style="padding:8px 14px;border-radius:12px;border:2px solid #b0c8d8;width:200px;font-size:1rem;"></label>
+                    </div>
+                    <div class="explanation" style="display:none;margin-top:12px;">
+                        ✅ Đáp án đúng: <strong>A, D, B, C, E</strong>.<br>
+                        Giải thích: A (giới thiệu chung) → D (lịch sử) → B (đặc điểm địa lý, khí hậu) → C (các công trình nổi tiếng) → E (kết luận tổng quan).
+                    </div>
+                </div>
+
+                <!-- Bài 3: E-commerce -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 3: E-commerce</h4>
+                    <p><strong>Hãy sắp xếp các câu sau thành đoạn văn hoàn chỉnh:</strong></p>
+                    <div class="ordering-options" data-answer="A,C,B,D,E">
+                        <span class="order-btn" data-letter="A">A. In recent years, e-commerce has grown exponentially, transforming the way people shop.</span><br>
+                        <span class="order-btn" data-letter="B">B. However, e-commerce also faces challenges, such as shipping costs and the inability to examine products before purchase.</span><br>
+                        <span class="order-btn" data-letter="C">C. Online shopping offers convenience, allowing customers to purchase products from home.</span><br>
+                        <span class="order-btn" data-letter="D">D. Despite these drawbacks, the trend shows no signs of slowing down.</span><br>
+                        <span class="order-btn" data-letter="E">E. With mobile shopping and personalized recommendations, the e-commerce industry continues to expand rapidly.</span>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <label>Thứ tự của bạn: <input type="text" id="order3" placeholder="VD: A,B,C,D,E" style="padding:8px 14px;border-radius:12px;border:2px solid #b0c8d8;width:200px;font-size:1rem;"></label>
+                    </div>
+                    <div class="explanation" style="display:none;margin-top:12px;">
+                        ✅ Đáp án đúng: <strong>A, C, B, D, E</strong>.<br>
+                        Giải thích: A (mở đầu) → C (lợi ích) → B (thách thức) → D (tuy nhiên) → E (kết luận tích cực).
+                    </div>
+                </div>
+
+                <!-- Bài 4: Sleep -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 4: Sleep</h4>
+                    <p><strong>Hãy sắp xếp các câu sau thành đoạn văn hoàn chỉnh:</strong></p>
+                    <div class="ordering-options" data-answer="B,A,D,C,E">
+                        <span class="order-btn" data-letter="A">A. During sleep, our bodies repair cells, consolidate memories, and release essential hormones.</span><br>
+                        <span class="order-btn" data-letter="B">B. Sleep is a vital part of our daily lives, yet many people underestimate its importance.</span><br>
+                        <span class="order-btn" data-letter="C">C. Lack of sleep can lead to heart disease, diabetes, and affects cognitive functions.</span><br>
+                        <span class="order-btn" data-letter="D">D. Studies show that adults need between seven and nine hours of sleep per night.</span><br>
+                        <span class="order-btn" data-letter="E">E. Modern lifestyles often reduce sleep time, with many people sacrificing sleep without realizing the consequences.</span>
+                    </div>
+                    <div style="margin-top: 12px;">
+                        <label>Thứ tự của bạn: <input type="text" id="order4" placeholder="VD: A,B,C,D,E" style="padding:8px 14px;border-radius:12px;border:2px solid #b0c8d8;width:200px;font-size:1rem;"></label>
+                    </div>
+                    <div class="explanation" style="display:none;margin-top:12px;">
+                        ✅ Đáp án đúng: <strong>B, A, D, C, E</strong>.<br>
+                        Giải thích: B (mở đầu) → A (lợi ích của giấc ngủ) → D (nhu cầu) → C (hậu quả) → E (vấn đề hiện đại).
+                    </div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkOrdering()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result2" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- ======================== TAB 3: READING COMPREHENSION ======================== -->
+    <div id="comprehension" class="tab-content">
+        <div class="quiz-container">
+            <h2>📖 Dạng 3: Đọc hiểu (Reading Comprehension)</h2>
+            <p>✅ Đọc đoạn văn và chọn đáp án đúng cho các câu hỏi. <em>(Câu hỏi được paraphrase)</em></p>
+            <div class="progress-bar"><div class="progress-fill" id="progress3"></div></div>
+            <form id="quizForm3">
+
+                <!-- Bài 1: Newcastle (BT8) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 1: Newcastle</h4>
+                    <p>I was born in Newcastle, a city in the North East of England. Newcastle is on the bank of the River Tyne. It is quite big, with a population of about 200,000 people. There is a cathedral and a university. There are five bridges over the River Tyne, which link Newcastle to the next town, Gateshead, where there is one of the biggest shopping centers in the world.</p>
+                    <p>A few years ago, the main industries were shipping and coal mining, but now the chemical and soap industries are more important.</p>
+                    <p>I left Newcastle ten years ago but I often return. I miss the people, who are very friendly, and I miss the beautiful countryside near the city, where there are so many hills and streams.</p>
+                    <p>People who are born near the River Tyne have a special name. They are called "Geodies". I am very pleased to be called a "Geodies".</p>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">1. Where is Newcastle located?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r1_1" value="A"> In the northeastern part of England</label>
+                        <label class="option-label"><input type="radio" name="r1_1" value="B"> On the River Thames</label>
+                        <label class="option-label"><input type="radio" name="r1_1" value="C"> Near the southern coast of England</label>
+                        <label class="option-label"><input type="radio" name="r1_1" value="D"> In the western part of England</label>
+                    </div>
+                    <div class="explanation">📍 Bài đọc: "Newcastle, a city in the North East of England" → đáp án A.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">2. What is the approximate population of Newcastle?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r1_2" value="A"> Exactly 200,000</label>
+                        <label class="option-label"><input type="radio" name="r1_2" value="B"> More than 200,000</label>
+                        <label class="option-label"><input type="radio" name="r1_2" value="C"> Around 200,000</label>
+                        <label class="option-label"><input type="radio" name="r1_2" value="D"> Less than 200,000</label>
+                    </div>
+                    <div class="explanation">📊 Bài đọc: "with a population of about 200,000 people" → around 200,000.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">3. What were the primary industries in Newcastle in the past?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r1_3" value="A"> Chemical and soap</label>
+                        <label class="option-label"><input type="radio" name="r1_3" value="B"> Fishing and farming</label>
+                        <label class="option-label"><input type="radio" name="r1_3" value="C"> Textile and manufacturing</label>
+                        <label class="option-label"><input type="radio" name="r1_3" value="D"> Shipping and coal mining</label>
+                    </div>
+                    <div class="explanation">⚓ Bài đọc: "the main industries were shipping and coal mining" → đáp án D.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">4. How would you describe the people of Newcastle?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r1_4" value="A"> Beautiful and wonderful</label>
+                        <label class="option-label"><input type="radio" name="r1_4" value="B"> Hardworking and honest</label>
+                        <label class="option-label"><input type="radio" name="r1_4" value="C"> Friendly and welcoming</label>
+                        <label class="option-label"><input type="radio" name="r1_4" value="D"> Quiet and reserved</label>
+                    </div>
+                    <div class="explanation">👥 Bài đọc: "the people, who are very friendly" → đáp án C.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">5. What are the natives of the River Tyne area called?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r1_5" value="A"> Geody</label>
+                        <label class="option-label"><input type="radio" name="r1_5" value="B"> Friendly</label>
+                        <label class="option-label"><input type="radio" name="r1_5" value="C"> The Geodies</label>
+                        <label class="option-label"><input type="radio" name="r1_5" value="D"> Geodies</label>
+                    </div>
+                    <div class="explanation">🏷️ Bài đọc: "They are called 'Geodies'" → đáp án D.</div>
+                </div>
+
+                <!-- Bài 2: Brazil (BT9) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 2: Brazil</h4>
+                    <p>Brazil, the largest country in South America and the fifth largest country in the world, is located in the eastern half of South America. The people of Brazil are famous for their outgoing, friendly, and fun-loving nature. Brazilian women are considered to be among the best dressed in the world.</p>
+                    <p>Brazil is a federal republic with 23 states. The capital city is Brasilia. Portuguese is the official language and it is spoken with a distinct Brazilian accent. Brazil has a population of over 138 million, which is made of people of many different races and ethnic groups.</p>
+                    <p>A number of industrial products are produced in Brazil, including cars, chemicals, ships, machines and military weapons. Mining is also an important industry. Agriculture is another important industry. Many crops are exported including coffee (Brazil is the largest coffee grower in the world), cotton, soybeans, sugar, cocoa, rice, corn and fruit.</p>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">6. Where is Brazil situated?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r2_1" value="A"> In the eastern part of South America</label>
+                        <label class="option-label"><input type="radio" name="r2_1" value="B"> In the western part of South America</label>
+                        <label class="option-label"><input type="radio" name="r2_1" value="C"> In the southern part of South America</label>
+                        <label class="option-label"><input type="radio" name="r2_1" value="D"> In the northern part of South America</label>
+                    </div>
+                    <div class="explanation">🌎 Bài đọc: "located in the eastern half of South America" → đáp án A.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">7. Which group is known for being exceptionally well-dressed?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r2_2" value="A"> Brazilian men</label>
+                        <label class="option-label"><input type="radio" name="r2_2" value="B"> All Brazilians</label>
+                        <label class="option-label"><input type="radio" name="r2_2" value="C"> Americans</label>
+                        <label class="option-label"><input type="radio" name="r2_2" value="D"> Brazilian women</label>
+                    </div>
+                    <div class="explanation">👗 Bài đọc: "Brazilian women are considered to be among the best dressed" → đáp án D.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. How are the people of Brazil characterized?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r2_3" value="A"> Famous, outgoing, and serious</label>
+                        <label class="option-label"><input type="radio" name="r2_3" value="B"> Outgoing, serious, and natural</label>
+                        <label class="option-label"><input type="radio" name="r2_3" value="C"> Outgoing, friendly, and fun-loving</label>
+                        <label class="option-label"><input type="radio" name="r2_3" value="D"> Famous, friendly, and natural</label>
+                    </div>
+                    <div class="explanation">🎉 Bài đọc: "outgoing, friendly, and fun-loving nature" → đáp án C.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">9. What is Brazil's most significant agricultural export product?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r2_4" value="A"> Cocoa</label>
+                        <label class="option-label"><input type="radio" name="r2_4" value="B"> Coffee</label>
+                        <label class="option-label"><input type="radio" name="r2_4" value="C"> Corn</label>
+                        <label class="option-label"><input type="radio" name="r2_4" value="D"> Cotton</label>
+                    </div>
+                    <div class="explanation">☕ Bài đọc: "Brazil is the largest coffee grower in the world" → đáp án B.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">10. Brazil is the largest country in South America and ranks _______ in the world.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r2_5" value="A"> fifth</label>
+                        <label class="option-label"><input type="radio" name="r2_5" value="B"> fourth</label>
+                        <label class="option-label"><input type="radio" name="r2_5" value="C"> sixth</label>
+                        <label class="option-label"><input type="radio" name="r2_5" value="D"> third</label>
+                    </div>
+                    <div class="explanation">🌍 Bài đọc: "the fifth largest country in the world" → đáp án A.</div>
+                </div>
+
+                <!-- Bài 3: Sydney (BT10) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 3: Sydney</h4>
+                    <p>Sydney is Australia's most exciting city. The history of Australia begins here. In 1788 Captain Arthur Philips arrived in Sydney with 11 ships and 1624 passengers from Britain (including 770 prisoners). Today there are about 3.6 million people in Sydney. It is the biggest city in Australia, the busiest port in the South Pacific and one of the most beautiful cities in the world. In Sydney, the buildings are higher, the colors are brighter and the nightlife is more exciting. There are over 20 excellent beaches close to Sydney and its warm climate and cool winter have made it a favorite city for immigrants from overseas. There are two things that make Sydney famous: its beautiful harbor, the Sydney Harbor Bridge, which was built in 1932 and the Sydney Opera House, which was opened in 1973.</p>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">11. Where did Captain Arthur Philips arrive in 1788?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r3_1" value="A"> South Pacific</label>
+                        <label class="option-label"><input type="radio" name="r3_1" value="B"> Sydney Harbor</label>
+                        <label class="option-label"><input type="radio" name="r3_1" value="C"> Britain</label>
+                        <label class="option-label"><input type="radio" name="r3_1" value="D"> Sydney</label>
+                    </div>
+                    <div class="explanation">🚢 Bài đọc: "arrived in Sydney" → đáp án D.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">12. Which title best summarizes the passage?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r3_2" value="A"> Sydney's Opera House</label>
+                        <label class="option-label"><input type="radio" name="r3_2" value="B"> The history of Sydney</label>
+                        <label class="option-label"><input type="radio" name="r3_2" value="C"> Sydney's beaches and harbors</label>
+                        <label class="option-label"><input type="radio" name="r3_2" value="D"> An introduction of Sydney</label>
+                    </div>
+                    <div class="explanation">📘 Bài đọc giới thiệu tổng quan về Sydney → đáp án D.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">13. Which statement about Sydney is NOT true according to the passage?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r3_3" value="A"> Sydney is not a favorite destination for immigrants.</label>
+                        <label class="option-label"><input type="radio" name="r3_3" value="B"> Sydney is one of the most beautiful cities in the world.</label>
+                        <label class="option-label"><input type="radio" name="r3_3" value="C"> Sydney is the most exciting city in Australia.</label>
+                        <label class="option-label"><input type="radio" name="r3_3" value="D"> Sydney is the biggest port in the South Pacific.</label>
+                    </div>
+                    <div class="explanation">❌ Bài đọc: "made it a favorite city for immigrants" → A sai.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. How many beaches are located near Sydney?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r3_4" value="A"> 11 beaches</label>
+                        <label class="option-label"><input type="radio" name="r3_4" value="B"> More than 20 beaches</label>
+                        <label class="option-label"><input type="radio" name="r3_4" value="C"> Nearly 20 beaches</label>
+                        <label class="option-label"><input type="radio" name="r3_4" value="D"> 770 beaches</label>
+                    </div>
+                    <div class="explanation">🏖️ Bài đọc: "There are over 20 excellent beaches" → đáp án B.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. When was the Sydney Harbor Bridge constructed?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r3_5" value="A"> 1788</label>
+                        <label class="option-label"><input type="radio" name="r3_5" value="B"> 1973</label>
+                        <label class="option-label"><input type="radio" name="r3_5" value="C"> 1932</label>
+                        <label class="option-label"><input type="radio" name="r3_5" value="D"> 1625</label>
+                    </div>
+                    <div class="explanation">🌉 Bài đọc: "was built in 1932" → đáp án C.</div>
+                </div>
+
+                <!-- Bài 4: Homelessness (BT7) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 4: Homelessness</h4>
+                    <p>Homelessness is a problem in many big cities in the world. It occurs when a part of the population does not have any fixed place to call home. Hundreds of millions of people in the world spend at least some time of the year homeless. This is an issue that the authorities are trying to deal with. However, there are more things that each person can do to help those people. One of the things that you can do to help the homeless is to volunteer your time. If you have a lot of free time, you might go on an extended trip to help set up homes or improve an impoverished area. Even with just a few hours a week, it is possible to make an impact in your own city. You can also sign up to help at a local soup kitchen: most cities have a mission of some kind helping food to the homeless and offering temporary shelter.</p>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">16. What causes homelessness?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r4_1" value="A"> Lack of great places</label>
+                        <label class="option-label"><input type="radio" name="r4_1" value="B"> Lack of convenient places</label>
+                        <label class="option-label"><input type="radio" name="r4_1" value="C"> Lack of a permanent home</label>
+                        <label class="option-label"><input type="radio" name="r4_1" value="D"> Lack of good places</label>
+                    </div>
+                    <div class="explanation">🏠 Bài đọc: "does not have any fixed place to call home" → đáp án C.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. What does the word "This" in the passage refer to?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r4_2" value="A"> Some time</label>
+                        <label class="option-label"><input type="radio" name="r4_2" value="B"> Homelessness</label>
+                        <label class="option-label"><input type="radio" name="r4_2" value="C"> Authorities</label>
+                        <label class="option-label"><input type="radio" name="r4_2" value="D"> Each person</label>
+                    </div>
+                    <div class="explanation">📌 "This" thay thế cho "Homelessness" – vấn đề được đề cập ngay trước đó.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <p class="question-text">18. What could you do if you have plenty of free time?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r4_3" value="A"> Go on a long trip to help set up homes</label>
+                        <label class="option-label"><input type="radio" name="r4_3" value="B"> Go on a holiday</label>
+                        <label class="option-label"><input type="radio" name="r4_3" value="C"> Donate money</label>
+                        <label class="option-label"><input type="radio" name="r4_3" value="D"> Donate clothes</label>
+                    </div>
+                    <div class="explanation">✈️ Bài đọc: "go on an extended trip to help set up homes" → đáp án A.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. What does the phrase "sign up" most likely mean?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r4_4" value="A"> List</label>
+                        <label class="option-label"><input type="radio" name="r4_4" value="B"> Dedicate</label>
+                        <label class="option-label"><input type="radio" name="r4_4" value="C"> Promise</label>
+                        <label class="option-label"><input type="radio" name="r4_4" value="D"> Register</label>
+                    </div>
+                    <div class="explanation">📝 "sign up" = đăng ký (register) tham gia.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. What do most cities offer to the homeless?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="r4_5" value="A"> Jobs</label>
+                        <label class="option-label"><input type="radio" name="r4_5" value="B"> Temporary shelter</label>
+                        <label class="option-label"><input type="radio" name="r4_5" value="C"> Allowance</label>
+                        <label class="option-label"><input type="radio" name="r4_5" value="D"> Education</label>
+                    </div>
+                    <div class="explanation">🏚️ Bài đọc: "offering temporary shelter" → đáp án B.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm3', 'progress3', 'result3')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result3" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- ======================== TAB 4: DRAG & DROP ======================== -->
+    <div id="drag_drop" class="tab-content">
+        <div class="quiz-container">
+            <h2>🧩 Dạng 4: Chọn câu thích hợp cho mỗi vị trí</h2>
+            <p>✅ Chọn câu phù hợp từ hộp bên dưới để điền vào chỗ trống trong đoạn văn.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress4"></div></div>
+            <form id="quizForm4">
+
+                <!-- Bài 1: Fossil fuels (BT13) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 1: Fossil Fuels</h4>
+                    <p>Almost all our energy comes from oil, coal, and natural gas. We call them fossil fuels. The earth's fossil fuels are running out. <span class="drop-zone" id="d1_1">(1)</span> Scientists are trying to find and use other alternative sources of energy. We can use energy from the sun, the wind, and the water. Solar energy is unlimited. <span class="drop-zone" id="d1_2">(2)</span> If we are able to collect solar energy, we will be sure to have this abundant source of power.</p>
+                    <p>Another source of energy from nature is the wind. Wind power is clean and plentiful. <span class="drop-zone" id="d1_3">(3)</span> In more recent time, wind power has been used to generate electricity.</p>
+                    <p>Water can also provide power. For a long time, people have used water to power machines. <span class="drop-zone" id="d1_4">(4)</span> Today water power is mostly used to generate electricity.</p>
+                </div>
+
+                <div class="sentence-pool" id="pool1">
+                    <span class="drag-item" data-target="d1_1">A. What will happen when there is no oil, coal and gas on the earth?</span>
+                    <span class="drag-item" data-target="d1_2">B. The sun supplies all the energy used to grow plants, to evaporate water for rain, and to maintain the temperature of the planet.</span>
+                    <span class="drag-item" data-target="d1_3">C. Energy from the wind has been used for centuries to move ships, grind grain, pump water and do other kinds of work.</span>
+                    <span class="drag-item" data-target="d1_4">D. Some early uses of water power were to mill grain, saw wood and power machinery for the textile industry.</span>
+                </div>
+
+                <!-- Bài 2: Coca Cola (BT2) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 2: Coca Cola</h4>
+                    <p>Coca Cola is a popular drink for people all over the world. At first, very few people drank Coca Cola, but now it is sold in more than 160 countries. <span class="drop-zone" id="d2_1">(1)</span> Coca Cola was invented by Dr John Pemberton in Atlanta on 8 May, 1886. However, the name Coca Cola was given by Frank Robinson, one of Dr Pemberton's partners. <span class="drop-zone" id="d2_2">(2)</span> He opened his first factory to produce this drink in 1895 in Dallas, Texas. Since then, a great quantity of Coca Cola has been produced there.</p>
+                    <p>Since 1982, a special kind of Coca Cola has been made for overweight people - diet Coke. <span class="drop-zone" id="d2_3">(3)</span> Besides Coca Cola, there are many other drinks of the same kind sold all over the world such as Pepsi Cola, Sp Cola and Dr Pepper. <span class="drop-zone" id="d2_4">(4)</span></p>
+                </div>
+
+                <div class="sentence-pool" id="pool2">
+                    <span class="drag-item" data-target="d2_1">A. More than 1.6 billion gallons are sold every year.</span>
+                    <span class="drag-item" data-target="d2_2">B. Later, in 1888, the business was sold to another man, Asa Candler.</span>
+                    <span class="drag-item" data-target="d2_3">C. They have used many clever advertisements to increase the amount of Coca Cola sold every year.</span>
+                    <span class="drag-item" data-target="d2_4">D. However, Coca Cola is the most popular.</span>
+                </div>
+
+                <!-- Bài 3: Travel (BT5) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 3: Travel</h4>
+                    <p>Modern life is impossible without travelling. The fastest way of travelling is by air. <span class="drop-zone" id="d3_1">(1)</span> Travelling by train is slower than by air, but it has its advantages. <span class="drop-zone" id="d3_2">(2)</span> They make even the longest journey enjoyable.</p>
+                    <p>Some people prefer to travel by sea when it is possible. <span class="drop-zone" id="d3_3">(3)</span> Travelling by sea is a very pleasant way to spend a holiday.</p>
+                    <p>Many people like to travel by car. <span class="drop-zone" id="d3_4">(4)</span> You can stop wherever you wish - where there is something interesting to see, at a good restaurant, or at a hotel to spend the night.</p>
+                </div>
+
+                <div class="sentence-pool" id="pool3">
+                    <span class="drag-item" data-target="d3_1">A. With a modern airliner you can travel in one day to places which it took a month or more to get to a hundred years ago.</span>
+                    <span class="drag-item" data-target="d3_2">B. Modern trains have comfortable seats and dining cars.</span>
+                    <span class="drag-item" data-target="d3_3">C. There are large liners and river boats, and you can visit many other countries and different places.</span>
+                    <span class="drag-item" data-target="d3_4">D. You can make your own timetable, traveling as much or as little as you like each day.</span>
+                </div>
+
+                <!-- Bài 4: Balanced diet (BT11) -->
+                <div class="reading-passage">
+                    <h4>📄 Bài 4: Balanced Diet</h4>
+                    <p>In order to stay healthy it is important to have a balanced diet. <span class="drop-zone" id="d4_1">(1)</span> These groups are protein, carbohydrate and fat.</p>
+                    <p>Proteins are very important for building our body. <span class="drop-zone" id="d4_2">(2)</span> Meat and milk products are major sources of protein. We can also get protein from fish, eggs and beans.</p>
+                    <p>Carbohydrate and fat are important to enable us to store energy. <span class="drop-zone" id="d4_3">(3)</span> Fat can be found in vegetable oil, in butter and in nuts.</p>
+                    <p>Our body also needs minerals, such as iron and calcium, and vitamins. <span class="drop-zone" id="d4_4">(4)</span> Vitamins are found in fresh vegetables and fruit.</p>
+                </div>
+
+                <div class="sentence-pool" id="pool4">
+                    <span class="drag-item" data-target="d4_1">A. We should eat enough of three main groups of food.</span>
+                    <span class="drag-item" data-target="d4_2">B. They help us to build new cells as old ones die.</span>
+                    <span class="drag-item" data-target="d4_3">C. Carbohydrates are found in sugar and in cereals.</span>
+                    <span class="drag-item" data-target="d4_4">D. Fish, vegetables and milk contain most of the minerals we need.</span>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkDragDrop()">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result4" class="result-score"></div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    ✨ Bài 20: Luyện tập Reading Comprehension | Học chủ động – Nắm chắc kỹ năng đọc | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Hàm check quiz chung cho các tab có radio button
+    function checkQuiz(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        questions.forEach((q) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+        
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững kỹ năng đọc hiểu!';
+        } else if (score >= total * 0.7) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ các dạng bài đọc hiểu!';
+        } else if (score >= total * 0.5) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và luyện tập thêm nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Hàm check ordering (Tab 2)
+    function checkOrdering() {
+        const answers = ['A,C,D,B,E', 'A,D,B,C,E', 'A,C,B,D,E', 'B,A,D,C,E'];
+        const userInputs = [
+            document.getElementById('order1').value.trim().toUpperCase().replace(/\s/g, ''),
+            document.getElementById('order2').value.trim().toUpperCase().replace(/\s/g, ''),
+            document.getElementById('order3').value.trim().toUpperCase().replace(/\s/g, ''),
+            document.getElementById('order4').value.trim().toUpperCase().replace(/\s/g, '')
+        ];
+        
+        let score = 0;
+        const explanations = document.querySelectorAll('#quizForm2 .reading-passage .explanation');
+        explanations.forEach((exp, idx) => {
+            exp.style.display = 'block';
+            if (userInputs[idx] === answers[idx].replace(/,/g, '')) {
+                score++;
+                exp.innerHTML = '✅ Đáp án đúng: <strong>' + answers[idx] + '</strong>.<br>Bạn đã sắp xếp chính xác!';
+            } else {
+                exp.innerHTML = '❌ Đáp án đúng là: <strong>' + answers[idx] + '</strong>.<br>Hãy xem lại thứ tự logic của các câu.';
+            }
+        });
+        
+        const resultDiv = document.getElementById('result2');
+        resultDiv.style.display = 'block';
+        const total = 4;
+        const progressFill = document.getElementById('progress2');
+        progressFill.style.width = (score / total * 100) + '%';
+        
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã sắp xếp đúng tất cả các đoạn văn!';
+        } else if (score >= 3) {
+            message = '🌟 Rất tốt! Bạn đã nắm được cách sắp xếp câu!';
+        } else if (score >= 2) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} bài đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Hàm check drag & drop (Tab 4)
+    function checkDragDrop() {
+        // Đáp án cho từng bài: [d1_1, d1_2, d1_3, d1_4] - [d2_1, d2_2, d2_3, d2_4] - ...
+        const correctAnswers = [
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', 'D'],
+            ['A', 'B', 'C', 'D']
+        ];
+        
+        let totalScore = 0;
+        let totalQuestions = 0;
+        
+        // Kiểm tra từng bài
+        const pools = document.querySelectorAll('.sentence-pool');
+        pools.forEach((pool, poolIdx) => {
+            const items = pool.querySelectorAll('.drag-item');
+            let correctCount = 0;
+            let totalItems = items.length;
+            
+            items.forEach((item, idx) => {
+                const targetId = item.getAttribute('data-target');
+                const target = document.getElementById(targetId);
+                const selectedText = item.textContent.trim();
+                const correctText = correctAnswers[poolIdx][idx];
+                
+                // Kiểm tra xem item đã được kéo vào đúng vị trí chưa
+                // (Trong demo này, chúng ta giả định người dùng đã kéo thả bằng cách chọn từ pool)
+                // Thực tế, với giao diện đơn giản, chúng ta dùng cách click để chọn
+                // Ở đây, chúng ta kiểm tra target có chứa nội dung của item hay không
+                if (target && target.textContent.trim() !== '') {
+                    // Nếu ô trống đã được điền, kiểm tra nội dung
+                    if (target.textContent.trim() === item.textContent.trim()) {
+                        // Nếu nội dung khớp với đáp án
+                        const expectedContent = pool.querySelectorAll('.drag-item')[idx].textContent.trim();
+                        if (target.textContent.trim() === expectedContent) {
+                            correctCount++;
+                        }
+                    }
+                }
+            });
+            
+            totalScore += correctCount;
+            totalQuestions += totalItems;
+        });
+        
+        // Hiển thị kết quả
+        const resultDiv = document.getElementById('result4');
+        resultDiv.style.display = 'block';
+        const progressFill = document.getElementById('progress4');
+        progressFill.style.width = (totalScore / totalQuestions * 100) + '%';
+        
+        // Hiển thị đáp án đúng cho từng bài
+        const allDropZones = document.querySelectorAll('.drop-zone');
+        const allItems = document.querySelectorAll('.drag-item');
+        
+        // Reset và hiển thị đáp án
+        allDropZones.forEach((zone, idx) => {
+            const parent = zone.closest('.reading-passage');
+            const pool = parent.querySelector('.sentence-pool');
+            if (pool) {
+                const items = pool.querySelectorAll('.drag-item');
+                const correctIdx = idx % 4; // 4 câu mỗi bài
+                if (items[correctIdx]) {
+                    const correctText = items[correctIdx].textContent.trim();
+                    // Nếu zone trống hoặc sai, hiển thị đáp án đúng
+                    if (zone.textContent.trim() !== correctText) {
+                        zone.innerHTML = '✅ ' + correctText;
+                        zone.style.background = '#c2dce8';
+                        zone.style.borderColor = 'var(--success)';
+                    }
+                }
+            }
+        });
+        
+        let message = '';
+        if (totalScore === totalQuestions) {
+            message = '🏆 Hoàn hảo! Bạn đã điền đúng tất cả các câu!';
+        } else if (totalScore >= totalQuestions * 0.7) {
+            message = '🌟 Rất tốt! Bạn đã nắm được cách làm bài!';
+        } else if (totalScore >= totalQuestions * 0.5) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${totalScore} / ${totalQuestions} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Tô màu các câu đã được kéo đúng
+        document.querySelectorAll('.drag-item').forEach(item => {
+            const targetId = item.getAttribute('data-target');
+            const target = document.getElementById(targetId);
+            if (target && target.textContent.trim() === item.textContent.trim()) {
+                item.classList.add('dropped');
+            }
+        });
+    }
+
+    // Drag and drop functionality (click-based for simplicity)
+    document.addEventListener('click', function(e) {
+        const target = e.target;
+        if (target.classList.contains('drag-item')) {
+            const targetId = target.getAttribute('data-target');
+            const dropZone = document.getElementById(targetId);
+            if (dropZone) {
+                // Nếu ô đã có nội dung, đẩy nội dung cũ trở lại pool
+                if (dropZone.textContent.trim() !== '') {
+                    const oldText = dropZone.textContent.trim();
+                    // Tạo một item mới trong pool
+                    const pool = target.closest('.sentence-pool');
+                    const newItem = document.createElement('span');
+                    newItem.className = 'drag-item';
+                    newItem.setAttribute('data-target', targetId);
+                    newItem.textContent = oldText;
+                    pool.appendChild(newItem);
+                }
+                // Điền nội dung mới vào drop zone
+                dropZone.innerHTML = target.textContent;
+                dropZone.style.background = '#c2dce8';
+                dropZone.style.borderColor = 'var(--success)';
+                target.remove();
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
