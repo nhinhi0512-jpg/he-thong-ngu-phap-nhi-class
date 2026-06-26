@@ -641,193 +641,160 @@
             <h2>🎯 Trắc nghiệm: Reading Comprehension</h2>
             <p>✅ Đọc đoạn văn và chọn đáp án đúng cho các câu hỏi bên dưới.</p>
 
-            <!-- ĐOẠN VĂN 1 -->
+            <!-- ĐOẠN VĂN 1: Climate Change -->
             <div class="reading-passage">
-                <h4>📄 Passage 1: The Importance of Sleep</h4>
-                <p>Sleep is a vital part of our daily lives, yet many people underestimate its importance. During sleep, our bodies repair cells, consolidate memories, and release essential hormones. Studies show that adults need between seven and nine hours of sleep per night for optimal health. Lack of sleep can lead to a variety of health problems, including heart disease, diabetes, and depression. Additionally, it affects cognitive functions such as concentration and decision-making. Despite these well-known benefits, modern lifestyles often reduce sleep time. Many people stay up late for work or entertainment, sacrificing sleep without realizing the long-term consequences.</p>
+                <h4>🌍 Passage 1: The Impact of Climate Change</h4>
+                <p>Climate change is one of the most pressing challenges facing humanity in the 21st century. The primary driver of this phenomenon is the emission of greenhouse gases, particularly carbon dioxide, from human activities such as burning fossil fuels, deforestation, and industrial processes. These gases trap heat in the Earth's atmosphere, leading to a gradual increase in global temperatures. The consequences of this warming are far-reaching and severe. Rising sea levels threaten coastal communities, while extreme weather events like hurricanes, droughts, and floods are becoming more frequent and intense. Agricultural productivity is also at risk, as changing weather patterns disrupt traditional farming cycles and reduce crop yields in many regions.</p>
+                <p>Addressing climate change requires unprecedented global cooperation. International agreements like the Paris Accord aim to limit global warming to well below 2°C above pre-industrial levels. However, achieving this target demands immediate and sustained action from all nations. This includes transitioning to renewable energy sources, improving energy efficiency, and implementing sustainable land-use practices. Individuals can also contribute by reducing their carbon footprint through lifestyle changes such as using public transportation, conserving energy, and adopting plant-based diets. While the challenge is immense, the collective effort to mitigate climate change also presents opportunities for innovation, economic growth, and a healthier planet for future generations.</p>
             </div>
 
-            <form id="quizForm">
-                <!-- Các câu hỏi dựa trên đoạn văn -->
-                <div class="question" data-correct="C">
-                    <p class="question-text">1. What is the main idea of the passage?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q1" value="A"> Sleep is not important for health.</label>
-                        <label class="option-label"><input type="radio" name="q1" value="B"> Adults need less than seven hours of sleep.</label>
-                        <label class="option-label"><input type="radio" name="q1" value="C"> Sleep is essential for health and is often neglected.</label>
-                        <label class="option-label"><input type="radio" name="q1" value="D"> Modern lifestyles have improved sleep quality.</label>
-                    </div>
-                    <div class="explanation">📘 Ý chính: Sleep is essential and often neglected. Câu đầu và cuối đoạn đều nhấn mạnh điều này.</div>
+            <div class="question" data-correct="C">
+                <p class="question-text">1. What is the primary cause of climate change according to the passage?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q1" value="A"> Natural weather patterns</label>
+                    <label class="option-label"><input type="radio" name="q1" value="B"> Volcanic eruptions</label>
+                    <label class="option-label"><input type="radio" name="q1" value="C"> Emission of greenhouse gases from human activities</label>
+                    <label class="option-label"><input type="radio" name="q1" value="D"> Solar radiation variations</label>
                 </div>
+                <div class="explanation">🌡️ Bài đọc chỉ rõ: "The primary driver of this phenomenon is the emission of greenhouse gases... from human activities".</div>
+            </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">2. According to the passage, how many hours of sleep do adults need?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q2" value="A"> Five to six hours</label>
-                        <label class="option-label"><input type="radio" name="q2" value="B"> Seven to nine hours</label>
-                        <label class="option-label"><input type="radio" name="q2" value="C"> Eight to ten hours</label>
-                        <label class="option-label"><input type="radio" name="q2" value="D"> More than ten hours</label>
-                    </div>
-                    <div class="explanation">📊 Chi tiết trong bài: "adults need between seven and nine hours of sleep".</div>
+            <div class="question" data-correct="B">
+                <p class="question-text">2. Which of the following is NOT mentioned as a consequence of global warming?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q2" value="A"> Rising sea levels</label>
+                    <label class="option-label"><input type="radio" name="q2" value="B"> Increased biodiversity</label>
+                    <label class="option-label"><input type="radio" name="q2" value="C"> More frequent extreme weather events</label>
+                    <label class="option-label"><input type="radio" name="q2" value="D"> Reduced agricultural productivity</label>
                 </div>
+                <div class="explanation">🌊 Bài đọc đề cập đến: rising sea levels, extreme weather, reduced crop yields. Không đề cập đến tăng đa dạng sinh học.</div>
+            </div>
 
-                <div class="question" data-correct="D">
-                    <p class="question-text">3. Which of the following is NOT mentioned as a consequence of lack of sleep?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q3" value="A"> Heart disease</label>
-                        <label class="option-label"><input type="radio" name="q3" value="B"> Depression</label>
-                        <label class="option-label"><input type="radio" name="q3" value="C"> Diabetes</label>
-                        <label class="option-label"><input type="radio" name="q3" value="D"> Obesity</label>
-                    </div>
-                    <div class="explanation">🔍 Obesity không được đề cập trong bài. Các bệnh khác đều có trong đoạn.</div>
+            <div class="question" data-correct="A">
+                <p class="question-text">3. What does the Paris Accord aim to achieve?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q3" value="A"> Limit global warming to well below 2°C</label>
+                    <label class="option-label"><input type="radio" name="q3" value="B"> Eliminate all greenhouse gas emissions</label>
+                    <label class="option-label"><input type="radio" name="q3" value="C"> Reverse the effects of climate change immediately</label>
+                    <label class="option-label"><input type="radio" name="q3" value="D"> Stop all industrial activities</label>
                 </div>
+                <div class="explanation">📜 Bài đọc: "aim to limit global warming to well below 2°C above pre-industrial levels".</div>
+            </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">4. The word "consolidate" in the passage is closest in meaning to:</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q4" value="A"> strengthen</label>
-                        <label class="option-label"><input type="radio" name="q4" value="B"> forget</label>
-                        <label class="option-label"><input type="radio" name="q4" value="C"> collect</label>
-                        <label class="option-label"><input type="radio" name="q4" value="D"> create</label>
-                    </div>
-                    <div class="explanation">📖 "Consolidate memories" có nghĩa là củng cố, làm cho chắc chắn hơn → strengthen.</div>
+            <div class="question" data-correct="D">
+                <p class="question-text">4. According to the passage, how can individuals contribute to addressing climate change?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q4" value="A"> By waiting for government action</label>
+                    <label class="option-label"><input type="radio" name="q4" value="B"> By increasing their carbon footprint</label>
+                    <label class="option-label"><input type="radio" name="q4" value="C"> By continuing to use fossil fuels</label>
+                    <label class="option-label"><input type="radio" name="q4" value="D"> By adopting plant-based diets and using public transportation</label>
                 </div>
+                <div class="explanation">🚲 Bài đọc: "Individuals can also contribute by reducing their carbon footprint... using public transportation, conserving energy, and adopting plant-based diets."</div>
+            </div>
 
-                <div class="question" data-correct="C">
-                    <p class="question-text">5. What can be inferred from the passage?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q5" value="A"> People are fully aware of the importance of sleep.</label>
-                        <label class="option-label"><input type="radio" name="q5" value="B"> Sleep has no effect on cognitive functions.</label>
-                        <label class="option-label"><input type="radio" name="q5" value="C"> Many people sacrifice sleep for work or entertainment.</label>
-                        <label class="option-label"><input type="radio" name="q5" value="D"> Sleep problems are easy to solve.</label>
-                    </div>
-                    <div class="explanation">🔍 Suy luận từ câu cuối: "Many people stay up late for work or entertainment, sacrificing sleep".</div>
+            <!-- ĐOẠN VĂN 2: Artificial Intelligence -->
+            <div class="reading-passage">
+                <h4>🤖 Passage 2: Artificial Intelligence in Modern Life</h4>
+                <p>Artificial Intelligence (AI) has rapidly evolved from a futuristic concept to an integral part of our daily lives. AI systems are now embedded in numerous applications, from virtual assistants like Siri and Alexa to recommendation algorithms on streaming platforms and social media. In the healthcare sector, AI is revolutionizing diagnostics by analyzing medical images with remarkable accuracy, often surpassing human capabilities in detecting early signs of diseases. Similarly, in the financial industry, AI algorithms are used to detect fraudulent transactions and predict market trends with unprecedented speed and precision.</p>
+                <p>Despite its numerous benefits, the widespread adoption of AI raises significant ethical and social concerns. One of the most pressing issues is job displacement, as automation threatens to replace human workers in various industries, from manufacturing to customer service. Additionally, there are concerns about privacy and data security, as AI systems often require vast amounts of personal data to function effectively. Furthermore, the potential for algorithmic bias has become a major topic of discussion, as AI systems can perpetuate existing inequalities if not carefully designed and monitored. As AI continues to advance, it is crucial for policymakers, technologists, and society as a whole to address these challenges while harnessing the transformative potential of this technology.</p>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">5. What is the main idea of the passage?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q5" value="A"> AI will eventually replace all human jobs</label>
+                    <label class="option-label"><input type="radio" name="q5" value="B"> AI offers significant benefits but also raises important ethical concerns</label>
+                    <label class="option-label"><input type="radio" name="q5" value="C"> AI is only useful in healthcare and finance</label>
+                    <label class="option-label"><input type="radio" name="q5" value="D"> AI does not pose any risks to society</label>
                 </div>
+                <div class="explanation">🤔 Bài đọc trình bày cả lợi ích và lo ngại của AI → ý chính là sự cân bằng giữa lợi ích và thách thức đạo đức.</div>
+            </div>
 
-                <!-- ĐOẠN VĂN 2 -->
-                <div class="reading-passage">
-                    <h4>📄 Passage 2: The Rise of E-commerce</h4>
-                    <p>In recent years, e-commerce has grown exponentially, transforming the way people shop. Online shopping offers convenience, allowing customers to purchase products from the comfort of their homes. This has led to a decline in traditional brick-and-mortar stores, as more consumers prefer to shop online. However, e-commerce also faces challenges, such as shipping costs, delivery times, and the inability to physically examine products before purchase. Despite these drawbacks, the trend shows no signs of slowing down. With the rise of mobile shopping and personalized recommendations, the e-commerce industry continues to expand rapidly.</p>
+            <div class="question" data-correct="A">
+                <p class="question-text">6. According to the passage, in which field is AI used to analyze medical images?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q6" value="A"> Healthcare</label>
+                    <label class="option-label"><input type="radio" name="q6" value="B"> Finance</label>
+                    <label class="option-label"><input type="radio" name="q6" value="C"> Manufacturing</label>
+                    <label class="option-label"><input type="radio" name="q6" value="D"> Customer service</label>
                 </div>
+                <div class="explanation">🏥 Bài đọc: "In the healthcare sector, AI is revolutionizing diagnostics by analyzing medical images".</div>
+            </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">6. What is the passage mainly about?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q6" value="A"> The decline of traditional shopping</label>
-                        <label class="option-label"><input type="radio" name="q6" value="B"> The growth and impact of e-commerce</label>
-                        <label class="option-label"><input type="radio" name="q6" value="C"> The challenges faced by online shoppers</label>
-                        <label class="option-label"><input type="radio" name="q6" value="D"> The advantages of mobile shopping</label>
-                    </div>
-                    <div class="explanation">📘 Ý chính bao quát: sự phát triển và tác động của thương mại điện tử.</div>
+            <div class="question" data-correct="D">
+                <p class="question-text">7. What ethical concern about AI is mentioned in the passage?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q7" value="A"> AI is too expensive to implement</label>
+                    <label class="option-label"><input type="radio" name="q7" value="B"> AI cannot process large amounts of data</label>
+                    <label class="option-label"><input type="radio" name="q7" value="C"> AI is not reliable enough for critical tasks</label>
+                    <label class="option-label"><input type="radio" name="q7" value="D"> Algorithmic bias and job displacement</label>
                 </div>
+                <div class="explanation">⚖️ Bài đọc đề cập đến: job displacement, privacy concerns, và algorithmic bias.</div>
+            </div>
 
-                <div class="question" data-correct="D">
-                    <p class="question-text">7. According to the passage, what is a drawback of e-commerce?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q7" value="A"> Low product quality</label>
-                        <label class="option-label"><input type="radio" name="q7" value="B"> Lack of variety</label>
-                        <label class="option-label"><input type="radio" name="q7" value="C"> High product prices</label>
-                        <label class="option-label"><input type="radio" name="q7" value="D"> Inability to examine products physically</label>
-                    </div>
-                    <div class="explanation">📊 "inability to physically examine products before purchase" – đây là một bất lợi.</div>
+            <div class="question" data-correct="C">
+                <p class="question-text">8. What does the passage suggest is needed to address the challenges of AI?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q8" value="A"> Stopping all AI development</label>
+                    <label class="option-label"><input type="radio" name="q8" value="B"> Ignoring the ethical concerns</label>
+                    <label class="option-label"><input type="radio" name="q8" value="C"> Cooperation between policymakers, technologists, and society</label>
+                    <label class="option-label"><input type="radio" name="q8" value="D"> Allowing AI to develop without regulation</label>
                 </div>
+                <div class="explanation">🤝 Bài đọc: "it is crucial for policymakers, technologists, and society as a whole to address these challenges".</div>
+            </div>
 
-                <div class="question" data-correct="C">
-                    <p class="question-text">8. The word "exponentially" in the passage is closest in meaning to:</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q8" value="A"> slowly</label>
-                        <label class="option-label"><input type="radio" name="q8" value="B"> steadily</label>
-                        <label class="option-label"><input type="radio" name="q8" value="C"> rapidly</label>
-                        <label class="option-label"><input type="radio" name="q8" value="D"> gradually</label>
-                    </div>
-                    <div class="explanation">📖 "Exponentially" = với tốc độ rất nhanh, tăng trưởng mạnh → rapidly.</div>
+            <!-- ĐOẠN VĂN 3: Social Media -->
+            <div class="reading-passage">
+                <h4>📱 Passage 3: The Influence of Social Media</h4>
+                <p>Over the past two decades, social media platforms have transformed the way people communicate, share information, and build communities. What began as a means for individuals to connect with friends and family has evolved into a powerful tool that influences politics, business, and culture on a global scale. Social media enables the rapid dissemination of news, allowing information to reach millions of people within minutes. This has empowered grassroots movements and given a voice to marginalized groups, while also enabling businesses to engage directly with consumers in ways that were previously unimaginable.</p>
+                <p>However, the rise of social media has also brought about significant challenges. The spread of misinformation and fake news has become a major concern, as false information can quickly go viral and shape public opinion. Additionally, the algorithms used by social media platforms often create "echo chambers" that reinforce users' existing beliefs, contributing to political polarization and social division. There is also growing evidence that excessive use of social media can have negative effects on mental health, particularly among young people, leading to increased rates of anxiety, depression, and feelings of inadequacy. As social media continues to evolve, it is essential for users to develop critical thinking skills and for platforms to take responsibility for the content they host.</p>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">9. What is the passage mainly about?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q9" value="A"> The history of social media platforms</label>
+                    <label class="option-label"><input type="radio" name="q9" value="B"> The positive and negative impacts of social media</label>
+                    <label class="option-label"><input type="radio" name="q9" value="C"> How to use social media effectively</label>
+                    <label class="option-label"><input type="radio" name="q9" value="D"> The financial success of social media companies</label>
                 </div>
+                <div class="explanation">📘 Bài đọc trình bày cả mặt tích cực và tiêu cực của mạng xã hội.</div>
+            </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">9. Which of the following is mentioned as a reason for the decline of brick-and-mortar stores?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q9" value="A"> Consumers prefer online shopping</label>
-                        <label class="option-label"><input type="radio" name="q9" value="B"> Higher shipping costs</label>
-                        <label class="option-label"><input type="radio" name="q9" value="C"> Lack of product variety</label>
-                        <label class="option-label"><input type="radio" name="q9" value="D"> Poor customer service</label>
-                    </div>
-                    <div class="explanation">🔍 "as more consumers prefer to shop online" – đây là nguyên nhân dẫn đến sự suy giảm.</div>
+            <div class="question" data-correct="A">
+                <p class="question-text">10. According to the passage, what is a positive impact of social media?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q10" value="A"> It empowers grassroots movements and marginalized groups</label>
+                    <label class="option-label"><input type="radio" name="q10" value="B"> It eliminates all political polarization</label>
+                    <label class="option-label"><input type="radio" name="q10" value="C"> It has no negative effects on mental health</label>
+                    <label class="option-label"><input type="radio" name="q10" value="D"> It prevents the spread of misinformation</label>
                 </div>
+                <div class="explanation">📢 Bài đọc: "empowered grassroots movements and given a voice to marginalized groups".</div>
+            </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">10. What can be inferred from the passage about the future of e-commerce?</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q10" value="A"> It will eventually decline.</label>
-                        <label class="option-label"><input type="radio" name="q10" value="B"> It will continue to grow.</label>
-                        <label class="option-label"><input type="radio" name="q10" value="C"> It will replace all traditional stores.</label>
-                        <label class="option-label"><input type="radio" name="q10" value="D"> It will face more challenges.</label>
-                    </div>
-                    <div class="explanation">🔍 "the trend shows no signs of slowing down" và "continues to expand rapidly" – ám chỉ sự tăng trưởng tiếp tục.</div>
+            <div class="question" data-correct="D">
+                <p class="question-text">11. What is an "echo chamber" as mentioned in the passage?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q11" value="A"> A social media platform that promotes diversity</label>
+                    <label class="option-label"><input type="radio" name="q11" value="B"> A feature that allows users to have private conversations</label>
+                    <label class="option-label"><input type="radio" name="q11" value="C"> A tool for fact-checking information</label>
+                    <label class="option-label"><input type="radio" name="q11" value="D"> An environment where users are exposed only to their existing beliefs</label>
                 </div>
+                <div class="explanation">🔁 Bài đọc: "reinforce users' existing beliefs" → echo chambers là môi trường chỉ tiếp xúc với niềm tin đã có.</div>
+            </div>
 
-                <!-- ĐOẠN VĂN 3 (điền từ) -->
-                <div class="reading-passage">
-                    <h4>✏️ Passage 3: Fill in the Blanks</h4>
-                    <p>Many people believe that (11) _______ a foreign language is a valuable skill. It opens up new opportunities in both personal and professional life. However, learning a new language can be challenging. It requires time, (12) _______, and a good memory. One of the most effective ways to learn is to practice (13) _______ with native speakers. This helps improve pronunciation and listening skills. Additionally, (14) _______ to music and watching movies in the target language can make learning more enjoyable. (15) _______, the key to success is consistency and regular practice.</p>
+            <div class="question" data-correct="C">
+                <p class="question-text">12. What does the passage suggest about the future of social media?</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q12" value="A"> It will become less popular over time</label>
+                    <label class="option-label"><input type="radio" name="q12" value="B"> It will solve all communication problems</label>
+                    <label class="option-label"><input type="radio" name="q12" value="C"> Users and platforms must work together to address its challenges</label>
+                    <label class="option-label"><input type="radio" name="q12" value="D"> It will no longer have any negative effects</label>
                 </div>
+                <div class="explanation">🔮 Bài đọc: "it is essential for users to develop critical thinking skills and for platforms to take responsibility".</div>
+            </div>
 
-                <div class="question" data-correct="C">
-                    <p class="question-text">11. (11) ______</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q11" value="A"> speaking</label>
-                        <label class="option-label"><input type="radio" name="q11" value="B"> read</label>
-                        <label class="option-label"><input type="radio" name="q11" value="C"> learning</label>
-                        <label class="option-label"><input type="radio" name="q11" value="D"> learned</label>
-                    </div>
-                    <div class="explanation">✏️ "learning a foreign language" – cụm từ quen thuộc, động từ + danh từ.</div>
-                </div>
-
-                <div class="question" data-correct="B">
-                    <p class="question-text">12. (12) ______</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q12" value="A"> money</label>
-                        <label class="option-label"><input type="radio" name="q12" value="B"> effort</label>
-                        <label class="option-label"><input type="radio" name="q12" value="C"> luck</label>
-                        <label class="option-label"><input type="radio" name="q12" value="D"> talent</label>
-                    </div>
-                    <div class="explanation">✏️ "requires time, effort, and a good memory" – ba yếu tố cần thiết.</div>
-                </div>
-
-                <div class="question" data-correct="D">
-                    <p class="question-text">13. (13) ______</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q13" value="A"> speak</label>
-                        <label class="option-label"><input type="radio" name="q13" value="B"> to speak</label>
-                        <label class="option-label"><input type="radio" name="q13" value="C"> spoken</label>
-                        <label class="option-label"><input type="radio" name="q13" value="D"> speaking</label>
-                    </div>
-                    <div class="explanation">✏️ "practice + V-ing" – practice speaking với người bản xứ.</div>
-                </div>
-
-                <div class="question" data-correct="A">
-                    <p class="question-text">14. (14) ______</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q14" value="A"> listening</label>
-                        <label class="option-label"><input type="radio" name="q14" value="B"> listen</label>
-                        <label class="option-label"><input type="radio" name="q14" value="C"> listened</label>
-                        <label class="option-label"><input type="radio" name="q14" value="D"> to listen</label>
-                    </div>
-                    <div class="explanation">✏️ "listening to music" – danh động từ sau giới từ "to".</div>
-                </div>
-
-                <div class="question" data-correct="C">
-                    <p class="question-text">15. (15) ______</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q15" value="A"> Therefore</label>
-                        <label class="option-label"><input type="radio" name="q15" value="B"> However</label>
-                        <label class="option-label"><input type="radio" name="q15" value="C"> In conclusion</label>
-                        <label class="option-label"><input type="radio" name="q15" value="D"> For example</label>
-                    </div>
-                    <div class="explanation">✏️ "In conclusion" – từ nối kết luận cho đoạn văn.</div>
-                </div>
-
-                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
-            </form>
+            <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
             <div id="quizResult" class="result-score"></div>
         </div>
     </div>
@@ -887,9 +854,9 @@
         let message = '';
         if (score === total) {
             message = '🏆 Hoàn hảo! Bạn đã nắm vững kỹ năng đọc hiểu!';
-        } else if (score >= 12) {
+        } else if (score >= 9) {
             message = '🌟 Rất tốt! Bạn hiểu rõ các dạng bài đọc hiểu!';
-        } else if (score >= 8) {
+        } else if (score >= 6) {
             message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
         } else {
             message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết và luyện tập thêm nhé!';
