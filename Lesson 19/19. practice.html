@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 19: Luyện tập Viết lại câu | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7a5d2b;
+            --secondary: #b8942b;
+            --accent: #d4a843;
+            --success: #8f7a2b;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #f9f3e6;
+            --dark: #4d3a1a;
+            --gradient-start: #f5ede0;
+            --gradient-end: #e8dcc8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #f5ede0 0%, #e8dcc8 40%, #dccfb8 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #d4c4a8;
+            box-shadow: 0 4px 16px rgba(184, 148, 43, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(184, 148, 43, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(184, 148, 43, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #b8942b, #7a5d2b);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(184, 148, 43, 0.25);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #8f7a2b, #5a4520);
+            box-shadow: 0 8px 18px rgba(184, 148, 43, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(184, 148, 43, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #d4c4a8;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(184, 148, 43, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(184, 148, 43, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(184, 148, 43, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(184, 148, 43, 0.12);
+            border: 1px solid #d4c4a8;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #faf6ee;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #d4c4a8;
+            transition: all 0.2s;
+        }
+
+        .question:hover {
+            border-color: var(--secondary);
+        }
+
+        .question-number {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .question-text .highlight {
+            background: #f0e6d4;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 700px) {
+            .options-route {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f9f3e6;
+            padding: 10px 16px;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #f0e6d4;
+            border-color: var(--accent);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .option-label .letter {
+            font-weight: 700;
+            color: var(--secondary);
+            flex-shrink: 0;
+            width: 22px;
+        }
+
+        .option-label .text {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        .correct {
+            background: #e8e8c8 !important;
+            border-color: var(--success) !important;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px 16px;
+            background: #f9f3e6;
+            border-left: 4px solid var(--accent);
+            border-radius: 14px;
+            font-size: 0.9rem;
+            display: none;
+            color: var(--dark);
+        }
+
+        .explanation strong {
+            color: var(--primary);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #b8942b, #7a5d2b);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(184, 148, 43, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #8f7a2b, #5a4520);
+            box-shadow: 0 8px 18px rgba(184, 148, 43, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.8rem;
+            background: #f9f3e6;
+            padding: 1rem 1.5rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #d4c4a8;
+            color: var(--dark);
+        }
+
+        .result-score .score-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .result-score .message {
+            display: block;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e8e0d4;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #b8942b, #d4a843);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Word ordering specific styles */
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px 0;
+            margin-bottom: 10px;
+            min-height: 50px;
+        }
+
+        .word-chip {
+            background: #f0e6d4;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark);
+            border: 2px solid #d4c4a8;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .word-chip:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .word-chip.selected {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+            opacity: 0.5;
+            cursor: default;
+            transform: none;
+        }
+
+        .sentence-builder {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 14px 16px;
+            background: #f9f3e6;
+            border-radius: 16px;
+            min-height: 56px;
+            border: 2px dashed #d4c4a8;
+            margin-top: 10px;
+            align-items: center;
+        }
+
+        .sentence-builder .placed-word {
+            background: var(--secondary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sentence-builder .placed-word:hover {
+            background: #7a5d2b;
+            transform: scale(0.95);
+        }
+
+        .sentence-builder .placeholder-text {
+            color: #a09078;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .btn-reset-word {
+            background: #e8e0d4;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 8px;
+        }
+
+        .btn-reset-word:hover {
+            background: #d4c4a8;
+        }
+
+        .word-correct {
+            background: #e8e8c8 !important;
+            border-color: var(--success) !important;
+        }
+
+        .word-incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+        }
+
+        .word-correct .placed-word,
+        .word-incorrect .placed-word {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .word-correct .placed-word {
+            background: var(--success);
+        }
+
+        .word-incorrect .placed-word {
+            background: var(--danger);
+        }
+
+        .word-correct .sentence-builder {
+            border-color: var(--success);
+            background: #f0f0e0;
+        }
+
+        .word-incorrect .sentence-builder {
+            border-color: var(--danger);
+            background: #fdf0ee;
+        }
+
+        .show-answer-btn {
+            background: #d4c4a8;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 8px;
+        }
+
+        .show-answer-btn:hover {
+            background: #b8942b;
+            color: white;
+        }
+
+        .answer-display {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 16px;
+            background: #f0f0e0;
+            border-radius: 12px;
+            border-left: 4px solid var(--success);
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .answer-display.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+            .question {
+                padding: 1rem;
+            }
+            .word-chip {
+                font-size: 0.85rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>✍️ Bài 19: Luyện tập Viết lại câu</h1>
+        <div class="sub">Sentence Transformation Practice</div>
+    </div>
+    <a href="./19. rewrite the sentences.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('ordering')">🔤 1. Sắp xếp từ</button>
+        <button class="tab-btn" onclick="openTab('synonyms')">🔹 2. Chọn câu đồng nghĩa</button>
+        <button class="tab-btn" onclick="openTab('rewrite')">🔸 3. Viết lại câu</button>
+        <button class="tab-btn" onclick="openTab('sentence_building')">📝 4. Xây dựng câu</button>
+    </div>
+
+    <!-- TAB 1: SẮP XẾP TỪ (20 câu) -->
+    <div id="ordering" class="tab-content active">
+        <div class="quiz-container">
+            <h2>🔤 Sắp xếp từ để tạo thành câu hoàn chỉnh</h2>
+            <p>✅ Nhấp vào các từ theo thứ tự đúng để tạo thành câu có nghĩa. Nhấp vào từ đã chọn để bỏ chọn.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress1"></div></div>
+            <form id="quizForm1">
+                <!-- 20 câu sắp xếp từ -->
+                <div class="question" data-answer="gold the metal expensive is most of all">
+                    <div class="question-number">Câu 1</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="gold / the / metals / expensive / is / most / of / all"></div>
+                    <div class="sentence-builder" id="builder1">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Gold is the most expensive of all metals.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Gold is the most expensive of all metals. (So sánh nhất: the most + adj)</div>
+                </div>
+
+                <div class="question" data-answer="computers used are by people for various purposes">
+                    <div class="question-number">Câu 2</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="are / for / computers / used / people / various / by /purposes"></div>
+                    <div class="sentence-builder" id="builder2">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Computers are used by people for various purposes.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Computers are used by people for various purposes. (Bị động hiện tại đơn)</div>
+                </div>
+
+                <div class="question" data-answer="instead of doing homework sally went to a night club">
+                    <div class="question-number">Câu 3</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words=" doing / homework / went / instead / club / of / sally / to / a / night"></div>
+                    <div class="sentence-builder" id="builder3">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Instead of doing homework, Sally went to a night club.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Instead of doing homework, Sally went to a night club. (Instead of + V-ing)</div>
+                </div>
+
+                <div class="question" data-answer="it is three months since he lost his job">
+                    <div class="question-number">Câu 4</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="he / it / since / is / lost / three / his / months / job"></div>
+                    <div class="sentence-builder" id="builder4">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">It is three months since he lost his job.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> It is three months since he lost his job. (It is + time + since + S + V quá khứ)</div>
+                </div>
+
+                <div class="question" data-answer="helmets must be worn at all times when riding a motorcycle">
+                    <div class="question-number">Câu 5</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="must / helmets / at / when / all / a / be / times / worn / riding / motorcycle"></div>
+                    <div class="sentence-builder" id="builder5">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Helmets must be worn at all times when riding a motorcycle.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Helmets must be worn at all times when riding a motorcycle. (Bị động với must)</div>
+                </div>
+
+                <div class="question" data-answer="they paid for dinner in order to apologize for their behavior">
+                    <div class="question-number">Câu 6</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="apologize / dinner / their / paid / order / to / in / behavior / they / for / for"></div>
+                    <div class="sentence-builder" id="builder6">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">They paid for dinner in order to apologize for their behavior.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> They paid for dinner in order to apologize for their behavior. (in order to + V = mục đích)</div>
+                </div>
+
+                <div class="question" data-answer="jerry said that he was studying english a lot at that moment">
+                    <div class="question-number">Câu 7</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="he / english / at / studying / said / jerry / that / lot / a / moment / that / was / at"></div>
+                    <div class="sentence-builder" id="builder7">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Jerry said that he was studying English a lot at that moment.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Jerry said that he was studying English a lot at that moment. (Tường thuật: lùi thì)</div>
+                </div>
+
+                <div class="question" data-answer="i used to go to the local park every saturday afternoon">
+                    <div class="question-number">Câu 8</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="every / go / park / i / the / local / to / to / used / afternoon / saturday"></div>
+                    <div class="sentence-builder" id="builder8">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">I used to go to the local park every Saturday afternoon.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> I used to go to the local park every Saturday afternoon. (used to + V: thói quen quá khứ)</div>
+                </div>
+
+                <div class="question" data-answer="it was extremely difficult for him to learn this subject">
+                    <div class="question-number">Câu 9</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="subject / him / extremely / learn / was / this / for / to / it / difficult"></div>
+                    <div class="sentence-builder" id="builder9">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">It was extremely difficult for him to learn this subject.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> It was extremely difficult for him to learn this subject. (It + be + adj + for + O + to V)</div>
+                </div>
+
+                <div class="question" data-answer="in spite of taking a taxi susan arrived late for the party">
+                    <div class="question-number">Câu 10</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="spite / for / arrived / of / susan / late / taking / the / taxi / a / in / party"></div>
+                    <div class="sentence-builder" id="builder10">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">In spite of taking a taxi, Susan arrived late for the party.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> In spite of taking a taxi, Susan arrived late for the party. (In spite of + V-ing)</div>
+                </div>
+
+                <div class="question" data-answer="the old hospital is smaller than the new one">
+                    <div class="question-number">Câu 11</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="new / one / than / smaller / hospital / the / old / is / the"></div>
+                    <div class="sentence-builder" id="builder11">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">The old hospital is smaller than the new one.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> The old hospital is smaller than the new one. (So sánh hơn: smaller than)</div>
+                </div>
+
+                <div class="question" data-answer="my friend is not used to driving on the left">
+                    <div class="question-number">Câu 12</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="my / driving / used / is / on / left / not / friend / to / the"></div>
+                    <div class="sentence-builder" id="builder12">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">My friend is not used to driving on the left.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> My friend is not used to driving on the left. (be not used to + V-ing)</div>
+                </div>
+
+                <div class="question" data-answer="mrs noble asked eric if he had seen her gloves anywhere">
+                    <div class="question-number">Câu 13</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="mrs / anywhere / eric / noble / if / gloves / had / her / seen / he / asked"></div>
+                    <div class="sentence-builder" id="builder13">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Mrs Noble asked Eric if he had seen her gloves anywhere.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Mrs Noble asked Eric if he had seen her gloves anywhere. (Tường thuật câu hỏi Yes/No)</div>
+                </div>
+
+                <div class="question" data-answer="i dont remember meeting him in london">
+                    <div class="question-number">Câu 14</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="remember / london / in / meeting / i / him / dont"></div>
+                    <div class="sentence-builder" id="builder14">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">I don't remember meeting him in London.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> I don't remember meeting him in London. (remember + V-ing = nhớ đã làm)</div>
+                </div>
+
+                <div class="question" data-answer="mt everest the highest mountain in the world is in the himalayas">
+                    <div class="question-number">Câu 15</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="world / in / mount / highest / everest / the / is / himalayas / mountain / the / the"></div>
+                    <div class="sentence-builder" id="builder15">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Mount Everest, the highest mountain in the world, is in the Himalayas.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Mt Everest, the highest mountain in the world, is in the Himalayas. (Mệnh đề quan hệ không xác định)</div>
+                </div>
+
+                <div class="question" data-answer="my roommate advised me to take the job">
+                    <div class="question-number">Câu 16</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="roommate / take / advised / job / me / my / the / to"></div>
+                    <div class="sentence-builder" id="builder16">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">My roommate advised me to take the job.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> My roommate advised me to take the job. (advised + O + to V)</div>
+                </div>
+
+                <div class="question" data-answer="ivan promised to pay back glorias money">
+                    <div class="question-number">Câu 17</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="back / pay / money / promised / to / glorias / ivan"></div>
+                    <div class="sentence-builder" id="builder17">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Ivan promised to pay back Gloria's money.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Ivan promised to pay back Gloria's money. (promised to + V)</div>
+                </div>
+
+                <div class="question" data-answer="the sea was too rough for the children to go swimming">
+                    <div class="question-number">Câu 18</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="too / children / sea / swimming / for / rough / go / to / was / the / the"></div>
+                    <div class="sentence-builder" id="builder18">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">The sea was too rough for the children to go swimming.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> The sea was too rough for the children to go swimming. (too + adj + for + O + to V)</div>
+                </div>
+
+                <div class="question" data-answer="frederic invited sarah to his birthday party">
+                    <div class="question-number">Câu 19</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="invited / party / sarah / his / to / frederic / birthday"></div>
+                    <div class="sentence-builder" id="builder19">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">Frederic invited Sarah to his birthday party.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Frederic invited Sarah to his birthday party. (invited + O + to N)</div>
+                </div>
+
+                <div class="question" data-answer="except for peter all of the students went to the meeting">
+                    <div class="question-number">Câu 20</div>
+                    <div class="question-text">Sắp xếp các từ sau thành câu hoàn chỉnh:</div>
+                    <div class="word-bank" data-words="went / meeting / peter / except / all / to / of / the / students / for / the"></div>
+                    <div class="sentence-builder" id="builder20">
+                        <span class="placeholder-text">👉 Nhấp vào từ bên trên để sắp xếp...</span>
+                    </div>
+                    <button type="button" class="show-answer-btn" onclick="showAnswer(this)">🔍 Xem đáp án</button>
+                    <div class="answer-display">all of the students went to the meeting except for Peter.</div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> all of the students went to the meeting except for Peter. (Except for = ngoại trừ)</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkWordOrder('quizForm1', 'progress1', 'result1')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result1" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: CHỌN CÂU ĐỒNG NGHĨA (20 câu) -->
+    <div id="synonyms" class="tab-content">
+        <div class="quiz-container">
+            <h2>🔹 Chọn câu đồng nghĩa với câu gốc</h2>
+            <p>✅ Chọn đáp án có nghĩa gần nhất với câu được cho.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress2"></div></div>
+            <form id="quizForm2">
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 1</div>
+                    <div class="question-text">No other metal is as expensive as gold.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_1" value="A"><span class="letter">A</span><span class="text">No other metal except gold is expensive.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="B"><span class="letter">B</span><span class="text">Gold is expensive, and other metals are, too.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="C"><span class="letter">C</span><span class="text">Isn't gold the most expensive of all metals?</span></label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="D"><span class="letter">D</span><span class="text">Gold is the most expensive of all metals.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> So sánh nhất: No other + N + as + adj + as N = N + is the most + adj.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 2</div>
+                    <div class="question-text">People use computers for various purposes.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_2" value="A"><span class="letter">A</span><span class="text">Computers are being used by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="B"><span class="letter">B</span><span class="text">Computers have been used by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="C"><span class="letter">C</span><span class="text">Computers are used by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="D"><span class="letter">D</span><span class="text">Computers will be used by people for various purposes.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Bị động hiện tại đơn: S + is/are + V3.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 3</div>
+                    <div class="question-text">Sally decided not to do her homework and went to a night club.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_3" value="A"><span class="letter">A</span><span class="text">Sally went to a night club because she didn't have any homework.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="B"><span class="letter">B</span><span class="text">Sally went to a night club instead of doing her homework.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="C"><span class="letter">C</span><span class="text">Sally was too lazy to do her homework.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="D"><span class="letter">D</span><span class="text">Sally went to a night club after doing her homework.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Instead of + V-ing = thay vì làm gì.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 4</div>
+                    <div class="question-text">He lost his job three months ago.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_4" value="A"><span class="letter">A</span><span class="text">It has been three months since he has lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="B"><span class="letter">B</span><span class="text">It is three months since he lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="C"><span class="letter">C</span><span class="text">They are three months since he lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="D"><span class="letter">D</span><span class="text">It is three months ago since he lost his job.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> It is + khoảng thời gian + since + S + V(quá khứ).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 5</div>
+                    <div class="question-text">You must never take your helmet off while you are riding a motorcycle.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_5" value="A"><span class="letter">A</span><span class="text">Helmets must be worn at all times when riding a motorcycle.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="B"><span class="letter">B</span><span class="text">You must never wear your helmet while you are riding a motorcycle.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="C"><span class="letter">C</span><span class="text">Helmets should be taken off at all times when riding a motorcycle.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="D"><span class="letter">D</span><span class="text">You must never take off your helmet.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> must never take off = must be worn at all times.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 6</div>
+                    <div class="question-text">They wanted to apologize for their behavior; that's why they paid for dinner.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_6" value="A"><span class="letter">A</span><span class="text">They felt sorry for paying for dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="B"><span class="letter">B</span><span class="text">They apologize for paying for dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="C"><span class="letter">C</span><span class="text">They behaved badly by paying for dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="D"><span class="letter">D</span><span class="text">They paid for dinner in order to apologize for their behavior.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> in order to + V = để làm gì (mục đích).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 7</div>
+                    <div class="question-text">Jerry said, "I'm studying English a lot at the moment."</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_7" value="A"><span class="letter">A</span><span class="text">Jerry said I am studying English a lot at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="B"><span class="letter">B</span><span class="text">Jerry said he is studying English a lot at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="C"><span class="letter">C</span><span class="text">Jerry said I was studying English a lot at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="D"><span class="letter">D</span><span class="text">Jerry said he was studying English a lot at the moment.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Tường thuật: lùi thì (am → was), đổi I → he.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 8</div>
+                    <div class="question-text">When I was a child, we would go to the local park every Saturday afternoon.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_8" value="A"><span class="letter">A</span><span class="text">When I was a child, we used to go to the local park every Saturday afternoon.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="B"><span class="letter">B</span><span class="text">When I was a child, I never went to the local park every Saturday afternoon.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="C"><span class="letter">C</span><span class="text">We are used to going to the local park every Saturday afternoon.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="D"><span class="letter">D</span><span class="text">We have been used to the local park every Saturday afternoon since I was a child.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> would (thói quen quá khứ) = used to + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 9</div>
+                    <div class="question-text">He found it extremely difficult to learn this subject.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_9" value="A"><span class="letter">A</span><span class="text">The subject was so easy that he could learn it well.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="B"><span class="letter">B</span><span class="text">It was extremely difficult for him to learn this subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="C"><span class="letter">C</span><span class="text">He had difficulty finding the subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="D"><span class="letter">D</span><span class="text">He found it extremely easy to learn this subject.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> It + be + adj + for + O + to V = S + find it + adj + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 10</div>
+                    <div class="question-text">Although she took a taxi, Susan arrived late for the party.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_10" value="A"><span class="letter">A</span><span class="text">Susan arrived late for the party because she didn't take a taxi.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="B"><span class="letter">B</span><span class="text">Susan arrived late for the party because of the taxi.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="C"><span class="letter">C</span><span class="text">In spite of taking a taxi, Susan arrived late for the party.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="D"><span class="letter">D</span><span class="text">Although she took a taxi, Susan can't come to the party in time.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Although + S + V = In spite of + V-ing / N.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 11</div>
+                    <div class="question-text">The new hospital is bigger than the old one.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_11" value="A"><span class="letter">A</span><span class="text">The new hospital is not as big as the old one.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="B"><span class="letter">B</span><span class="text">The new hospital is smaller than the old one.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="C"><span class="letter">C</span><span class="text">The old hospital is more smaller than the new one.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="D"><span class="letter">D</span><span class="text">The old hospital is smaller than the new one.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> A is bigger than B = B is smaller than A.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 12</div>
+                    <div class="question-text">My French friend finds driving on the left difficult.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_12" value="A"><span class="letter">A</span><span class="text">My French friend is not used to driving on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="B"><span class="letter">B</span><span class="text">My French friend is used to driving on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="C"><span class="letter">C</span><span class="text">My French friend has no problems with driving on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="D"><span class="letter">D</span><span class="text">My French friend had difficulty to drive on the left.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Finds + V-ing + difficult = is not used to + V-ing.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 13</div>
+                    <div class="question-text">"Have you seen my gloves anywhere, Eric?" asked Mrs. Noble.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_13" value="A"><span class="letter">A</span><span class="text">Mrs. Noble asked Eric if he has seen her gloves anywhere.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="B"><span class="letter">B</span><span class="text">Mrs. Noble asked Eric if has he seen her gloves anywhere.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="C"><span class="letter">C</span><span class="text">Mrs. Noble asked Eric if he saw her gloves anywhere.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="D"><span class="letter">D</span><span class="text">Mrs. Noble asked Eric if he had seen her gloves anywhere.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Tường thuật câu hỏi Yes/No: asked if + S + had + V3 (lùi thì).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 14</div>
+                    <div class="question-text">I don't remember that I met him in London.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_14" value="A"><span class="letter">A</span><span class="text">I remember not meeting him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="B"><span class="letter">B</span><span class="text">I remember to meet him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="C"><span class="letter">C</span><span class="text">I remember meeting him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="D"><span class="letter">D</span><span class="text">I don't remember meeting him in London.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> remember + V-ing = nhớ đã làm gì (đã xảy ra).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 15</div>
+                    <div class="question-text">Mt. Everest is the highest mountain in the world. It's in the Himalayas.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_15" value="A"><span class="letter">A</span><span class="text">Mt. Everest, the highest mountain in the world, is in the Himalayas.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="B"><span class="letter">B</span><span class="text">Mt. Everest is the highest mountain in the world.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="C"><span class="letter">C</span><span class="text">Mt. Everest is the highest mountain in the world, is in the Himalayas.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="D"><span class="letter">D</span><span class="text">Mt. Everest is the highest mountain in the world, in the Himalayas.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Dùng mệnh đề quan hệ không xác định: N, ... , ...</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 16</div>
+                    <div class="question-text">"If I were you, I would take the job," said my room-mate.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_16" value="A"><span class="letter">A</span><span class="text">My room-mate was thinking about taking the job.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="B"><span class="letter">B</span><span class="text">My room-mate advised me to take the job.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="C"><span class="letter">C</span><span class="text">My room-mate introduced the idea of taking the job to me.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="D"><span class="letter">D</span><span class="text">My room-mate insisted on taking the job for me.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> "If I were you..." = lời khuyên → advised + O + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 17</div>
+                    <div class="question-text">"I will pay back the money, Gloria," said Ivan.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_17" value="A"><span class="letter">A</span><span class="text">Ivan apologised to Gloria for borrowing her money.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="B"><span class="letter">B</span><span class="text">Ivan offered to pay Gloria the money back.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="C"><span class="letter">C</span><span class="text">Ivan promised to pay back Gloria's money.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="D"><span class="letter">D</span><span class="text">Ivan suggested paying back the money to Gloria.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> "will pay back" = lời hứa → promised to + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 18</div>
+                    <div class="question-text">The children couldn't go swimming because the sea was too rough.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_18" value="A"><span class="letter">A</span><span class="text">The children were not calm enough to swim in the sea.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="B"><span class="letter">B</span><span class="text">The sea was rough enough for the children to swim in.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="C"><span class="letter">C</span><span class="text">The sea was too rough for the children to go swimming.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="D"><span class="letter">D</span><span class="text">The sea was too rough to the children's swimming.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> too + adj + for + O + to V = quá...đến nỗi không thể.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 19</div>
+                    <div class="question-text">"Would you like to come to my birthday party, Sarah?" asked Frederic.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_19" value="A"><span class="letter">A</span><span class="text">Frederic invited Sarah to his birthday party.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="B"><span class="letter">B</span><span class="text">Frederic asked if Sarah was able to come to his birthday party.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="C"><span class="letter">C</span><span class="text">Frederic asked Sarah if she liked his birthday party or not.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="D"><span class="letter">D</span><span class="text">Frederic reminded Sarah of his coming birthday party.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> "Would you like..." = lời mời → invited + O + to N.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 20</div>
+                    <div class="question-text">All of the students but Peter went to the meeting.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_20" value="A"><span class="letter">A</span><span class="text">Peter went to the meeting, and so did all of the students.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="B"><span class="letter">B</span><span class="text">Except for Peter, all of the students went to the meeting.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="C"><span class="letter">C</span><span class="text">All of the students, especially Peter went to the meeting.</span></label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="D"><span class="letter">D</span><span class="text">All of the students including Peter went to the meeting.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> All of the students but Peter = Except for Peter.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm2', 'progress2', 'result2')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result2" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: VIẾT LẠI CÂU (20 câu) -->
+    <div id="rewrite" class="tab-content">
+        <div class="quiz-container">
+            <h2>🔸 Viết lại câu sao cho cùng nghĩa</h2>
+            <p>✅ Chọn đáp án viết lại đúng câu gốc.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress3"></div></div>
+            <form id="quizForm3">
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 1</div>
+                    <div class="question-text">Keep silent or you'll wake the baby up.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_1" value="A"><span class="letter">A</span><span class="text">If you keep silent, you will wake the baby up.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="B"><span class="letter">B</span><span class="text">If you mustn't keep silent, you will wake the baby up.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="C"><span class="letter">C</span><span class="text">If you don't keep silent, you would wake the baby up.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="D"><span class="letter">D</span><span class="text">If you don't keep silent, you will wake the baby up.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Keep silent or... = If you don't keep silent, you will...</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 2</div>
+                    <div class="question-text">Nam won the scholarship; he studied well.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_2" value="A"><span class="letter">A</span><span class="text">Nam, who studied well, won the scholarship.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="B"><span class="letter">B</span><span class="text">Nam, that studied well, won the scholarship.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="C"><span class="letter">C</span><span class="text">Nam who studied well won the scholarship.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="D"><span class="letter">D</span><span class="text">Nam won the scholarship, so he studied well.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Dùng mệnh đề quan hệ không xác định với who.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 3</div>
+                    <div class="question-text">The day was so cold that we stayed indoors.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_3" value="A"><span class="letter">A</span><span class="text">It was such cold a day that we stayed indoors.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="B"><span class="letter">B</span><span class="text">It was such a cold day that we stayed indoors.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="C"><span class="letter">C</span><span class="text">It was a so cold day that we stayed indoors.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="D"><span class="letter">D</span><span class="text">It was a cold day so that we stayed indoors.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> such + a/an + adj + N + that + clause.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 4</div>
+                    <div class="question-text">They usually walk in the park after dinner.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_4" value="A"><span class="letter">A</span><span class="text">They used to walk in the park after dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="B"><span class="letter">B</span><span class="text">They are used to walking in the park after dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="C"><span class="letter">C</span><span class="text">They are used to walk in the park after dinner.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="D"><span class="letter">D</span><span class="text">They used to walking in the park after dinner.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Usually (hiện tại) = are used to + V-ing.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 5</div>
+                    <div class="question-text">Although he has a lot of money, he feels unhappy.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_5" value="A"><span class="letter">A</span><span class="text">Despite his money, he feels unhappy.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="B"><span class="letter">B</span><span class="text">He feels unhappy whether he has a lot of money or not.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="C"><span class="letter">C</span><span class="text">He has a lot of unhappiness because of his money.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="D"><span class="letter">D</span><span class="text">He has a lot of money, so he feels unhappy.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Although + S + V = Despite + N.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 6</div>
+                    <div class="question-text">I am sorry that I didn't learn English when I was younger.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_6" value="A"><span class="letter">A</span><span class="text">I regret not to have learned English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="B"><span class="letter">B</span><span class="text">I regret not to be learned English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="C"><span class="letter">C</span><span class="text">I regretted not to learn English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="D"><span class="letter">D</span><span class="text">I wish that I had learned English when I was younger.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Wish + had + V3 (ước về quá khứ).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 7</div>
+                    <div class="question-text">It is reported that the prisoners escaped by means of a helicopter.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_7" value="A"><span class="letter">A</span><span class="text">The prisoners are reported to have escaped by means of a helicopter.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="B"><span class="letter">B</span><span class="text">The prisoners is reported to have escaped by means of a helicopter.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="C"><span class="letter">C</span><span class="text">The prisoners are reported to escape by means of a helicopter.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="D"><span class="letter">D</span><span class="text">The prisoners are reported to have been escaped by means of a helicopter.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Bị động kép: S + is/are reported to have + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 8</div>
+                    <div class="question-text">The sooner we solve this problem, the better it will be for all concerned.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_8" value="A"><span class="letter">A</span><span class="text">If we could solve this problem soon, it would be better for all concerned.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="B"><span class="letter">B</span><span class="text">It would be better for all concerned if we can solve this problem soon.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="C"><span class="letter">C</span><span class="text">If all concerned are better, we can solve this problem soon.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="D"><span class="letter">D</span><span class="text">If we can solve this problem soon, it will be better for all concerned.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> So sánh kép = câu điều kiện loại 1.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 9</div>
+                    <div class="question-text">"We'll go camping as long as the weather is good."</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_9" value="A"><span class="letter">A</span><span class="text">If the weather is fine, we will go camping.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="B"><span class="letter">B</span><span class="text">The weather is good when we will go camping.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="C"><span class="letter">C</span><span class="text">If the weather is better, we will go camping.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="D"><span class="letter">D</span><span class="text">We'll go camping immediately the weather is good.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> as long as = if (với điều kiện).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 10</div>
+                    <div class="question-text">He lost his job three months ago.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_10" value="A"><span class="letter">A</span><span class="text">It has been three months since he has lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="B"><span class="letter">B</span><span class="text">It is three months since he lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="C"><span class="letter">C</span><span class="text">They are three months since he lost his job.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="D"><span class="letter">D</span><span class="text">It is three months ago since he lost his job.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> It is + khoảng thời gian + since + S + V(quá khứ).</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 11</div>
+                    <div class="question-text">She took a taxi, but she arrived late.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_11" value="A"><span class="letter">A</span><span class="text">Although she took a taxi, she arrived late.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="B"><span class="letter">B</span><span class="text">She arrived late because she took a taxi.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="C"><span class="letter">C</span><span class="text">She took a taxi so she arrived late.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="D"><span class="letter">D</span><span class="text">If she took a taxi, she arrived late.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Although + S + V (mặc dù... nhưng).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 12</div>
+                    <div class="question-text">People say that he is a genius.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_12" value="A"><span class="letter">A</span><span class="text">It is said that he was a genius.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="B"><span class="letter">B</span><span class="text">He is said to have been a genius.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="C"><span class="letter">C</span><span class="text">It is said that he is a genius.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="D"><span class="letter">D</span><span class="text">He was said to be a genius.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Bị động kép: It is said that + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 13</div>
+                    <div class="question-text">If you don't study, you will fail.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_13" value="A"><span class="letter">A</span><span class="text">If you study, you will fail.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="B"><span class="letter">B</span><span class="text">Unless you study, you will fail.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="C"><span class="letter">C</span><span class="text">Unless you don't study, you will fail.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="D"><span class="letter">D</span><span class="text">If you don't study, you would fail.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Unless = If + not.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 14</div>
+                    <div class="question-text">He couldn't afford the flat.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_14" value="A"><span class="letter">A</span><span class="text">He didn't have enough money for the flat.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="B"><span class="letter">B</span><span class="text">He had never afforded for the flat.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="C"><span class="letter">C</span><span class="text">He couldn't stay in the flat.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="D"><span class="letter">D</span><span class="text">He wouldn't buy the flat.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> couldn't afford = didn't have enough money for.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 15</div>
+                    <div class="question-text">This flat is too small for my family.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_15" value="A"><span class="letter">A</span><span class="text">This flat is not big enough for my family.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="B"><span class="letter">B</span><span class="text">This flat is not enough big for my family.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="C"><span class="letter">C</span><span class="text">This flat is not very big for my family.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="D"><span class="letter">D</span><span class="text">This flat is not rather big for my family.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> too + adj + for = not + adj + enough + for.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 16</div>
+                    <div class="question-text">They didn't meet again until the war was over.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_16" value="A"><span class="letter">A</span><span class="text">Because the war was over, they couldn't meet again.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="B"><span class="letter">B</span><span class="text">They met again when the war happened.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="C"><span class="letter">C</span><span class="text">They met again after the war had stopped.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="D"><span class="letter">D</span><span class="text">They couldn't meet again although the war finished.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> not...until = after.</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 17</div>
+                    <div class="question-text">He found it extremely difficult to learn this subject.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_17" value="A"><span class="letter">A</span><span class="text">It was extremely difficult for him to learn this subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="B"><span class="letter">B</span><span class="text">The subject was so easy that he could learn it well.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="C"><span class="letter">C</span><span class="text">He had difficulty finding the subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="D"><span class="letter">D</span><span class="text">He found it extremely easy to learn this subject.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> It + be + adj + for + O + to V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 18</div>
+                    <div class="question-text">They are watering the flowers.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_18" value="A"><span class="letter">A</span><span class="text">They need some water and flowers.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="B"><span class="letter">B</span><span class="text">There are some water on the flowers.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="C"><span class="letter">C</span><span class="text">They are putting the flowers in water.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="D"><span class="letter">D</span><span class="text">The flowers are being watered by them.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> Bị động thì hiện tại tiếp diễn: S + is/are being + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 19</div>
+                    <div class="question-text">We started to write to each other three years ago.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_19" value="A"><span class="letter">A</span><span class="text">We used to write to each other for three years.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="B"><span class="letter">B</span><span class="text">We have written to each other since three years.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="C"><span class="letter">C</span><span class="text">We used to write to each other in three years.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="D"><span class="letter">D</span><span class="text">We have written to each other for three years.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> S + started + to V + thời gian ago = S + have/has + V3 + for + thời gian.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 20</div>
+                    <div class="question-text">It took him two hours to do his homework.</div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_20" value="A"><span class="letter">A</span><span class="text">He did his homework two hours ago.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="B"><span class="letter">B</span><span class="text">He finished his homework two hours ago.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="C"><span class="letter">C</span><span class="text">He did his homework in two hours.</span></label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="D"><span class="letter">D</span><span class="text">He spent two hours doing his homework.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Giải thích:</strong> It takes + O + time + to V = S + spend + time + V-ing.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm3', 'progress3', 'result3')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result3" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 4: XÂY DỰNG CÂU TỪ GỢI Ý (20 câu) -->
+    <div id="sentence_building" class="tab-content">
+        <div class="quiz-container">
+            <h2>📝 Xây dựng câu từ gợi ý</h2>
+            <p>✅ Chọn đáp án viết đúng câu hoàn chỉnh từ các từ gợi ý.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress4"></div></div>
+            <form id="quizForm4">
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 1</div>
+                    <div class="question-text"><span class="highlight">gold / the / most / expensive / of / all / metals</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_1" value="A"><span class="letter">A</span><span class="text">Gold the most expensive of all metals.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="B"><span class="letter">B</span><span class="text">Gold is most expensive of all metals.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="C"><span class="letter">C</span><span class="text">Gold is the most expensive of all metal.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="D"><span class="letter">D</span><span class="text">Gold is the most expensive of all metals.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Gold is the most expensive of all metals. (So sánh nhất: the most + adj)</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 2</div>
+                    <div class="question-text"><span class="highlight">computers / use / people / various / purposes</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_2" value="A"><span class="letter">A</span><span class="text">Computers use by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="B"><span class="letter">B</span><span class="text">Computers are use by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="C"><span class="letter">C</span><span class="text">Computers are used by people for various purposes.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="D"><span class="letter">D</span><span class="text">Computers are used for people for various purposes.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Computers are used by people for various purposes. (Bị động hiện tại đơn)</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 3</div>
+                    <div class="question-text"><span class="highlight">he / lose / job / three / months / ago</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_3" value="A"><span class="letter">A</span><span class="text">He lost his job for three months ago.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="B"><span class="letter">B</span><span class="text">He lost his job three months ago.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="C"><span class="letter">C</span><span class="text">He has lost his job three months ago.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="D"><span class="letter">D</span><span class="text">He lost his job since three months ago.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> He lost his job three months ago. (Quá khứ đơn + ago)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 4</div>
+                    <div class="question-text"><span class="highlight">you / must / never / take / helmet / off / while / ride</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_4" value="A"><span class="letter">A</span><span class="text">You must never take your helmet off while ride.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="B"><span class="letter">B</span><span class="text">You must never take off helmet while riding.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="C"><span class="letter">C</span><span class="text">You never must take your helmet off while riding.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="D"><span class="letter">D</span><span class="text">You must never take your helmet off while riding.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> You must never take your helmet off while riding. (must never + V)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 5</div>
+                    <div class="question-text"><span class="highlight">they / pay / dinner / apologize / behavior</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_5" value="A"><span class="letter">A</span><span class="text">They paid dinner to apologize for behavior.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="B"><span class="letter">B</span><span class="text">They paid for dinner to apologize for behavior.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="C"><span class="letter">C</span><span class="text">They paid dinner for apologize their behavior.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="D"><span class="letter">D</span><span class="text">They paid for dinner in order to apologize for their behavior.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> They paid for dinner in order to apologize for their behavior. (in order to + V)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 6</div>
+                    <div class="question-text"><span class="highlight">jerry / say / he / study / english / moment</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_6" value="A"><span class="letter">A</span><span class="text">Jerry said he is studying English at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="B"><span class="letter">B</span><span class="text">Jerry said he was studying English at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="C"><span class="letter">C</span><span class="text">Jerry said he studies English at the moment.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="D"><span class="letter">D</span><span class="text">Jerry said he was studying English at that moment.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Jerry said he was studying English at that moment. (Tường thuật: lùi thì)</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 7</div>
+                    <div class="question-text"><span class="highlight">when / child / we / go / park / every / saturday</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_7" value="A"><span class="letter">A</span><span class="text">When I was a child, we used to go to the park every Saturday.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="B"><span class="letter">B</span><span class="text">When I was a child, we go to the park every Saturday.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="C"><span class="letter">C</span><span class="text">When I was child, we used to go park every Saturday.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="D"><span class="letter">D</span><span class="text">When I was a child, we are used to going to the park every Saturday.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> When I was a child, we used to go to the park every Saturday. (used to + V)</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 8</div>
+                    <div class="question-text"><span class="highlight">she / find / difficult / learn / subject</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_8" value="A"><span class="letter">A</span><span class="text">She finds it difficult learn this subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="B"><span class="letter">B</span><span class="text">She finds it difficult to learn this subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="C"><span class="letter">C</span><span class="text">She finds difficult to learn this subject.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="D"><span class="letter">D</span><span class="text">She finds it difficult learning this subject.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> She finds it difficult to learn this subject. (find it + adj + to V)</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 9</div>
+                    <div class="question-text"><span class="highlight">although / she / take / taxi / arrive / late</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_9" value="A"><span class="letter">A</span><span class="text">Although she took a taxi, she arrived late.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="B"><span class="letter">B</span><span class="text">Although she takes a taxi, she arrived late.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="C"><span class="letter">C</span><span class="text">Although she took a taxi, she arrived late.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="D"><span class="letter">D</span><span class="text">Although she had taken a taxi, she arrived late.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Although she took a taxi, she arrived late. (Although + S + V)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 10</div>
+                    <div class="question-text"><span class="highlight">new hospital / big / old one</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_10" value="A"><span class="letter">A</span><span class="text">The new hospital is big than the old one.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="B"><span class="letter">B</span><span class="text">The new hospital is more big than the old one.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="C"><span class="letter">C</span><span class="text">The new hospital is bigger that the old one.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="D"><span class="letter">D</span><span class="text">The new hospital is bigger than the old one.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> The new hospital is bigger than the old one. (So sánh hơn: bigger than)</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 11</div>
+                    <div class="question-text"><span class="highlight">my friend / not used / drive / left</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_11" value="A"><span class="letter">A</span><span class="text">My friend is not used to driving on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="B"><span class="letter">B</span><span class="text">My friend is not used to drive on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="C"><span class="letter">C</span><span class="text">My friend is not use to driving on the left.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="D"><span class="letter">D</span><span class="text">My friend not used to driving on the left.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> My friend is not used to driving on the left. (be used to + V-ing)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 12</div>
+                    <div class="question-text"><span class="highlight">mrs noble / ask / eric / if / he / see / gloves</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_12" value="A"><span class="letter">A</span><span class="text">Mrs Noble asked Eric if he has seen her gloves.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="B"><span class="letter">B</span><span class="text">Mrs Noble asked Eric if he saw her gloves.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="C"><span class="letter">C</span><span class="text">Mrs Noble asked Eric if he sees her gloves.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="D"><span class="letter">D</span><span class="text">Mrs Noble asked Eric if he had seen her gloves.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Mrs Noble asked Eric if he had seen her gloves. (Tường thuật câu hỏi Yes/No)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 13</div>
+                    <div class="question-text"><span class="highlight">I / not / remember / meet / him / London</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_13" value="A"><span class="letter">A</span><span class="text">I not remember meeting him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="B"><span class="letter">B</span><span class="text">I don't remember to meet him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="C"><span class="letter">C</span><span class="text">I don't remember meet him in London.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="D"><span class="letter">D</span><span class="text">I don't remember meeting him in London.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> I don't remember meeting him in London. (remember + V-ing)</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 14</div>
+                    <div class="question-text"><span class="highlight">mt everest / highest / mountain / world / Himalayas</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_14" value="A"><span class="letter">A</span><span class="text">Mt Everest, the highest mountain in the world, is in the Himalayas.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="B"><span class="letter">B</span><span class="text">Mt Everest is the highest mountain in the world is in the Himalayas.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="C"><span class="letter">C</span><span class="text">Mt Everest, the highest mountain in the world is in the Himalayas.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="D"><span class="letter">D</span><span class="text">Mt Everest is the highest mountain in the world, in the Himalayas.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Mt Everest, the highest mountain in the world, is in the Himalayas. (Mệnh đề quan hệ không xác định)</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 15</div>
+                    <div class="question-text"><span class="highlight">if / I / you / I / take / job</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_15" value="A"><span class="letter">A</span><span class="text">If I were you, I will take the job.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="B"><span class="letter">B</span><span class="text">If I were you, I would take the job.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="C"><span class="letter">C</span><span class="text">If I am you, I would take the job.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="D"><span class="letter">D</span><span class="text">If I was you, I would take the job.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> If I were you, I would take the job. (Câu điều kiện loại 2)</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <div class="question-number">Câu 16</div>
+                    <div class="question-text"><span class="highlight">ivan / promise / pay / back / gloria / money</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_16" value="A"><span class="letter">A</span><span class="text">Ivan promised pay back Gloria money.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="B"><span class="letter">B</span><span class="text">Ivan promised to pay back Gloria money.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="C"><span class="letter">C</span><span class="text">Ivan promised to pay back Gloria's money.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="D"><span class="letter">D</span><span class="text">Ivan promised paying back Gloria's money.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Ivan promised to pay back Gloria's money. (promised to + V)</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 17</div>
+                    <div class="question-text"><span class="highlight">sea / too / rough / children / swim</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_17" value="A"><span class="letter">A</span><span class="text">The sea was too rough for the children swim.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="B"><span class="letter">B</span><span class="text">The sea was too rough for the children to swim.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="C"><span class="letter">C</span><span class="text">The sea was too rough for children to swimming.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="D"><span class="letter">D</span><span class="text">The sea was too rough for children swim.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> The sea was too rough for the children to swim. (too + adj + for + O + to V)</div>
+                </div>
+
+                <div class="question" data-correct="A">
+                    <div class="question-number">Câu 18</div>
+                    <div class="question-text"><span class="highlight">frederic / invite / sarah / birthday / party</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_18" value="A"><span class="letter">A</span><span class="text">Frederic invited Sarah to his birthday party.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="B"><span class="letter">B</span><span class="text">Frederic invited Sarah for his birthday party.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="C"><span class="letter">C</span><span class="text">Frederic invited Sarah to birthday party.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="D"><span class="letter">D</span><span class="text">Frederic invited Sarah in his birthday party.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> Frederic invited Sarah to his birthday party. (invited + O + to N)</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <div class="question-number">Câu 19</div>
+                    <div class="question-text"><span class="highlight">all / students / but / peter / go / meeting</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_19" value="A"><span class="letter">A</span><span class="text">All of the students but Peter go to the meeting.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="B"><span class="letter">B</span><span class="text">All of the students but Peter went to the meeting.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="C"><span class="letter">C</span><span class="text">All students but Peter went to the meeting.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="D"><span class="letter">D</span><span class="text">All of students but Peter went to the meeting.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> All of the students but Peter went to the meeting. (All of the students but Peter)</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <div class="question-number">Câu 20</div>
+                    <div class="question-text"><span class="highlight">I / wish / I / learn / English / younger</span></div>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_20" value="A"><span class="letter">A</span><span class="text">I wish I learned English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="B"><span class="letter">B</span><span class="text">I wish I learn English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="C"><span class="letter">C</span><span class="text">I wish I would learn English when I was younger.</span></label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="D"><span class="letter">D</span><span class="text">I wish I had learned English when I was younger.</span></label>
+                    </div>
+                    <div class="explanation"><strong>✅ Đáp án:</strong> I wish I had learned English when I was younger. (Wish + had + V3)</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm4', 'progress4', 'result4')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result4" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 19: Luyện tập Viết lại câu | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Word Ordering Logic
+    document.querySelectorAll('.word-bank').forEach(bank => {
+        const words = bank.dataset.words.split('/').map(w => w.trim());
+        const builder = bank.parentElement.querySelector('.sentence-builder');
+        const placeholder = builder.querySelector('.placeholder-text');
+
+        // Tạo các word chips
+        words.forEach((word, index) => {
+            const chip = document.createElement('span');
+            chip.className = 'word-chip';
+            chip.textContent = word;
+            chip.dataset.index = index;
+            chip.dataset.word = word;
+            chip.onclick = function() {
+                if (this.classList.contains('selected')) return;
+                this.classList.add('selected');
+                // Xóa placeholder nếu có
+                const placeholder2 = builder.querySelector('.placeholder-text');
+                if (placeholder2) placeholder2.remove();
+
+                const placed = document.createElement('span');
+                placed.className = 'placed-word';
+                placed.textContent = word;
+                placed.dataset.word = word;
+                placed.onclick = function() {
+                    // Trả từ về word bank
+                    const wordBank = bank;
+                    const chipToReturn = Array.from(wordBank.querySelectorAll('.word-chip')).find(c => c.dataset.word === this.dataset.word && c.classList.contains('selected'));
+                    if (chipToReturn) {
+                        chipToReturn.classList.remove('selected');
+                        this.remove();
+                        if (builder.children.length === 0) {
+                            const newPlaceholder = document.createElement('span');
+                            newPlaceholder.className = 'placeholder-text';
+                            newPlaceholder.textContent = '👉 Nhấp vào từ bên trên để sắp xếp...';
+                            builder.appendChild(newPlaceholder);
+                        }
+                    }
+                };
+                builder.appendChild(placed);
+            };
+            bank.appendChild(chip);
+        });
+    });
+
+    function showAnswer(btn) {
+        const answerDisplay = btn.parentElement.querySelector('.answer-display');
+        if (answerDisplay) {
+            answerDisplay.classList.toggle('show');
+        }
+    }
+
+    function checkWordOrder(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        const total = questions.length;
+
+        questions.forEach((q) => {
+            const correctAnswer = q.dataset.answer.toLowerCase().replace(/\s+/g, ' ');
+            const builder = q.querySelector('.sentence-builder');
+            const placedWords = builder.querySelectorAll('.placed-word');
+            let userAnswer = '';
+            placedWords.forEach(w => {
+                userAnswer += w.textContent + ' ';
+            });
+            userAnswer = userAnswer.trim().toLowerCase();
+
+            // Reset styles
+            q.classList.remove('word-correct', 'word-incorrect');
+            const explanation = q.querySelector('.explanation');
+            if (explanation) explanation.style.display = 'block';
+
+            if (userAnswer === correctAnswer) {
+                score++;
+                q.classList.add('word-correct');
+            } else {
+                q.classList.add('word-incorrect');
+                // Show answer
+                const ansDisplay = q.querySelector('.answer-display');
+                if (ansDisplay) ansDisplay.classList.add('show');
+            }
+        });
+
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã sắp xếp đúng tất cả câu!';
+        } else if (score >= 16) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ trật tự từ trong câu!';
+        } else if (score >= 12) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `
+            <span class="score-number">${score} / ${total}</span> câu đúng
+            <span class="message">${message}</span>
+        `;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function checkQuiz(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        const total = questions.length;
+
+        questions.forEach((q) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanation = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanation) explanation.style.display = 'block';
+
+            if (selected) {
+                const parentLabel = selected.closest('.option-label');
+                if (selected.value === correctVal) {
+                    score++;
+                    parentLabel.classList.add('correct');
+                } else {
+                    parentLabel.classList.add('incorrect');
+                    labels.forEach(label => {
+                        const radio = label.querySelector('input[type="radio"]');
+                        if (radio && radio.value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    const radio = label.querySelector('input[type="radio"]');
+                    if (radio && radio.value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững kiến thức!';
+        } else if (score >= 16) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về viết lại câu!';
+        } else if (score >= 12) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `
+            <span class="score-number">${score} / ${total}</span> câu đúng
+            <span class="message">${message}</span>
+        `;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
