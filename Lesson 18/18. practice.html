@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Bài 18: Luyện tập Conditional & Wish | Anh Ngữ Toàn Diện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e4a3a;
+            --secondary: #2d7a5a;
+            --accent: #3fa07a;
+            --success: #1f6d47;
+            --warning: #b8942b;
+            --danger: #a54242;
+            --light: #ecf6f0;
+            --dark: #1a4032;
+            --gradient-start: #e0f0e6;
+            --gradient-end: #b8dac8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(145deg, #e0f0e6 0%, #c5e0d2 40%, #aacbbe 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .master-header {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 2px solid #aacbbe;
+            box-shadow: 0 4px 16px rgba(45, 122, 90, 0.08);
+        }
+
+        .nav-home {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(45, 122, 90, 0.10);
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .nav-home:hover {
+            background: var(--secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(45, 122, 90, 0.3);
+        }
+
+        .nav-home svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--primary);
+            transition: fill 0.2s;
+        }
+
+        .nav-home:hover svg {
+            fill: white;
+        }
+
+        .nav-theory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2d7a5a, #1a4a3a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(45, 122, 90, 0.25);
+        }
+
+        .nav-theory:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f6d47, #0f3a2a);
+            box-shadow: 0 8px 18px rgba(45, 122, 90, 0.35);
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0.3rem 1rem;
+        }
+
+        .title-section h1 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-shadow: 0 2px 4px rgba(45, 122, 90, 0.10);
+            letter-spacing: -0.3px;
+        }
+
+        .title-section .sub {
+            color: var(--dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 1.5rem auto 2rem;
+            padding: 0 1.2rem;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            border: 1px solid #aacbbe;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: rgba(45, 122, 90, 0.08);
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: var(--primary);
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(45, 122, 90, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 6px 12px rgba(45, 122, 90, 0.25);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .quiz-container {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(45, 122, 90, 0.12);
+            border: 1px solid #cce0d4;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-left: 6px solid var(--secondary);
+            padding-left: 18px;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            background: #f3faf6;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #cce0d4;
+            transition: all 0.2s;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .options-route {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #ecf6f0;
+            padding: 10px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #d8ebe0;
+            transform: scale(0.98);
+        }
+
+        .option-label input {
+            margin: 0;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
+        }
+
+        .correct {
+            background: #c2e0d0 !important;
+            border-color: var(--success) !important;
+            color: #143e28;
+        }
+
+        .incorrect {
+            background: #f5d0d0 !important;
+            border-color: var(--danger) !important;
+            color: #752a2a;
+        }
+
+        .explanation {
+            margin-top: 14px;
+            padding: 12px;
+            background: #ecf6f0;
+            border-left: 4px solid var(--accent);
+            border-radius: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #2d7a5a, #1a4a3a);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 2rem auto 0;
+            transition: 0.2s;
+            box-shadow: 0 5px 12px rgba(45, 122, 90, 0.25);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #1f6d47, #0f3a2a);
+            box-shadow: 0 8px 18px rgba(45, 122, 90, 0.35);
+        }
+
+        .result-score {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 1.8rem;
+            background: #ecf6f0;
+            padding: 1rem;
+            border-radius: 40px;
+            display: none;
+            border: 2px solid #aacbbe;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0ebe4;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2d7a5a, #3fa07a);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--dark);
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 700px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .quiz-container {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-header">
+    <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+        </svg>
+        <span>🏠 Về trang chủ</span>
+    </a>
+    <div class="title-section">
+        <h1>✍️ Bài 18: Luyện tập Conditional & Wish</h1>
+        <div class="sub">Câu điều kiện và câu ước - Practice</div>
+    </div>
+    <a href="./18. conditional and wish sentence.html" class="nav-theory">
+        📖 Xem lý thuyết
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </a>
+</div>
+
+<div class="container">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('if_types')">📘 1. Câu điều kiện</button>
+        <button class="tab-btn" onclick="openTab('if_inversion')">🔄 2. Đảo ngữ câu điều kiện</button>
+        <button class="tab-btn" onclick="openTab('wish_types')">✨ 3. Câu Wish</button>
+        <button class="tab-btn" onclick="openTab('mixed_quiz')">🎯 4. Tổng hợp</button>
+    </div>
+
+    <!-- TAB 1: CÂU ĐIỀU KIỆN (30 câu) -->
+    <div id="if_types" class="tab-content active">
+        <div class="quiz-container">
+            <h2>📘 Luyện tập: Các loại câu điều kiện</h2>
+            <p>✅ Chọn đáp án đúng cho câu điều kiện loại 0, 1, 2, 3.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress1"></div></div>
+            <form id="quizForm1">
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. If you ______ water, it ______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_1" value="A"> heat / freeze</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="B"> heated / freezes</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="C"> heat / boils</label>
+                        <label class="option-label"><input type="radio" name="q1_1" value="D"> heat / will freeze</label>
+                    </div>
+                    <div class="explanation">🔬 Loại 0: hiện tại đơn + hiện tại đơn (sự thật hiển nhiên).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. If she ______ hard, she ______ the exam.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_2" value="A"> study / pass</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="B"> studies / will pass</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="C"> studied / would pass</label>
+                        <label class="option-label"><input type="radio" name="q1_2" value="D"> had studied / would have passed</label>
+                    </div>
+                    <div class="explanation">📚 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">3. If I ______ you, I ______ that job.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_3" value="A"> am / will take</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="B"> were / will take</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="C"> was / would take</label>
+                        <label class="option-label"><input type="radio" name="q1_3" value="D"> were / would take</label>
+                    </div>
+                    <div class="explanation">💼 Loại 2: If + were (giả định), would + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">4. If he ______ earlier, he ______ the train.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_4" value="A"> comes / would catch</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="B"> came / will catch</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="C"> had come / would have caught</label>
+                        <label class="option-label"><input type="radio" name="q1_4" value="D"> come / catch</label>
+                    </div>
+                    <div class="explanation">🚂 Loại 3: if + had + V3, would have + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">5. If I ______ more time, I ______ a new language.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_5" value="A"> have / would learn</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="B"> had / will learn</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="C"> had / would have learned</label>
+                        <label class="option-label"><input type="radio" name="q1_5" value="D"> had / would learn</label>
+                    </div>
+                    <div class="explanation">🗣️ Loại 2: If + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. If it ______ tomorrow, we ______ the picnic.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_6" value="A"> rains / would cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="B"> rains / will cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="C"> rained / would cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_6" value="D"> had rained / would have canceled</label>
+                    </div>
+                    <div class="explanation">☔ Loại 1: if + hiện tại đơn, will + V (dự đoán tương lai).</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">7. If she ______ the truth, she ______ so upset.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_7" value="A"> knows / won't be</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="B"> knew / wouldn't be</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="C"> had known / wouldn't be</label>
+                        <label class="option-label"><input type="radio" name="q1_7" value="D"> had known / wouldn't have been</label>
+                    </div>
+                    <div class="explanation">😢 Loại 3: if + had known, wouldn't have been (trái với quá khứ).</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. If you ______ a ticket, you ______ the show.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_8" value="A"> buy / can see</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="B"> bought / could see</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="C"> buy / will see</label>
+                        <label class="option-label"><input type="radio" name="q1_8" value="D"> had bought / would have seen</label>
+                    </div>
+                    <div class="explanation">🎭 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">9. If I ______ his number, I ______ him.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_9" value="A"> know / will call</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="B"> knew / will call</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="C"> had known / would call</label>
+                        <label class="option-label"><input type="radio" name="q1_9" value="D"> knew / would call</label>
+                    </div>
+                    <div class="explanation">📞 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. If you ______ the door, the thief ______ in.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_10" value="A"> lock / won't get</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="B"> had locked / wouldn't have got</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="C"> locked / wouldn't get</label>
+                        <label class="option-label"><input type="radio" name="q1_10" value="D"> lock / wouldn't get</label>
+                    </div>
+                    <div class="explanation">🔒 Loại 3: if + had locked, wouldn't have got.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. If he ______ the exam, he ______ a job.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_11" value="A"> passes / would find</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="B"> passed / will find</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="C"> passes / will find</label>
+                        <label class="option-label"><input type="radio" name="q1_11" value="D"> had passed / would have found</label>
+                    </div>
+                    <div class="explanation">💼 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">12. If I ______ more money, I ______ a car.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_12" value="A"> have / will buy</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="B"> had / will buy</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="C"> had / would have bought</label>
+                        <label class="option-label"><input type="radio" name="q1_12" value="D"> had / would buy</label>
+                    </div>
+                    <div class="explanation">🚗 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">13. If she ______ earlier, she ______ the meeting.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_13" value="A"> comes / would catch</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="B"> had come / would have caught</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="C"> came / would catch</label>
+                        <label class="option-label"><input type="radio" name="q1_13" value="D"> come / will catch</label>
+                    </div>
+                    <div class="explanation">📅 Loại 3: if + had come, would have caught.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">14. If it ______ sunny, we ______ to the beach.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_14" value="A"> is / would go</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="B"> was / will go</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="C"> had been / would have gone</label>
+                        <label class="option-label"><input type="radio" name="q1_14" value="D"> is / will go</label>
+                    </div>
+                    <div class="explanation">🏖️ Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. If I ______ a bird, I ______ around the world.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_15" value="A"> am / will fly</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="B"> was / would fly</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="C"> were / would fly</label>
+                        <label class="option-label"><input type="radio" name="q1_15" value="D"> had been / would have flown</label>
+                    </div>
+                    <div class="explanation">🦅 Loại 2: if + were, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">16. If you ______ harder, you ______ better results.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_16" value="A"> try / will get</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="B"> tried / would get</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="C"> had tried / would have got</label>
+                        <label class="option-label"><input type="radio" name="q1_16" value="D"> try / will get</label>
+                    </div>
+                    <div class="explanation">📈 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. If he ______ the bus, he ______ late.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_17" value="A"> misses / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="B"> had missed / would have been</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="C"> missed / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_17" value="D"> miss / will be</label>
+                    </div>
+                    <div class="explanation">🚌 Loại 3: if + had missed, would have been.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">18. If I ______ a millionaire, I ______ a big house.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_18" value="A"> am / will buy</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="B"> was / will buy</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="C"> were / would buy</label>
+                        <label class="option-label"><input type="radio" name="q1_18" value="D"> had been / would have bought</label>
+                    </div>
+                    <div class="explanation">💰 Loại 2: if + were, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. If she ______ the job, she ______ very happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_19" value="A"> gets / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="B"> got / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="C"> gets / will be</label>
+                        <label class="option-label"><input type="radio" name="q1_19" value="D"> gets / will be</label>
+                    </div>
+                    <div class="explanation">😊 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. If you ______ the answer, you ______ me.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_20" value="A"> know / would tell</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="B"> knew / would tell</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="C"> had known / would have told</label>
+                        <label class="option-label"><input type="radio" name="q1_20" value="D"> know / will tell</label>
+                    </div>
+                    <div class="explanation">💡 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">21. If he ______ the course, he ______ a certificate.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_21" value="A"> completes / would get</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="B"> completed / would get</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="C"> completes / will get</label>
+                        <label class="option-label"><input type="radio" name="q1_21" value="D"> completes / will get</label>
+                    </div>
+                    <div class="explanation">🎓 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">22. If I ______ you, I ______ a different decision.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_22" value="A"> am / will make</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="B"> was / would make</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="C"> were / would make</label>
+                        <label class="option-label"><input type="radio" name="q1_22" value="D"> had been / would have made</label>
+                    </div>
+                    <div class="explanation">🤔 Loại 2: if + were, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">23. If she ______ the message, she ______ angry.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_23" value="A"> reads / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="B"> read / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="C"> reads / will be</label>
+                        <label class="option-label"><input type="radio" name="q1_23" value="D"> had read / would have been</label>
+                    </div>
+                    <div class="explanation">📱 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">24. If they ______ a map, they ______ lost.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_24" value="A"> have / won't get</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="B"> had / wouldn't get</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="C"> had / would get</label>
+                        <label class="option-label"><input type="radio" name="q1_24" value="D"> have / won't get</label>
+                    </div>
+                    <div class="explanation">🗺️ Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">25. If I ______ that mistake, I ______ it.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_25" value="A"> know / will correct</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="B"> knew / would correct</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="C"> had known / would have corrected</label>
+                        <label class="option-label"><input type="radio" name="q1_25" value="D"> know / would correct</label>
+                    </div>
+                    <div class="explanation">❌ Loại 3: if + had known, would have corrected.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">26. If you ______ the light, you ______ the room.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_26" value="A"> turn on / see</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="B"> turned on / would see</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="C"> turn on / will see</label>
+                        <label class="option-label"><input type="radio" name="q1_26" value="D"> turn on / will see</label>
+                    </div>
+                    <div class="explanation">💡 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">27. If he ______ the exam, he ______ disappointed.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_27" value="A"> fails / will be</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="B"> had failed / would have been</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="C"> failed / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_27" value="D"> fails / would be</label>
+                    </div>
+                    <div class="explanation">😞 Loại 3: if + had failed, would have been.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">28. If I ______ more exercise, I ______ healthier.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_28" value="A"> do / will be</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="B"> did / will be</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="C"> did / would be</label>
+                        <label class="option-label"><input type="radio" name="q1_28" value="D"> had done / would have been</label>
+                    </div>
+                    <div class="explanation">🏋️ Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">29. If it ______ next week, we ______ the outdoor concert.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_29" value="A"> rains / will cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="B"> rained / would cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="C"> rains / would cancel</label>
+                        <label class="option-label"><input type="radio" name="q1_29" value="D"> rains / will cancel</label>
+                    </div>
+                    <div class="explanation">🎵 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">30. If she ______ the piano well, she ______ the concert.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q1_30" value="A"> plays / will perform</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="B"> played / would perform</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="C"> had played / would have performed</label>
+                        <label class="option-label"><input type="radio" name="q1_30" value="D"> plays / would perform</label>
+                    </div>
+                    <div class="explanation">🎹 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm1', 'progress1', 'result1')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result1" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 2: ĐẢO NGỮ CÂU ĐIỀU KIỆN (30 câu) -->
+    <div id="if_inversion" class="tab-content">
+        <div class="quiz-container">
+            <h2>🔄 Luyện tập: Đảo ngữ câu điều kiện</h2>
+            <p>✅ Chọn đáp án đúng cho câu đảo ngữ của câu điều kiện.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress2"></div></div>
+            <form id="quizForm2">
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. ______ you need help, call me immediately.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_1" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="C"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_1" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. ______ I you, I would take the job.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_2" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="C"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_2" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + (to V).</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">3. ______ I known, I would have helped you.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_3" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="C"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_3" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">4. ______ she arrive early, she would catch the train.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_4" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_4" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">5. ______ it rain tomorrow, we will cancel the trip.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_5" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_5" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. ______ he worked harder, he would succeed.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_6" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_6" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">7. ______ you need anything, let me know.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_7" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_7" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">8. ______ she more careful, she wouldn't have made that mistake.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_8" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_8" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">9. ______ you see him, give him my message.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_9" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_9" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">10. ______ I a millionaire, I would travel the world.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_10" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_10" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">11. ______ he missed the bus, he would have been late.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_11" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_11" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">12. ______ you have any questions, feel free to ask.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_12" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_12" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">13. ______ they arrive sooner, they would get good seats.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_13" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_13" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">14. ______ it stop raining, we could go out.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_14" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="C"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_14" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. ______ I known about the meeting, I would have attended.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_15" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_15" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">16. ______ you need more information, contact our office.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_16" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_16" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. ______ she more careful, she wouldn't have broken the vase.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_17" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_17" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">18. ______ I you, I would reconsider that offer.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_18" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_18" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. ______ the weather be fine, we will go to the park.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_19" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_19" value="D"> Should</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. ______ he known the truth, he would have acted differently.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_20" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_20" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">21. ______ we miss the train, we'll take a taxi.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_21" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="C"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_21" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">22. ______ he to apologize, she would forgive him.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_22" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_22" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">23. ______ you have any trouble, call this number.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_23" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_23" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">24. ______ I more time, I would read more books.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_24" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_24" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">25. ______ she not been so tired, she would have finished the work.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_25" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_25" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">26. ______ you need a ride, I can pick you up.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_26" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_26" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">27. ______ he to become president, he would change many laws.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_27" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_27" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">28. ______ we arrived earlier, we would have seen the show.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_28" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_28" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">29. ______ you have any questions, please ask.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_29" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q2_29" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">30. ______ I younger, I would learn to play the guitar.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q2_30" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="C"> If</label>
+                        <label class="option-label"><input type="radio" name="q2_30" value="D"> Were</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm2', 'progress2', 'result2')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result2" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 3: WISH (30 câu) -->
+    <div id="wish_types" class="tab-content">
+        <div class="quiz-container">
+            <h2>✨ Luyện tập: Câu Wish</h2>
+            <p>✅ Chọn đáp án đúng cho câu wish các loại.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress3"></div></div>
+            <form id="quizForm3">
+                <div class="question" data-correct="C">
+                    <p class="question-text">1. I wish I ______ more free time.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_1" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="B"> will have</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="C"> had</label>
+                        <label class="option-label"><input type="radio" name="q3_1" value="D"> would have</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">2. She wishes she ______ taller.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_2" value="A"> is</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="B"> was</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="C"> had been</label>
+                        <label class="option-label"><input type="radio" name="q3_2" value="D"> were</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: were cho tất cả ngôi.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">3. I wish I ______ how to swim.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_3" value="A"> know</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="B"> knew</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="C"> had known</label>
+                        <label class="option-label"><input type="radio" name="q3_3" value="D"> would know</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">4. He wishes he ______ the accident.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_4" value="A"> didn't cause</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="B"> wouldn't cause</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="C"> hadn't caused</label>
+                        <label class="option-label"><input type="radio" name="q3_4" value="D"> doesn't cause</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had + V3.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">5. I wish you ______ so loudly. It's annoying!</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_5" value="A"> don't talk</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="B"> didn't talk</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="C"> hadn't talked</label>
+                        <label class="option-label"><input type="radio" name="q3_5" value="D"> wouldn't talk</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: phàn nàn về hành động lặp lại.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">6. She wishes she ______ that rude comment.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_6" value="A"> didn't make</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="B"> hadn't made</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="C"> wouldn't make</label>
+                        <label class="option-label"><input type="radio" name="q3_6" value="D"> doesn't make</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: hadn't made.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">7. I wish it ______ so cold today.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_7" value="A"> isn't</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="B"> wasn't</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="C"> weren't</label>
+                        <label class="option-label"><input type="radio" name="q3_7" value="D"> hasn't been</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: were cho tất cả ngôi.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">8. I wish I ______ more about science.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_8" value="A"> know</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="B"> will know</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="C"> had known</label>
+                        <label class="option-label"><input type="radio" name="q3_8" value="D"> knew</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">9. I wish you ______ me earlier. I could have helped.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_9" value="A"> tell</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="B"> had told</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="C"> would tell</label>
+                        <label class="option-label"><input type="radio" name="q3_9" value="D"> told</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had told.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">10. I wish the weather ______ nicer tomorrow.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_10" value="A"> will be</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="B"> is</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="C"> would be</label>
+                        <label class="option-label"><input type="radio" name="q3_10" value="D"> were</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: mong muốn thay đổi trong tương lai.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">11. I wish I ______ a car.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_11" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="B"> will have</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="C"> would have</label>
+                        <label class="option-label"><input type="radio" name="q3_11" value="D"> had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">12. She wishes she ______ to the party last night.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_12" value="A"> went</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="B"> had gone</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="C"> would go</label>
+                        <label class="option-label"><input type="radio" name="q3_12" value="D"> goes</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had gone.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">13. I wish I ______ play the piano.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_13" value="A"> can</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="B"> would</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="C"> could</label>
+                        <label class="option-label"><input type="radio" name="q3_13" value="D"> could have</label>
+                    </div>
+                    <div class="explanation">✨ Wish + could: mong muốn có khả năng ở hiện tại.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">14. I wish I ______ to the concert, but I was too busy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_14" value="A"> could go</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="B"> can go</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="C"> would go</label>
+                        <label class="option-label"><input type="radio" name="q3_14" value="D"> could have gone</label>
+                    </div>
+                    <div class="explanation">✨ Wish + could have: mong muốn có khả năng trong quá khứ.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">15. I wish I ______ a better job.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_15" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="B"> had</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="C"> would have</label>
+                        <label class="option-label"><input type="radio" name="q3_15" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">16. He wishes he ______ that mistake.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_16" value="A"> didn't make</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="B"> wouldn't make</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="C"> hadn't made</label>
+                        <label class="option-label"><input type="radio" name="q3_16" value="D"> doesn't make</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: hadn't made.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">17. I wish it ______ raining.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_17" value="A"> stops</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="B"> stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="C"> had stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_17" value="D"> would stop</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: mong muốn thay đổi.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">18. She wishes she ______ more friends.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_18" value="A"> has</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="B"> had</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="C"> would have</label>
+                        <label class="option-label"><input type="radio" name="q3_18" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">19. I wish I ______ that TV show last night.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_19" value="A"> watched</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="B"> would watch</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="C"> had watched</label>
+                        <label class="option-label"><input type="radio" name="q3_19" value="D"> watch</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had watched.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">20. I wish you ______ smoking in here.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_20" value="A"> stop</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="B"> stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="C"> had stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_20" value="D"> would stop</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: phàn nàn về hành vi.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">21. He wishes he ______ a better singer.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_21" value="A"> is</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="B"> were</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="C"> had been</label>
+                        <label class="option-label"><input type="radio" name="q3_21" value="D"> would be</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: were cho tất cả ngôi.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">22. I wish I ______ the answer to that question.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_22" value="A"> know</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="B"> will know</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="C"> knew</label>
+                        <label class="option-label"><input type="radio" name="q3_22" value="D"> had known</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">23. She wishes she ______ that expensive dress.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_23" value="A"> didn't buy</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="B"> wouldn't buy</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="C"> doesn't buy</label>
+                        <label class="option-label"><input type="radio" name="q3_23" value="D"> hadn't bought</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: hadn't bought.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">24. I wish we ______ more time together.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_24" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="B"> had</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="C"> would have</label>
+                        <label class="option-label"><input type="radio" name="q3_24" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">25. I wish he ______ me the truth yesterday.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_25" value="A"> told</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="B"> would tell</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="C"> had told</label>
+                        <label class="option-label"><input type="radio" name="q3_25" value="D"> tells</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had told.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">26. I wish you ______ so much noise.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_26" value="A"> don't make</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="B"> didn't make</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="C"> hadn't made</label>
+                        <label class="option-label"><input type="radio" name="q3_26" value="D"> wouldn't make</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: phàn nàn về hành động.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">27. She wishes she ______ a bigger house.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_27" value="A"> has</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="B"> had</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="C"> would have</label>
+                        <label class="option-label"><input type="radio" name="q3_27" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">28. I wish I ______ more carefully.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_28" value="A"> drive</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="B"> drove</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="C"> had driven</label>
+                        <label class="option-label"><input type="radio" name="q3_28" value="D"> would drive</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had driven.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">29. I wish it ______ snowing.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_29" value="A"> stops</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="B"> stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="C"> had stopped</label>
+                        <label class="option-label"><input type="radio" name="q3_29" value="D"> would stop</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: mong muốn thay đổi.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">30. He wishes he ______ that car.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q3_30" value="A"> can afford</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="B"> could afford</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="C"> could have afforded</label>
+                        <label class="option-label"><input type="radio" name="q3_30" value="D"> afford</label>
+                    </div>
+                    <div class="explanation">✨ Wish + could: mong muốn có khả năng.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm3', 'progress3', 'result3')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result3" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- TAB 4: TỔNG HỢP (30 câu) -->
+    <div id="mixed_quiz" class="tab-content">
+        <div class="quiz-container">
+            <h2>🎯 Luyện tập tổng hợp: Conditional & Wish</h2>
+            <p>✅ Chọn đáp án đúng cho câu điều kiện và wish các loại.</p>
+            <div class="progress-bar"><div class="progress-fill" id="progress4"></div></div>
+            <form id="quizForm4">
+                <div class="question" data-correct="D">
+                    <p class="question-text">1. If I ______ you, I ______ accept that offer.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_1" value="A"> am / will</label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="B"> was / would</label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="C"> had been / would have</label>
+                        <label class="option-label"><input type="radio" name="q4_1" value="D"> were / would</label>
+                    </div>
+                    <div class="explanation">📘 Loại 2: If + were, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">2. ______ I known about the party, I ______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_2" value="A"> If / come</label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="B"> Had / would have come</label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="C"> Should / will come</label>
+                        <label class="option-label"><input type="radio" name="q4_2" value="D"> Were / would come</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3 + kết quả.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">3. I wish I ______ more time to spend with my family.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_3" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="B"> would have</label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="C"> had</label>
+                        <label class="option-label"><input type="radio" name="q4_3" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">4. If she ______ the train, she ______ late.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_4" value="A"> misses / will be</label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="B"> missed / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="C"> misses / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_4" value="D"> misses / will be</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">5. ______ you need any help, don't hesitate to ask.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_5" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_5" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">6. I wish I ______ to the concert last weekend.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_6" value="A"> went</label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="B"> would go</label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="C"> had gone</label>
+                        <label class="option-label"><input type="radio" name="q4_6" value="D"> go</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had gone.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">7. If he ______ harder, he ______ his goals.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_7" value="A"> try / will achieve</label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="B"> tried / would achieve</label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="C"> tries / would achieve</label>
+                        <label class="option-label"><input type="radio" name="q4_7" value="D"> tries / will achieve</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">8. ______ she more careful, she wouldn't have had that accident.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_8" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_8" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">9. I wish you ______ so loudly in the library.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_9" value="A"> don't talk</label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="B"> didn't talk</label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="C"> wouldn't talk</label>
+                        <label class="option-label"><input type="radio" name="q4_9" value="D"> hadn't talked</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: phàn nàn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">10. If I ______ more money, I ______ a bigger house.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_10" value="A"> have / will buy</label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="B"> had / will buy</label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="C"> had / would have bought</label>
+                        <label class="option-label"><input type="radio" name="q4_10" value="D"> had / would buy</label>
+                    </div>
+                    <div class="explanation">📘 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">11. ______ I known about the meeting, I would have attended.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_11" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_11" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">12. She wishes she ______ a better job.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_12" value="A"> has</label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="B"> would have</label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="C"> had</label>
+                        <label class="option-label"><input type="radio" name="q4_12" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">13. If you ______ ice, it ______.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_13" value="A"> heat / will melt</label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="B"> heated / melted</label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="C"> heat / would melt</label>
+                        <label class="option-label"><input type="radio" name="q4_13" value="D"> heat / melts</label>
+                    </div>
+                    <div class="explanation">🔬 Loại 0: hiện tại đơn + hiện tại đơn.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">14. ______ I you, I would take a break.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_14" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_14" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">15. I wish it ______ raining so I could go out.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_15" value="A"> stops</label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="B"> stopped</label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="C"> would stop</label>
+                        <label class="option-label"><input type="radio" name="q4_15" value="D"> had stopped</label>
+                    </div>
+                    <div class="explanation">✨ Wish + would: mong muốn thay đổi.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">16. If he ______ the exam, he will be happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_16" value="A"> passes / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="B"> passed / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="C"> passes / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_16" value="D"> passes / will be</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">17. ______ you have any trouble, call this number.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_17" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_17" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">18. He wishes he ______ that mistake in the report.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_18" value="A"> didn't make</label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="B"> wouldn't make</label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="C"> hadn't made</label>
+                        <label class="option-label"><input type="radio" name="q4_18" value="D"> doesn't make</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: hadn't made.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">19. If I ______ her number, I ______ her.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_19" value="A"> know / will call</label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="B"> knew / will call</label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="C"> had known / would call</label>
+                        <label class="option-label"><input type="radio" name="q4_19" value="D"> knew / would call</label>
+                    </div>
+                    <div class="explanation">📘 Loại 2: if + quá khứ đơn, would + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">20. ______ she to apologize, I would forgive her.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_20" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_20" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">21. I wish I ______ play a musical instrument.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_21" value="A"> can</label>
+                        <label class="option-label"><input type="radio" name="q4_21" value="B"> would</label>
+                        <label class="option-label"><input type="radio" name="q4_21" value="C"> could</label>
+                        <label class="option-label"><input type="radio" name="q4_21" value="D"> could have</label>
+                    </div>
+                    <div class="explanation">✨ Wish + could: mong muốn khả năng hiện tại.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">22. If it ______ sunny, we ______ to the park.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_22" value="A"> is / would go</label>
+                        <label class="option-label"><input type="radio" name="q4_22" value="B"> was / will go</label>
+                        <label class="option-label"><input type="radio" name="q4_22" value="C"> had been / would have gone</label>
+                        <label class="option-label"><input type="radio" name="q4_22" value="D"> is / will go</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">23. ______ I known, I would have acted differently.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_23" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_23" value="B"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_23" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_23" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 3: Had + S + V3.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">24. She wishes she ______ that comment in front of everyone.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_24" value="A"> didn't say</label>
+                        <label class="option-label"><input type="radio" name="q4_24" value="B"> wouldn't say</label>
+                        <label class="option-label"><input type="radio" name="q4_24" value="C"> hadn't said</label>
+                        <label class="option-label"><input type="radio" name="q4_24" value="D"> doesn't say</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: hadn't said.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">25. If you ______ the door, the cat ______ out.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_25" value="A"> leave / will get</label>
+                        <label class="option-label"><input type="radio" name="q4_25" value="B"> left / would get</label>
+                        <label class="option-label"><input type="radio" name="q4_25" value="C"> leave / would get</label>
+                        <label class="option-label"><input type="radio" name="q4_25" value="D"> leave / will get</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">26. ______ it rain tomorrow, we will stay home.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_26" value="A"> If</label>
+                        <label class="option-label"><input type="radio" name="q4_26" value="B"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_26" value="C"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_26" value="D"> Had</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 1: Should + S + V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">27. I wish I ______ more time to relax.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_27" value="A"> have</label>
+                        <label class="option-label"><input type="radio" name="q4_27" value="B"> would have</label>
+                        <label class="option-label"><input type="radio" name="q4_27" value="C"> had</label>
+                        <label class="option-label"><input type="radio" name="q4_27" value="D"> had had</label>
+                    </div>
+                    <div class="explanation">✨ Wish hiện tại: quá khứ đơn.</div>
+                </div>
+
+                <div class="question" data-correct="D">
+                    <p class="question-text">28. If she ______ the job, she ______ very happy.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_28" value="A"> gets / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_28" value="B"> got / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_28" value="C"> gets / would be</label>
+                        <label class="option-label"><input type="radio" name="q4_28" value="D"> gets / will be</label>
+                    </div>
+                    <div class="explanation">📘 Loại 1: if + hiện tại đơn, will + V.</div>
+                </div>
+
+                <div class="question" data-correct="B">
+                    <p class="question-text">29. ______ I younger, I would travel more.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_29" value="A"> Should</label>
+                        <label class="option-label"><input type="radio" name="q4_29" value="B"> Were</label>
+                        <label class="option-label"><input type="radio" name="q4_29" value="C"> Had</label>
+                        <label class="option-label"><input type="radio" name="q4_29" value="D"> If</label>
+                    </div>
+                    <div class="explanation">🔄 Đảo ngữ loại 2: Were + S + to V.</div>
+                </div>
+
+                <div class="question" data-correct="C">
+                    <p class="question-text">30. I wish I ______ to that concert. I heard it was amazing.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q4_30" value="A"> went</label>
+                        <label class="option-label"><input type="radio" name="q4_30" value="B"> would go</label>
+                        <label class="option-label"><input type="radio" name="q4_30" value="C"> had gone</label>
+                        <label class="option-label"><input type="radio" name="q4_30" value="D"> go</label>
+                    </div>
+                    <div class="explanation">✨ Wish quá khứ: had gone.</div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="checkQuiz('quizForm4', 'progress4', 'result4')">🎯 Nộp bài & xem kết quả</button>
+            </form>
+            <div id="result4" class="result-score"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    ✨ Bài 18: Luyện tập Conditional & Wish | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+</footer>
+
+<script>
+    function openTab(tabId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(c => c.classList.remove('active'));
+        const btns = document.querySelectorAll('.tab-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        const activeBtn = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function checkQuiz(formId, progressId, resultId) {
+        const form = document.getElementById(formId);
+        const questions = form.querySelectorAll('.question');
+        let score = 0;
+        questions.forEach((q, idx) => {
+            const correctVal = q.getAttribute('data-correct');
+            const selected = q.querySelector('input[type="radio"]:checked');
+            const explanationDiv = q.querySelector('.explanation');
+            const labels = q.querySelectorAll('.option-label');
+            
+            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
+            if (explanationDiv) explanationDiv.style.display = 'block';
+            
+            if (selected) {
+                const userVal = selected.value;
+                if (userVal === correctVal) {
+                    score++;
+                    selected.parentElement.classList.add('correct');
+                } else {
+                    selected.parentElement.classList.add('incorrect');
+                    labels.forEach(label => {
+                        if (label.querySelector('input').value === correctVal) {
+                            label.classList.add('correct');
+                        }
+                    });
+                }
+            } else {
+                labels.forEach(label => {
+                    if (label.querySelector('input').value === correctVal) {
+                        label.classList.add('correct');
+                    }
+                });
+            }
+        });
+        
+        const resultDiv = document.getElementById(resultId);
+        resultDiv.style.display = 'block';
+        const total = questions.length;
+        const progressFill = document.getElementById(progressId);
+        progressFill.style.width = (score / total * 100) + '%';
+        
+        let message = '';
+        if (score === total) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững kiến thức!';
+        } else if (score >= 24) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ về câu điều kiện và wish!';
+        } else if (score >= 18) {
+            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
+        } else {
+            message = '💪 Đừng nản! Hãy học kỹ lý thuyết và thử lại nhé!';
+        }
+        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+</script>
+
+</body>
+</html>
