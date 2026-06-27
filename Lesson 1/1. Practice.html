@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bài tập - Đại từ nhân xưng, To Be, Động từ thường</title>
+    <title>Bài tập - Đại từ | To Be | Động từ thường</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -20,7 +20,6 @@
             min-height: 100vh;
         }
 
-        /* main container - đồng bộ với lý thuyết */
         .grammar-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -31,7 +30,6 @@
             transition: all 0.2s;
         }
 
-        /* ===== NAVIGATION BAR (đồng bộ với index) ===== */
         .nav-bar {
             display: flex;
             justify-content: space-between;
@@ -70,7 +68,6 @@
             transform: translateY(-2px);
         }
 
-        /* header với gradient đồng bộ */
         .hero-header {
             background: linear-gradient(135deg, #1E3C5C 0%, #2B4C6E 100%);
             padding: 1.8rem 2rem;
@@ -103,7 +100,6 @@
             padding-left: 12px;
         }
 
-        /* progress indicator (đồng bộ với lý thuyết) */
         .progress-indicator {
             background: #edf2f7;
             border-radius: 12px;
@@ -126,7 +122,6 @@
             color: #5a67d8;
         }
 
-        /* score panel */
         .score-panel {
             background: white;
             margin: 1.2rem 1.8rem 0 1.8rem;
@@ -186,7 +181,6 @@
             transform: translateY(-1px);
         }
 
-        /* tabs styling */
         .tabs-modern {
             display: flex;
             flex-wrap: wrap;
@@ -200,7 +194,7 @@
             background: transparent;
             border: none;
             padding: 8px 18px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             border-radius: 2rem;
             cursor: pointer;
@@ -211,7 +205,7 @@
 
         .tab-btn i {
             margin-right: 6px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .tab-btn.active {
@@ -221,7 +215,6 @@
             font-weight: 600;
         }
 
-        /* content area */
         .content-area {
             padding: 1.8rem;
         }
@@ -259,7 +252,6 @@
             margin-top: 4px;
         }
 
-        /* exercise grid */
         .exercise-grid {
             display: flex;
             flex-direction: column;
@@ -297,7 +289,21 @@
             line-height: 1.5;
         }
 
-        /* MC options */
+        .context-box {
+            background: #f0f4f9;
+            border-radius: 8px;
+            padding: 8px 14px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            color: #2d3748;
+            border-left: 3px solid #667eea;
+            font-style: italic;
+        }
+
+        .context-box strong {
+            color: #5a67d8;
+        }
+
         .mc-options {
             display: flex;
             flex-wrap: wrap;
@@ -336,7 +342,66 @@
             text-decoration: line-through;
         }
 
-        /* fill input */
+        .feedback {
+            font-size: 0.85rem;
+            margin-top: 12px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+            line-height: 1.6;
+        }
+        .feedback.correct {
+            background: #e1f3e5;
+            color: #1e6b3b;
+            border-left: 4px solid #48bb78;
+        }
+        .feedback.wrong {
+            background: #ffe6e3;
+            color: #8B1A1A;
+            border-left: 4px solid #f56565;
+        }
+        .feedback .explain {
+            display: block;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+        .feedback .explain strong {
+            font-weight: 700;
+        }
+
+        .sub-section-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin: 20px 0 12px 0;
+            padding: 6px 14px;
+            background: #f0f4f9;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 8px;
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        .tag.pronoun { background: #EEEDFE; color: #3C3489; }
+        .tag.possessive { background: #E1F5EE; color: #085041; }
+        .tag.demonstrative { background: #FAEEDA; color: #633806; }
+        .tag.reflexive { background: #FBEAF0; color: #72243E; }
+        .tag.relative { background: #E6F1FB; color: #0C447C; }
+        .tag.indefinite { background: #F0E6FA; color: #6B2D8B; }
+        .tag.quantifier { background: #FFF3D6; color: #8B6B1A; }
+        .tag.tobe { background: #EAF3DE; color: #27500A; }
+        .tag.verb { background: #FAECE7; color: #712B13; }
+
         .fill-input {
             width: 100%;
             max-width: 360px;
@@ -368,73 +433,6 @@
             color: white;
         }
 
-        /* arrange words */
-        .word-bank {
-            background: #f2f6fa;
-            border-radius: 1rem;
-            padding: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 10px 0;
-            min-height: 64px;
-        }
-        .word-chip {
-            background: white;
-            padding: 6px 16px;
-            border-radius: 32px;
-            border: 1px solid #cbdde9;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.1s;
-        }
-        .word-chip.used {
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .answer-area {
-            background: #fefefe;
-            border: 1px dashed #9bb7d0;
-            min-height: 58px;
-        }
-
-        /* error correction */
-        .error-word {
-            display: inline-block;
-            background: #f9f4e8;
-            padding: 5px 14px;
-            margin: 4px;
-            border-radius: 30px;
-            border: 1px solid #f0dbc0;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-        .error-word.correct-pick {
-            background: #c8e6d9;
-            border-color: #48bb78;
-        }
-        .error-word.wrong-pick {
-            background: #ffddd9;
-            border-color: #f56565;
-        }
-
-        .feedback {
-            font-size: 0.8rem;
-            margin-top: 12px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        .feedback.correct {
-            background: #e1f3e5;
-            color: #1e6b3b;
-        }
-        .feedback.wrong {
-            background: #ffe6e3;
-            color: #c33;
-        }
-
         footer {
             text-align: center;
             font-size: 0.7rem;
@@ -454,30 +452,29 @@
             .score-panel { margin: 1rem 1rem 0 1rem; }
             .tabs-modern { margin: 1rem 1rem 0 1rem; }
             .content-area { padding: 1rem; }
+            .tab-btn { padding: 6px 12px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 <div class="grammar-container">
-    <!-- NAVIGATION BAR - ĐỒNG BỘ VỚI INDEX -->
     <div class="nav-bar">
         <a href="../index.html" class="home-link">
             🏠 ← Về trang chủ
         </a>
-        <a href="1. Personal Pronoun and Verb tobe.html" class="theory-link">
+        <a href="./1. Personal Pronoun and Verb tobe.html" class="theory-link">
             📖 Xem lại lý thuyết →
         </a>
     </div>
 
-    <!-- PROGRESS INDICATOR - ĐỒNG BỘ VỚI LÝ THUYẾT -->
     <div class="progress-indicator">
-        <span class="progress-text">📝 <strong>Bài tập Bài 1:</strong> Đại từ nhân xưng | To Be | Động từ thường</span>
-        <span class="progress-text">🎯 60 câu hỏi - Làm ngay!</span>
+        <span class="progress-text">📝 <strong>Bài tập Bài 1:</strong> Đại từ | To Be | Động từ thường</span>
+        <span class="progress-text">🎯 90 câu hỏi - Chọn tab theo bài học</span>
     </div>
 
     <div class="hero-header">
         <h1><i class="fas fa-tasks"></i> Bài tập thực hành</h1>
-        <p>Đại từ nhân xưng · Động từ to be · Động từ thường thì hiện tại đơn — 60 bài tập đa dạng</p>
+        <p>Chọn tab tương ứng với phần kiến thức bạn đang học — Đại từ (8 dạng) · To Be · Động từ thường</p>
     </div>
 
     <div class="score-panel">
@@ -494,84 +491,279 @@
 </div>
 
 <script>
-    // ======================= DATA MODEL (full 60 câu) ====================
+    // ============================================================
+    // PRONOUNS - Group 1: Personal + Possessive
+    // ============================================================
+    const pronounsGroup1 = [
+        // Personal Pronouns
+        { q: "___ sent the report to the manager.", opts: ["She","Her","Hers","Herself"], ans: 0, tag: "pronoun", context: "Subject pronoun needed for the person who sent the report." },
+        { q: "The client called ___ this morning.", opts: ["we","us","our","ours"], ans: 1, tag: "pronoun", context: "Object pronoun needed after the verb 'called'." },
+        { q: "___ is a very important meeting.", opts: ["It","Its","Itself","They"], ans: 0, tag: "pronoun", context: "Subject pronoun replacing 'the meeting' (singular)." },
+        { q: "Please give ___ the documents.", opts: ["he","his","him","himself"], ans: 2, tag: "pronoun", context: "Object pronoun needed after the verb 'give'." },
+        { q: "___ worked overtime last night.", opts: ["They","Them","Their","Theirs"], ans: 0, tag: "pronoun", context: "Subject pronoun for plural people." },
+        { q: "Can you contact ___?", opts: ["she","her","hers","herself"], ans: 1, tag: "pronoun", context: "Object pronoun needed after the verb 'contact'." },
+        { q: "___ have a meeting at 3 PM.", opts: ["We","Us","Our","Ours"], ans: 0, tag: "pronoun", context: "Subject pronoun for first person plural." },
+        { q: "The CEO asked ___ to prepare a presentation.", opts: ["I","my","me","mine"], ans: 2, tag: "pronoun", context: "Object pronoun needed after the verb 'asked'." },
+        { q: "___ was promoted last week.", opts: ["He","Him","His","Himself"], ans: 0, tag: "pronoun", context: "Subject pronoun for a male person." },
+        { q: "Please inform ___ of any changes.", opts: ["they","them","their","theirs"], ans: 1, tag: "pronoun", context: "Object pronoun needed after the verb 'inform'." },
+
+        // Possessive Pronouns
+        { q: "This is ___ office on the third floor.", opts: ["my","me","I","mine"], ans: 0, tag: "possessive", context: "Possessive adjective needed before the noun 'office'." },
+        { q: "The final decision is ___.", opts: ["your","you","yours","yourself"], ans: 2, tag: "possessive", context: "Possessive pronoun standing alone after 'is'." },
+        { q: "___ proposal was accepted by the board.", opts: ["Our","Ours","We","Us"], ans: 0, tag: "possessive", context: "Possessive adjective needed before the noun 'proposal'." },
+        { q: "The company increased ___ profits this year.", opts: ["it","its","it's","itself"], ans: 1, tag: "possessive", context: "Possessive adjective for a thing (no apostrophe)." },
+        { q: "Is that report ___?", opts: ["her","hers","herself","she"], ans: 1, tag: "possessive", context: "Possessive pronoun standing alone after 'is'." },
+        { q: "___ team finished the project early.", opts: ["Their","Theirs","They","Them"], ans: 0, tag: "possessive", context: "Possessive adjective needed before the noun 'team'." },
+        { q: "Mr. Lee left ___ laptop in the meeting room.", opts: ["he","his","him","himself"], ans: 1, tag: "possessive", context: "Possessive adjective needed before the noun 'laptop'." },
+        { q: "The success of the project was ___.", opts: ["our","ours","us","we"], ans: 1, tag: "possessive", context: "Possessive pronoun standing alone after 'was'." },
+        { q: "Please send ___ résumé to HR.", opts: ["you","your","yours","yourself"], ans: 1, tag: "possessive", context: "Possessive adjective needed before the noun 'résumé'." },
+        { q: "That client is ___; we introduced them first.", opts: ["our","ours","us","we"], ans: 1, tag: "possessive", context: "Possessive pronoun standing alone after 'is'." }
+    ];
+
+    // ============================================================
+    // PRONOUNS - Group 2: Reflexive + Relative
+    // ============================================================
+    const pronounsGroup2 = [
+        // Reflexive Pronouns
+        { q: "The director introduced ___ to the new staff.", opts: ["him","himself","his","he"], ans: 1, tag: "reflexive", context: "Subject and object are the same person — 'he' → himself." },
+        { q: "I reviewed the contract ___.", opts: ["me","my","mine","myself"], ans: 3, tag: "reflexive", context: "Emphasizing that 'I' did it without help." },
+        { q: "Please help ___ to the refreshments.", opts: ["you","your","yours","yourself"], ans: 3, tag: "reflexive", context: "Fixed expression: 'help yourself'." },
+        { q: "She taught ___ to use the new software.", opts: ["she","her","hers","herself"], ans: 3, tag: "reflexive", context: "Subject 'she' performed the action on herself." },
+        { q: "The system will restart ___.", opts: ["it","its","itself","it's"], ans: 2, tag: "reflexive", context: "The machine performs the action on itself." },
+        { q: "We handled all the negotiations ___.", opts: ["us","our","ours","ourselves"], ans: 3, tag: "reflexive", context: "Emphasizing that 'we' did it without help." },
+        { q: "They organized the entire conference ___.", opts: ["them","their","theirs","themselves"], ans: 3, tag: "reflexive", context: "Plural third person reflexive pronoun." },
+        { q: "Make ___ comfortable in the waiting area.", opts: ["you","your","yours","yourself"], ans: 3, tag: "reflexive", context: "Fixed expression: 'make yourself comfortable'." },
+        { q: "He sent the email ___ without asking for help.", opts: ["him","his","himself","he"], ans: 2, tag: "reflexive", context: "Emphasizing that he did it independently." },
+        { q: "I hurt ___ while moving the furniture.", opts: ["I","me","my","myself"], ans: 3, tag: "reflexive", context: "Subject and object are the same person — 'I' → myself." },
+
+        // Relative Pronouns
+        { q: "The employee ___ won the award is in our team.", opts: ["which","who","whom","whose"], ans: 1, tag: "relative", context: "Replaces a person and acts as the subject." },
+        { q: "The report ___ she submitted was excellent.", opts: ["who","whom","which","whose"], ans: 2, tag: "relative", context: "Replaces a thing (the report)." },
+        { q: "This is the client ___ contract we signed last week.", opts: ["who","which","that","whose"], ans: 3, tag: "relative", context: "Shows possession (the client's contract)." },
+        { q: "The email ___ I received this morning is very urgent.", opts: ["who","whom","whose","that"], ans: 3, tag: "relative", context: "Replaces a thing; 'that' is commonly used." },
+        { q: "The manager ___ interviewed me was very professional.", opts: ["which","whose","who","whom"], ans: 2, tag: "relative", context: "Replaces a person and acts as the subject." },
+        { q: "The company ___ we work for is very successful.", opts: ["who","whom","which","whose"], ans: 2, tag: "relative", context: "Replaces an organization (not a person)." },
+        { q: "The person ___ we should contact is Ms. Lan.", opts: ["who","which","whose","whom"], ans: 3, tag: "relative", context: "Object pronoun for a person (formal)." },
+        { q: "Is there anything ___ I can help you with?", opts: ["who","whose","which","that"], ans: 3, tag: "relative", context: "'That' is used after 'anything'." },
+        { q: "The staff member ___ desk is next to mine is very helpful.", opts: ["who","whom","which","whose"], ans: 3, tag: "relative", context: "Shows possession (the staff member's desk)." },
+        { q: "I found the file ___ was missing.", opts: ["who","whom","which","whose"], ans: 2, tag: "relative", context: "Replaces a thing (the file) and acts as the subject." }
+    ];
+
+    // ============================================================
+    // PRONOUNS - Group 3: Indefinite + Demonstrative
+    // ============================================================
+    const pronounsGroup3 = [
+        // Indefinite Pronouns
+        { q: "___ called the office but didn't leave a name.", opts: ["Anyone","Someone","Everyone","No one"], ans: 1, tag: "indefinite", context: "Affirmative sentence — someone unspecified." },
+        { q: "Is ___ available to take this call?", opts: ["someone","everyone","anyone","no one"], ans: 2, tag: "indefinite", context: "Question — use 'anyone'." },
+        { q: "___ attended the training session — it was cancelled.", opts: ["Someone","Anyone","Everyone","Nobody"], ans: 3, tag: "indefinite", context: "Complete negation — no one showed up." },
+        { q: "___ must submit their timesheet by Friday.", opts: ["Anyone","Someone","Everyone","No one"], ans: 2, tag: "indefinite", context: "Refers to the whole group." },
+        { q: "I need to tell you ___.", opts: ["anything","nothing","everything","something"], ans: 3, tag: "indefinite", context: "Affirmative sentence — something unspecified." },
+        { q: "Did ___ go wrong with the shipment?", opts: ["something","anything","nothing","everything"], ans: 1, tag: "indefinite", context: "Question — use 'anything'." },
+        { q: "___ was resolved at the meeting — we need another session.", opts: ["Something","Anything","Nothing","Everything"], ans: 2, tag: "indefinite", context: "Complete negation — nothing was resolved." },
+        { q: "___ is ready for the product launch tomorrow.", opts: ["Something","Anything","Nothing","Everything"], ans: 3, tag: "indefinite", context: "All things are ready." },
+        { q: "Has ___ seen the sales report I left on the desk?", opts: ["someone","anyone","everyone","no one"], ans: 1, tag: "indefinite", context: "Question with 'has' — use 'anyone'." },
+        { q: "___ in the department knows how to use this system.", opts: ["Anyone","Someone","Everyone","No one"], ans: 2, tag: "indefinite", context: "Refers to the whole group, affirmative." },
+
+        // Demonstrative Pronouns
+        { q: "___ is the invoice you requested.", opts: ["That","This","These","Those"], ans: 1, tag: "demonstrative", context: "Singular, near the speaker (holding it)." },
+        { q: "___ are the files from last quarter.", opts: ["This","That","These","Those"], ans: 2, tag: "demonstrative", context: "Plural, near the speaker (pointing at them)." },
+        { q: "Who sent ___ email yesterday?", opts: ["this","that","these","those"], ans: 1, tag: "demonstrative", context: "Singular, distant in time (yesterday)." },
+        { q: "___ were the best sales figures we've ever had.", opts: ["This","That","These","Those"], ans: 3, tag: "demonstrative", context: "Plural, distant in time." },
+        { q: "___ is Mr. Park calling from Seoul.", opts: ["That","This","These","Those"], ans: 0, tag: "demonstrative", context: "Used on the phone for the person on the other end." },
+        { q: "Can you take a look at ___ documents on the table?", opts: ["this","that","these","those"], ans: 2, tag: "demonstrative", context: "Plural, near the speaker (on the table nearby)." },
+        { q: "___ is not what I ordered.", opts: ["That","This","These","Those"], ans: 1, tag: "demonstrative", context: "Singular, pointing at the item in front." },
+        { q: "___ were challenging times for the company.", opts: ["This","That","These","Those"], ans: 3, tag: "demonstrative", context: "Plural, distant in time (past)." },
+        { q: "Is ___ the branch manager speaking?", opts: ["this","that","these","those"], ans: 0, tag: "demonstrative", context: "Question on the phone — 'Is this...?'" },
+        { q: "___ are the main reasons for the delay.", opts: ["This","That","These","Those"], ans: 2, tag: "demonstrative", context: "Plural, listing reasons right now." }
+    ];
+
+    // ============================================================
+    // PRONOUNS - Group 4: Quantifiers
+    // ============================================================
+    const pronounsGroup4 = [
+        { 
+            q: "___ candidates passed the interview — they start Monday.", 
+            opts: ["Neither","Both","None","Either"], 
+            ans: 1, 
+            tag: "quantifier", 
+            context: "There are 2 candidates. Both passed." 
+        },
+        { 
+            q: "___ of the proposals met our requirements.", 
+            opts: ["Both","Either","Neither","All"], 
+            ans: 2, 
+            tag: "quantifier", 
+            context: "There are 2 proposals. Neither met the requirements." 
+        },
+        { 
+            q: "You can choose ___ date — Monday or Tuesday.", 
+            opts: ["both","neither","either","all"], 
+            ans: 2, 
+            tag: "quantifier", 
+            context: "There are 2 options. Choose one of them." 
+        },
+        { 
+            q: "___ staff members are required to complete the online training.", 
+            opts: ["Both","Either","Neither","All"], 
+            ans: 3, 
+            tag: "quantifier", 
+            context: "There are many staff members (3+). All must complete it." 
+        },
+        { 
+            q: "___ of the applications were complete — they all had missing documents.", 
+            opts: ["Both","Either","All","None"], 
+            ans: 3, 
+            tag: "quantifier", 
+            context: "There are many applications (3+). None were complete." 
+        },
+        { 
+            q: "This solution doesn't work. Can you suggest ___?", 
+            opts: ["other","the other","another","the others"], 
+            ans: 2, 
+            tag: "quantifier", 
+            context: "One more, not yet specified — 'another' = an + other." 
+        },
+        { 
+            q: "Some team members agreed; ___ were still unsure.", 
+            opts: ["other","another","the other","others"], 
+            ans: 3, 
+            tag: "quantifier", 
+            context: "Other people, not specifically identified — plural 'others'." 
+        },
+        { 
+            q: "We have two meeting rooms. One is occupied; ___ is free.", 
+            opts: ["other","another","the other","the others"], 
+            ans: 2, 
+            tag: "quantifier", 
+            context: "There are exactly 2 rooms. The one that remains." 
+        },
+        { 
+            q: "Three reports were submitted. Two were approved; ___ are pending.", 
+            opts: ["other","another","the other","the others"], 
+            ans: 3, 
+            tag: "quantifier", 
+            context: "There are 3 reports. The remaining one(s) are pending." 
+        },
+        { 
+            q: "___ the CEO and the CFO signed the agreement.", 
+            opts: ["Either","Neither","Both","All"], 
+            ans: 2, 
+            tag: "quantifier", 
+            context: "There are 2 people. Both signed." 
+        }
+    ];
+
+    // ============================================================
+    // TO BE SECTION
+    // ============================================================
+    const tobeItems = [
+        { q: "My father _____ a doctor.", opts: ["am","is","are","be"], ans: 1, tag: "tobe", context: "Subject 'My father' is singular → use 'is'." },
+        { q: "Mai and I _____ in the same class.", opts: ["am","is","are","be"], ans: 2, tag: "tobe", context: "Subject 'Mai and I' = We → plural → use 'are'." },
+        { q: "The students _____ in the classroom.", opts: ["am","is","are","be"], ans: 2, tag: "tobe", context: "Subject 'The students' = They → plural → use 'are'." },
+        { q: "The weather _____ cold today.", opts: ["am","is","are","be"], ans: 1, tag: "tobe", context: "Subject 'The weather' = It → singular → use 'is'." },
+        { q: "_____ he your brother?", opts: ["Do","Does","Is","Are"], ans: 2, tag: "tobe", context: "Subject 'he' → use 'Is' in questions." },
+        { q: "We _____ not from Ha Noi. We are from Hue.", opts: ["is","am","are","do"], ans: 2, tag: "tobe", context: "Subject 'We' → plural → use 'are'." },
+        { q: "I _____ 13 years old.", opts: ["am","is","are","be"], ans: 0, tag: "tobe", context: "Subject 'I' → use 'am'." },
+        { q: "_____ you a student?", opts: ["Is","Are","Am","Do"], ans: 1, tag: "tobe", context: "Subject 'you' → use 'Are' in questions." },
+        { q: "My parents _____ teachers.", opts: ["am","is","are","be"], ans: 2, tag: "tobe", context: "Subject 'My parents' = They → plural → use 'are'." },
+        { q: "My father _____ a doctor.", type: "fill", ans: "is", tag: "tobe", context: "Subject 'My father' is singular → use 'is'." },
+        { q: "My parents _____ teachers.", type: "fill", ans: "are", tag: "tobe", context: "Subject 'My parents' is plural → use 'are'." },
+        { q: "She is my friend. _____ name is Hoa.", type: "fill", ans: "Her", tag: "tobe", context: "Possessive adjective needed before 'name' → 'Her'." },
+        { q: "He _____ not a doctor. He is a teacher.", type: "fill", ans: "is", tag: "tobe", context: "Subject 'He' → use 'is'." },
+        { q: "You _____ very smart!", type: "fill", ans: "are", tag: "tobe", context: "Subject 'you' → use 'are'." },
+        { q: "She is a student. → Negative:", type: "fill", ans: "She is not a student.", alt: ["She isn't a student."], tag: "tobe", context: "Add 'not' after 'is'." },
+        { q: "I am from Vietnam. → Question:", type: "fill", ans: "Am I from Vietnam?", tag: "tobe", context: "Put 'am' before the subject." },
+        { q: "We are students. → Negative:", type: "fill", ans: "We are not students.", alt: ["We aren't students."], tag: "tobe", context: "Add 'not' after 'are'." },
+        { q: "You are my friend. → Negative:", type: "fill", ans: "You are not my friend.", alt: ["You aren't my friend."], tag: "tobe", context: "Add 'not' after 'are'." },
+        { q: "He is not happy. → Affirmative:", type: "fill", ans: "He is happy.", tag: "tobe", context: "Remove 'not' to make affirmative." },
+        { q: "Is she your teacher? → Answer 'No':", type: "fill", ans: "No, she isn't.", alt: ["No, she is not."], tag: "tobe", context: "Negative short answer for to be question." },
+        { q: "Are they doctors? → Answer 'Yes':", type: "fill", ans: "Yes, they are.", tag: "tobe", context: "Affirmative short answer for to be question." }
+    ];
+
+    // ============================================================
+    // VERBS SECTION
+    // ============================================================
+    const verbItems = [
+        { q: "My sister _____ not like spicy food.", opts: ["do","does","is","are"], ans: 1, tag: "verb", context: "Subject 'My sister' = She → use 'does' for negation." },
+        { q: "Peter _____ to school every day.", opts: ["go","goes","is go","do go"], ans: 1, tag: "verb", context: "Subject 'Peter' = He → verb + 'es'." },
+        { q: "_____ your parents work in a hospital?", opts: ["Does","Is","Do","Are"], ans: 2, tag: "verb", context: "Subject 'your parents' = They → use 'Do'." },
+        { q: "The cat _____ on the table right now.", opts: ["sit","sits","is sit","do sit"], ans: 1, tag: "verb", context: "Subject 'The cat' = It → verb + 's'." },
+        { q: "She _____ not play football.", opts: ["do","does","is","are"], ans: 1, tag: "verb", context: "Subject 'She' → use 'does' for negation." },
+        { q: "The boys _____ soccer after school every day.", opts: ["play","plays","is play","are play"], ans: 0, tag: "verb", context: "Subject 'The boys' = They → base verb (no -s)." },
+        { q: "She _____ (go) to school by bike.", type: "fill", ans: "goes", tag: "verb", context: "Subject 'She' → go + 'es'." },
+        { q: "The baby _____ (cry) at night.", type: "fill", ans: "cries", tag: "verb", context: "Subject = He/She → y → ies." },
+        { q: "They _____ (not/watch) cartoons.", type: "fill", ans: "don't watch", alt: ["do not watch"], tag: "verb", context: "Subject 'They' → don't + base verb." },
+        { q: "Tom _____ (not/brush) his teeth.", type: "fill", ans: "doesn't brush", alt: ["does not brush"], tag: "verb", context: "Subject 'Tom' = He → doesn't + base verb." },
+        { q: "My friends and I _____ music every day.", type: "fill", ans: "like", tag: "verb", context: "Subject 'My friends and I' = We → base verb." },
+        { q: "_____ she drink milk every morning?", type: "fill", ans: "Does", tag: "verb", context: "Subject 'she' → use 'Does'." },
+        { q: "My father _____ (work) in a bank.", type: "fill", ans: "works", tag: "verb", context: "Subject 'My father' = He → verb + 's'." },
+        { q: "My brother _____ (study) English every night.", type: "fill", ans: "studies", tag: "verb", context: "Subject 'My brother' = He → y → ies." },
+        { q: "The children _____ (not watch) TV in the morning.", type: "fill", ans: "don't watch", alt: ["do not watch"], tag: "verb", context: "Subject 'The children' = They → don't + base verb." },
+        { q: "We _____ (like) playing games.", type: "fill", ans: "like", tag: "verb", context: "Subject 'We' → base verb." },
+        { q: "Tom _____ (wash) the dishes after dinner.", type: "fill", ans: "washes", tag: "verb", context: "Subject 'Tom' = He → wash + 'es'." },
+        { q: "My sister _____ (not speak) French.", type: "fill", ans: "doesn't speak", alt: ["does not speak"], tag: "verb", context: "Subject 'My sister' = She → doesn't + base verb." },
+        { q: "They play football. → Negative:", type: "fill", ans: "They don't play football.", alt: ["They do not play football."], tag: "verb", context: "Subject 'They' → don't + base verb." },
+        { q: "He works at a hospital. → Question:", type: "fill", ans: "Does he work at a hospital?", tag: "verb", context: "Subject 'He' → Does + S + base verb?" },
+        { q: "She likes cats. → Question:", type: "fill", ans: "Does she like cats?", tag: "verb", context: "Subject 'She' → Does + S + base verb?" },
+        { q: "Tom and Lily study hard. → Question:", type: "fill", ans: "Do Tom and Lily study hard?", tag: "verb", context: "Plural subject → Do + S + base verb?" },
+        { q: "Do you live in Hanoi? → Answer 'Yes':", type: "fill", ans: "Yes, I do.", tag: "verb", context: "Affirmative short answer with 'do'." },
+        { q: "My dog runs fast. → Negative:", type: "fill", ans: "My dog doesn't run fast.", alt: ["My dog does not run fast."], tag: "verb", context: "Subject 'My dog' = It → doesn't + base verb." },
+        { q: "She doesn't eat meat. → Affirmative:", type: "fill", ans: "She eats meat.", tag: "verb", context: "Remove 'doesn't' → verb + 's'." },
+        { q: "We don't go to school on Sunday. → Affirmative:", type: "fill", ans: "We go to school on Sunday.", tag: "verb", context: "Remove 'don't' → base verb." }
+    ];
+
+    // ============================================================
+    // BUILD SECTIONS
+    // ============================================================
     const sectionsData = [
-        { id:"mc", label:"Chọn đáp án", icon:"fas fa-check-circle", desc:"Chọn phương án đúng nhất (câu 1-15)", type:"mc", items:[
-            {q:"_____ is my teacher. She is very kind.", opts:["He","She","They","It"], ans:1},
-            {q:"My name is Lan. _____ am 12 years old.", opts:["I","She","He","We"], ans:0},
-            {q:"Tom and Jerry _____ best friends.", opts:["is","am","are","be"], ans:2},
-            {q:"This is my dog. _____ is very cute.", opts:["She","They","It","We"], ans:2},
-            {q:"My sister _____ not like spicy food.", opts:["do","does","is","are"], ans:1},
-            {q:"_____ you a student?", opts:["Is","Are","Am","Do"], ans:1},
-            {q:"Peter _____ to school every day.", opts:["go","goes","is go","do go"], ans:1},
-            {q:"We _____ not from Ha Noi. We are from Hue.", opts:["is","am","are","do"], ans:2},
-            {q:"_____ your parents work in a hospital?", opts:["Does","Is","Do","Are"], ans:2},
-            {q:"The cat _____ on the table right now. (habit)", opts:["sit","sits","is sit","do sit"], ans:1},
-            {q:"I _____ 13 years old.", opts:["am","is","are","be"], ans:0},
-            {q:"She _____ not play football.", opts:["do","does","is","are"], ans:1},
-            {q:"_____ he your brother?", opts:["Are","Do","Does","Is"], ans:3},
-            {q:"My parents _____ teachers.", opts:["am","is","are","be"], ans:2},
-            {q:"The boys _____ soccer after school every day.", opts:["play","plays","is play","are play"], ans:0}
-        ]},
-        { id:"fill", label:"Điền từ", icon:"fas fa-keyboard", desc:"Điền dạng đúng của động từ hoặc đại từ (câu 16-30)", type:"fill", items:[
-            {q:"My father _____ (work) in a bank.", ans:"works"},
-            {q:"_____ (I / pronoun) am from Vietnam.", ans:"I"},
-            {q:"Anna and I _____ (be) classmates.", ans:"are"},
-            {q:"The dog _____ (not run) fast.", ans:"doesn't run", alt:["does not run"]},
-            {q:"_____ they _____ (have) a pet? → viết từ còn thiếu (have)", ans:"have"},
-            {q:"My brother _____ (study) English every night.", ans:"studies"},
-            {q:"She is my friend. _____ name is Hoa. (pronoun)", ans:"Her"},
-            {q:"The children _____ (not watch) TV in the morning.", ans:"don't watch", alt:["do not watch"]},
-            {q:"He _____ (be) not a doctor. He is a teacher.", ans:"is"},
-            {q:"We _____ (like) playing games.", ans:"like"},
-            {q:"This is my pen. _____ is blue. (pronoun)", ans:"It"},
-            {q:"Tom _____ (wash) the dishes after dinner.", ans:"washes"},
-            {q:"You _____ (be) very smart!", ans:"are"},
-            {q:"My sister _____ (not speak) French.", ans:"doesn't speak", alt:["does not speak"]},
-            {q:"_____ he always _____ (come) to class on time? → viết 'come'", ans:"come"}
-        ]},
-        { id:"rewrite", label:"Viết lại câu", icon:"fas fa-edit", desc:"Viết câu hoàn chỉnh (câu 31-45)", type:"fill", items:[
-            {q:"She is a student. → Phủ định:", ans:"She is not a student.", alt:["She isn't a student."]},
-            {q:"They play football. → Phủ định:", ans:"They don't play football.", alt:["They do not play football."]},
-            {q:"He works at a hospital. → Nghi vấn:", ans:"Does he work at a hospital?"},
-            {q:"I am from Vietnam. → Nghi vấn:", ans:"Am I from Vietnam?"},
-            {q:"We are students. → Phủ định:", ans:"We are not students.", alt:["We aren't students."]},
-            {q:"She likes cats. → Nghi vấn:", ans:"Does she like cats?"},
-            {q:"You are my friend. → Phủ định:", ans:"You are not my friend.", alt:["You aren't my friend."]},
-            {q:"Tom and Lily study hard. → Nghi vấn:", ans:"Do Tom and Lily study hard?"},
-            {q:"He is not happy. → Khẳng định:", ans:"He is happy."},
-            {q:"Do you live in Hanoi? → Trả lời 'Yes':", ans:"Yes, I do."},
-            {q:"Is she your teacher? → Trả lời 'No':", ans:"No, she isn't.", alt:["No, she is not."]},
-            {q:"My dog runs fast. → Phủ định:", ans:"My dog doesn't run fast.", alt:["My dog does not run fast."]},
-            {q:"Are they doctors? → Trả lời 'Yes':", ans:"Yes, they are."},
-            {q:"She doesn't eat meat. → Khẳng định:", ans:"She eats meat."},
-            {q:"We don't go to school on Sunday. → Khẳng định:", ans:"We go to school on Sunday."}
-        ]},
-        { id:"arrange", label:"Sắp xếp từ", icon:"fas fa-arrow-right-arrow-left", desc:"Chạm vào từ theo thứ tự đúng (câu 46-55)", type:"arrange", items:[
-            {q:"Câu 46:", words:["She","is","not","a","doctor","."], ans:"She is not a doctor ."},
-            {q:"Câu 47:", words:["Do","they","play","tennis","every","day","?"], ans:"Do they play tennis every day ?"},
-            {q:"Câu 48:", words:["My","sister","goes","to","school","by","bike","."], ans:"My sister goes to school by bike ."},
-            {q:"Câu 49:", words:["Are","you","and","your","friend","students","?"], ans:"Are you and your friend students ?"},
-            {q:"Câu 50:", words:["He","does","not","like","vegetables","."], ans:"He does not like vegetables ."},
-            {q:"Câu 51:", words:["We","are","in","grade","6","."], ans:"We are in grade 6 ."},
-            {q:"Câu 52:", words:["Does","she","speak","English","well","?"], ans:"Does she speak English well ?"},
-            {q:"Câu 53:", words:["I","am","not","tired","today","."], ans:"I am not tired today ."},
-            {q:"Câu 54:", words:["They","do","not","watch","TV","at","night","."], ans:"They do not watch TV at night ."},
-            {q:"Câu 55:", words:["Is","he","your","best","friend","?"], ans:"Is he your best friend ?"}
-        ]},
-        { id:"error", label:"Tìm lỗi sai", icon:"fas fa-exclamation-triangle", desc:"Chọn từ bị sai trong câu (câu 56-60)", type:"error", items:[
-            {q:"She don't like coffee.", words:["She","don't","like","coffee","."], ans:1, fix:"doesn't"},
-            {q:"They is my classmates.", words:["They","is","my","classmates","."], ans:1, fix:"are"},
-            {q:"He go to school every day.", words:["He","go","to","school","every","day","."], ans:1, fix:"goes"},
-            {q:"I are 12 years old.", words:["I","are","12","years","old","."], ans:1, fix:"am"},
-            {q:"Do she speak French?", words:["Do","she","speak","French","?"], ans:0, fix:"Does"}
-        ]}
+        { 
+            id: "pronouns1", 
+            label: "Personal + Possessive", 
+            icon: "fas fa-user", 
+            desc: "Đại từ nhân xưng (Personal) & Đại từ sở hữu (Possessive) — 20 câu", 
+            items: pronounsGroup1 
+        },
+        { 
+            id: "pronouns2", 
+            label: "Reflexive + Relative", 
+            icon: "fas fa-arrows-spin", 
+            desc: "Đại từ phản thân (Reflexive) & Đại từ quan hệ (Relative) — 20 câu", 
+            items: pronounsGroup2 
+        },
+        { 
+            id: "pronouns3", 
+            label: "Indefinite + Demonstrative", 
+            icon: "fas fa-circle-question", 
+            desc: "Đại từ bất định (Indefinite) & Đại từ chỉ định (Demonstrative) — 20 câu", 
+            items: pronounsGroup3 
+        },
+        { 
+            id: "pronouns4", 
+            label: "Quantifiers", 
+            icon: "fas fa-weight-scale", 
+            desc: "Lượng từ: Both/Neither/Either/All/None/Another/Other/Others — 10 câu", 
+            items: pronounsGroup4 
+        },
+        { 
+            id: "tobe", 
+            label: "To Be", 
+            icon: "fas fa-link", 
+            desc: "Động từ to be — am/is/are (21 câu)", 
+            items: tobeItems 
+        },
+        { 
+            id: "verbs", 
+            label: "Động từ thường", 
+            icon: "fas fa-bolt", 
+            desc: "Động từ thường thì hiện tại đơn — V/s/es (26 câu)", 
+            items: verbItems 
+        }
     ];
 
     let answerState = {};
     let correctCount = 0;
     let totalAnswered = 0;
-    let arrangeTemp = {};
 
     function updateGlobalScoreUI() {
         document.getElementById("scoreDisplay").innerText = `${correctCount} / ${totalAnswered}`;
@@ -590,6 +782,72 @@
     function isAlreadyAnswered(sectionId, idx) {
         const key = `${sectionId}-${idx}`;
         return !!answerState[key];
+    }
+
+    function getTagClass(tag) {
+        const map = {
+            'pronoun': 'pronoun',
+            'possessive': 'possessive',
+            'demonstrative': 'demonstrative',
+            'reflexive': 'reflexive',
+            'relative': 'relative',
+            'indefinite': 'indefinite',
+            'quantifier': 'quantifier',
+            'tobe': 'tobe',
+            'verb': 'verb'
+        };
+        return map[tag] || '';
+    }
+
+    function getTagLabel(tag) {
+        const map = {
+            'pronoun': 'Nhân xưng',
+            'possessive': 'Sở hữu',
+            'demonstrative': 'Chỉ định',
+            'reflexive': 'Phản thân',
+            'relative': 'Quan hệ',
+            'indefinite': 'Bất định',
+            'quantifier': 'Lượng từ',
+            'tobe': 'To Be',
+            'verb': 'Động từ'
+        };
+        return map[tag] || '';
+    }
+
+    function getExplanation(item, isCorrect, chosen) {
+        let exp = '';
+        if (isCorrect) {
+            exp = `✅ <strong>Chính xác!</strong> "${chosen}" là đáp án đúng.`;
+        } else {
+            exp = `❌ <strong>Sai!</strong> Đáp án đúng là: <strong>"${item.opts[item.ans]}"</strong>`;
+        }
+        
+        // Add explanation based on tag
+        const tag = item.tag;
+        const context = item.context || '';
+        
+        let detail = '';
+        if (tag === 'pronoun') {
+            detail = `Đây là đại từ nhân xưng. ${context}`;
+        } else if (tag === 'possessive') {
+            detail = `Đây là đại từ sở hữu. ${context}`;
+        } else if (tag === 'reflexive') {
+            detail = `Đây là đại từ phản thân. ${context}`;
+        } else if (tag === 'relative') {
+            detail = `Đây là đại từ quan hệ. ${context}`;
+        } else if (tag === 'indefinite') {
+            detail = `Đây là đại từ bất định. ${context}`;
+        } else if (tag === 'demonstrative') {
+            detail = `Đây là đại từ chỉ định. ${context}`;
+        } else if (tag === 'quantifier') {
+            detail = `Đây là lượng từ. ${context}`;
+        } else if (tag === 'tobe') {
+            detail = `Đây là động từ to be. ${context}`;
+        } else if (tag === 'verb') {
+            detail = `Đây là động từ thường. ${context}`;
+        }
+        
+        return `${exp}<span class="explain">💡 ${detail}</span>`;
     }
 
     function buildUI() {
@@ -613,32 +871,45 @@
             const card = document.createElement("div");
             card.className = "section-card" + (secIndex === 0 ? " active" : "");
             card.id = `card-${section.id}`;
-            card.innerHTML = `
+            
+            let html = `
                 <div class="section-header">
                     <h3><i class="${section.icon}" style="margin-right:8px;"></i> ${section.label}</h3>
                     <p>${section.desc}</p>
                 </div>
-                <div class="exercise-grid" id="grid-${section.id}"></div>
+                <div class="exercise-grid" id="grid-${section.id}">
             `;
+
+            section.items.forEach((item, idx) => {
+                const num = getGlobalNumber(secIndex, idx);
+                const tagLabel = getTagLabel(item.tag);
+                const tagClass = getTagClass(item.tag);
+                
+                html += `
+                    <div class="exercise-item" id="item-${section.id}-${idx}">
+                        <div class="ex-label">
+                            📝 Câu ${num}
+                            <span class="tag ${tagClass}">${tagLabel}</span>
+                        </div>
+                        <div class="ex-question">${item.q}</div>
+                        ${item.context ? `<div class="context-box">📌 ${item.context}</div>` : ''}
+                        <div id="content-${section.id}-${idx}"></div>
+                        <div class="feedback" id="fb-${section.id}-${idx}" style="display:none;"></div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            card.innerHTML = html;
             sectionsContainer.appendChild(card);
 
-            const grid = document.getElementById(`grid-${section.id}`);
-            section.items.forEach((item, itemIdx) => {
-                const exDiv = document.createElement("div");
-                exDiv.className = "exercise-item";
-                const globalNumber = getGlobalNumber(secIndex, itemIdx);
-                exDiv.innerHTML = `<div class="ex-label">📝 Câu ${globalNumber}</div><div class="ex-question">${item.q}</div><div id="content-${section.id}-${itemIdx}"></div><div class="feedback" id="fb-${section.id}-${itemIdx}" style="display:none;"></div>`;
-                grid.appendChild(exDiv);
-
-                const contentHolder = document.getElementById(`content-${section.id}-${itemIdx}`);
-                if (section.type === "mc") {
-                    renderMC(section, itemIdx, item, contentHolder);
-                } else if (section.type === "fill") {
-                    renderFill(section, itemIdx, item, contentHolder);
-                } else if (section.type === "arrange") {
-                    renderArrange(section, itemIdx, item, contentHolder);
-                } else if (section.type === "error") {
-                    renderError(section, itemIdx, item, contentHolder);
+            // Render each item
+            section.items.forEach((item, idx) => {
+                const contentHolder = document.getElementById(`content-${section.id}-${idx}`);
+                if (item.opts) {
+                    renderMC(section.id, idx, item, contentHolder);
+                } else {
+                    renderFill(section.id, idx, item, contentHolder);
                 }
             });
         });
@@ -650,7 +921,7 @@
         return sum + itemIdx + 1;
     }
 
-    function renderMC(section, idx, item, container) {
+    function renderMC(sectionId, idx, item, container) {
         const optsDiv = document.createElement("div");
         optsDiv.className = "mc-options";
         const btns = [];
@@ -659,19 +930,22 @@
             btn.className = "mc-option-btn";
             btn.innerText = opt;
             btn.addEventListener("click", () => {
-                if (isAlreadyAnswered(section.id, idx)) return;
+                if (isAlreadyAnswered(sectionId, idx)) return;
                 const isCorrect = (optIndex === item.ans);
-                const success = markAnswered(section.id, idx, isCorrect);
+                const success = markAnswered(sectionId, idx, isCorrect);
                 if (!success) return;
-                const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+                const fbDiv = document.getElementById(`fb-${sectionId}-${idx}`);
                 fbDiv.style.display = "block";
+                
+                const explanation = getExplanation(item, isCorrect, opt);
+                
                 if (isCorrect) {
                     fbDiv.className = "feedback correct";
-                    fbDiv.innerHTML = "<i class='fas fa-check-circle'></i> Chính xác!";
+                    fbDiv.innerHTML = explanation;
                     btn.classList.add("mc-opt-correct");
                 } else {
                     fbDiv.className = "feedback wrong";
-                    fbDiv.innerHTML = `<i class='fas fa-times-circle'></i> Sai! Đáp án đúng: ${item.opts[item.ans]}`;
+                    fbDiv.innerHTML = explanation;
                     btn.classList.add("mc-opt-wrong");
                     btns[item.ans].classList.add("mc-opt-correct");
                 }
@@ -683,7 +957,7 @@
         container.appendChild(optsDiv);
     }
 
-    function renderFill(section, idx, item, container) {
+    function renderFill(sectionId, idx, item, container) {
         const wrapper = document.createElement("div");
         const input = document.createElement("input");
         input.type = "text";
@@ -693,24 +967,27 @@
         btn.innerText = "Kiểm tra";
         btn.className = "check-btn";
         btn.addEventListener("click", () => {
-            if (isAlreadyAnswered(section.id, idx)) return;
+            if (isAlreadyAnswered(sectionId, idx)) return;
             const val = input.value.trim();
             if (!val) return;
             const norm = s => s.trim().toLowerCase().replace(/\s+/g, " ");
             const isMatch = norm(val) === norm(item.ans) || (item.alt && item.alt.some(a => norm(val) === norm(a)));
-            const success = markAnswered(section.id, idx, isMatch);
+            const success = markAnswered(sectionId, idx, isMatch);
             if (!success) return;
-            const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
+            const fbDiv = document.getElementById(`fb-${sectionId}-${idx}`);
             fbDiv.style.display = "block";
+            
+            let explanation = '';
             if (isMatch) {
+                explanation = `✅ <strong>Chính xác!</strong> "${val}" là đáp án đúng.<span class="explain">💡 ${item.context || ''}</span>`;
                 fbDiv.className = "feedback correct";
-                fbDiv.innerHTML = "✓ Đúng rồi!";
                 input.style.borderColor = "#48bb78";
             } else {
+                explanation = `❌ <strong>Sai!</strong> Đáp án đúng là: <strong>"${item.ans}"</strong><span class="explain">💡 ${item.context || ''}</span>`;
                 fbDiv.className = "feedback wrong";
-                fbDiv.innerHTML = `✗ Sai. Đáp án: ${item.ans}`;
                 input.style.borderColor = "#f56565";
             }
+            fbDiv.innerHTML = explanation;
             input.disabled = true;
             btn.disabled = true;
         });
@@ -719,110 +996,10 @@
         container.appendChild(wrapper);
     }
 
-    function renderArrange(section, idx, item, container) {
-        const shuffled = [...item.words].sort(() => Math.random() - 0.5);
-        const bankDiv = document.createElement("div");
-        bankDiv.className = "word-bank";
-        const answerDiv = document.createElement("div");
-        answerDiv.className = "word-bank answer-area";
-        const checkBtn = document.createElement("button");
-        checkBtn.innerText = "Kiểm tra câu";
-        checkBtn.className = "check-btn";
-        let selectedWords = [];
-
-        function refreshBankAndAnswer() {
-            bankDiv.innerHTML = "";
-            shuffled.forEach((word, wIdx) => {
-                const used = selectedWords.some(s => s.originalIdx === wIdx);
-                const chip = document.createElement("span");
-                chip.className = "word-chip" + (used ? " used" : "");
-                chip.innerText = word;
-                if (!used) {
-                    chip.addEventListener("click", () => {
-                        if (isAlreadyAnswered(section.id, idx)) return;
-                        selectedWords.push({ word, originalIdx: wIdx });
-                        refreshBankAndAnswer();
-                    });
-                }
-                bankDiv.appendChild(chip);
-            });
-            answerDiv.innerHTML = "";
-            selectedWords.forEach((sel, i) => {
-                const chipAns = document.createElement("span");
-                chipAns.className = "word-chip";
-                chipAns.innerText = sel.word;
-                chipAns.addEventListener("click", () => {
-                    if (isAlreadyAnswered(section.id, idx)) return;
-                    selectedWords.splice(i, 1);
-                    refreshBankAndAnswer();
-                });
-                answerDiv.appendChild(chipAns);
-            });
-        }
-        refreshBankAndAnswer();
-        checkBtn.addEventListener("click", () => {
-            if (isAlreadyAnswered(section.id, idx)) return;
-            const built = selectedWords.map(s => s.word).join(" ");
-            const isCorrect = built.toLowerCase() === item.ans.toLowerCase();
-            const marked = markAnswered(section.id, idx, isCorrect);
-            if (!marked) return;
-            const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
-            fbDiv.style.display = "block";
-            if (isCorrect) {
-                fbDiv.className = "feedback correct";
-                fbDiv.innerHTML = "✅ Tuyệt vời! Đúng thứ tự.";
-            } else {
-                fbDiv.className = "feedback wrong";
-                fbDiv.innerHTML = `❌ Sai rồi. Đáp án: ${item.ans}`;
-            }
-            checkBtn.disabled = true;
-        });
-        container.appendChild(bankDiv);
-        container.appendChild(answerDiv);
-        container.appendChild(checkBtn);
-    }
-
-    function renderError(section, idx, item, container) {
-        const lineDiv = document.createElement("div");
-        lineDiv.style.display = "flex";
-        lineDiv.style.flexWrap = "wrap";
-        lineDiv.style.gap = "8px";
-        const wordSpans = [];
-        item.words.forEach((word, wIndex) => {
-            const span = document.createElement("span");
-            span.className = "error-word";
-            span.innerText = word;
-            span.addEventListener("click", () => {
-                if (isAlreadyAnswered(section.id, idx)) return;
-                const isCorrect = (wIndex === item.ans);
-                const marked = markAnswered(section.id, idx, isCorrect);
-                if (!marked) return;
-                const fbDiv = document.getElementById(`fb-${section.id}-${idx}`);
-                fbDiv.style.display = "block";
-                if (isCorrect) {
-                    span.classList.add("correct-pick");
-                    fbDiv.className = "feedback correct";
-                    fbDiv.innerHTML = `✔ Đúng! Từ sai là "${word}" → sửa thành "${item.fix}".`;
-                } else {
-                    span.classList.add("wrong-pick");
-                    fbDiv.className = "feedback wrong";
-                    const correctSpan = wordSpans[item.ans];
-                    if(correctSpan) correctSpan.classList.add("correct-pick");
-                    fbDiv.innerHTML = `✗ Sai! Từ bị sai là "${item.words[item.ans]}" → sửa thành "${item.fix}".`;
-                }
-                wordSpans.forEach(sp => sp.style.pointerEvents = "none");
-            });
-            wordSpans.push(span);
-            lineDiv.appendChild(span);
-        });
-        container.appendChild(lineDiv);
-    }
-
     function resetEverything() {
         answerState = {};
         correctCount = 0;
         totalAnswered = 0;
-        arrangeTemp = {};
         updateGlobalScoreUI();
         buildUI();
     }
