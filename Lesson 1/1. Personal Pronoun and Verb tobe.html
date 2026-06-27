@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bài 1: Đại từ, To Be, Động từ thường - Hệ thống Ngữ pháp</title>
+    <title>Bài 1: Đại từ - Động từ To Be - Động từ thường</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .page {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: #ffffff;
             border-radius: 32px;
@@ -28,7 +28,6 @@
             padding: 24px 28px;
         }
 
-        /* ===== NAVIGATION BAR MỚI (đồng bộ với index) ===== */
         .nav-bar {
             display: flex;
             justify-content: space-between;
@@ -84,23 +83,22 @@
             box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
         }
 
-        /* Thanh tab */
         .tab-bar {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 32px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .tab {
-            padding: 12px 28px;
+            padding: 10px 22px;
             border-radius: 50px;
             border: 1.5px solid #e2e8f0;
             background: #f8fafc;
             color: #4a5568;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             transition: all 0.2s ease;
             font-family: inherit;
@@ -118,7 +116,6 @@
             box-shadow: 0 4px 12px rgba(90, 103, 216, 0.3);
         }
 
-        /* Sections */
         .section {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -133,13 +130,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Card */
         .card {
             background: white;
             border: 1px solid #e9edf2;
             border-radius: 24px;
-            padding: 24px 28px;
-            margin-bottom: 24px;
+            padding: 22px 26px;
+            margin-bottom: 22px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             transition: box-shadow 0.2s;
         }
@@ -149,40 +145,39 @@
         }
 
         h2 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #1a202c;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         h3 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             color: #2d3748;
-            margin: 20px 0 12px 0;
+            margin: 18px 0 10px 0;
         }
 
         p, li {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 15.5px;
+            line-height: 1.7;
             color: #2d3748;
         }
 
-        /* Lưới đại từ */
         .pronoun-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin: 20px 0;
+            gap: 14px;
+            margin: 16px 0;
         }
 
         .pron-box {
             background: #f7fafc;
-            border-radius: 20px;
-            padding: 16px 12px;
+            border-radius: 18px;
+            padding: 14px 10px;
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 1px solid #e2e8f0;
@@ -194,29 +189,28 @@
         }
 
         .pron-main {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .pron-sub {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.8;
         }
 
-        /* Công thức */
         .formula-row {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 12px 0;
+            margin: 10px 0;
             flex-wrap: wrap;
         }
 
         .formula-box {
-            padding: 8px 18px;
+            padding: 6px 16px;
             border-radius: 40px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             border: 1px solid;
         }
@@ -241,18 +235,17 @@
 
         .arrow {
             color: #718096;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
         }
 
-        /* Ví dụ */
         .example {
             background: #f8fafc;
             border-left: 5px solid #5a67d8;
             border-radius: 0 16px 16px 0;
-            padding: 14px 18px;
-            margin: 12px 0;
-            font-size: 16px;
+            padding: 12px 16px;
+            margin: 10px 0;
+            font-size: 15px;
             color: #1a202c;
             font-weight: 500;
         }
@@ -260,7 +253,7 @@
         .vn {
             color: #64748b;
             font-size: 13px;
-            margin-top: 8px;
+            margin-top: 6px;
             font-weight: normal;
         }
 
@@ -271,51 +264,49 @@
 
         .tip-box {
             background: #eeedfe;
-            border-radius: 20px;
-            padding: 14px 20px;
-            margin: 16px 0;
+            border-radius: 16px;
+            padding: 12px 18px;
+            margin: 14px 0;
         }
 
         .tip-box p {
             color: #3c3489;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 500;
         }
 
-        /* Bảng */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 15px;
+            margin: 14px 0;
+            font-size: 14.5px;
         }
 
         th {
             background: #eeedfe;
             color: #3c3489;
-            padding: 12px 14px;
+            padding: 10px 14px;
             text-align: left;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         td {
-            padding: 12px 14px;
+            padding: 10px 14px;
             border-bottom: 1px solid #e2e8f0;
             color: #2d3748;
-            font-size: 15px;
+            font-size: 14.5px;
         }
 
         tr:last-child td {
             border-bottom: none;
         }
 
-        /* Rule row */
         .rule-row {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             align-items: flex-start;
-            padding: 14px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #edf2f7;
         }
 
@@ -324,49 +315,81 @@
         }
 
         .rule-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 600;
         }
 
-        /* Quiz */
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 14px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .mini-card .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .mini-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #5a67d8;
+            margin: 4px 0;
+        }
+
+        .mini-card .sub {
+            font-size: 13px;
+            color: #718096;
+        }
+
         .score-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #f8fafc;
             border-radius: 60px;
-            padding: 12px 24px;
-            margin-bottom: 24px;
+            padding: 10px 22px;
+            margin-bottom: 20px;
             border: 1px solid #e2e8f0;
         }
 
         .score-num {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
             color: #5a67d8;
             line-height: 1;
         }
 
         .score-label {
-            font-size: 14px;
+            font-size: 13px;
             color: #64748b;
             font-weight: 500;
         }
 
         .reset-btn {
-            padding: 8px 28px;
+            padding: 6px 24px;
             border-radius: 40px;
             border: 1.5px solid #cbd5e0;
             background: white;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #4a5568;
             transition: all 0.2s;
@@ -386,7 +409,7 @@
         }
 
         .quiz-q {
-            padding: 20px 24px;
+            padding: 18px 22px;
             border-bottom: 1px solid #edf2f7;
         }
 
@@ -395,27 +418,27 @@
         }
 
         .qtext {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             color: #1a202c;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             line-height: 1.5;
         }
 
         .quiz-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 10px;
+            gap: 10px;
+            margin-bottom: 8px;
         }
 
         .opt {
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 60px;
             border: 1.5px solid #e2e8f0;
             background: #f8fafc;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             color: #2d3748;
             transition: all 0.2s;
@@ -441,23 +464,22 @@
         }
 
         .feedback {
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 600;
-            margin-top: 10px;
-            min-height: 28px;
+            margin-top: 8px;
+            min-height: 26px;
         }
 
-        /* Progress indicator */
         .progress-indicator {
             background: #edf2f7;
             border-radius: 12px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
         .progress-text {
@@ -470,35 +492,41 @@
             color: #5a67d8;
         }
 
-        /* Responsive */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 14px 0;
+        }
+
         @media (max-width: 680px) {
             .page {
-                padding: 16px 18px;
+                padding: 14px 16px;
             }
             .pronoun-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 10px;
             }
             .tab {
-                padding: 8px 20px;
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            .card {
-                padding: 18px 20px;
-            }
-            .formula-box {
-                padding: 6px 14px;
+                padding: 7px 16px;
                 font-size: 13px;
             }
+            h2 {
+                font-size: 19px;
+            }
+            .card {
+                padding: 16px 18px;
+            }
+            .formula-box {
+                padding: 5px 12px;
+                font-size: 12px;
+            }
             .qtext {
-                font-size: 16px;
+                font-size: 15px;
             }
             .opt {
-                padding: 7px 18px;
-                font-size: 14px;
+                padding: 6px 16px;
+                font-size: 13px;
             }
             .nav-bar {
                 flex-direction: column;
@@ -507,12 +535,18 @@
             .action-buttons {
                 justify-content: center;
             }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+            .mini-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
 <div class="page">
-    <!-- NAVIGATION BAR MỚI - ĐỒNG BỘ VỚI INDEX -->
+    <!-- NAVIGATION BAR -->
     <div class="nav-bar">
         <a href="../index.html" class="home-link">
             🏠 ← Về trang chủ
@@ -526,22 +560,26 @@
 
     <!-- PROGRESS INDICATOR -->
     <div class="progress-indicator">
-        <span class="progress-text">📖 <strong>Bài 1:</strong> Đại từ nhân xưng | Động từ To Be | Động từ thường</span>
-        <span class="progress-text">⭐ Kiến thức nền tảng - Cơ bản</span>
+        <span class="progress-text">📖 <strong>Bài 1:</strong> Đại từ (Pronouns) | Động từ To Be | Động từ thường</span>
+        <span class="progress-text">⭐ Kiến thức nền tảng - Toàn diện</span>
     </div>
 
     <div class="tab-bar">
-        <button class="tab active" onclick="showTab('pronouns')">👤 Đại từ nhân xưng</button>
-        <button class="tab" onclick="showTab('tobe')">🔗 Động từ to be</button>
+        <button class="tab active" onclick="showTab('pronouns')">👤 Đại từ</button>
+        <button class="tab" onclick="showTab('possessive')">🔑 Sở hữu</button>
+        <button class="tab" onclick="showTab('demonstrative')">👆 Chỉ định</button>
+        <button class="tab" onclick="showTab('reflexive')">🔄 Phản thân</button>
+        <button class="tab" onclick="showTab('quantifiers')">📊 Lượng từ</button>
+        <button class="tab" onclick="showTab('tobe')">🔗 To Be</button>
         <button class="tab" onclick="showTab('verbs')">⚡ Động từ thường</button>
         <button class="tab" onclick="showTab('quiz')">🎯 Luyện tập</button>
     </div>
 
-    <!-- PHẦN 1: ĐẠI TỪ NHÂN XƯNG -->
+    <!-- ==================== PHẦN 1: ĐẠI TỪ NHÂN XƯNG ==================== -->
     <div id="pronouns" class="section active">
         <div class="card">
-            <h2>📌 Đại từ nhân xưng là gì?</h2>
-            <p>Dùng để <strong class="highlight">thay thế danh từ</strong> đã nhắc đến — tránh lặp từ, giúp câu văn tự nhiên hơn.</p>
+            <h2>📌 Đại từ nhân xưng (Personal Pronouns)</h2>
+            <p>Dùng để <strong class="highlight">thay thế danh từ</strong> chỉ người hoặc vật đã được nhắc đến, giúp câu văn tự nhiên và tránh lặp từ.</p>
             <div class="example">
                 🌟 This is Anna. <span class="highlight">She</span> is my sister. I love <span class="highlight">her</span>.
                 <div class="vn">→ Dùng "she/her" thay cho "Anna"</div>
@@ -549,7 +587,7 @@
         </div>
 
         <div class="card">
-            <h2>📖 7 đại từ nhân xưng</h2>
+            <h2>📖 7 đại từ nhân xưng (Chủ ngữ)</h2>
             <div class="pronoun-grid">
                 <div class="pron-box" style="background:#EEEDFE"><div class="pron-main" style="color:#3C3489">I</div><div class="pron-sub">tôi</div></div>
                 <div class="pron-box" style="background:#E1F5EE"><div class="pron-main" style="color:#085041">You</div><div class="pron-sub">bạn / các bạn</div></div>
@@ -571,7 +609,126 @@
         </div>
     </div>
 
-    <!-- PHẦN 2: ĐỘNG TỪ TO BE -->
+    <!-- ==================== PHẦN 2: ĐẠI TỪ SỞ HỮU & TÍNH TỪ SỞ HỮU ==================== -->
+    <div id="possessive" class="section">
+        <div class="card">
+            <h2>🔑 Đại từ sở hữu & Tính từ sở hữu</h2>
+            <p><strong>Tính từ sở hữu</strong> đi kèm danh từ (my book). <strong>Đại từ sở hữu</strong> đứng một mình, thay thế cho "tính từ sở hữu + danh từ".</p>
+            <div class="tip-box">
+                <p>💡 Đại từ sở hữu = Tính từ sở hữu + danh từ đã biết. Không dùng với danh từ phía sau.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Bảng đối chiếu</h2>
+            <table>
+                <tr><th>Chủ ngữ</th><th>Tính từ sở hữu</th><th>Đại từ sở hữu</th><th>Ví dụ</th></tr>
+                <tr><td>I</td><td><strong>my</strong></td><td><strong>mine</strong></td><td>This is <span class="highlight">my</span> book. → This book is <span class="highlight">mine</span>.</td></tr>
+                <tr><td>You</td><td><strong>your</strong></td><td><strong>yours</strong></td><td>Is this <span class="highlight">your</span> pen? → Yes, it's <span class="highlight">yours</span>.</td></tr>
+                <tr><td>He</td><td><strong>his</strong></td><td><strong>his</strong></td><td>That is <span class="highlight">his</span> bag. → That bag is <span class="highlight">his</span>.</td></tr>
+                <tr><td>She</td><td><strong>her</strong></td><td><strong>hers</strong></td><td>This is <span class="highlight">her</span> phone. → This phone is <span class="highlight">hers</span>.</td></tr>
+                <tr><td>It</td><td><strong>its</strong></td><td><strong>its</strong></td><td>The cat licked <span class="highlight">its</span> paw. → The paw is <span class="highlight">its</span>.</td></tr>
+                <tr><td>We</td><td><strong>our</strong></td><td><strong>ours</strong></td><td>This is <span class="highlight">our</span> house. → This house is <span class="highlight">ours</span>.</td></tr>
+                <tr><td>They</td><td><strong>their</strong></td><td><strong>theirs</strong></td><td>These are <span class="highlight">their</span> seats. → These seats are <span class="highlight">theirs</span>.</td></tr>
+            </table>
+            <div class="example">
+                ⚠️ Lưu ý: <span class="highlight">It's</span> = it is (viết tắt). <span class="highlight">Its</span> = sở hữu (không có dấu nháy).
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PHẦN 3: ĐẠI TỪ CHỈ ĐỊNH ==================== -->
+    <div id="demonstrative" class="section">
+        <div class="card">
+            <h2>👆 Đại từ chỉ định (Demonstrative Pronouns)</h2>
+            <p>Dùng để <strong class="highlight">chỉ ra</strong> người hoặc vật cụ thể về mặt khoảng cách (gần/xa, số ít/số nhiều).</p>
+            <div class="mini-grid">
+                <div class="mini-card"><div class="label">Gần, số ít</div><div class="value">This</div><div class="sub">cái này</div></div>
+                <div class="mini-card"><div class="label">Gần, số nhiều</div><div class="value">These</div><div class="sub">những cái này</div></div>
+                <div class="mini-card"><div class="label">Xa, số ít</div><div class="value">That</div><div class="sub">cái kia</div></div>
+                <div class="mini-card"><div class="label">Xa, số nhiều</div><div class="value">Those</div><div class="sub">những cái kia</div></div>
+            </div>
+            <div class="example">
+                <span class="highlight">This</span> is my car. (cái này - gần)<br>
+                <span class="highlight">Those</span> are my friends. (những người kia - xa)
+            </div>
+            <div class="tip-box">
+                <p>💡 <strong>This/These</strong> = gần về mặt không gian hoặc thời gian. <strong>That/Those</strong> = xa hơn.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PHẦN 4: ĐẠI TỪ PHẢN THÂN / NHẤN MẠNH ==================== -->
+    <div id="reflexive" class="section">
+        <div class="card">
+            <h2>🔄 Đại từ phản thân (Reflexive Pronouns)</h2>
+            <p>Dùng khi <strong class="highlight">chủ ngữ và tân ngữ là cùng một người/vật</strong> (hành động tự tác động lên bản thân).</p>
+            <div class="pronoun-grid">
+                <div class="pron-box"><div class="pron-main">myself</div><div class="pron-sub">tôi tự</div></div>
+                <div class="pron-box"><div class="pron-main">yourself</div><div class="pron-sub">bạn tự</div></div>
+                <div class="pron-box"><div class="pron-main">himself</div><div class="pron-sub">anh ấy tự</div></div>
+                <div class="pron-box"><div class="pron-main">herself</div><div class="pron-sub">cô ấy tự</div></div>
+                <div class="pron-box"><div class="pron-main">itself</div><div class="pron-sub">nó tự</div></div>
+                <div class="pron-box"><div class="pron-main">ourselves</div><div class="pron-sub">chúng tôi tự</div></div>
+                <div class="pron-box"><div class="pron-main">yourselves</div><div class="pron-sub">các bạn tự</div></div>
+                <div class="pron-box"><div class="pron-main">themselves</div><div class="pron-sub">họ tự</div></div>
+            </div>
+            <div class="example">
+                I hurt <span class="highlight">myself</span>. (Tôi tự làm mình đau)<br>
+                She looked at <span class="highlight">herself</span> in the mirror. (Cô ấy nhìn mình trong gương)
+            </div>
+            <div class="tip-box">
+                <p>💡 Đại từ nhấn mạnh (Emphatic Pronouns) cũng có cùng dạng, nhưng dùng để nhấn mạnh chủ ngữ: <strong>I myself</strong> did it. (Chính tôi đã làm)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PHẦN 5: LƯỢNG TỪ ==================== -->
+    <div id="quantifiers" class="section">
+        <div class="card">
+            <h2>📊 Các cặp lượng từ quan trọng</h2>
+
+            <h3>📌 Both / Neither / All / None</h3>
+            <div class="two-col">
+                <div>
+                    <div class="example"><strong>Both</strong> = cả hai<br>Both of them are students. (Cả hai đều là sinh viên)</div>
+                    <div class="example"><strong>Neither</strong> = không cái nào trong hai<br>Neither answer is correct. (Không câu trả lời nào đúng)</div>
+                </div>
+                <div>
+                    <div class="example"><strong>All</strong> = tất cả (3 trở lên)<br>All of us went home. (Tất cả chúng tôi về nhà)</div>
+                    <div class="example"><strong>None</strong> = không cái nào (3 trở lên)<br>None of them came. (Không ai đến)</div>
+                </div>
+            </div>
+
+            <h3>📌 Another / Other / Others / The other / The others</h3>
+            <table>
+                <tr><th>Từ</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+                <tr><td><strong>Another</strong></td><td>Một cái khác (không xác định, số ít)</td><td>Can I have <span class="highlight">another</span> cup? (Tôi có thể có một cốc khác không?)</td></tr>
+                <tr><td><strong>Other</strong></td><td>Khác (đứng trước danh từ)</td><td>I have <span class="highlight">other</span> plans. (Tôi có kế hoạch khác)</td></tr>
+                <tr><td><strong>Others</strong></td><td>Những cái khác (đại từ, số nhiều)</td><td>Some like coffee, <span class="highlight">others</span> like tea. (Một số thích cà phê, số khác thích trà)</td></tr>
+                <tr><td><strong>The other</strong></td><td>Cái còn lại (xác định, số ít)</td><td>I have two books. One is red, <span class="highlight">the other</span> is blue. (Một quyển đỏ, quyển còn lại xanh)</td></tr>
+                <tr><td><strong>The others</strong></td><td>Những cái còn lại (xác định, số nhiều)</td><td>Some students are here. <span class="highlight">The others</span> are outside. (Những người còn lại ở ngoài)</td></tr>
+            </table>
+            <div class="tip-box">
+                <p>💡 <strong>Another</strong> = an + other → dùng với danh từ số ít không xác định. <strong>Other</strong> + danh từ số nhiều hoặc không đếm được.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📌 Một số lượng từ khác</h2>
+            <table>
+                <tr><th>Từ</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+                <tr><td><strong>Some</strong></td><td>Một vài (khẳng định)</td><td>I have <span class="highlight">some</span> money.</td></tr>
+                <tr><td><strong>Any</strong></td><td>Một vài (phủ định/câu hỏi)</td><td>Do you have <span class="highlight">any</span> questions?</td></tr>
+                <tr><td><strong>Many</strong></td><td>Nhiều (đếm được)</td><td>There are <span class="highlight">many</span> students.</td></tr>
+                <tr><td><strong>Much</strong></td><td>Nhiều (không đếm được)</td><td>I don't have <span class="highlight">much</span> time.</td></tr>
+                <tr><td><strong>Few / a few</strong></td><td>Ít / một vài (đếm được)</td><td>I have <span class="highlight">a few</span> friends.</td></tr>
+                <tr><td><strong>Little / a little</strong></td><td>Ít / một ít (không đếm được)</td><td>I need <span class="highlight">a little</span> water.</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== PHẦN 6: ĐỘNG TỪ TO BE ==================== -->
     <div id="tobe" class="section">
         <div class="card">
             <h2>🔗 Động từ "to be" — am / is / are</h2>
@@ -601,7 +758,7 @@
         </div>
     </div>
 
-    <!-- PHẦN 3: ĐỘNG TỪ THƯỜNG -->
+    <!-- ==================== PHẦN 7: ĐỘNG TỪ THƯỜNG ==================== -->
     <div id="verbs" class="section">
         <div class="card">
             <h2>⚡ Động từ thường — có hành động</h2>
@@ -644,7 +801,7 @@
         </div>
     </div>
 
-    <!-- PHẦN 4: LUYỆN TẬP -->
+    <!-- ==================== PHẦN 8: LUYỆN TẬP ==================== -->
     <div id="quiz" class="section">
         <div class="score-bar">
             <div><div class="score-num" id="score-display">0 / 0</div><div class="score-label">Điểm số</div></div>
@@ -665,24 +822,51 @@
     }
 
     const quizData = [
+        // Đại từ nhân xưng
         {q:"This is my dog. ___ is very cute.", opts:["He","She","It","They"], ans:"It", hint:"Con chó → dùng 'It'"},
         {q:"Peter and I are friends. ___ like football.", opts:["They","We","He","You"], ans:"We", hint:"Peter and I = We (có người nói)"},
         {q:"Linda is my sister. ___ is ten years old.", opts:["He","It","They","She"], ans:"She", hint:"Linda = nữ → She"},
         {q:"My brother is tall. ___ plays basketball.", opts:["She","It","He","They"], ans:"He", hint:"Brother = nam → He"},
         {q:"Tom and Sarah are in the kitchen. ___ are cooking.", opts:["He","She","It","They"], ans:"They", hint:"Hai người → They"},
-        {q:"I have a pencil. ___ is red.", opts:["He","She","It","They"], ans:"It", hint:"Bút chì = đồ vật → It"},
-        {q:"Anna and Mary are at school. ___ are in class 5A.", opts:["He","She","It","They"], ans:"They", hint:"Anna và Mary = They"},
-        {q:"Mark and I are classmates. ___ study together.", opts:["They","He","We","You"], ans:"We", hint:"Mark and I = We"},
+        
+        // Tính từ / đại từ sở hữu
+        {q:"This is ___ book. (tôi)", opts:["my","mine","I","me"], ans:"my", hint:"'my' đi kèm danh từ 'book'"},
+        {q:"This book is ___. (tôi)", opts:["my","mine","I","me"], ans:"mine", hint:"'mine' đứng một mình, thay thế 'my book'"},
+        {q:"Is this pen ___? (bạn)", opts:["your","yours","you","yourselves"], ans:"yours", hint:"'yours' đứng một mình"},
+        {q:"She forgot ___ keys. (cô ấy)", opts:["her","hers","she","herself"], ans:"her", hint:"'her' đi kèm danh từ 'keys'"},
+        {q:"The cat is licking ___ paw.", opts:["it's","its","itself","it"], ans:"its", hint:"'its' là tính từ sở hữu, không có dấu nháy"},
+
+        // Đại từ chỉ định
+        {q:"___ is my car. (cái này - gần)", opts:["This","That","These","Those"], ans:"This", hint:"Gần, số ít → This"},
+        {q:"___ are my friends. (những người kia - xa)", opts:["This","That","These","Those"], ans:"Those", hint:"Xa, số nhiều → Those"},
+        {q:"___ is a beautiful sunset. (xa)", opts:["This","That","These","Those"], ans:"That", hint:"Xa, số ít → That"},
+        {q:"___ are my new shoes. (gần)", opts:["This","That","These","Those"], ans:"These", hint:"Gần, số nhiều → These"},
+
+        // Đại từ phản thân
+        {q:"I hurt ___ while playing football.", opts:["myself","yourself","himself","herself"], ans:"myself", hint:"Chủ ngữ 'I' → myself"},
+        {q:"She looked at ___ in the mirror.", opts:["myself","yourself","himself","herself"], ans:"herself", hint:"Chủ ngữ 'She' → herself"},
+        {q:"They enjoyed ___ at the party.", opts:["ourselves","yourselves","themselves","itself"], ans:"themselves", hint:"Chủ ngữ 'They' → themselves"},
+
+        // Lượng từ
+        {q:"___ of them are students. (cả hai)", opts:["All","Both","Neither","None"], ans:"Both", hint:"Cả hai → Both"},
+        {q:"___ of the students passed the test. (tất cả)", opts:["Both","Neither","All","None"], ans:"All", hint:"Tất cả (3+) → All"},
+        {q:"I have two pens. One is blue, ___ is red.", opts:["another","other","others","the other"], ans:"the other", hint:"Xác định, số ít → the other"},
+        {q:"Some like coffee, ___ like tea.", opts:["another","other","others","the other"], ans:"others", hint:"Số nhiều, không xác định → others"},
+        {q:"Can I have ___ cup of tea?", opts:["another","other","others","the other"], ans:"another", hint:"Một cốc khác (không xác định) → another"},
+
+        // To be
         {q:"My father ___ a doctor.", opts:["am","is","are","be"], ans:"is", hint:"My father = He → is"},
         {q:"Mai and I ___ in the same class.", opts:["am","is","are","be"], ans:"are", hint:"Mai and I = We → are"},
         {q:"The students ___ in the classroom.", opts:["am","is","are","be"], ans:"are", hint:"The students = They → are"},
         {q:"The weather ___ cold today.", opts:["am","is","are","be"], ans:"is", hint:"The weather = It → is"},
         {q:"___ he your brother?", opts:["Do","Does","Is","Are"], ans:"Is", hint:"Câu hỏi to be với he → Is"},
+
+        // Động từ thường
         {q:"She ___ (go) to school by bike.", opts:["go","goes","going","goed"], ans:"goes", hint:"She → go thêm -es → goes"},
         {q:"The baby ___ (cry) at night.", opts:["cry","crys","cries","crieing"], ans:"cries", hint:"baby = He/She → y→ies: cries"},
         {q:"They ___ (not/watch) cartoons.", opts:["doesn't watch","don't watch","not watch","isn't watch"], ans:"don't watch", hint:"They → don't + watch"},
         {q:"___ you like music?", opts:["Is","Are","Do","Does"], ans:"Do", hint:"You → dùng Do"},
-        {q:"Tom ___ (not/brush) his teeth after meals.", opts:["don't brush","doesn't brush","not brushes","isn't brush"], ans:"doesn't brush", hint:"Tom = He → doesn't + brush"},
+        {q:"Tom ___ (not/brush) his teeth.", opts:["don't brush","doesn't brush","not brushes","isn't brush"], ans:"doesn't brush", hint:"Tom = He → doesn't + brush"},
         {q:"My friends and I ___ music every day.", opts:["likes","like","is like","does like"], ans:"like", hint:"Chủ ngữ = We → like (không -s)"},
         {q:"___ she drink milk every morning?", opts:["Do","Is","Are","Does"], ans:"Does", hint:"She → dùng Does"}
     ];
