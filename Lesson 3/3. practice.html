@@ -320,8 +320,9 @@
             <button class="tab-btn" data-tab="past-mixed"><i class="fas fa-code-branch"></i> Mixed Exercises</button>
         </div>
 
-        <!-- ========== TAB 1: PAST SIMPLE ========== -->
+        <!-- ==================== TAB 1: PAST SIMPLE ==================== -->
         <div id="past-simple" class="tab-content active-tab">
+            
             <div class="exercise">
                 <div class="ex-title">📝 3.1 Chia động từ ở Quá khứ đơn</div>
                 <div class="question-list">
@@ -377,8 +378,9 @@
             </div>
         </div>
 
-        <!-- ========== TAB 2: PAST CONTINUOUS ========== -->
+        <!-- ==================== TAB 2: PAST CONTINUOUS ==================== -->
         <div id="past-continuous" class="tab-content">
+            
             <div class="exercise">
                 <div class="ex-title">📝 3.4 Chia động từ ở Quá khứ tiếp diễn</div>
                 <div class="question-list">
@@ -418,7 +420,7 @@
             <div class="exercise">
                 <div class="ex-title">📝 3.6 Trả lời ngắn câu hỏi Yes/No</div>
                 <div class="question-list">
-                    <div class="question-item"><span class="question-text">21. Were you doing your homework at 9 PM? → No, ________.</span> <input type="text" data-answers='["I wasn\'t","I was not"]'></div>
+                    <div class="question-item"><span class="question-text">21. Were you doing your homework at 9 PM? → No, ________.</span> <input type="text" data-answers='["i wasn\'t","i was not"]'></div>
                     <div class="question-item"><span class="question-text">22. Was Anna crying when she left the room? → Yes, ________.</span> <input type="text" data-answers='["she was"]'></div>
                     <div class="question-item"><span class="question-text">23. Were the children playing outside in the rain? → No, ________.</span> <input type="text" data-answers='["they weren\'t","they were not"]'></div>
                     <div class="question-item"><span class="question-text">24. Was it raining heavily when you went out? → Yes, ________.</span> <input type="text" data-answers='["it was"]'></div>
@@ -434,8 +436,9 @@
             </div>
         </div>
 
-        <!-- ========== TAB 3: MIXED EXERCISES ========== -->
+        <!-- ==================== TAB 3: MIXED EXERCISES ==================== -->
         <div id="past-mixed" class="tab-content">
+            
             <div class="exercise">
                 <div class="ex-title">📝 3.7 Phân biệt Past Simple và Past Continuous</div>
                 <div class="question-list">
@@ -476,7 +479,7 @@
                 <div class="ex-title">📝 3.9 Viết lại câu hoàn chỉnh không đổi nghĩa</div>
                 <div class="question-list">
                     <div class="question-item"><span class="question-text">21. During my dinner, the phone rang. → While I ________________________.</span> <input type="text" data-answers='["was having dinner, the phone rang","was eating dinner, the phone rang"]'></div>
-                    <div class="question-item"><span class="question-text">22. I was in the middle of driving when it started to snow. → When it ________________________.</span> <input type="text" data-answers='["started to snow, I was driving"]'></div>
+                    <div class="question-item"><span class="question-text">22. I was in the middle of driving when it started to snow. → When it ________________________.</span> <input type="text" data-answers='["started to snow, i was driving"]'></div>
                     <div class="question-item"><span class="question-text">23. He finished his work. Then he went straight to the gym. → After he ________________________.</span> <input type="text" data-answers='["finished his work, he went straight to the gym"]'></div>
                     <div class="question-item"><span class="question-text">24. She was walking her dog. She encountered a celebrity. → While she ________________________.</span> <input type="text" data-answers='["was walking her dog, she encountered a celebrity"]'></div>
                     <div class="question-item"><span class="question-text">25. In the middle of our video game, the power cut out. → We ________________________ when the power cut out.</span> <input type="text" data-answers='["were playing a video game","were playing video games"]'></div>
@@ -502,8 +505,8 @@
         function normalizeString(str) {
             return str.trim()
                 .toLowerCase()
-                // Chỉ bỏ dấu câu ở cuối câu (., !, ?, ;, :)
-                .replace(/[.!?;:]+$/, '')
+                // Chỉ bỏ dấu câu ở cuối câu
+                .replace(/[.,!?;:]+$/, '')
                 // Nhiều khoảng trắng -> 1 khoảng trắng
                 .replace(/\s+/g, ' ')
                 .trim();
@@ -520,8 +523,8 @@
         // Thiết lập tất cả nút kiểm tra
         const checkBtns = document.querySelectorAll('.check-btn');
         checkBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const parentExercise = btn.closest('.exercise');
+            btn.addEventListener('click', function(e) {
+                const parentExercise = this.closest('.exercise');
                 const inputs = parentExercise.querySelectorAll('.question-item input');
                 const feedbackDiv = parentExercise.querySelector('.feedback-area');
                 if (!feedbackDiv) return;
@@ -565,12 +568,12 @@
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
+            btn.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
                 tabContents.forEach(tc => tc.classList.remove('active-tab'));
                 document.getElementById(tabId).classList.add('active-tab');
                 tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                this.classList.add('active');
             });
         });
     })();
