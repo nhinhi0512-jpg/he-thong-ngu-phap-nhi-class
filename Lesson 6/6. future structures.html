@@ -158,6 +158,11 @@
             margin: 1.8rem 0 0.8rem;
             font-weight: 700;
         }
+        h4 {
+            color: var(--primary);
+            margin: 1.2rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -189,8 +194,50 @@
             border-radius: 20px;
             margin: 1.2rem 0;
         }
+        .success-box {
+            background: #ecfdf5;
+            border-left: 6px solid var(--success);
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
+        .danger-box {
+            background: #fef2f2;
+            border-left: 6px solid var(--danger);
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+        }
         ul, li {
             margin-left: 1.2rem;
+        }
+        .structure-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .structure-item {
+            background: #f8fafc;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        .structure-item .eng {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        .structure-item .vi {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+        @media (max-width: 700px) {
+            .structure-grid {
+                grid-template-columns: 1fr;
+            }
+            .master-header { padding: 0.8rem 1rem; }
+            .tab-btn { padding: 6px 14px; font-size: 0.75rem; }
+            .card { padding: 1.2rem; }
         }
 
         /* Quiz */
@@ -285,11 +332,6 @@
             padding: 1.8rem;
             font-size: 0.9rem;
         }
-        @media (max-width: 700px) {
-            .master-header { padding: 0.8rem 1rem; }
-            .tab-btn { padding: 6px 14px; font-size: 0.75rem; }
-            .card { padding: 1.2rem; }
-        }
     </style>
 </head>
 <body>
@@ -305,13 +347,14 @@
 </div>
 
 <div class="container">
-    <!-- TABS: 5 tab -->
+    <!-- TABS: 6 tab (đã thêm tab 6) -->
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('tab1')">📘 1. Tương lai Đơn & Tiếp diễn</button>
-        <button class="tab-btn" onclick="openTab('tab2')">📗 2. Tương lai Hoàn thành & HTTD</button>
+        <button class="tab-btn active" onclick="openTab('tab1')">📘 1. TL Đơn & Tiếp diễn</button>
+        <button class="tab-btn" onclick="openTab('tab2')">📗 2. TL Hoàn thành & HTTD</button>
         <button class="tab-btn" onclick="openTab('tab3')">🔍 3. Phân biệt bản chất</button>
         <button class="tab-btn" onclick="openTab('tab4')">✍️ 4. Bí kíp viết lại câu</button>
         <button class="tab-btn" onclick="openTab('tab5')">🎯 5. Trắc nghiệm tổng hợp</button>
+        <button class="tab-btn" onclick="openTab('tab6')">🚀 6. Cấu trúc mở rộng</button>
     </div>
 
     <!-- ========= TAB 1: FUTURE SIMPLE & CONTINUOUS ========= -->
@@ -464,6 +507,209 @@
                 <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
             </form>
             <div id="quizResult" class="result-score"></div>
+        </div>
+    </div>
+
+    <!-- ========= TAB 6: CẤU TRÚC TƯƠNG LAI MỞ RỘNG (MỚI) ========= -->
+    <div id="tab6" class="tab-content">
+        <div class="card">
+            <h2>🚀 6. Cấu trúc tương lai mở rộng</h2>
+            <p style="margin-bottom: 1rem;">Ngoài 6 thì tương lai cơ bản, tiếng Anh còn có rất nhiều cấu trúc khác để diễn tả tương lai. Dưới đây là những cấu trúc thông dụng nhất:</p>
+
+            <!-- ====== NHÓM 1: CẤU TRÚC VỚI ĐỘNG TỪ KHUYẾT THIẾU ====== -->
+            <h3>📌 Nhóm 1: Cấu trúc với động từ khuyết thiếu</h3>
+            
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="eng">🔹 may / might + V</div>
+                    <div class="vi">Diễn tả khả năng có thể xảy ra (không chắc chắn)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> I <u>may</u> go to the party tonight.<br>
+                        <span style="color:#64748b;">→ Tôi có thể đi dự tiệc tối nay.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 could + V</div>
+                    <div class="vi">Khả năng có thể, thường ít chắc chắn hơn may/might</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> It <u>could</u> rain later.<br>
+                        <span style="color:#64748b;">→ Trời có thể mưa sau đó.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 should + V</div>
+                    <div class="vi">Diễn tả điều nên làm hoặc dự đoán có căn cứ</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> You <u>should</u> see a doctor.<br>
+                        <span style="color:#64748b;">→ Bạn nên đi khám bác sĩ.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 shall + V</div>
+                    <div class="vi">Đề nghị hoặc lời gợi ý (thường với I/We)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> <u>Shall</u> we go now?<br>
+                        <span style="color:#64748b;">→ Chúng ta đi bây giờ nhé?</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== NHÓM 2: CẤU TRÚC CHỈ DỰ ĐỊNH ====== -->
+            <h3>📌 Nhóm 2: Cấu trúc chỉ dự định / kế hoạch</h3>
+
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="eng">🔹 be about to + V</div>
+                    <div class="vi">Diễn tả hành động sắp xảy ra ngay (rất gần trong tương lai)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> The movie <u>is about to</u> start.<br>
+                        <span style="color:#64748b;">→ Bộ phim sắp bắt đầu rồi.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 be on the verge of + V-ing</div>
+                    <div class="vi">Sắp sửa làm gì (nhấn mạnh sắp xảy ra)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> The company <u>is on the verge of</u> bankruptcy.<br>
+                        <span style="color:#64748b;">→ Công ty đang trên bờ vực phá sản.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 be due to + V</div>
+                    <div class="vi">Theo lịch trình hoặc dự kiến sẽ xảy ra</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> The train <u>is due to</u> arrive at 10am.<br>
+                        <span style="color:#64748b;">→ Tàu dự kiến đến lúc 10 giờ sáng.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 intend to + V / plan to + V</div>
+                    <div class="vi">Có ý định / kế hoạch làm gì</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> We <u>intend to</u> visit Japan next year.<br>
+                        <span style="color:#64748b;">→ Chúng tôi dự định thăm Nhật năm sau.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== NHÓM 3: CẤU TRÚC ĐIỀU KIỆN ====== -->
+            <h3>📌 Nhóm 3: Cấu trúc tương lai trong câu điều kiện</h3>
+
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="eng">🔹 If + S + V(hiện tại), S + will + V</div>
+                    <div class="vi">Câu điều kiện loại 1 - điều kiện có thật ở hiện tại</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> If it rains, I <u>will stay</u> at home.<br>
+                        <span style="color:#64748b;">→ Nếu trời mưa, tôi sẽ ở nhà.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 Unless + S + V, S + will + V</div>
+                    <div class="vi">"Trừ khi" - diễn tả điều kiện phủ định</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> <u>Unless</u> you hurry, you <u>will miss</u> the bus.<br>
+                        <span style="color:#64748b;">→ Trừ khi bạn nhanh lên, bạn sẽ lỡ xe.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== NHÓM 4: CẤU TRÚC THỜI GIAN ====== -->
+            <h3>📌 Nhóm 4: Tương lai trong mệnh đề thời gian</h3>
+
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="eng">🔹 When / As soon as / After + S + V(hiện tại), S + will + V</div>
+                    <div class="vi">Mệnh đề thời gian dùng hiện tại đơn, mệnh đề chính dùng tương lai</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> <u>When</u> I finish work, I <u>will call</u> you.<br>
+                        <span style="color:#64748b;">→ Khi tôi làm xong, tôi sẽ gọi bạn.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 Before / Until / While + S + V(hiện tại), S + will + V</div>
+                    <div class="vi">Mệnh đề thời gian dùng hiện tại đơn</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> I <u>will wait</u> <u>until</u> you come back.<br>
+                        <span style="color:#64748b;">→ Tôi sẽ đợi cho đến khi bạn quay lại.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== NHÓM 5: CẤU TRÚC ĐẶC BIỆT ====== -->
+            <h3>📌 Nhóm 5: Cấu trúc đặc biệt khác</h3>
+
+            <div class="structure-grid">
+                <div class="structure-item">
+                    <div class="eng">🔹 be to + V</div>
+                    <div class="vi">Diễn tả kế hoạch chính thức, mệnh lệnh hoặc số phận</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> The president <u>is to</u> visit Vietnam.<br>
+                        <span style="color:#64748b;">→ Tổng thống dự kiến sẽ thăm Việt Nam.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 be bound to + V</div>
+                    <div class="vi">Chắc chắn sẽ xảy ra (có căn cứ)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> He's <u>bound to</u> succeed with that attitude.<br>
+                        <span style="color:#64748b;">→ Anh ấy chắc chắn sẽ thành công với thái độ đó.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 be likely to + V</div>
+                    <div class="vi">Có khả năng sẽ xảy ra (khá chắc chắn)</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> It's <u>likely to</u> rain tomorrow.<br>
+                        <span style="color:#64748b;">→ Ngày mai có khả năng trời sẽ mưa.</span>
+                    </div>
+                </div>
+                <div class="structure-item">
+                    <div class="eng">🔹 be about to / be going to</div>
+                    <div class="vi">Phân biệt: about to = sắp xảy ra ngay; going to = dự định/dự đoán</div>
+                    <div style="margin-top:6px; background:#f1f5f9; padding:6px 10px; border-radius:8px; font-size:0.9rem;">
+                        <strong>Ví dụ:</strong> I'm <u>about to</u> leave. (ngay bây giờ)<br>
+                        I'm <u>going to</u> leave soon. (sắp tới)
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== BẢNG TÓM TẮT ====== -->
+            <h3>📋 Bảng tóm tắt nhanh các cấu trúc tương lai mở rộng</h3>
+            <table>
+                <tr><th>Cấu trúc</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+                <tr><td>may / might + V</td><td>Khả năng (không chắc)</td><td>I may come late.</td></tr>
+                <tr><td>could + V</td><td>Khả năng (ít chắc)</td><td>It could snow.</td></tr>
+                <tr><td>should + V</td><td>Lời khuyên / dự đoán</td><td>You should try it.</td></tr>
+                <tr><td>shall + V</td><td>Đề nghị (I/We)</td><td>Shall we dance?</td></tr>
+                <tr><td>be about to + V</td><td>Sắp xảy ra ngay</td><td>The show is about to start.</td></tr>
+                <tr><td>be due to + V</td><td>Theo lịch trình</td><td>The flight is due to land.</td></tr>
+                <tr><td>intend / plan to + V</td><td>Dự định</td><td>I intend to study abroad.</td></tr>
+                <tr><td>be to + V</td><td>Kế hoạch chính thức</td><td>They are to meet at 9.</td></tr>
+                <tr><td>be bound to + V</td><td>Chắc chắn xảy ra</td><td>She's bound to win.</td></tr>
+                <tr><td>be likely to + V</td><td>Có khả năng</td><td>He's likely to pass.</td></tr>
+            </table>
+
+            <div class="success-box">
+                <strong>💡 Lưu ý quan trọng:</strong>
+                <ul>
+                    <li>Các cấu trúc với <strong>may, might, could</strong> diễn tả khả năng, thường không chắc chắn bằng <strong>will</strong>.</li>
+                    <li><strong>Be about to</strong> khác với <strong>be going to</strong>: about to = sắp xảy ra ngay lập tức (trong vài giây/phút), going to = có thể xa hơn.</li>
+                    <li>Trong mệnh đề thời gian (when, as soon as, until, before, after) <strong>luôn dùng hiện tại đơn</strong> để diễn tả tương lai.</li>
+                    <li>Cấu trúc <strong>be to + V</strong> thường dùng trong văn viết trang trọng hoặc tin tức.</li>
+                </ul>
+            </div>
+
+            <div class="formula-box">
+                <strong>📌 Mẹo ghi nhớ nhanh:</strong>
+                <ul>
+                    <li><strong>Không chắc chắn:</strong> may / might / could + V</li>
+                    <li><strong>Sắp xảy ra ngay:</strong> be about to + V</li>
+                    <li><strong>Dự định:</strong> intend to / plan to + V</li>
+                    <li><strong>Chắc chắn:</strong> be bound to / will definitely + V</li>
+                    <li><strong>Lịch trình:</strong> be due to + V</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
