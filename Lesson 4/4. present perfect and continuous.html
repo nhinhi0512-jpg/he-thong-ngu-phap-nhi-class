@@ -19,7 +19,6 @@
             position: relative;
         }
 
-        /* Header giống index */
         .app-header {
             background: rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(4px);
@@ -28,6 +27,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .app-header a {
@@ -48,7 +49,6 @@
             transform: translateX(-3px);
         }
 
-        /* Nút bài tập góc trên bên phải */
         .app-header .practice-btn {
             background: #e67e22;
             color: white;
@@ -67,7 +67,6 @@
             padding: 0 20px 40px;
         }
 
-        /* Card chính đồng bộ phong cách index */
         .main-card {
             background: white;
             border-radius: 32px;
@@ -103,30 +102,32 @@
             font-weight: 500;
         }
 
-        /* Tabs tinh chỉnh giống giao diện mới */
         .tabs-wrapper {
             padding: 0 28px;
             background: white;
             border-bottom: 1px solid #eef2f6;
+            overflow-x: auto;
         }
 
         .tabs {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 4px;
             padding: 16px 0 0;
+            min-width: max-content;
         }
 
         .tab-btn {
-            padding: 12px 24px;
+            padding: 12px 20px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border: none;
             background: transparent;
             color: #4a5568;
             cursor: pointer;
             border-radius: 40px;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .tab-btn:hover {
@@ -140,7 +141,6 @@
             box-shadow: 0 4px 10px rgba(49,130,206,0.3);
         }
 
-        /* Nội dung tab */
         .tab-content {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -156,7 +156,6 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Card nhỏ bên trong */
         .info-card {
             background: #f8fafc;
             border-radius: 24px;
@@ -187,19 +186,49 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
         }
 
         th {
             background-color: #2c3e50;
             color: white;
-            padding: 12px;
+            padding: 10px 12px;
             font-weight: 600;
+            text-align: left;
         }
 
         td {
             border: 1px solid #e2e8f0;
-            padding: 12px;
+            padding: 10px 12px;
             vertical-align: top;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.2rem 0;
+        }
+
+        .table-wrapper table {
+            min-width: 700px;
+        }
+
+        /* === CĂN CHỈNH CỘT CHO BẢNG ĐỘNG TỪ === */
+        .verb-table th:nth-child(1) { width: 45px; }      /* STT */
+        .verb-table th:nth-child(2) { width: 110px; }     /* V1 */
+        .verb-table th:nth-child(3) { width: 110px; }     /* V2 */
+        .verb-table th:nth-child(4) { width: 120px; }     /* V3 */
+        .verb-table th:nth-child(5) { width: 30%; }       /* Ý nghĩa - rộng hơn */
+        .verb-table th:nth-child(6) { width: 40%; }       /* Ví dụ - chiếm phần còn lại */
+
+        .verb-table td:nth-child(5) { 
+            padding-right: 20px;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .verb-table td:nth-child(6) {
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .note-box {
@@ -218,7 +247,6 @@
             margin: 1.2rem 0;
         }
 
-        /* Quiz styles đồng bộ */
         .quiz-container {
             background: #ffffff;
             border-radius: 24px;
@@ -310,6 +338,67 @@
             display: none;
         }
 
+        .irregular-verb-row td:first-child {
+            font-weight: 600;
+            color: #2c5282;
+        }
+
+        .example-sentence {
+            font-style: italic;
+            color: #2d3748;
+        }
+
+        .example-sentence .v3-highlight {
+            color: #e53e3e;
+            font-weight: 600;
+        }
+
+        .search-box {
+            margin: 1rem 0 1.5rem;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 18px;
+            border-radius: 40px;
+            border: 2px solid #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49,130,206,0.2);
+        }
+
+        .search-box .search-btn {
+            background: #3182ce;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .search-box .search-btn:hover {
+            background: #2b6cb0;
+        }
+
+        .verb-count {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 8px;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -336,6 +425,23 @@
             .options-route {
                 grid-template-columns: 1fr;
             }
+            .tabs-wrapper {
+                padding: 0 12px;
+            }
+            .tab-btn {
+                padding: 10px 14px;
+                font-size: 0.75rem;
+            }
+            .table-wrapper table {
+                font-size: 0.8rem;
+                min-width: 600px;
+            }
+            td, th {
+                padding: 6px 8px;
+            }
+            /* Điều chỉnh cột trên mobile */
+            .verb-table th:nth-child(5) { width: 25%; }
+            .verb-table th:nth-child(6) { width: 35%; }
         }
     </style>
 </head>
@@ -359,7 +465,8 @@
                 <button class="tab-btn active" onclick="openTab('htht')">📖 1. Present Perfect</button>
                 <button class="tab-btn" onclick="openTab('hthttd')">⏳ 2. Present Perfect Continuous</button>
                 <button class="tab-btn" onclick="openTab('so_sanh')">⚖️ 3. Phân biệt & For/Since</button>
-                <button class="tab-btn" onclick="openTab('luyentap')">🎯 4. Trắc nghiệm thực chiến</button>
+                <button class="tab-btn" onclick="openTab('luyentap')">🎯 4. Trắc nghiệm</button>
+                <button class="tab-btn" onclick="openTab('irregular')">📚 5. 100 Động từ bất quy tắc</button>
             </div>
         </div>
 
@@ -480,6 +587,38 @@
                 <div id="quizResult" class="result-score"></div>
             </div>
         </div>
+
+        <div id="irregular" class="tab-content">
+            <div class="info-card">
+                <h2>📚 100 Động từ bất quy tắc thường gặp nhất</h2>
+                <p>Danh sách đầy đủ 100 động từ bất quy tắc kèm <strong>câu ví dụ sử dụng V3 (quá khứ phân từ)</strong> – dạng dùng trong các thì hoàn thành.</p>
+                
+                <div class="search-box">
+                    <input type="text" id="verbSearch" placeholder="🔍 Tìm động từ (VD: write, speak, ...)" onkeyup="filterVerbs()">
+                    <button class="search-btn" onclick="filterVerbs()">Tìm kiếm</button>
+                    <button class="search-btn" style="background:#718096;" onclick="resetSearch()">↺ Reset</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="verb-table" id="verbTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>V1 (Nguyên mẫu)</th>
+                                <th>V2 (Quá khứ)</th>
+                                <th>V3 (P.P)</th>
+                                <th>Ý nghĩa</th>
+                                <th>📝 Ví dụ với V3 (Hiện tại hoàn thành)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verbBody">
+                            <!-- Dữ liệu sẽ được sinh bởi JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="verb-count" id="verbCount">Hiển thị 100 / 100 động từ</div>
+            </div>
+        </div>
     </div>
     <footer>
         <p>✨ Lớp Tiếng Anh cô Quỳnh Nhi ✨</p>
@@ -487,16 +626,171 @@
 </div>
 
 <script>
+    // ============= DỮ LIỆU 100 ĐỘNG TỪ BẤT QUY TẮC =============
+    const verbs = [
+        { v1: "be", v2: "was / were", v3: "been", meaning: "thì, là, bị, ở", example: "I have <span class='v3-highlight'>been</span> to London twice." },
+        { v1: "beat", v2: "beat", v3: "beaten / beat", meaning: "đánh, đập", example: "He has <span class='v3-highlight'>beaten</span> his opponent in every match." },
+        { v1: "become", v2: "became", v3: "become", meaning: "trở nên", example: "She has <span class='v3-highlight'>become</span> a famous singer." },
+        { v1: "begin", v2: "began", v3: "begun", meaning: "bắt đầu", example: "The concert has <span class='v3-highlight'>begun</span> already." },
+        { v1: "bend", v2: "bent", v3: "bent", meaning: "uốn cong", example: "He has <span class='v3-highlight'>bent</span> the metal bar." },
+        { v1: "bet", v2: "bet", v3: "bet", meaning: "đặt cược", example: "I have <span class='v3-highlight'>bet</span> all my money on this horse." },
+        { v1: "bid", v2: "bid", v3: "bid", meaning: "trả giá", example: "She has <span class='v3-highlight'>bid</span> $100 for the painting." },
+        { v1: "bind", v2: "bound", v3: "bound", meaning: "buộc, trói", example: "They have <span class='v3-highlight'>bound</span> the package tightly." },
+        { v1: "bite", v2: "bit", v3: "bitten", meaning: "cắn", example: "The dog has <span class='v3-highlight'>bitten</span> the mailman." },
+        { v1: "bleed", v2: "bled", v3: "bled", meaning: "chảy máu", example: "My finger has <span class='v3-highlight'>bled</span> for five minutes." },
+        { v1: "blow", v2: "blew", v3: "blown", meaning: "thổi", example: "The wind has <span class='v3-highlight'>blown</span> the leaves away." },
+        { v1: "break", v2: "broke", v3: "broken", meaning: "phá vỡ", example: "I have <span class='v3-highlight'>broken</span> my phone screen." },
+        { v1: "breed", v2: "bred", v3: "bred", meaning: "nuôi dưỡng, sinh sản", example: "They have <span class='v3-highlight'>bred</span> dogs for 20 years." },
+        { v1: "bring", v2: "brought", v3: "brought", meaning: "mang đến", example: "She has <span class='v3-highlight'>brought</span> some snacks." },
+        { v1: "build", v2: "built", v3: "built", meaning: "xây dựng", example: "They have <span class='v3-highlight'>built</span> a new hospital." },
+        { v1: "bust", v2: "burst", v3: "burst", meaning: "nổ, vỡ", example: "The balloon has <span class='v3-highlight'>burst</span>." },
+        { v1: "buy", v2: "bought", v3: "bought", meaning: "mua", example: "I have <span class='v3-highlight'>bought</span> a new car." },
+        { v1: "cast", v2: "cast", v3: "cast", meaning: "ném, tung", example: "He has <span class='v3-highlight'>cast</span> his vote." },
+        { v1: "catch", v2: "caught", v3: "caught", meaning: "bắt", example: "She has <span class='v3-highlight'>caught</span> a cold." },
+        { v1: "choose", v2: "chose", v3: "chosen", meaning: "chọn, lựa", example: "I have <span class='v3-highlight'>chosen</span> this dress." },
+        { v1: "cling", v2: "clung", v3: "clung", meaning: "bám, dính", example: "The cat has <span class='v3-highlight'>clung</span> to the tree." },
+        { v1: "come", v2: "came", v3: "come", meaning: "đến, đi đến", example: "They have <span class='v3-highlight'>come</span> home." },
+        { v1: "cost", v2: "cost", v3: "cost", meaning: "có giá là", example: "This watch has <span class='v3-highlight'>cost</span> me $500." },
+        { v1: "creep", v2: "crept", v3: "crept", meaning: "bò, trườn, lẻn", example: "The thief has <span class='v3-highlight'>crept</span> into the room." },
+        { v1: "cut", v2: "cut", v3: "cut", meaning: "cắt", example: "I have <span class='v3-highlight'>cut</span> my hair." },
+        { v1: "deal", v2: "dealt", v3: "dealt", meaning: "giao dịch", example: "He has <span class='v3-highlight'>dealt</span> with this problem before." },
+        { v1: "dig", v2: "dug", v3: "dug", meaning: "đào", example: "They have <span class='v3-highlight'>dug</span> a hole in the garden." },
+        { v1: "do", v2: "did", v3: "done", meaning: "làm", example: "I have <span class='v3-highlight'>done</span> my homework." },
+        { v1: "draw", v2: "drew", v3: "drawn", meaning: "vẽ, kéo", example: "She has <span class='v3-highlight'>drawn</span> a beautiful picture." },
+        { v1: "drink", v2: "drank", v3: "drunk", meaning: "uống", example: "He has <span class='v3-highlight'>drunk</span> three cups of coffee." },
+        { v1: "drive", v2: "drove", v3: "driven", meaning: "lái xe", example: "I have <span class='v3-highlight'>driven</span> this road many times." },
+        { v1: "eat", v2: "ate", v3: "eaten", meaning: "ăn", example: "She has <span class='v3-highlight'>eaten</span> all the cookies." },
+        { v1: "fall", v2: "fell", v3: "fallen", meaning: "rơi", example: "The leaves have <span class='v3-highlight'>fallen</span> from the tree." },
+        { v1: "feed", v2: "fed", v3: "fed", meaning: "cho ăn", example: "I have <span class='v3-highlight'>fed</span> the cat." },
+        { v1: "feel", v2: "felt", v3: "felt", meaning: "cảm thấy", example: "I have <span class='v3-highlight'>felt</span> better before." },
+        { v1: "fight", v2: "fought", v3: "fought", meaning: "chiến đấu", example: "They have <span class='v3-highlight'>fought</span> for their rights." },
+        { v1: "find", v2: "found", v3: "found", meaning: "tìm thấy", example: "I have <span class='v3-highlight'>found</span> my keys." },
+        { v1: "fit", v2: "fitted / fit", v3: "fitted / fit", meaning: "làm cho vừa, làm cho hợp", example: "The suit has <span class='v3-highlight'>fit</span> him perfectly." },
+        { v1: "flee", v2: "fled", v3: "fled", meaning: "chạy trốn", example: "They have <span class='v3-highlight'>fled</span> the country." },
+        { v1: "fly", v2: "flew", v3: "flown", meaning: "bay", example: "I have <span class='v3-highlight'>flown</span> to Paris before." },
+        { v1: "forbear", v2: "forbore", v3: "forborne", meaning: "nhịn", example: "He has <span class='v3-highlight'>forborne</span> from complaining." },
+        { v1: "foresee", v2: "foresaw", v3: "foreseen", meaning: "thấy trước", example: "I have <span class='v3-highlight'>foreseen</span> this problem." },
+        { v1: "forget", v2: "forgot", v3: "forgotten", meaning: "quên", example: "I have <span class='v3-highlight'>forgotten</span> his name." },
+        { v1: "forgive", v2: "forgave", v3: "forgiven", meaning: "tha thứ", example: "She has <span class='v3-highlight'>forgiven</span> him." },
+        { v1: "forsake", v2: "forsook", v3: "forsaken", meaning: "ruồng bỏ", example: "He has <span class='v3-highlight'>forsaken</span> his old friends." },
+        { v1: "freeze", v2: "froze", v3: "frozen", meaning: "đóng băng", example: "The lake has <span class='v3-highlight'>frozen</span>." },
+        { v1: "get", v2: "got", v3: "got", meaning: "nhận được", example: "I have <span class='v3-highlight'>got</span> your email." },
+        { v1: "give", v2: "gave", v3: "given", meaning: "cho", example: "She has <span class='v3-highlight'>given</span> me a present." },
+        { v1: "go", v2: "went", v3: "gone", meaning: "đi", example: "He has <span class='v3-highlight'>gone</span> to the store." },
+        { v1: "grind", v2: "ground", v3: "ground", meaning: "nghiền, xay", example: "She has <span class='v3-highlight'>ground</span> the coffee beans." },
+        { v1: "grow", v2: "grew", v3: "grown", meaning: "mọc, trồng", example: "I have <span class='v3-highlight'>grown</span> tomatoes in my garden." },
+        { v1: "hang", v2: "hung", v3: "hung", meaning: "móc lên, treo lên", example: "She has <span class='v3-highlight'>hung</span> the picture on the wall." },
+        { v1: "have", v2: "had", v3: "had", meaning: "có", example: "I have <span class='v3-highlight'>had</span> breakfast." },
+        { v1: "hear", v2: "heard", v3: "heard", meaning: "nghe", example: "I have <span class='v3-highlight'>heard</span> that story before." },
+        { v1: "hew", v2: "hewed", v3: "hewn", meaning: "chặt, đốn", example: "They have <span class='v3-highlight'>hewn</span> the tree down." },
+        { v1: "hide", v2: "hid", v3: "hidden", meaning: "giấu, trốn, nấp", example: "He has <span class='v3-highlight'>hidden</span> the treasure." },
+        { v1: "hit", v2: "hit", v3: "hit", meaning: "đánh", example: "She has <span class='v3-highlight'>hit</span> the target." },
+        { v1: "hold", v2: "held", v3: "held", meaning: "cầm, nắm", example: "I have <span class='v3-highlight'>held</span> this position for years." },
+        { v1: "hurt", v2: "hurt", v3: "hurt", meaning: "làm đau", example: "I have <span class='v3-highlight'>hurt</span> my knee." },
+        { v1: "input", v2: "input", v3: "input", meaning: "đưa vào (máy tính)", example: "I have <span class='v3-highlight'>input</span> the data." },
+        { v1: "keep", v2: "kept", v3: "kept", meaning: "giữ", example: "I have <span class='v3-highlight'>kept</span> my promise." },
+        { v1: "know", v2: "knew", v3: "known", meaning: "biết", example: "I have <span class='v3-highlight'>known</span> her for 10 years." },
+        { v1: "lay", v2: "laid", v3: "laid", meaning: "đặt, để", example: "She has <span class='v3-highlight'>laid</span> the book on the table." },
+        { v1: "lead", v2: "led", v3: "led", meaning: "dẫn dắt", example: "He has <span class='v3-highlight'>led</span> the team to victory." },
+        { v1: "leave", v2: "left", v3: "left", meaning: "rời đi", example: "They have <span class='v3-highlight'>left</span> the building." },
+        { v1: "light", v2: "lit", v3: "lit", meaning: "thắp sáng", example: "She has <span class='v3-highlight'>lit</span> the candle." },
+        { v1: "lose", v2: "lost", v3: "lost", meaning: "mất", example: "I have <span class='v3-highlight'>lost</span> my wallet." },
+        { v1: "make", v2: "made", v3: "made", meaning: "làm, tạo ra", example: "I have <span class='v3-highlight'>made</span> a cake." },
+        { v1: "meet", v2: "met", v3: "met", meaning: "gặp mặt", example: "I have <span class='v3-highlight'>met</span> him once." },
+        { v1: "pay", v2: "paid", v3: "paid", meaning: "trả tiền", example: "I have <span class='v3-highlight'>paid</span> the bill." },
+        { v1: "preset", v2: "preset", v3: "preset", meaning: "thiết lập sẵn, cài đặt sẵn", example: "He has <span class='v3-highlight'>preset</span> the channels." },
+        { v1: "put", v2: "put", v3: "put", meaning: "đặt, để", example: "I have <span class='v3-highlight'>put</span> the keys on the table." },
+        { v1: "read", v2: "read", v3: "read", meaning: "đọc", example: "I have <span class='v3-highlight'>read</span> this book." },
+        { v1: "relay", v2: "relaid", v3: "relaid", meaning: "đặt lại", example: "They have <span class='v3-highlight'>relaid</span> the carpet." },
+        { v1: "rid", v2: "rid", v3: "rid", meaning: "giải thoát", example: "We have <span class='v3-highlight'>rid</span> the house of pests." },
+        { v1: "ride", v2: "rode", v3: "ridden", meaning: "cưỡi", example: "I have <span class='v3-highlight'>ridden</span> a horse." },
+        { v1: "ring", v2: "rang", v3: "rung", meaning: "rung chuông", example: "The bell has <span class='v3-highlight'>rung</span>." },
+        { v1: "rise", v2: "rose", v3: "risen", meaning: "đứng dậy, mọc", example: "The sun has <span class='v3-highlight'>risen</span>." },
+        { v1: "run", v2: "ran", v3: "run", meaning: "chạy", example: "I have <span class='v3-highlight'>run</span> 5 km." },
+        { v1: "say", v2: "said", v3: "said", meaning: "nói", example: "I have <span class='v3-highlight'>said</span> it many times." },
+        { v1: "see", v2: "saw", v3: "seen", meaning: "thấy", example: "I have <span class='v3-highlight'>seen</span> that movie." },
+        { v1: "sell", v2: "sold", v3: "sold", meaning: "bán", example: "I have <span class='v3-highlight'>sold</span> my car." },
+        { v1: "send", v2: "sent", v3: "sent", meaning: "gửi", example: "I have <span class='v3-highlight'>sent</span> the email." },
+        { v1: "set", v2: "set", v3: "set", meaning: "đặt, thiết lập", example: "She has <span class='v3-highlight'>set</span> the table." },
+        { v1: "sew", v2: "sewed", v3: "sewn / sewed", meaning: "may", example: "She has <span class='v3-highlight'>sewn</span> a beautiful dress." },
+        { v1: "shine", v2: "shone", v3: "shone", meaning: "chiếu sáng", example: "The sun has <span class='v3-highlight'>shone</span> all day." },
+        { v1: "sing", v2: "sang", v3: "sung", meaning: "hát", example: "She has <span class='v3-highlight'>sung</span> at the concert." },
+        { v1: "sit", v2: "sat", v3: "sat", meaning: "ngồi", example: "I have <span class='v3-highlight'>sat</span> here for hours." },
+        { v1: "sleep", v2: "slept", v3: "slept", meaning: "ngủ", example: "I have <span class='v3-highlight'>slept</span> well tonight." },
+        { v1: "stand", v2: "stood", v3: "stood", meaning: "đứng", example: "I have <span class='v3-highlight'>stood</span> here for 10 minutes." },
+        { v1: "steal", v2: "stole", v3: "stolen", meaning: "trộm", example: "They have <span class='v3-highlight'>stolen</span> my bike." },
+        { v1: "swim", v2: "swam", v3: "swum", meaning: "bơi", example: "I have <span class='v3-highlight'>swum</span> in the ocean." },
+        { v1: "take", v2: "took", v3: "taken", meaning: "lấy, mang", example: "I have <span class='v3-highlight'>taken</span> the book." },
+        { v1: "teach", v2: "taught", v3: "taught", meaning: "dạy", example: "She has <span class='v3-highlight'>taught</span> here for 10 years." },
+        { v1: "tell", v2: "told", v3: "told", meaning: "kể", example: "I have <span class='v3-highlight'>told</span> you the truth." },
+        { v1: "think", v2: "thought", v3: "thought", meaning: "nghĩ", example: "I have <span class='v3-highlight'>thought</span> about it." },
+        { v1: "wake", v2: "woke", v3: "waken", meaning: "dậy", example: "I have <span class='v3-highlight'>waken</span> up early." },
+        { v1: "wear", v2: "wore", v3: "worn", meaning: "mặc", example: "I have <span class='v3-highlight'>worn</span> this dress before." },
+        { v1: "win", v2: "won", v3: "won", meaning: "thắng", example: "She has <span class='v3-highlight'>won</span> the competition." },
+        { v1: "write", v2: "wrote", v3: "written", meaning: "viết", example: "I have <span class='v3-highlight'>written</span> a letter." }
+    ];
+
+    // ============= RENDER TABLE =============
+    function renderVerbs(filterText = '') {
+        const tbody = document.getElementById('verbBody');
+        const searchTerm = filterText.toLowerCase().trim();
+        
+        let filtered = verbs;
+        if (searchTerm) {
+            filtered = verbs.filter(v => 
+                v.v1.toLowerCase().includes(searchTerm) ||
+                v.v2.toLowerCase().includes(searchTerm) ||
+                v.v3.toLowerCase().includes(searchTerm) ||
+                v.meaning.toLowerCase().includes(searchTerm) ||
+                v.example.toLowerCase().includes(searchTerm)
+            );
+        }
+
+        tbody.innerHTML = '';
+        filtered.forEach((v, index) => {
+            const row = document.createElement('tr');
+            row.className = 'irregular-verb-row';
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td><strong>${v.v1}</strong></td>
+                <td>${v.v2}</td>
+                <td><strong>${v.v3}</strong></td>
+                <td>${v.meaning}</td>
+                <td class="example-sentence">${v.example}</td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        document.getElementById('verbCount').textContent = `Hiển thị ${filtered.length} / ${verbs.length} động từ`;
+    }
+
+    // ============= SEARCH FUNCTIONS =============
+    function filterVerbs() {
+        const input = document.getElementById('verbSearch');
+        renderVerbs(input.value);
+    }
+
+    function resetSearch() {
+        document.getElementById('verbSearch').value = '';
+        renderVerbs('');
+    }
+
+    // ============= TAB SWITCHING =============
     function openTab(tabId) {
         const contents = document.querySelectorAll('.tab-content');
         contents.forEach(content => content.classList.remove('active'));
         const btns = document.querySelectorAll('.tab-btn');
         btns.forEach(btn => btn.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
-        const activeButton = Array.from(btns).find(btn => btn.getAttribute('onclick').includes(tabId));
+        const activeButton = Array.from(btns).find(btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId));
         if(activeButton) activeButton.classList.add('active');
+        
+        if (tabId === 'irregular') {
+            renderVerbs(document.getElementById('verbSearch').value);
+        }
     }
 
+    // ============= QUIZ =============
     function checkQuiz() {
         const questions = document.querySelectorAll('.question');
         let score = 0;
@@ -532,6 +826,11 @@
         resultDiv.innerHTML = `🎉 Kết quả: ${score} / ${questions.length} câu chính xác! ${score === questions.length ? '🏆 Xuất sắc! Bạn đã làm chủ bài 4.' : '📘 Đọc kỹ phần giải thích vàng để tiến bộ hơn!'}`;
         resultDiv.scrollIntoView({ behavior: 'smooth' });
     }
+
+    // ============= KHỞI TẠO =============
+    document.addEventListener('DOMContentLoaded', function() {
+        renderVerbs('');
+    });
 </script>
 </body>
 </html>
