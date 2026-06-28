@@ -30,7 +30,6 @@
             padding: 0;
         }
 
-        /* ===== NAVIGATION BAR ===== */
         .nav-bar {
             display: flex;
             justify-content: space-between;
@@ -84,12 +83,10 @@
             background: #5a67d8;
         }
 
-        /* Main Content */
         .main-content {
             padding: 30px 28px 40px;
         }
 
-        /* Tiêu đề */
         h1 {
             font-size: 2rem;
             font-weight: 700;
@@ -108,7 +105,6 @@
             border-bottom: 2px solid #e2e8f0;
         }
 
-        /* TABS */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -141,7 +137,6 @@
             background: #e2e8f0;
         }
 
-        /* content tab */
         .tab-content {
             display: none;
             animation: fade 0.3s ease;
@@ -154,7 +149,6 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* bài tập */
         .exercise {
             background: #f7fafc;
             margin: 20px 0 35px;
@@ -305,7 +299,6 @@
 </head>
 <body>
 <div class="container">
-    <!-- ===== NAVIGATION BAR ===== -->
     <div class="nav-bar">
         <a href="../index.html" class="home-link">
             <i class="fas fa-home"></i> Về trang chủ
@@ -317,24 +310,20 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
     <div class="main-content">
         <h1>🕰️ Past Simple & Past Continuous</h1>
         <div class="sub">Hệ thống ngữ pháp tiếng Anh cơ bản - Nhi's Class</div>
 
-        <!-- Tabs -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="past-simple"><i class="fas fa-calendar-check"></i> Past Simple</button>
             <button class="tab-btn" data-tab="past-continuous"><i class="fas fa-spinner"></i> Past Continuous</button>
             <button class="tab-btn" data-tab="past-mixed"><i class="fas fa-code-branch"></i> Mixed Exercises</button>
         </div>
 
-        <!-- ==================== TAB 1: PAST SIMPLE ==================== -->
+        <!-- ========== TAB 1: PAST SIMPLE ========== -->
         <div id="past-simple" class="tab-content active-tab">
-            
-            <!-- Dạng 1 -->
             <div class="exercise">
-                <div class="ex-title">📝 3.1 Chia động từ ở Quá khứ đơn (Động từ Quy tắc & Bất quy tắc)</div>
+                <div class="ex-title">📝 3.1 Chia động từ ở Quá khứ đơn</div>
                 <div class="question-list">
                     <div class="question-item"><span class="question-text">1. Yesterday, I (walk) ________ to school instead of taking the bus.</span> <input type="text" data-answers='["walked"]'></div>
                     <div class="question-item"><span class="question-text">2. They (buy) ________ a beautiful new house in London last month.</span> <input type="text" data-answers='["bought"]'></div>
@@ -351,7 +340,6 @@
                 <div class="feedback-area" id="fb-3.1"></div>
             </div>
 
-            <!-- Dạng 2 -->
             <div class="exercise">
                 <div class="ex-title">📝 3.2 Điền dạng đúng của "To be" (was / were / wasn't / weren't)</div>
                 <div class="question-list">
@@ -359,7 +347,7 @@
                     <div class="question-item"><span class="question-text">12. Why ________ you absent from the English class yesterday?</span> <input type="text" data-answers='["were"]'></div>
                     <div class="question-item"><span class="question-text">13. My parents ________ at home last night; they went out for dinner.</span> <input type="text" data-answers='["weren\'t","were not"]'></div>
                     <div class="question-item"><span class="question-text">14. I ________ tired after work, so I went straight to bed.</span> <input type="text" data-answers='["was"]'></div>
-                    <div class="question-item"><span class="question-text">15. ________ James at the office when you called?</span> <input type="text" data-answers='["Was"]'></div>
+                    <div class="question-item"><span class="question-text">15. ________ James at the office when you called?</span> <input type="text" data-answers='["was"]'></div>
                     <div class="question-item"><span class="question-text">16. The exams ________ very difficult, so many students failed.</span> <input type="text" data-answers='["were"]'></div>
                     <div class="question-item"><span class="question-text">17. Don't worry, the dogs ________ dangerous at all.</span> <input type="text" data-answers='["weren\'t","were not"]'></div>
                     <div class="question-item"><span class="question-text">18. There ________ a beautiful flower garden here ten years ago.</span> <input type="text" data-answers='["was"]'></div>
@@ -370,7 +358,6 @@
                 <div class="feedback-area" id="fb-3.2"></div>
             </div>
 
-            <!-- Dạng 3 -->
             <div class="exercise">
                 <div class="ex-title">📝 3.3 Sắp xếp từ hoàn chỉnh câu hỏi / câu phủ định</div>
                 <div class="question-list">
@@ -390,11 +377,10 @@
             </div>
         </div>
 
-        <!-- ==================== TAB 2: PAST CONTINUOUS ==================== -->
+        <!-- ========== TAB 2: PAST CONTINUOUS ========== -->
         <div id="past-continuous" class="tab-content">
-            
             <div class="exercise">
-                <div class="ex-title">📝 3.4 Chia động từ ở Quá khứ tiếp diễn (was/were + V-ing)</div>
+                <div class="ex-title">📝 3.4 Chia động từ ở Quá khứ tiếp diễn</div>
                 <div class="question-list">
                     <div class="question-item"><span class="question-text">1. At 8 PM yesterday, I (watch) ________ my favorite TV show.</span> <input type="text" data-answers='["was watching"]'></div>
                     <div class="question-item"><span class="question-text">2. What (you / do) ________ when the fire alarm started ringing?</span> <input type="text" data-answers='["were you doing"]'></div>
@@ -414,23 +400,23 @@
             <div class="exercise">
                 <div class="ex-title">📝 3.5 Tìm và sửa lỗi sai duy nhất trong câu</div>
                 <div class="question-list">
-                    <div class="question-item"><span class="question-text">11. We was playing football when it started to storm. → <span class="hint">(Sửa 'was' thành...)</span></span> <input type="text" data-answers='["were"]'></div>
-                    <div class="question-item"><span class="question-text">12. What were she doing at 10 o'clock last night? → <span class="hint">(Sửa 'were' thành...)</span></span> <input type="text" data-answers='["was"]'></div>
-                    <div class="question-item"><span class="question-text">13. They weren't listen to the music attentively. → <span class="hint">(Sửa 'listen' thành...)</span></span> <input type="text" data-answers='["listening"]'></div>
-                    <div class="question-item"><span class="question-text">14. I was makeing a delicious cake when the guests arrived. → <span class="hint">(Sửa lỗi chính tả động từ...)</span></span> <input type="text" data-answers='["making"]'></div>
-                    <div class="question-item"><span class="question-text">15. While I studied, my phone suddenly rang. → <span class="hint">(Chia lại hành động kéo dài thành...)</span></span> <input type="text" data-answers='["was studying"]'></div>
-                    <div class="question-item"><span class="question-text">16. The sun were shining brightly all morning. → <span class="hint">(Sửa 'were' thành...)</span></span> <input type="text" data-answers='["was"]'></div>
-                    <div class="question-item"><span class="question-text">17. What did you doing at this time yesterday afternoon? → <span class="hint">(Sửa 'did' thành...)</span></span> <input type="text" data-answers='["were"]'></div>
-                    <div class="question-item"><span class="question-text">18. She not was driving carefully when the accident happened. → <span class="hint">(Đổi vị trí 'not was' thành...)</span></span> <input type="text" data-answers='["was not","wasn\'t"]'></div>
-                    <div class="question-item"><span class="question-text">19. He was runing away from the big dog. → <span class="hint">(Sửa lỗi chính tả động từ...)</span></span> <input type="text" data-answers='["running"]'></div>
-                    <div class="question-item"><span class="question-text">20. The children was sleeping peacefully in their beds. → <span class="hint">(Sửa 'was' thành...)</span></span> <input type="text" data-answers='["were"]'></div>
+                    <div class="question-item"><span class="question-text">11. We was playing football when it started to storm. → </span> <input type="text" data-answers='["were"]'></div>
+                    <div class="question-item"><span class="question-text">12. What were she doing at 10 o'clock last night? → </span> <input type="text" data-answers='["was"]'></div>
+                    <div class="question-item"><span class="question-text">13. They weren't listen to the music attentively. → </span> <input type="text" data-answers='["listening"]'></div>
+                    <div class="question-item"><span class="question-text">14. I was makeing a delicious cake when the guests arrived. → </span> <input type="text" data-answers='["making"]'></div>
+                    <div class="question-item"><span class="question-text">15. While I studied, my phone suddenly rang. → </span> <input type="text" data-answers='["was studying"]'></div>
+                    <div class="question-item"><span class="question-text">16. The sun were shining brightly all morning. → </span> <input type="text" data-answers='["was"]'></div>
+                    <div class="question-item"><span class="question-text">17. What did you doing at this time yesterday afternoon? → </span> <input type="text" data-answers='["were"]'></div>
+                    <div class="question-item"><span class="question-text">18. She not was driving carefully when the accident happened. → </span> <input type="text" data-answers='["was not","wasn\'t"]'></div>
+                    <div class="question-item"><span class="question-text">19. He was runing away from the big dog. → </span> <input type="text" data-answers='["running"]'></div>
+                    <div class="question-item"><span class="question-text">20. The children was sleeping peacefully in their beds. → </span> <input type="text" data-answers='["were"]'></div>
                 </div>
                 <button class="check-btn" data-exercise="3.5">✨ Kiểm tra 3.5</button>
                 <div class="feedback-area" id="fb-3.5"></div>
             </div>
 
             <div class="exercise">
-                <div class="ex-title">📝 3.6 Trả lời ngắn câu hỏi Yes/No (Short answers)</div>
+                <div class="ex-title">📝 3.6 Trả lời ngắn câu hỏi Yes/No</div>
                 <div class="question-list">
                     <div class="question-item"><span class="question-text">21. Were you doing your homework at 9 PM? → No, ________.</span> <input type="text" data-answers='["I wasn\'t","I was not"]'></div>
                     <div class="question-item"><span class="question-text">22. Was Anna crying when she left the room? → Yes, ________.</span> <input type="text" data-answers='["she was"]'></div>
@@ -448,11 +434,10 @@
             </div>
         </div>
 
-        <!-- ==================== TAB 3: MIXED EXERCISES ==================== -->
+        <!-- ========== TAB 3: MIXED EXERCISES ========== -->
         <div id="past-mixed" class="tab-content">
-            
             <div class="exercise">
-                <div class="ex-title">📝 3.7 Phân biệt Past Simple và Past Continuous (Điền từ dựa vào When / While)</div>
+                <div class="ex-title">📝 3.7 Phân biệt Past Simple và Past Continuous</div>
                 <div class="question-list">
                     <div class="question-item"><span class="question-text">1. I was walking down the street when I (meet) ________ my old friend.</span> <input type="text" data-answers='["met"]'></div>
                     <div class="question-item"><span class="question-text">2. While they (have) ________ a picnic, it suddenly started to pour with rain.</span> <input type="text" data-answers='["were having"]'></div>
@@ -472,11 +457,11 @@
             <div class="exercise">
                 <div class="ex-title">📝 3.8 Chia dạng đúng của cả 2 động từ trong ngoặc</div>
                 <div class="question-list">
-                    <div class="question-item"><span class="question-text">11. I (drop) ________ my keys while I (run) ________ for the bus.</span> <input type="text" data-answers='["dropped, running","dropped, was running"]' placeholder="V1, V2"></div>
+                    <div class="question-item"><span class="question-text">11. I (drop) ________ my keys while I (run) ________ for the bus.</span> <input type="text" data-answers='["dropped, was running"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">12. While Tom (play) ________ tennis, he (hurt) ________ his ankle.</span> <input type="text" data-answers='["was playing, hurt"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">13. We (not / go) ________ out because it (rain) ________ heavily.</span> <input type="text" data-answers='["didn\'t go, was raining","did not go, was raining"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">14. What (you / think) ________ about when the boss (ask) ________ you?</span> <input type="text" data-answers='["were you thinking, asked"]' placeholder="V1, V2"></div>
-                    <div class="question-item"><span class="question-text">15. She (burn) ________ her hand while she (cook) ________ dinner.</span> <input type="text" data-answers='["burnt, cooking","burned, cooking","burnt, was cooking","burned, was cooking"]' placeholder="V1, V2"></div>
+                    <div class="question-item"><span class="question-text">15. She (burn) ________ her hand while she (cook) ________ dinner.</span> <input type="text" data-answers='["burnt, was cooking","burned, was cooking"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">16. The thief (steal) ________ the map while the guards (sleep) ________.</span> <input type="text" data-answers='["stole, were sleeping"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">17. I (not / see) ________ you at the café because you (sit) ________ in the corner.</span> <input type="text" data-answers='["didn\'t see, were sitting","did not see, were sitting"]' placeholder="V1, V2"></div>
                     <div class="question-item"><span class="question-text">18. When I (arrive) ________ at the party, everyone (dance) ________ happily.</span> <input type="text" data-answers='["arrived, was dancing","arrived, were dancing"]' placeholder="V1, V2"></div>
@@ -513,14 +498,12 @@
 
 <script>
     (function() {
-        // Hàm chuẩn hóa so sánh nhiều đáp án - xử lý cả didn't/did not, wasn't/was not, weren't/were not
+        // Hàm chuẩn hóa so sánh - KHÔNG xóa dấu nháy đơn
         function normalizeString(str) {
             return str.trim()
                 .toLowerCase()
-                // Bỏ tất cả dấu nháy đơn (cả ' và ')
-                .replace(/['']/g, '')
-                // Bỏ dấu câu ở cuối câu
-                .replace(/[.,!?;:]+$/, '')
+                // Chỉ bỏ dấu câu ở cuối câu (., !, ?, ;, :)
+                .replace(/[.!?;:]+$/, '')
                 // Nhiều khoảng trắng -> 1 khoảng trắng
                 .replace(/\s+/g, ' ')
                 .trim();
@@ -538,7 +521,6 @@
         const checkBtns = document.querySelectorAll('.check-btn');
         checkBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const exId = btn.getAttribute('data-exercise');
                 const parentExercise = btn.closest('.exercise');
                 const inputs = parentExercise.querySelectorAll('.question-item input');
                 const feedbackDiv = parentExercise.querySelector('.feedback-area');
@@ -552,12 +534,18 @@
                     let accepted;
                     try {
                         accepted = JSON.parse(rawAnswers);
-                    } catch(e) { accepted = [rawAnswers]; }
+                    } catch(e) { 
+                        // Nếu parse thất bại, thử thay thế dấu nháy
+                        try {
+                            accepted = JSON.parse(rawAnswers.replace(/'/g, '"'));
+                        } catch(e2) {
+                            accepted = [rawAnswers];
+                        }
+                    }
                     const userVal = inp.value;
                     const valid = isAnswerValid(userVal, accepted);
                     if (valid) correctCount++;
                     
-                    // đánh dấu viền xanh/đỏ
                     inp.style.border = valid ? "2px solid #38a169" : "2px solid #e53e3e";
                     if (userVal.trim() === "") inp.style.border = "1px solid #cbd5e0";
                 });
@@ -573,7 +561,7 @@
             });
         });
 
-        // Chức năng chuyển đổi TAB mượt mà
+        // Chức năng chuyển đổi TAB
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         tabBtns.forEach(btn => {
