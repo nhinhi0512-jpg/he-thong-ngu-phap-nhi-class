@@ -212,6 +212,60 @@
             font-size: 1.2rem;
         }
 
+        /* ===== CUSTOM USE CASE BOXES ===== */
+        .use-case-box {
+            background: #f0f7ff;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .use-case-box h4 {
+            color: #2d3748;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .use-case-box .example-en {
+            font-weight: 500;
+            color: #1a202c;
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .use-case-box .example-vi {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-left: 0.5rem;
+        }
+
+        .use-case-box .meaning {
+            background: #e8f0fe;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #2b4c7e;
+            margin-top: 0.3rem;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .use-case-grid .use-case-box {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -244,6 +298,14 @@
         .warning-box {
             background: #fdf2e9;
             border-left: 4px solid #e67e22;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .danger-box {
+            background: #fde8e8;
+            border-left: 4px solid #e53e3e;
             padding: 1rem;
             margin: 1rem 0;
             border-radius: 0 12px 12px 0;
@@ -355,6 +417,28 @@
             display: none;
         }
 
+        /* ===== TIME SIGNAL BADGE ===== */
+        .signal-badge {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin: 0.2rem 0.2rem 0.2rem 0;
+        }
+
+        .signal-badge.past-simple {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+
+        .signal-badge.past-cont {
+            background: #fbb6ce;
+            color: #9b2c2c;
+        }
+
         footer {
             text-align: center;
             font-size: 0.75rem;
@@ -427,6 +511,52 @@
             <p>Hãy nhìn vào cuộc đời của nhà soạn nhạc thiên tài Wolfgang Amadeus Mozart. Ông sống từ năm 1756 đến năm 1791. Ông bắt đầu sáng tác từ lúc 5 tuổi và đã viết hơn 600 tác phẩm âm nhạc. Ông mất năm 35 tuổi.</p>
             <p>Tất cả các hành động này (<em>lived, started, wrote, was, died</em>) đều đã <strong>xảy ra và kết thúc hoàn toàn trong quá khứ</strong>. Đó chính là bản chất cốt lõi của Quá khứ đơn!</p>
 
+            <!-- ===== CÁCH DÙNG CHI TIẾT + VÍ DỤ ===== -->
+            <h3>📌 Các cách dùng của Quá khứ đơn</h3>
+
+            <div class="use-case-grid">
+                <div class="use-case-box">
+                    <h4>1️⃣ Hành động đã xảy ra và kết thúc trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> I <u>visited</u> my grandmother yesterday.</div>
+                    <div class="example-vi">→ Tôi <u>đã thăm</u> bà tôi hôm qua.</div>
+                    <div class="meaning">📅 Việc thăm bà đã xong, không còn liên quan đến hiện tại.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>2️⃣ Một chuỗi các hành động nối tiếp nhau trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> She <u>woke</u> up, <u>had</u> breakfast, and <u>went</u> to school.</div>
+                    <div class="example-vi">→ Cô ấy <u>thức dậy</u>, <u>ăn sáng</u>, và <u>đi</u> đến trường.</div>
+                    <div class="meaning">⏳ Các hành động xảy ra lần lượt, giống như kể một câu chuyện.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>3️⃣ Một thói quen hoặc sự việc lặp đi lặp lại trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> When I was a child, I <u>played</u> football every day.</div>
+                    <div class="example-vi">→ Khi tôi còn nhỏ, tôi <u>chơi</u> bóng đá mỗi ngày.</div>
+                    <div class="meaning">⚽ Đây là thói quen trong quá khứ, bây giờ không còn nữa.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>4️⃣ Một sự thật hoặc trạng thái trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> She <u>was</u> very shy when she <u>was</u> young.</div>
+                    <div class="example-vi">→ Cô ấy <u>đã rất</u> nhút nhát khi cô ấy còn trẻ.</div>
+                    <div class="meaning">🧠 Dùng với động từ trạng thái (was/were, knew, liked...)</div>
+                </div>
+            </div>
+
+            <!-- Dấu hiệu nhận biết -->
+            <div class="note-box">
+                <strong>⏰ Dấu hiệu nhận biết - Quá khứ đơn:</strong>
+                <div style="margin-top: 6px;">
+                    <span class="signal-badge past-simple">yesterday</span>
+                    <span class="signal-badge past-simple">last week / month / year</span>
+                    <span class="signal-badge past-simple">ago (2 days ago)</span>
+                    <span class="signal-badge past-simple">in 2010</span>
+                    <span class="signal-badge past-simple">when I was young</span>
+                    <span class="signal-badge past-simple">the day before yesterday</span>
+                </div>
+            </div>
+
             <h3>A. Cấu trúc câu với Động Từ Thường</h3>
             <table>
                 <thead>
@@ -464,6 +594,51 @@
             <p>Ví dụ: Hôm qua Karen và Joe chơi quần vợt từ 10h00 đến 11h30. Vào lúc <strong>10h30</strong>, họ <strong>were playing</strong> tennis.</p>
             <p><strong>Bản chất:</strong> Diễn tả hành động <strong>đang diễn ra dở dang</strong> tại một thời điểm xác định trong quá khứ.</p>
 
+            <!-- ===== CÁCH DÙNG CHI TIẾT + VÍ DỤ ===== -->
+            <h3>📌 Các cách dùng của Quá khứ tiếp diễn</h3>
+
+            <div class="use-case-grid">
+                <div class="use-case-box">
+                    <h4>1️⃣ Hành động đang xảy ra tại một thời điểm cụ thể trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> At 8 PM last night, I <u>was watching</u> a movie.</div>
+                    <div class="example-vi">→ Lúc 8 giờ tối qua, tôi <u>đang xem</u> một bộ phim.</div>
+                    <div class="meaning">🎬 Tại đúng thời điểm đó, hành động đang diễn ra.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>2️⃣ Hành động đang diễn ra thì có hành động khác xen vào</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> I <u>was walking</u> home when I <u>met</u> Dan.</div>
+                    <div class="example-vi">→ Tôi <u>đang đi bộ</u> về nhà thì tôi <u>gặp</u> Dan.</div>
+                    <div class="meaning">🚶‍♂️ Đi bộ (dài) là QKTD, gặp Dan (ngắn) là QKĐ.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>3️⃣ Hai hoặc nhiều hành động xảy ra cùng lúc trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> While I <u>was studying</u>, my brother <u>was playing</u> games.</div>
+                    <div class="example-vi">→ Trong khi tôi <u>đang học</u> thì em trai tôi <u>đang chơi</u> game.</div>
+                    <div class="meaning">🎮 Cả hai hành động đều kéo dài và xảy ra đồng thời.</div>
+                </div>
+
+                <div class="use-case-box">
+                    <h4>4️⃣ Miêu tả bối cảnh / khung cảnh trong quá khứ</h4>
+                    <div class="example-en"><strong>Ví dụ:</strong> The sun <u>was shining</u>, the birds <u>were singing</u>.</div>
+                    <div class="example-vi">→ Mặt trời <u>đang tỏa nắng</u>, những chú chim <u>đang hót</u>.</div>
+                    <div class="meaning">🌅 Dùng để mở đầu một câu chuyện, tạo không khí.</div>
+                </div>
+            </div>
+
+            <!-- Dấu hiệu nhận biết -->
+            <div class="note-box">
+                <strong>⏰ Dấu hiệu nhận biết - Quá khứ tiếp diễn:</strong>
+                <div style="margin-top: 6px;">
+                    <span class="signal-badge past-cont">at 5 PM yesterday</span>
+                    <span class="signal-badge past-cont">this time last year</span>
+                    <span class="signal-badge past-cont">when + QKĐ</span>
+                    <span class="signal-badge past-cont">while + QKTD</span>
+                    <span class="signal-badge past-cont">all day yesterday</span>
+                </div>
+            </div>
+
             <h3>Công thức</h3>
             <table>
                 <thead>
@@ -476,15 +651,10 @@
                 </tbody>
             </table>
 
-            <h3>Dấu hiệu nhận biết</h3>
-            <ul>
-                <li>At 10 o'clock last night, at this time last year...</li>
-                <li>Đi kèm <strong>When/While</strong> trong câu phức.</li>
-            </ul>
-
-            <div class="warning-box">
-                <strong>⚠️ Lưu ý:</strong> Động từ trạng thái (know, want, need, believe) <strong>không dùng -ing</strong>.<br>
-                ❌ <del>We were knowing each other.</del> → ✅ <strong>We knew each other.</strong>
+            <div class="danger-box">
+                <strong>⚠️ Lưu ý quan trọng:</strong> Động từ trạng thái (state verbs) như <strong>know, want, need, believe, like, hate, prefer</strong> <strong>KHÔNG</strong> dùng ở dạng tiếp diễn (-ing).<br>
+                ❌ <del>We were knowing each other.</del> → ✅ <strong>We knew each other.</strong><br>
+                ❌ <del>I was wanting a drink.</del> → ✅ <strong>I wanted a drink.</strong>
             </div>
         </div>
     </div>
@@ -495,23 +665,55 @@
             <h2>3. Sự Giao Thoa Giữa Hai Thì</h2>
             <p>Khi hai thì này xuất hiện trong cùng một câu, hãy nhớ quy tắc vàng:</p>
 
-            <div class="warning-box" style="border-left-color: #e53e3e;">
-                <h3 style="margin-top:0; color:#e53e3e;">🔥 Quy Tắc Vàng</h3>
+            <div class="danger-box" style="border-left-color: #e53e3e;">
+                <h3 style="margin-top:0; color:#e53e3e;">🔥 QUY TẮC VÀNG</h3>
                 <ul>
-                    <li>Hành động <strong>ĐANG DIỄN RA</strong> (kéo dài) → <strong>Quá Khứ Tiếp Diễn</strong></li>
-                    <li>Hành động bất ngờ <strong>XEN NGANG</strong> (ngắn) → <strong>Quá Khứ Đơn</strong></li>
+                    <li>Hành động <strong>ĐANG DIỄN RA</strong> (kéo dài, làm nền) → <strong>Quá Khứ Tiếp Diễn</strong></li>
+                    <li>Hành động bất ngờ <strong>XEN NGANG</strong> (ngắn, cắt ngang) → <strong>Quá Khứ Đơn</strong></li>
                 </ul>
             </div>
 
-            <h3>Ví dụ kinh điển</h3>
-            <p><em>"We <u>were walking</u> home when I <u>met</u> Dan."</em><br>
-            → Đang đi bộ (dài) thì gặp Dan (ngắn xen vào).</p>
+            <h3>Ví dụ so sánh để hiểu rõ hơn</h3>
 
             <table>
-                <tr><th>When Karen arrived, we <u>were having</u> dinner.</th>
-                <th>When Karen arrived, we <u>had</u> dinner.</th></tr>
-                <tr><td>Đang ăn dở thì Karen đến</td><td>Karen đến rồi chúng tôi mới ăn</td></tr>
+                <thead>
+                    <tr><th style="width:50%;">When Karen arrived, we <u>were having</u> dinner.</th>
+                        <th style="width:50%;">When Karen arrived, we <u>had</u> dinner.</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🍽️ Chúng tôi <strong>đang ăn dở</strong> thì Karen đến.</td>
+                        <td>🚪 Karen đến <strong>rồi</strong> chúng tôi mới ăn.</td>
+                    </tr>
+                    <tr>
+                        <td>→ QKTD (<em>were having</em>) diễn tả hành động đang diễn ra.</td>
+                        <td>→ QKĐ (<em>had</em>) diễn tả hành động nối tiếp sau.</td>
+                    </tr>
+                </tbody>
             </table>
+
+            <h3>Một số ví dụ khác</h3>
+            <div class="use-case-box">
+                <div class="example-en">📌 <u>While</u> I <strong>was reading</strong>, the phone <strong>rang</strong>.</div>
+                <div class="example-vi">→ Trong khi tôi <strong>đang đọc</strong> sách thì điện thoại <strong>reo</strong>.</div>
+            </div>
+            <div class="use-case-box">
+                <div class="example-en">📌 We <strong>were playing</strong> football <u>when</u> it <strong>started</strong> to rain.</div>
+                <div class="example-vi">→ Chúng tôi <strong>đang chơi</strong> bóng đá thì trời <strong>đổ mưa</strong>.</div>
+            </div>
+            <div class="use-case-box">
+                <div class="example-en">📌 <u>While</u> my mother <strong>was cooking</strong>, my father <strong>was watching</strong> TV.</div>
+                <div class="example-vi">→ Trong khi mẹ tôi <strong>đang nấu</strong> ăn thì bố tôi <strong>đang xem</strong> TV.</div>
+            </div>
+
+            <div class="warning-box">
+                <strong>🧠 Mẹo ghi nhớ:</strong>
+                <p style="margin-top:6px;"><em>"WHILE + dài (QKTD), WHEN + ngắn (QKĐ)"</em> hoặc <em>"WHILE + QKTD, QKĐ"</em></p>
+                <ul>
+                    <li><strong>While</strong> I was walking, I <strong>saw</strong> an accident.</li>
+                    <li><strong>When</strong> I saw an accident, I <strong>called</strong> the police.</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -522,7 +724,6 @@
             <p>Chọn đáp án đúng nhất cho mỗi câu hỏi bên dưới.</p>
             
             <form id="quizForm">
-                <!-- Các câu hỏi giữ nguyên như cũ -->
                 <div class="question" data-correct="B"><p class="question-text">1. Mozart _______ from 1756 to 1791.</p><div class="options-route"><label class="option-label"><input type="radio" name="q1" value="A"> was living</label><label class="option-label"><input type="radio" name="q1" value="B"> lived</label><label class="option-label"><input type="radio" name="q1" value="C"> lives</label><label class="option-label"><input type="radio" name="q1" value="D"> live</label></div><div class="explanation">Hành động trong quá khứ đã kết thúc → Quá khứ đơn.</div></div>
                 <div class="question" data-correct="C"><p class="question-text">2. Matt phoned us while we _______ dinner yesterday.</p><div class="options-route"><label class="option-label"><input type="radio" name="q2" value="A"> had</label><label class="option-label"><input type="radio" name="q2" value="B"> have</label><label class="option-label"><input type="radio" name="q2" value="C"> were having</label><label class="option-label"><input type="radio" name="q2" value="D"> was having</label></div><div class="explanation">Đang ăn tối (dài) thì Matt gọi (ngắn).</div></div>
                 <div class="question" data-correct="A"><p class="question-text">3. I _______ anything because I didn't have any money.</p><div class="options-route"><label class="option-label"><input type="radio" name="q3" value="A"> didn't buy</label><label class="option-label"><input type="radio" name="q3" value="B"> didn't bought</label><label class="option-label"><input type="radio" name="q3" value="C"> don't buy</label><label class="option-label"><input type="radio" name="q3" value="D"> wasn't buy</label></div><div class="explanation">Phủ định quá khứ đơn: didn't + V nguyên thể.</div></div>
@@ -601,7 +802,17 @@
 
         const resultDiv = document.getElementById('quizResult');
         resultDiv.style.display = 'block';
-        resultDiv.innerHTML = `🎉 Bạn đã trả lời đúng <strong>${score}</strong> / ${questions.length} câu! ${score === questions.length ? '🌟 Xuất sắc!' : '✍️ Xem phần giải thích màu vàng nhé!'}`;
+        let message = '';
+        if (score === questions.length) {
+            message = '🌟 Xuất sắc! Bạn đã nắm vững kiến thức!';
+        } else if (score >= 15) {
+            message = '👍 Tốt lắm! Hãy xem lại các câu sai để hiểu thêm nhé!';
+        } else if (score >= 10) {
+            message = '📖 Cố gắng thêm chút nữa! Đọc kỹ phần lý thuyết ở các tab trên nhé!';
+        } else {
+            message = '🔁 Bạn nên xem lại toàn bộ lý thuyết từ đầu. Đừng nản, học lại sẽ hiểu hơn!';
+        }
+        resultDiv.innerHTML = `🎉 Bạn đã trả lời đúng <strong>${score}</strong> / ${questions.length} câu! ${message}`;
         resultDiv.scrollIntoView({ behavior: 'smooth' });
     }
 </script>
