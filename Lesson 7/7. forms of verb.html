@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bí Kíp Làm Chủ: Gerund và To-infinitive | Anh Ngữ Toàn Diện</title>
+    <title>Bí Kíp Làm Chủ: Gerund, To-infinitive & Question words + To-inf | Anh Ngữ Toàn Diện</title>
     <style>
         * {
             margin: 0;
@@ -11,24 +11,24 @@
             box-sizing: border-box;
         }
 
-        /* Giao diện chính - gam màu cam nhạt chủ đạo */
+        /* Giao diện chính - gam màu cam nhạt trầm ấm */
         :root {
-            --primary: #2c3e50;
-            --secondary: #d97706;
-            --accent: #f59e0b;
-            --success: #2ecc71;
-            --warning: #f1c40f;
-            --danger: #e74c3c;
-            --light: #f8f9fa;
-            --dark: #34495e;
-            --gradient-start: #F97316;
-            --gradient-end: #EA580C;
+            --primary: #4a3220;
+            --secondary: #b87333;
+            --accent: #d4a373;
+            --success: #6b8c5c;
+            --warning: #d4a373;
+            --danger: #b34a4a;
+            --light: #fcf6ef;
+            --dark: #3d2c1e;
+            --gradient-start: #d4a373;
+            --gradient-end: #b87333;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, 'Poppins', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            background: linear-gradient(135deg, #e8d5b8 0%, #d4a373 100%);
             min-height: 100vh;
             margin: 0;
             padding: 0;
@@ -36,7 +36,7 @@
 
         /* Header với nút điều hướng */
         .master-header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 248, 240, 0.25);
             backdrop-filter: blur(8px);
             padding: 1rem 2rem;
             display: flex;
@@ -44,47 +44,48 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(180, 140, 100, 0.3);
+            box-shadow: 0 4px 12px rgba(120, 80, 50, 0.15);
         }
 
         .nav-home {
             display: flex;
             align-items: center;
             gap: 12px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 248, 240, 0.3);
             padding: 8px 20px;
             border-radius: 60px;
             transition: all 0.2s ease;
             text-decoration: none;
-            color: white;
+            color: #4a3220;
             font-weight: 600;
             backdrop-filter: blur(4px);
+            border: 1px solid rgba(180, 140, 100, 0.2);
         }
 
         .nav-home:hover {
-            background: white;
-            color: #F97316;
+            background: #fcf6ef;
+            color: #b87333;
             transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 14px rgba(120, 80, 50, 0.2);
         }
 
         .nav-home svg {
             width: 22px;
             height: 22px;
-            fill: white;
+            fill: #4a3220;
             transition: fill 0.2s;
         }
 
         .nav-home:hover svg {
-            fill: #F97316;
+            fill: #b87333;
         }
 
         .nav-practice {
             display: flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #48bb78, #2f855a);
+            background: linear-gradient(135deg, #b87333, #8b5a2b);
             padding: 8px 24px;
             border-radius: 60px;
             text-decoration: none;
@@ -92,13 +93,13 @@
             font-weight: 700;
             font-size: 1rem;
             transition: all 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(120, 80, 50, 0.25);
         }
 
         .nav-practice:hover {
             transform: scale(1.02);
-            background: linear-gradient(135deg, #38a169, #276749);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+            background: linear-gradient(135deg, #8b5a2b, #6b4420);
+            box-shadow: 0 8px 18px rgba(120, 80, 50, 0.3);
         }
 
         .title-section {
@@ -108,16 +109,16 @@
 
         .title-section h1 {
             font-size: 2.2rem;
-            background: linear-gradient(135deg, #fff, #fde68a);
+            background: linear-gradient(135deg, #4a3220, #8b5a2b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 5px rgba(255, 248, 240, 0.3);
             letter-spacing: -0.3px;
         }
 
         .title-section p {
-            color: rgba(255,255,255,0.9);
+            color: rgba(74, 50, 32, 0.85);
             font-size: 1rem;
             margin-top: 6px;
         }
@@ -133,36 +134,39 @@
             display: flex;
             justify-content: center;
             gap: 12px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 248, 240, 0.4);
             backdrop-filter: blur(8px);
             border-radius: 60px;
             padding: 8px 12px;
             margin-bottom: 2rem;
             flex-wrap: wrap;
+            border: 1px solid rgba(180, 140, 100, 0.2);
         }
 
         .tab-btn {
             padding: 12px 24px;
             border: none;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 248, 240, 0.3);
             font-weight: bold;
             font-size: 0.95rem;
-            color: white;
+            color: #4a3220;
             cursor: pointer;
             border-radius: 40px;
             transition: all 0.2s;
             backdrop-filter: blur(2px);
+            border: 1px solid transparent;
         }
 
         .tab-btn:hover {
-            background: rgba(255,255,255,0.4);
+            background: rgba(255, 248, 240, 0.6);
             transform: translateY(-2px);
         }
 
         .tab-btn.active {
-            background: white;
-            color: var(--secondary);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: #fcf6ef;
+            color: #b87333;
+            box-shadow: 0 6px 12px rgba(120, 80, 50, 0.15);
+            border-color: #d4a373;
         }
 
         .tab-content {
@@ -181,12 +185,13 @@
 
         /* Card style */
         .card, .quiz-container {
-            background: white;
+            background: #fcf6ef;
             border-radius: 32px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 35px -12px rgba(120, 80, 50, 0.2);
             transition: transform 0.2s;
+            border: 1px solid rgba(180, 140, 100, 0.15);
         }
 
         h2 {
@@ -215,18 +220,18 @@
         }
 
         th, td {
-            border: 1px solid #e2e8f0;
+            border: 1px solid #e8dcc8;
             padding: 12px;
             vertical-align: top;
         }
 
         th {
-            background: linear-gradient(135deg, #EA580C, #F97316);
+            background: linear-gradient(135deg, #b87333, #d4a373);
             color: white;
         }
 
         .note-box {
-            background: #fffbeb;
+            background: #f5ede0;
             border-left: 5px solid var(--secondary);
             padding: 1.2rem;
             border-radius: 20px;
@@ -234,7 +239,7 @@
         }
 
         .formula-box {
-            background: #fef9e6;
+            background: #f5ede0;
             border-left: 5px solid var(--accent);
             padding: 1.2rem;
             border-radius: 20px;
@@ -242,7 +247,7 @@
         }
 
         .example-box {
-            background: #f0fdf4;
+            background: #edf5e8;
             border-left: 5px solid var(--success);
             padding: 1rem;
             border-radius: 16px;
@@ -257,7 +262,7 @@
         }
 
         .verb-item {
-            background: #f1f5f9;
+            background: #f5ede0;
             padding: 10px 14px;
             border-radius: 12px;
             text-align: center;
@@ -269,24 +274,29 @@
 
         .verb-item:hover {
             border-color: var(--secondary);
-            background: #fffbeb;
+            background: #fcf6ef;
         }
 
         .verb-item.gerund {
-            border-color: #f59e0b;
+            border-color: #d4a373;
         }
 
         .verb-item.infinitive {
-            border-color: #3b82f6;
+            border-color: #8b9dc3;
+        }
+
+        .verb-item.question-word {
+            border-color: #b87333;
+            background: #f5ede0;
         }
 
         /* Quiz styling */
         .question {
-            background: #fafcff;
+            background: #fcf8f2;
             border-radius: 24px;
             padding: 1.2rem;
             margin-bottom: 1.5rem;
-            border: 1px solid #e9edf2;
+            border: 1px solid #e8dcc8;
             transition: all 0.2s;
         }
 
@@ -294,7 +304,7 @@
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 1rem;
-            color: #1f2a3e;
+            color: #4a3220;
         }
 
         .options-route {
@@ -307,7 +317,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: #f1f5f9;
+            background: #f5ede0;
             padding: 10px 16px;
             border-radius: 40px;
             cursor: pointer;
@@ -316,7 +326,7 @@
         }
 
         .option-label:hover {
-            background: #e2e8f0;
+            background: #e8dcc8;
             transform: scale(0.98);
         }
 
@@ -328,21 +338,21 @@
         }
 
         .correct {
-            background: #d4edda !important;
+            background: #dce8d0 !important;
             border-color: var(--success) !important;
-            color: #155724;
+            color: #3d5a2e;
         }
 
         .incorrect {
-            background: #f8d7da !important;
+            background: #fce8e8 !important;
             border-color: var(--danger) !important;
-            color: #721c24;
+            color: #7a3a3a;
         }
 
         .explanation {
             margin-top: 14px;
             padding: 12px;
-            background: #fff8e7;
+            background: #f5ede0;
             border-left: 4px solid var(--warning);
             border-radius: 16px;
             font-size: 0.9rem;
@@ -350,7 +360,7 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #F97316, #EA580C);
+            background: linear-gradient(135deg, #b87333, #8b5a2b);
             color: white;
             padding: 14px 32px;
             border: none;
@@ -361,12 +371,12 @@
             display: block;
             margin: 2rem auto 0;
             transition: 0.2s;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 12px rgba(120, 80, 50, 0.2);
         }
 
         .submit-btn:hover {
             transform: scale(1.02);
-            background: linear-gradient(135deg, #EA580C, #C2410C);
+            background: linear-gradient(135deg, #8b5a2b, #6b4420);
         }
 
         .result-score {
@@ -374,15 +384,47 @@
             font-size: 1.3rem;
             font-weight: bold;
             margin-top: 1.8rem;
-            background: #fffbeb;
+            background: #f5ede0;
             padding: 1rem;
             border-radius: 40px;
             display: none;
         }
 
+        /* Phần kiến thức mới - Question words + To-infinitive */
+        .new-section-highlight {
+            background: #f5ede0;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 7px solid #b87333;
+        }
+
+        .new-section-highlight h3 {
+            color: #4a3220;
+            margin-top: 0;
+        }
+
+        .highlight-word {
+            background: #d4a373;
+            color: #4a3220;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .grammar-example {
+            background: #fcf6ef;
+            padding: 10px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 4px 0;
+            border: 1px solid #dccbbc;
+            font-style: italic;
+        }
+
         footer {
             text-align: center;
-            color: rgba(255,255,255,0.8);
+            color: rgba(74, 50, 32, 0.7);
             padding: 1.5rem;
             font-size: 0.85rem;
         }
@@ -415,7 +457,7 @@
         <span>🏠 Về trang chủ</span>
     </a>
     <div class="title-section" style="padding:0;">
-        <h1 style="font-size:1.4rem; color:white; margin:0;">📝 Gerund & To-infinitive</h1>
+        <h1 style="font-size:1.4rem; color:#4a3220; margin:0;">📝 Gerund & To-infinitive</h1>
     </div>
     <a href="./7. practice.html" class="nav-practice">
         ✍️ Làm bài tập
@@ -428,9 +470,10 @@
 <div class="container">
     <!-- TABS -->
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('tong_quan')">📖 1. Tổng quan Gerund & To-infinitive</button>
+        <button class="tab-btn active" onclick="openTab('tong_quan')">📖 1. Tổng quan</button>
         <button class="tab-btn" onclick="openTab('chi_tiet')">🔍 2. Phân tích chuyên sâu</button>
-        <button class="tab-btn" onclick="openTab('luyentap')">🎯 3. Trắc nghiệm tổng hợp</button>
+        <button class="tab-btn" onclick="openTab('question_words')">❓ 3. Từ hỏi + To-inf</button>
+        <button class="tab-btn" onclick="openTab('luyentap')">🎯 4. Trắc nghiệm</button>
     </div>
 
     <!-- TAB 1: TỔNG QUAN -->
@@ -468,8 +511,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 50%; background: linear-gradient(135deg, #f59e0b, #d97706);">Gerund (V-ing) 🟡</th>
-                        <th style="width: 50%; background: linear-gradient(135deg, #3b82f6, #2563eb);">To-infinitive (to V) 🔵</th>
+                        <th style="width: 50%; background: linear-gradient(135deg, #d4a373, #b87333);">Gerund (V-ing) 🟡</th>
+                        <th style="width: 50%; background: linear-gradient(135deg, #8b9dc3, #6b7fa3);">To-infinitive (to V) 🔵</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -487,8 +530,8 @@
                 <thead>
                     <tr>
                         <th>Tiêu chí</th>
-                        <th style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">Gerund (V-ing)</th>
-                        <th style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;">To-infinitive (to V)</th>
+                        <th style="background: linear-gradient(135deg, #d4a373, #b87333); color: white;">Gerund (V-ing)</th>
+                        <th style="background: linear-gradient(135deg, #8b9dc3, #6b7fa3); color: white;">To-infinitive (to V)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -593,16 +636,16 @@
             <p>Một số động từ có cấu trúc <strong>V + somebody + to V</strong>:</p>
             
             <div class="verb-list">
-                <span class="verb-item" style="border-color: #f59e0b;">tell</span>
-                <span class="verb-item" style="border-color: #f59e0b;">ask</span>
-                <span class="verb-item" style="border-color: #f59e0b;">want</span>
-                <span class="verb-item" style="border-color: #f59e0b;">would like</span>
-                <span class="verb-item" style="border-color: #f59e0b;">advise</span>
-                <span class="verb-item" style="border-color: #f59e0b;">expect</span>
-                <span class="verb-item" style="border-color: #f59e0b;">persuade</span>
-                <span class="verb-item" style="border-color: #f59e0b;">teach</span>
-                <span class="verb-item" style="border-color: #f59e0b;">remind</span>
-                <span class="verb-item" style="border-color: #f59e0b;">warn</span>
+                <span class="verb-item" style="border-color: #d4a373;">tell</span>
+                <span class="verb-item" style="border-color: #d4a373;">ask</span>
+                <span class="verb-item" style="border-color: #d4a373;">want</span>
+                <span class="verb-item" style="border-color: #d4a373;">would like</span>
+                <span class="verb-item" style="border-color: #d4a373;">advise</span>
+                <span class="verb-item" style="border-color: #d4a373;">expect</span>
+                <span class="verb-item" style="border-color: #d4a373;">persuade</span>
+                <span class="verb-item" style="border-color: #d4a373;">teach</span>
+                <span class="verb-item" style="border-color: #d4a373;">remind</span>
+                <span class="verb-item" style="border-color: #d4a373;">warn</span>
             </div>
 
             <div class="example-box">
@@ -699,10 +742,87 @@
         </div>
     </div>
 
-    <!-- TAB 3: TRẮC NGHIỆM -->
+    <!-- TAB 3 (MỚI): TỪ ĐỂ HỎI + TO-INFINITIVE -->
+    <div id="question_words" class="tab-content">
+        <div class="card">
+            <h2>❓ Từ để hỏi + To-infinitive</h2>
+            
+            <div class="new-section-highlight">
+                <h3>📖 Quy tắc:</h3>
+                <p>Chúng ta sử dụng từ để hỏi như <span class="highlight-word">who</span> (ai), <span class="highlight-word">what</span> (cái gì), <span class="highlight-word">where</span> (ở đâu), <span class="highlight-word">when</span> (khi nào) hoặc <span class="highlight-word">how</span> (như thế nào) trước <strong>to-infinitive</strong> để diễn tả một câu hỏi gián tiếp về việc chúng ta nên làm gì.</p>
+                
+                <p style="margin-top: 12px;">Thường đứng sau các động từ như: <span class="highlight-word">ask</span> (hỏi), <span class="highlight-word">wonder</span> (băn khoăn), <span class="highlight-word">(not) decide</span> ((không) quyết định), <span class="highlight-word">(not) tell</span> ((không) nói), hoặc <span class="highlight-word">(not) know</span> ((không) biết).</p>
+            </div>
+
+            <h3>🔹 Cấu trúc:</h3>
+            <div class="formula-box">
+                <strong>S + động từ + WH-word + to-infinitive</strong>
+            </div>
+
+            <h3>📝 Ví dụ:</h3>
+            <div class="example-box">
+                <div class="grammar-example">We don't know <strong>what to do</strong> to help the community.</div>
+                <div style="margin: 4px 0 8px 18px; color: #6b5a4a;">(Chúng tôi không biết phải làm gì để giúp đỡ cộng đồng.)</div>
+                
+                <div class="grammar-example">She asked <strong>how to get</strong> to the nearest shopping mall.</div>
+                <div style="margin: 4px 0 8px 18px; color: #6b5a4a;">(Cô ấy hỏi làm thế nào để đến trung tâm mua sắm gần nhất.)</div>
+                
+                <div class="grammar-example">I can't decide <strong>where to go</strong> for my holiday.</div>
+                <div style="margin: 4px 0 8px 18px; color: #6b5a4a;">(Tôi không thể quyết định đi đâu vào kỳ nghỉ.)</div>
+                
+                <div class="grammar-example">She wondered <strong>who to invite</strong> to the party.</div>
+                <div style="margin: 4px 0 8px 18px; color: #6b5a4a;">(Cô ấy băn khoăn không biết mời ai đến bữa tiệc.)</div>
+                
+                <div class="grammar-example">Could you tell me <strong>when to arrive</strong>?</div>
+                <div style="margin: 4px 0 8px 18px; color: #6b5a4a;">(Bạn có thể cho tôi biết khi nào nên đến không?)</div>
+            </div>
+
+            <h3>🔹 Các từ để hỏi thường gặp:</h3>
+            <div class="verb-list">
+                <span class="verb-item question-word">who (ai)</span>
+                <span class="verb-item question-word">what (cái gì)</span>
+                <span class="verb-item question-word">where (ở đâu)</span>
+                <span class="verb-item question-word">when (khi nào)</span>
+                <span class="verb-item question-word">how (như thế nào)</span>
+            </div>
+
+            <div class="note-box">
+                <strong>💡 Lưu ý:</strong><br>
+                - Cấu trúc này thường được dùng để rút gọn câu hỏi gián tiếp.<br>
+                - <strong>Why</strong> thường KHÔNG dùng với to-infinitive (trừ một số trường hợp đặc biệt).<br>
+                - Có thể dùng với các động từ: <em>know, wonder, understand, ask, decide, tell, show, learn, remember, forget...</em>
+            </div>
+
+            <h3>🔄 So sánh với câu hỏi gián tiếp đầy đủ:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="background: linear-gradient(135deg, #b87333, #d4a373);">Câu hỏi gián tiếp đầy đủ</th>
+                        <th style="background: linear-gradient(135deg, #b87333, #d4a373);">Rút gọn với WH + to-inf</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><em>I don't know <strong>what I should do</strong>.</em></td>
+                        <td><em>I don't know <strong>what to do</strong>.</em></td>
+                    </tr>
+                    <tr>
+                        <td><em>She asked <strong>how she could get</strong> there.</em></td>
+                        <td><em>She asked <strong>how to get</strong> there.</em></td>
+                    </tr>
+                    <tr>
+                        <td><em>They wondered <strong>where they should go</strong>.</em></td>
+                        <td><em>They wondered <strong>where to go</strong>.</em></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- TAB 4: TRẮC NGHIỆM -->
     <div id="luyentap" class="tab-content">
         <div class="quiz-container">
-            <h2>🎯 Trắc nghiệm tổng hợp: Gerund và To-infinitive</h2>
+            <h2>🎯 Trắc nghiệm tổng hợp: Gerund, To-infinitive & WH + To-inf</h2>
             <p>✅ Chọn đáp án đúng, hệ thống sẽ chấm điểm và hiển thị giải thích.</p>
             <form id="quizForm">
                 <!-- Câu 1 -->
@@ -1005,6 +1125,67 @@
                     <div class="explanation">🌍 Sau "consider" luôn dùng Gerund (V-ing).</div>
                 </div>
 
+                <!-- === CÂU HỎI MỚI VỀ WH + TO-INF === -->
+                <!-- Câu 26 -->
+                <div class="question" data-correct="A">
+                    <p class="question-text">26. I don't know _______ to help the community.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q26" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="q26" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q26" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q26" value="D"> who</label>
+                    </div>
+                    <div class="explanation">❓ "What to do" = làm gì. Đây là cấu trúc WH-word + to-infinitive.</div>
+                </div>
+
+                <!-- Câu 27 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">27. She asked _______ to get to the nearest shopping mall.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q27" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="q27" value="B"> how</label>
+                        <label class="option-label"><input type="radio" name="q27" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q27" value="D"> who</label>
+                    </div>
+                    <div class="explanation">🗺️ "How to get" = làm thế nào để đến. WH-word + to-infinitive.</div>
+                </div>
+
+                <!-- Câu 28 -->
+                <div class="question" data-correct="B">
+                    <p class="question-text">28. We can't decide _______ to go for our next vacation.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q28" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="q28" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q28" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q28" value="D"> who</label>
+                    </div>
+                    <div class="explanation">✈️ "Where to go" = đi đâu. WH-word + to-infinitive.</div>
+                </div>
+
+                <!-- Câu 29 -->
+                <div class="question" data-correct="C">
+                    <p class="question-text">29. Could you tell me _______ to arrive at the station?</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q29" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="q29" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q29" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q29" value="D"> who</label>
+                    </div>
+                    <div class="explanation">⏰ "When to arrive" = khi nào đến. WH-word + to-infinitive.</div>
+                </div>
+
+                <!-- Câu 30 -->
+                <div class="question" data-correct="D">
+                    <p class="question-text">30. She wondered _______ to invite to the party.</p>
+                    <div class="options-route">
+                        <label class="option-label"><input type="radio" name="q30" value="A"> what</label>
+                        <label class="option-label"><input type="radio" name="q30" value="B"> where</label>
+                        <label class="option-label"><input type="radio" name="q30" value="C"> when</label>
+                        <label class="option-label"><input type="radio" name="q30" value="D"> who</label>
+                    </div>
+                    <div class="explanation">🎉 "Who to invite" = mời ai. WH-word + to-infinitive.</div>
+                </div>
+
                 <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
             </form>
             <div id="quizResult" class="result-score"></div>
@@ -1013,7 +1194,7 @@
 </div>
 
 <footer>
-    ✨ Bài 7: Gerund và To-infinitive | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    ✨ Bài 7: Gerund, To-infinitive & Question words + To-infinitive | Học chủ động – Nắm chắc ngữ pháp | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
 </footer>
 
 <script>
@@ -1067,13 +1248,13 @@
         const total = questions.length;
         let message = '';
         if (score === total) {
-            message = '🏆 Siêu hạng! Bạn đã nắm vững hoàn toàn Gerund và To-infinitive!';
-        } else if (score >= 20) {
-            message = '🌟 Rất tốt! Bạn đã hiểu rất rõ về Gerund và To-infinitive!';
-        } else if (score >= 15) {
-            message = '📖 Khá ổn! Hãy xem lại phần lý thuyết để hiểu sâu hơn!';
+            message = '🏆 Siêu hạng! Bạn đã nắm vững hoàn toàn Gerund, To-infinitive và WH + To-inf!';
+        } else if (score >= 24) {
+            message = '🌟 Rất tốt! Bạn đã hiểu rất rõ về các cấu trúc này!';
+        } else if (score >= 18) {
+            message = '📖 Khá ổn! Hãy xem lại phần lý thuyết ở Tab 1, 2 và 3 để hiểu sâu hơn!';
         } else {
-            message = '💪 Đừng nản! Hãy xem kỹ phần lý thuyết ở Tab 1 và 2 nhé!';
+            message = '💪 Đừng nản! Hãy xem kỹ phần lý thuyết ở các Tab nhé!';
         }
         resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
         resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
