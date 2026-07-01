@@ -29,60 +29,90 @@
             overflow: hidden;
         }
 
-        /* ===== NAVIGATION BAR ===== */
-        .nav-bar {
+        /* ===== HEADER MỚI ĐỒNG BỘ ===== */
+        .master-header {
+            background: #ffffff;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
-            padding: 20px 28px;
-            background: #f8fafc;
+            gap: 16px;
             border-bottom: 2px solid #e9edf2;
         }
 
-        .home-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-        }
-
-        .home-link:hover {
-            transform: translateY(-2px);
-        }
-
-        .action-buttons {
+        .nav-home {
             display: flex;
-            gap: 12px;
-        }
-
-        .exercise-link {
-            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: #48bb78;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
+            gap: 10px;
+            background: #f0f4f9;
+            padding: 8px 20px;
+            border-radius: 60px;
+            transition: all 0.2s ease;
             text-decoration: none;
+            color: #1a202c;
             font-weight: 600;
-            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
         }
 
-        .exercise-link:hover {
+        .nav-home:hover {
+            background: #e2e8f0;
             transform: translateY(-2px);
-            background: #38a169;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* Progress Indicator */
+        .nav-home svg {
+            width: 20px;
+            height: 20px;
+            fill: #1a202c;
+        }
+
+        .nav-home:hover svg {
+            fill: #667eea;
+        }
+
+        .nav-practice {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #48bb78, #2f855a);
+            padding: 8px 24px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .nav-practice:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #38a169, #276749);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        }
+
+        .nav-practice svg {
+            stroke: white;
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 0;
+        }
+
+        .title-section h1 {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .title-section h1 i {
+            color: #667eea;
+            margin-right: 8px;
+        }
+
+        /* ===== PROGRESS INDICATOR ===== */
         .progress-indicator {
             background: #edf2f7;
             border-radius: 12px;
@@ -105,36 +135,7 @@
             color: #5a67d8;
         }
 
-        /* Header */
-        .hero-header {
-            background: linear-gradient(135deg, #1E3C5C 0%, #2B4C6E 100%);
-            padding: 1.8rem 2rem;
-            color: white;
-        }
-
-        .hero-header h1 {
-            font-weight: 700;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .hero-header h1 i {
-            background: #ffb347;
-            padding: 8px;
-            border-radius: 1.2rem;
-            color: #1e3c5c;
-        }
-
-        .hero-header p {
-            opacity: 0.85;
-            margin-top: 10px;
-            border-left: 3px solid #ffb347;
-            padding-left: 12px;
-        }
-
-        /* Tabs */
+        /* ===== TABS ===== */
         .tabs-modern {
             display: flex;
             flex-wrap: wrap;
@@ -363,34 +364,13 @@
             border-top: 1px solid #e2edf5;
         }
 
-        @media (max-width: 768px) {
-            .nav-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .home-link, .exercise-link {
-                justify-content: center;
-            }
-            .hero-header h1 {
-                font-size: 1.3rem;
-            }
-            .tabs-modern {
-                margin: 1rem;
-            }
-            .tab-content {
-                padding: 1rem;
-            }
-            .card {
-                padding: 1.2rem;
-            }
-        }
-
-                .text-highlight {
+        .text-highlight {
             background: #fef9c3;
             padding: 2px 8px;
             border-radius: 12px;
             color: #1e3c5c;
         }
+
         .formula-table {
             width: 100%;
             border-collapse: collapse;
@@ -400,26 +380,31 @@
             overflow: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
+
         .formula-table th {
             background: #667eea;
             color: white;
             padding: 12px;
             font-weight: 600;
         }
+
         .formula-table td {
             border: 1px solid #e2e8f0;
             padding: 12px;
             vertical-align: top;
         }
+
         .formula-table tr:nth-child(even) {
             background: #f8fafc;
         }
+
         .example-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin: 15px 0;
         }
+
         .example-item {
             background: #f8fafc;
             border-left: 5px solid #667eea;
@@ -427,6 +412,7 @@
             border-radius: 12px;
             font-size: 0.95rem;
         }
+
         .special-box {
             background: #fef2e0;
             border-left: 6px solid #f39c12;
@@ -434,6 +420,7 @@
             border-radius: 16px;
             margin: 20px 0;
         }
+
         .practice-tip {
             background: #e0f2fe;
             padding: 12px;
@@ -441,6 +428,7 @@
             margin-top: 20px;
             font-size: 0.9rem;
         }
+
         .tip-box {
             background: #dcfce7;
             border-left: 5px solid #22c55e;
@@ -448,35 +436,61 @@
             border-radius: 14px;
             margin: 15px 0;
         }
+
+        @media (max-width: 768px) {
+            .master-header {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .tab-content {
+                padding: 1rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .progress-indicator {
+                margin: 16px 16px 0 16px;
+            }
+            .tabs-modern {
+                margin: 1rem;
+            }
+            .title-section h1 {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="grammar-container">
-    <!-- NAVIGATION BAR -->
-    <div class="nav-bar">
-        <a href="../index.html" class="home-link">
-            <i class="fas fa-home"></i> Về trang chủ
+    <!-- ===== HEADER MỚI ĐỒNG BỘ VỚI BÀI 5 ===== -->
+    <div class="master-header">
+        <a href="../index.html" class="nav-home" title="Quay về trang chủ các bài học">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 3L2 9l10 6 10-6-10-6zm0 11.5L6.5 12 12 8.5 17.5 12 12 14.5zM12 21l-6-3.5v-4l6 3.5 6-3.5v4l-6 3.5z"/>
+            </svg>
+            <span>🏠 Về trang chủ</span>
         </a>
-        <div class="action-buttons">
-            <a href="2. practice.html" class="exercise-link">
-                <i class="fas fa-pen"></i> Làm bài tập →
-            </a>
+        <div class="title-section">
+            <h1><i class="fas fa-clock"></i> Bài 2: Present Simple vs Present Continuous</h1>
         </div>
+        <a href="2. practice.html" class="nav-practice">
+            ✍️ Làm bài tập
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
     </div>
 
-    <!-- PROGRESS INDICATOR -->
+    <!-- ===== PROGRESS INDICATOR ===== -->
     <div class="progress-indicator">
         <span class="progress-text">📖 <strong>Bài 2:</strong> Hiện tại đơn & Hiện tại tiếp diễn</span>
         <span class="progress-text">⭐ So sánh 2 thì quan trọng nhất</span>
     </div>
 
-    <!-- HEADER -->
-    <div class="hero-header">
-        <h1><i class="fas fa-clock"></i> Làm Chủ Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h1>
-        <p>Lộ trình từ mất gốc đến tự tin chinh phục mọi bài thi tiếng Anh!</p>
-    </div>
-
-    <!-- TABS -->
+    <!-- ===== TABS ===== -->
     <div class="tabs-modern">
         <button class="tab-btn active" onclick="openTab('htd')"><i class="fas fa-sun"></i> Present Simple</button>
         <button class="tab-btn" onclick="openTab('httd')"><i class="fas fa-spinner"></i> Present Continuous</button>
@@ -484,7 +498,7 @@
         <button class="tab-btn" onclick="openTab('luyentap')"><i class="fas fa-tasks"></i> Luyện Tập</button>
     </div>
 
-    <!-- TAB 1: HIỆN TẠI ĐƠN -->
+    <!-- ===== TAB 1: HIỆN TẠI ĐƠN ===== -->
     <div id="htd" class="tab-content active">
         <div class="card">
             <h2>📘 1. Hiện Tại Đơn (Present Simple)</h2>
@@ -523,7 +537,7 @@
         </div>
     </div>
 
-    <!-- TAB 2: HIỆN TẠI TIẾP DIỄN -->
+    <!-- ===== TAB 2: HIỆN TẠI TIẾP DIỄN ===== -->
     <div id="httd" class="tab-content">
         <div class="card">
             <h2>⏳ 2. Hiện Tại Tiếp Diễn (Present Continuous)</h2>
@@ -563,7 +577,7 @@
         </div>
     </div>
 
-    <!-- TAB 3: SO SÁNH -->
+    <!-- ===== TAB 3: SO SÁNH ===== -->
     <div id="sosanh" class="tab-content">
         <div class="card">
             <h2>⚖️ 3. So Sánh Hiện Tại Đơn & Hiện Tại Tiếp Diễn</h2>
@@ -600,7 +614,7 @@
         </div>
     </div>
 
-    <!-- TAB 4: LUYỆN TẬP -->
+    <!-- ===== TAB 4: LUYỆN TẬP ===== -->
     <div id="luyentap" class="tab-content">
         <div class="quiz-container">
             <h2>🎯 Bài Tập Tổng Hợp (20 câu)</h2>
