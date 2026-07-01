@@ -26,9 +26,67 @@
         .subtitle {
             text-align: center;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-size: 1.1rem;
         }
+        
+        /* ===== TÌM KIẾM ===== */
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 14px 50px 14px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: box-shadow 0.3s;
+            outline: none;
+        }
+        .search-box input:focus {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+        }
+        .search-box .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #999;
+            pointer-events: none;
+        }
+        .search-box .clear-btn {
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            color: #ccc;
+            cursor: pointer;
+            display: none;
+            padding: 4px 6px;
+        }
+        .search-box .clear-btn:hover {
+            color: #666;
+        }
+        .search-box .clear-btn.visible {
+            display: block;
+        }
+        .no-result {
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            padding: 40px 0;
+            display: none;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -39,12 +97,25 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.4s;
+            scroll-margin-top: 20px;
         }
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
+        .card.hidden {
+            display: none;
+        }
+        .card.highlight {
+            animation: highlightPulse 1s ease 3;
+            box-shadow: 0 0 0 4px #ffd700, 0 20px 40px rgba(0,0,0,0.3);
+        }
+        @keyframes highlightPulse {
+            0%, 100% { box-shadow: 0 0 0 4px #ffd700, 0 20px 40px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0.3), 0 20px 40px rgba(0,0,0,0.3); }
+        }
+
         .card-header {
             padding: 20px;
             color: white;
@@ -83,6 +154,19 @@
             background: #48bb78;
             color: white;
         }
+        .btn-home {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .btn-home:hover {
+            background: rgba(255,255,255,0.35);
+        }
         .btn:hover {
             opacity: 0.85;
             transform: scale(0.98);
@@ -94,6 +178,11 @@
             border-radius: 50px;
             font-size: 0.7rem;
             margin-top: 10px;
+        }
+        .card-header .back-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
         footer {
             text-align: center;
@@ -112,13 +201,26 @@
     <h1>📚 Hệ thống Ngữ pháp Tiếng Anh</h1>
     <div class="subtitle">20 bài học trọng tâm - Lớp Tiếng Anh Cô Quỳnh Nhi</div>
     
-    <div class="grid">
+    <!-- ===== Ô TÌM KIẾM ===== -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm bài học..." oninput="filterLessons(this.value)">
+        <button class="clear-btn" id="clearBtn" onclick="clearSearch()">✕</button>
+        <span class="search-icon">🔍</span>
+    </div>
+    <div class="no-result" id="noResult">😕 Không tìm thấy bài học nào phù hợp</div>
+
+    <div class="grid" id="lessonGrid">
 
         <!-- ==================== BÀI 1 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 1 đại từ nhân xưng to be personal pronouns">
             <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                <h2>👤 Bài 1: Đại từ nhân xưng & To Be</h2>
-                <p>Personal Pronouns + To Be + Action Verbs</p>
+                <div class="back-row">
+                    <div>
+                        <h2>👤 Bài 1: Đại từ nhân xưng & To Be</h2>
+                        <p>Personal Pronouns + To Be + Action Verbs</p>
+                    </div>
+                    <a href="index.html#lesson-1" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🎯 Nền tảng cơ bản</div>
             </div>
             <div class="card-body">
@@ -131,10 +233,15 @@
         </div>
 
         <!-- ==================== BÀI 2 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 2 hiện tại đơn tiếp diễn present simple continuous">
             <div class="card-header" style="background: linear-gradient(135deg, #e53e3e 0%, #ed8936 100%);">
-                <h2>⏰ Bài 2: Hiện tại đơn & Tiếp diễn</h2>
-                <p>Present Simple & Present Continuous</p>
+                <div class="back-row">
+                    <div>
+                        <h2>⏰ Bài 2: Hiện tại đơn & Tiếp diễn</h2>
+                        <p>Present Simple & Present Continuous</p>
+                    </div>
+                    <a href="index.html#lesson-2" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟡 So sánh 2 thì</div>
             </div>
             <div class="card-body">
@@ -147,10 +254,15 @@
         </div>
 
         <!-- ==================== BÀI 3 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 3 quá khứ đơn tiếp diễn past simple continuous">
             <div class="card-header" style="background: linear-gradient(135deg, #38a169 0%, #68d391 100%);">
-                <h2>🕰️ Bài 3: Quá khứ đơn & Tiếp diễn</h2>
-                <p>Past Simple & Past Continuous</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🕰️ Bài 3: Quá khứ đơn & Tiếp diễn</h2>
+                        <p>Past Simple & Past Continuous</p>
+                    </div>
+                    <a href="index.html#lesson-3" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟢 Hành động trong quá khứ</div>
             </div>
             <div class="card-body">
@@ -163,10 +275,15 @@
         </div>
 
         <!-- ==================== BÀI 4 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 4 hiện tại hoàn thành tiếp diễn present perfect continuous">
             <div class="card-header" style="background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);">
-                <h2>🔄 Bài 4: Hiện tại hoàn thành & Tiếp diễn</h2>
-                <p>Present Perfect & Continuous</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔄 Bài 4: Hiện tại hoàn thành & Tiếp diễn</h2>
+                        <p>Present Perfect & Continuous</p>
+                    </div>
+                    <a href="index.html#lesson-4" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔵 Kinh nghiệm & kết quả</div>
             </div>
             <div class="card-body">
@@ -179,10 +296,15 @@
         </div>
 
         <!-- ==================== BÀI 5 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 5 hiện tại hoàn thành quá khứ đơn present perfect past simple">
             <div class="card-header" style="background: linear-gradient(135deg, #d69e2e 0%, #f6ad55 100%);">
-                <h2>⚖️ Bài 5: Hiện tại hoàn thành & Quá khứ đơn</h2>
-                <p>Present Perfect vs Past Simple</p>
+                <div class="back-row">
+                    <div>
+                        <h2>⚖️ Bài 5: Hiện tại hoàn thành & Quá khứ đơn</h2>
+                        <p>Present Perfect vs Past Simple</p>
+                    </div>
+                    <a href="index.html#lesson-5" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟠 Phân biệt quan trọng</div>
             </div>
             <div class="card-body">
@@ -195,10 +317,15 @@
         </div>
 
         <!-- ==================== BÀI 6 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 6 tương lai future structures will going to">
             <div class="card-header" style="background: linear-gradient(135deg, #805ad5 0%, #b794f4 100%);">
-                <h2>🔮 Bài 6: Cấu trúc tương lai</h2>
-                <p>Future Structures</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔮 Bài 6: Cấu trúc tương lai</h2>
+                        <p>Future Structures</p>
+                    </div>
+                    <a href="index.html#lesson-6" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟣 4 thì tương lai và các cấu trúc khác</div>
             </div>
             <div class="card-body">
@@ -211,10 +338,15 @@
         </div>
 
         <!-- ==================== BÀI 7 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 7 dạng động từ forms of verb ving to v bare">
             <div class="card-header" style="background: linear-gradient(135deg, #e53e3e 0%, #fc8181 100%);">
-                <h2>📝 Bài 7: Các dạng của động từ</h2>
-                <p>Forms of Verb</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📝 Bài 7: Các dạng của động từ</h2>
+                        <p>Forms of Verb</p>
+                    </div>
+                    <a href="index.html#lesson-7" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔴 V-ing, To V, Bare V</div>
             </div>
             <div class="card-body">
@@ -227,10 +359,15 @@
         </div>
 
         <!-- ==================== BÀI 8 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 8 mạo từ articles quantifiers số lượng">
             <div class="card-header" style="background: linear-gradient(135deg, #38a169 0%, #68d391 100%);">
-                <h2>📚 Bài 8: Mạo từ & Từ chỉ số lượng</h2>
-                <p>Articles & Quantifiers</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📚 Bài 8: Mạo từ & Từ chỉ số lượng</h2>
+                        <p>Articles & Quantifiers</p>
+                    </div>
+                    <a href="index.html#lesson-8" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟢 A/An/The, Some/Any/Many/Much</div>
             </div>
             <div class="card-body">
@@ -243,10 +380,15 @@
         </div>
 
         <!-- ==================== BÀI 9 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 9 tính từ trạng từ adjectives adverbs">
             <div class="card-header" style="background: linear-gradient(135deg, #d69e2e 0%, #f6ad55 100%);">
-                <h2>🏗️ Bài 9: Cấu trúc tính từ & Trạng từ</h2>
-                <p>Structures of Adjectives & Adverbs</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🏗️ Bài 9: Cấu trúc tính từ & Trạng từ</h2>
+                        <p>Structures of Adjectives & Adverbs</p>
+                    </div>
+                    <a href="index.html#lesson-9" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟠 Vị trí và chức năng</div>
             </div>
             <div class="card-body">
@@ -259,10 +401,15 @@
         </div>
 
         <!-- ==================== BÀI 10 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 10 hòa hợp chủ vị subject verb agreement">
             <div class="card-header" style="background: linear-gradient(135deg, #805ad5 0%, #b794f4 100%);">
-                <h2>🤝 Bài 10: Sự hòa hợp chủ-vị</h2>
-                <p>Subject & Verb Agreement</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🤝 Bài 10: Sự hòa hợp chủ-vị</h2>
+                        <p>Subject & Verb Agreement</p>
+                    </div>
+                    <a href="index.html#lesson-10" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟣 Quy tắc quan trọng</div>
             </div>
             <div class="card-body">
@@ -275,10 +422,15 @@
         </div>
 
         <!-- ==================== BÀI 11 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 11 giới từ prepositions in on at">
             <div class="card-header" style="background: linear-gradient(135deg, #e53e3e 0%, #fc8181 100%);">
-                <h2>📍 Bài 11: Giới từ</h2>
-                <p>Prepositions</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📍 Bài 11: Giới từ</h2>
+                        <p>Prepositions</p>
+                    </div>
+                    <a href="index.html#lesson-11" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔴 In, On, At, By, For, With...</div>
             </div>
             <div class="card-body">
@@ -291,10 +443,15 @@
         </div>
 
         <!-- ==================== BÀI 12 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 12 câu ghép câu phức compound complex sentences">
             <div class="card-header" style="background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);">
-                <h2>🔗 Bài 12: Câu ghép & Câu phức</h2>
-                <p>Compound and Complex Sentences</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔗 Bài 12: Câu ghép & Câu phức</h2>
+                        <p>Compound and Complex Sentences</p>
+                    </div>
+                    <a href="index.html#lesson-12" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔵 And, Or, But, So, Because...</div>
             </div>
             <div class="card-body">
@@ -307,10 +464,15 @@
         </div>
 
         <!-- ==================== BÀI 13 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 13 so sánh comparison">
             <div class="card-header" style="background: linear-gradient(135deg, #38a169 0%, #68d391 100%);">
-                <h2>📊 Bài 13: Câu so sánh</h2>
-                <p>Comparison</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📊 Bài 13: Câu so sánh</h2>
+                        <p>Comparison</p>
+                    </div>
+                    <a href="index.html#lesson-13" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟢 So sánh của tính từ, trạng từ và số lượng danh từ</div>
             </div>
             <div class="card-body">
@@ -323,10 +485,15 @@
         </div>
 
         <!-- ==================== BÀI 14 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 14 cụm động từ phrasal verbs">
             <div class="card-header" style="background: linear-gradient(135deg, #d69e2e 0%, #f6ad55 100%);">
-                <h2>🔧 Bài 14: Cụm động từ</h2>
-                <p>Phrasal Verbs</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔧 Bài 14: Cụm động từ</h2>
+                        <p>Phrasal Verbs</p>
+                    </div>
+                    <a href="index.html#lesson-14" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟠 Look up, Give up, Turn on...</div>
             </div>
             <div class="card-body">
@@ -339,10 +506,15 @@
         </div>
 
         <!-- ==================== BÀI 15 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 15 câu tường thuật reported speech">
             <div class="card-header" style="background: linear-gradient(135deg, #805ad5 0%, #b794f4 100%);">
-                <h2>💬 Bài 15: Câu tường thuật</h2>
-                <p>Reported Speech</p>
+                <div class="back-row">
+                    <div>
+                        <h2>💬 Bài 15: Câu tường thuật</h2>
+                        <p>Reported Speech</p>
+                    </div>
+                    <a href="index.html#lesson-15" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟣 Lùi thì, đổi đại từ</div>
             </div>
             <div class="card-body">
@@ -355,10 +527,15 @@
         </div>
 
         <!-- ==================== BÀI 16 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 16 mệnh đề quan hệ relative clause who which that">
             <div class="card-header" style="background: linear-gradient(135deg, #e53e3e 0%, #fc8181 100%);">
-                <h2>🔗 Bài 16: Mệnh đề quan hệ</h2>
-                <p>Relative Clause</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔗 Bài 16: Mệnh đề quan hệ</h2>
+                        <p>Relative Clause</p>
+                    </div>
+                    <a href="index.html#lesson-16" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔴 Who, Which, That, Whom</div>
             </div>
             <div class="card-body">
@@ -371,10 +548,15 @@
         </div>
 
         <!-- ==================== BÀI 17 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 17 câu bị động passive voice">
             <div class="card-header" style="background: linear-gradient(135deg, #3182ce 0%, #63b3ed 100%);">
-                <h2>📌 Bài 17: Câu bị động</h2>
-                <p>Passive Voice</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📌 Bài 17: Câu bị động</h2>
+                        <p>Passive Voice</p>
+                    </div>
+                    <a href="index.html#lesson-17" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🔵 Be + Past Participle (V3/Ved)</div>
             </div>
             <div class="card-body">
@@ -387,10 +569,15 @@
         </div>
 
         <!-- ==================== BÀI 18 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 18 câu điều kiện câu điều ước conditional wish if">
             <div class="card-header" style="background: linear-gradient(135deg, #38a169 0%, #68d391 100%);">
-                <h2>🔍 Bài 18: Câu điều kiện và câu điều ước</h2>
-                <p>Conditional & Wish Sentences</p>
+                <div class="back-row">
+                    <div>
+                        <h2>🔍 Bài 18: Câu điều kiện và câu điều ước</h2>
+                        <p>Conditional & Wish Sentences</p>
+                    </div>
+                    <a href="index.html#lesson-18" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟢 If & Wish</div>
             </div>
             <div class="card-body">
@@ -403,10 +590,15 @@
         </div>
 
         <!-- ==================== BÀI 19 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 19 viết lại câu rewrite sentences">
             <div class="card-header" style="background: linear-gradient(135deg, #d69e2e 0%, #f6ad55 100%);">
-                <h2>✏️ Bài 19: Viết lại câu & tìm câu có nghĩa tương đương</h2>
-                <p>Rewrite & Find sentences with the same meaning</p>
+                <div class="back-row">
+                    <div>
+                        <h2>✏️ Bài 19: Viết lại câu & tìm câu có nghĩa tương đương</h2>
+                        <p>Rewrite & Find sentences with the same meaning</p>
+                    </div>
+                    <a href="index.html#lesson-19" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟠 Luyện kĩ năng viết</div>
             </div>
             <div class="card-body">
@@ -419,10 +611,15 @@
         </div>
 
         <!-- ==================== BÀI 20 ==================== -->
-        <div class="card">
+        <div class="card" data-title="bài 20 đọc hiểu reading comprehension">
             <div class="card-header" style="background: linear-gradient(135deg, #805ad5 0%, #b794f4 100%);">
-                <h2>📖 Bài 20: Đọc hiểu</h2>
-                <p>Reading Comprehension</p>
+                <div class="back-row">
+                    <div>
+                        <h2>📖 Bài 20: Đọc hiểu</h2>
+                        <p>Reading Comprehension</p>
+                    </div>
+                    <a href="index.html#lesson-20" class="btn-home">🏠</a>
+                </div>
                 <div class="badge">🟣 Tổng hợp kỹ năng</div>
             </div>
             <div class="card-body">
@@ -440,5 +637,80 @@
         <p>✨ Học mọi lúc mọi nơi | Từ ngữ pháp cơ bản đến nâng cao | Chúc bạn học tốt!</p>
     </footer>
 </div>
+
+<script>
+    // ===== XỬ LÝ QUAY VỀ TRANG CHỦ =====
+    // Khi trang load, kiểm tra hash trong URL
+    window.addEventListener('DOMContentLoaded', function() {
+        const hash = window.location.hash;
+        if (hash) {
+            // Đợi một chút để trang render xong
+            setTimeout(function() {
+                const target = document.querySelector(hash);
+                if (target) {
+                    // Cuộn đến đúng vị trí của bài học
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Thêm hiệu ứng highlight
+                    target.classList.add('highlight');
+                    setTimeout(function() {
+                        target.classList.remove('highlight');
+                    }, 3000);
+                }
+            }, 300);
+        }
+    });
+
+    // ===== TÌM KIẾM =====
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+    const noResult = document.getElementById('noResult');
+    const cards = document.querySelectorAll('.card');
+
+    function filterLessons(keyword) {
+        const value = keyword.toLowerCase().trim();
+        let found = false;
+
+        // Hiển thị nút clear
+        if (value.length > 0) {
+            clearBtn.classList.add('visible');
+        } else {
+            clearBtn.classList.remove('visible');
+        }
+
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title') || '';
+            const match = title.includes(value);
+            if (value === '') {
+                card.classList.remove('hidden');
+                found = true;
+            } else if (match) {
+                card.classList.remove('hidden');
+                found = true;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+
+        if (found || value === '') {
+            noResult.style.display = 'none';
+        } else {
+            noResult.style.display = 'block';
+        }
+    }
+
+    function clearSearch() {
+        searchInput.value = '';
+        filterLessons('');
+        searchInput.focus();
+    }
+
+    // Bấm Enter cũng tìm kiếm
+    searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter') {
+            filterLessons(this.value);
+        }
+    });
+</script>
 </body>
 </html>
