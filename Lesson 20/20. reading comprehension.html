@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Bài 20: Reading Comprehension | Anh Ngữ Toàn Diện</title>
+    <title>Bài 20: Modal Verbs | Anh Ngữ Toàn Diện</title>
     <style>
         * {
             margin: 0;
@@ -172,7 +172,7 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        .card, .quiz-container {
+        .card {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(4px);
             border-radius: 32px;
@@ -252,128 +252,72 @@
             margin-bottom: 4px;
         }
 
-        .question {
-            background: #f3f8fc;
-            border-radius: 24px;
-            padding: 1.2rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #c0d6e2;
-            transition: all 0.2s;
+        .modal-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
         }
 
-        .question-text {
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .options-route {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .option-label {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #eaf0f5;
-            padding: 10px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .option-label:hover {
-            background: #d4e2ec;
-            transform: scale(0.98);
-        }
-
-        .option-label input {
-            margin: 0;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--secondary);
-        }
-
-        .correct {
-            background: #c2dce8 !important;
-            border-color: var(--success) !important;
-            color: #143e28;
-        }
-
-        .incorrect {
-            background: #f5d0d0 !important;
-            border-color: var(--danger) !important;
-            color: #752a2a;
-        }
-
-        .explanation {
-            margin-top: 14px;
-            padding: 12px;
-            background: #eaf0f5;
-            border-left: 4px solid var(--accent);
-            border-radius: 16px;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+        .modal-table th {
+            background: var(--primary);
             color: white;
-            padding: 14px 32px;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: block;
-            margin: 2rem auto 0;
-            transition: 0.2s;
-            box-shadow: 0 5px 12px rgba(42, 95, 122, 0.25);
+            padding: 12px 16px;
+            text-align: left;
         }
 
-        .submit-btn:hover {
-            transform: scale(1.02);
-            background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
-            box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+        .modal-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #c0d6e2;
+            vertical-align: top;
         }
 
-        .result-score {
-            text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-top: 1.8rem;
-            background: #eaf0f5;
-            padding: 1rem;
-            border-radius: 40px;
-            display: none;
-            border: 2px solid #b0c8d8;
-        }
-
-        .reading-passage {
+        .modal-table tr:nth-child(even) {
             background: #f3f8fc;
+        }
+
+        .modal-table tr:hover {
+            background: #dce8f0;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 2px 12px;
             border-radius: 20px;
-            padding: 1.5rem;
-            margin: 1rem 0 1.5rem;
-            border: 1px solid #c0d6e2;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 0 4px;
         }
 
-        .reading-passage h4 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-
-        .reading-passage p {
-            margin-bottom: 0.6rem;
-        }
+        .tag-success { background: var(--success); }
+        .tag-warning { background: var(--warning); }
+        .tag-danger { background: var(--danger); }
 
         .highlight {
             background: rgba(42, 95, 122, 0.12);
             padding: 0.1rem 0.3rem;
             border-radius: 4px;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 1rem 0;
+        }
+
+        .compare-col {
+            background: #f3f8fc;
+            padding: 1.2rem;
+            border-radius: 16px;
+            border: 1px solid #c0d6e2;
+        }
+
+        .compare-col h4 {
+            color: var(--primary);
+            margin-top: 0;
         }
 
         footer {
@@ -398,9 +342,14 @@
             .rule-list {
                 grid-template-columns: 1fr;
             }
-            .reading-passage {
-                padding: 1rem;
-                font-size: 0.95rem;
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-table {
+                font-size: 0.8rem;
+            }
+            .modal-table th, .modal-table td {
+                padding: 8px 10px;
             }
         }
     </style>
@@ -415,8 +364,8 @@
         <span>🏠 Về trang chủ</span>
     </a>
     <div class="title-section">
-        <h1>📖 Bài 20: Reading Comprehension</h1>
-        <div class="sub">Kỹ năng đọc hiểu & điền từ</div>
+        <h1>🔮 Bài 20: Modal Verbs</h1>
+        <div class="sub">Động từ khuyết thiếu – Can, Could, May, Might, Must, Should, Will, Would</div>
     </div>
     <a href="./20. practice.html" class="nav-practice">
         ✍️ Làm bài tập
@@ -428,370 +377,463 @@
 
 <div class="container">
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('reading_tips')">📘 1. Chiến lược đọc hiểu</button>
-        <button class="tab-btn" onclick="openTab('main_idea')">🎯 2. Ý chính & chi tiết</button>
-        <button class="tab-btn" onclick="openTab('cloze')">✏️ 3. Điền từ vào đoạn văn</button>
-        <button class="tab-btn" onclick="openTab('sentence_insertion')">🧩 4. Điền câu vào đoạn</button>
-        <button class="tab-btn" onclick="openTab('inference')">🔍 5. Suy luận & ngụ ý</button>
-        <button class="tab-btn" onclick="openTab('luyentap')">🎯 6. Trắc nghiệm</button>
+        <button class="tab-btn active" onclick="openTab('overview')">📘 1. Tổng quan</button>
+        <button class="tab-btn" onclick="openTab('can_could')">💪 2. Can & Could</button>
+        <button class="tab-btn" onclick="openTab('may_might')">🤔 3. May & Might</button>
+        <button class="tab-btn" onclick="openTab('must_should')">⚖️ 4. Must & Should</button>
+        <button class="tab-btn" onclick="openTab('will_would')">🔮 5. Will & Would</button>
+        <button class="tab-btn" onclick="openTab('practice')">🎯 6. Luyện tập</button>
     </div>
 
-    <!-- TAB 1: CHIẾN LƯỢC ĐỌC HIỂU -->
-    <div id="reading_tips" class="tab-content active">
+    <!-- TAB 1: TỔNG QUAN -->
+    <div id="overview" class="tab-content active">
         <div class="card">
-            <h2>📘 Kỹ năng đọc hiểu – Chiến lược cơ bản</h2>
+            <h2>📘 Modal Verbs là gì?</h2>
             <div class="note-box">
-                <strong>💡 Đọc hiểu là kỹ năng quan trọng trong các kỳ thi.</strong>
-                <p style="margin-top: 6px;">Không chỉ đọc để hiểu nội dung, bạn cần nắm được cấu trúc, ý chính, và suy luận từ ngữ cảnh.</p>
+                <strong>💡 Động từ khuyết thiếu (Modal Verbs) là những động từ đặc biệt dùng để bổ nghĩa cho động từ chính.</strong>
+                <p style="margin-top: 6px;">Chúng diễn tả khả năng, sự cho phép, nghĩa vụ, lời khuyên, dự đoán, hoặc thói quen trong quá khứ.</p>
             </div>
 
-            <h3>🔹 Các bước đọc hiểu hiệu quả</h3>
-            <div class="rule-list">
-                <div class="rule-item">
-                    <strong>1️⃣ Đọc lướt (Skimming)</strong>
-                    Đọc nhanh để nắm ý chính, cấu trúc bài viết. Chú ý tiêu đề, câu đầu và cuối mỗi đoạn.
-                </div>
-                <div class="rule-item">
-                    <strong>2️⃣ Đọc kỹ (Scanning)</strong>
-                    Tìm thông tin chi tiết, từ khóa, số liệu, tên riêng. Dùng mắt dò tìm nhanh.
-                </div>
-                <div class="rule-item">
-                    <strong>3️⃣ Đọc hiểu ngữ cảnh</strong>
-                    Suy luận nghĩa từ vựng dựa vào câu xung quanh, không cần từ điển.
-                </div>
-                <div class="rule-item">
-                    <strong>4️⃣ Phân tích cấu trúc</strong>
-                    Nhận biết câu chủ đề, câu hỗ trợ, các đoạn văn và cách tổ chức bài viết.
-                </div>
-            </div>
+            <h3>🔹 Danh sách Modal Verbs cơ bản</h3>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>Modal Verb</th>
+                        <th>Ý nghĩa chính</th>
+                        <th>Ví dụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Can</strong></td>
+                        <td>Khả năng, sự cho phép</td>
+                        <td><em>I <span class="highlight">can</span> swim.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Could</strong></td>
+                        <td>Khả năng trong quá khứ, lời đề nghị lịch sự</td>
+                        <td><em>She <span class="highlight">could</span> read when she was 4.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>May</strong></td>
+                        <td>Sự cho phép (trang trọng), khả năng có thể</td>
+                        <td><em><span class="highlight">May</span> I come in?</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Might</strong></td>
+                        <td>Khả năng (ít chắc chắn hơn may)</td>
+                        <td><em>It <span class="highlight">might</span> rain tomorrow.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Must</strong></td>
+                        <td>Nghĩa vụ bắt buộc, suy luận chắc chắn</td>
+                        <td><em>You <span class="highlight">must</span> wear a helmet.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Should</strong></td>
+                        <td>Lời khuyên, sự khuyến nghị</td>
+                        <td><em>You <span class="highlight">should</span> eat more vegetables.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Will</strong></td>
+                        <td>Tương lai, lời hứa, quyết định ngay lúc nói</td>
+                        <td><em>I <span class="highlight">will</span> help you.</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Would</strong></td>
+                        <td>Thói quen trong quá khứ, đề nghị lịch sự, câu điều kiện</td>
+                        <td><em>He <span class="highlight">would</span> play chess every day.</em></td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="example-box">
-                <strong>📌 Ví dụ về đọc lướt:</strong><br>
-                Nhìn vào tiêu đề <em>"The Benefits of Regular Exercise"</em> → Đoán nội dung nói về lợi ích của tập thể dục.<br>
-                Đọc câu đầu: <em>"Regular exercise is essential for maintaining good health."</em> → Ý chính của bài.
-            </div>
-
-            <div class="note-box">
-                <strong>📌 Mẹo:</strong> Luôn đọc câu hỏi trước khi đọc đoạn văn để biết cần tìm thông tin gì.
-            </div>
-        </div>
-    </div>
-
-    <!-- TAB 2: Ý CHÍNH & CHI TIẾT -->
-    <div id="main_idea" class="tab-content">
-        <div class="card">
-            <h2>🎯 Tìm ý chính và chi tiết trong bài đọc</h2>
-            
-            <h3>🔹 Ý chính (Main Idea)</h3>
             <div class="formula-box">
-                <strong>💡 Ý chính là thông điệp quan trọng nhất của toàn bài hoặc một đoạn văn.</strong><br>
-                Thường xuất hiện ở <span class="highlight">câu đầu</span> hoặc <span class="highlight">câu cuối</span> của đoạn văn.
+                <strong>📌 Cấu trúc chung:</strong><br>
+                <span class="highlight">Chủ ngữ + Modal Verb + Động từ nguyên mẫu (không "to")</span><br>
+                <em>Ví dụ: She <strong>can</strong> speak three languages.</em>
             </div>
 
             <div class="example-box">
-                <strong>Ví dụ:</strong><br>
-                <em>"Global warming is one of the most serious environmental issues we face today. Rising temperatures are causing ice caps to melt, sea levels to rise, and weather patterns to change."</em><br>
-                → <strong>Ý chính:</strong> Global warming is a serious issue.<br>
-                → <strong>Chi tiết hỗ trợ:</strong> Ice caps melting, sea levels rising, weather changing.
-            </div>
-
-            <h3>🔹 Chi tiết (Details)</h3>
-            <div class="rule-list">
-                <div class="rule-item">
-                    <strong>📌 Sự kiện, số liệu</strong>
-                    <em>According to the article, 70% of the Earth's surface is water.</em>
-                </div>
-                <div class="rule-item">
-                    <strong>📌 Ví dụ, bằng chứng</strong>
-                    <em>For example, many studies show that exercise improves mood.</em>
-                </div>
-                <div class="rule-item">
-                    <strong>📌 Lời giải thích</strong>
-                    <em>This is because exercise releases endorphins.</em>
-                </div>
-            </div>
-
-            <div class="note-box">
-                <strong>📌 Mẹo:</strong> Khi tìm ý chính, hãy hỏi: "Tác giả muốn truyền tải điều gì?" Với chi tiết, hỏi: "Thông tin này ủng hộ ý chính như thế nào?"
+                <strong>⚠️ Lưu ý quan trọng:</strong><br>
+                ✅ Modal Verbs <strong>không thêm "s"</strong> ở ngôi thứ ba số ít: <em>He can <del>cans</del>.</em><br>
+                ✅ Modal Verbs <strong>không cần trợ động từ "do/did"</strong> trong câu hỏi và phủ định.<br>
+                ❌ <em>He doesn't can swim.</em> → <em>He <strong>can't</strong> swim.</em>
             </div>
         </div>
     </div>
 
-    <!-- TAB 3: ĐIỀN TỪ VÀO ĐOẠN VĂN -->
-    <div id="cloze" class="tab-content">
+    <!-- TAB 2: CAN & COULD -->
+    <div id="can_could" class="tab-content">
         <div class="card">
-            <h2>✏️ Điền từ thích hợp vào chỗ trống (Cloze Test)</h2>
-            <div class="note-box">
-                <strong>💡 Dạng bài kiểm tra khả năng hiểu ngữ cảnh và từ vựng.</strong>
-                <p style="margin-top: 6px;">Bạn cần chọn từ phù hợp cả về nghĩa và ngữ pháp trong đoạn văn.</p>
-            </div>
+            <h2>💪 Can & Could – Khả năng và sự cho phép</h2>
 
-            <h3>🔹 Các bước làm bài điền từ</h3>
+            <h3>🔹 CAN – Khả năng hiện tại / sự cho phép</h3>
             <div class="rule-list">
                 <div class="rule-item">
-                    <strong>1️⃣ Đọc toàn bộ đoạn</strong>
-                    Đọc nhanh để hiểu nội dung tổng quát trước khi điền từ.
+                    <strong>📌 Diễn tả khả năng</strong>
+                    <em>I <span class="highlight">can</span> drive a car.</em><br>
+                    <span style="font-size:0.85rem;">(Tôi có thể lái xe.)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>2️⃣ Xác định từ loại</strong>
-                    Chỗ trống cần danh từ, động từ, tính từ hay trạng từ? Dựa vào vị trí trong câu.
+                    <strong>📌 Xin phép / cho phép</strong>
+                    <em><span class="highlight">Can</span> I borrow your pen?</em><br>
+                    <span style="font-size:0.85rem;">(Tôi có thể mượn bút của bạn không?)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>3️⃣ Đọc ngữ cảnh xung quanh</strong>
-                    Các câu trước và sau giúp suy luận nghĩa của từ cần điền.
+                    <strong>📌 Phủ định: cannot / can't</strong>
+                    <em>She <span class="highlight">can't</span> come to the party.</em><br>
+                    <span style="font-size:0.85rem;">(Cô ấy không thể đến bữa tiệc.)</span>
+                </div>
+            </div>
+
+            <h3>🔹 COULD – Khả năng trong quá khứ / Lịch sự</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Khả năng trong quá khứ</strong>
+                    <em>When I was young, I <span class="highlight">could</span> run fast.</em><br>
+                    <span style="font-size:0.85rem;">(Khi tôi còn trẻ, tôi có thể chạy nhanh.)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>4️⃣ Kiểm tra sự hợp lý</strong>
-                    Sau khi chọn, đọc lại cả câu để đảm bảo ngữ pháp và ý nghĩa.
+                    <strong>📌 Đề nghị lịch sự</strong>
+                    <em><span class="highlight">Could</span> you help me with this bag?</em><br>
+                    <span style="font-size:0.85rem;">(Bạn có thể giúp tôi xách túi này được không?)</span>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Khả năng có thể (ít chắc chắn)</strong>
+                    <em>It <span class="highlight">could</span> rain later.</em><br>
+                    <span style="font-size:0.85rem;">(Trời có thể mưa sau đó.)</span>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-col">
+                    <h4>✅ CAN (Hiện tại)</h4>
+                    <p><strong>Khả năng:</strong> <em>I <span class="highlight">can</span> speak English.</em></p>
+                    <p><strong>Cho phép:</strong> <em>You <span class="highlight">can</span> go now.</em></p>
+                    <p><strong>Không thể:</strong> <em>He <span class="highlight">can't</span> swim.</em></p>
+                </div>
+                <div class="compare-col">
+                    <h4>✅ COULD (Quá khứ / Lịch sự)</h4>
+                    <p><strong>Khả năng QK:</strong> <em>I <span class="highlight">could</span> swim when I was 5.</em></p>
+                    <p><strong>Đề nghị:</strong> <em><span class="highlight">Could</span> you open the door?</em></p>
+                    <p><strong>Không thể QK:</strong> <em>She <span class="highlight">couldn't</span> find her keys.</em></p>
                 </div>
             </div>
 
             <div class="example-box">
-                <strong>📌 Ví dụ:</strong><br>
-                <em>"Many students find that listening to music helps them (1) _______ better. However, others prefer complete silence when they (2) _______."</em><br>
-                (1) <u>concentrate</u> (vì động từ theo sau "helps them")<br>
-                (2) <u>study</u> (vì chủ ngữ "they" và ngữ cảnh học tập)
-            </div>
-
-            <div class="note-box">
-                <strong>📌 Mẹo:</strong> Chú ý các từ nối (however, therefore, because) để xác định mối quan hệ giữa các câu.
+                <strong>💡 Mẹo phân biệt:</strong><br>
+                <strong>Can</strong> dùng cho khả năng hiện tại hoặc tương lai gần.<br>
+                <strong>Could</strong> dùng cho khả năng trong quá khứ, hoặc đề nghị lịch sự ở hiện tại.<br>
+                <em>"Can you pass me the salt?"</em> (thân mật) → <em>"Could you pass me the salt?"</em> (lịch sự hơn)
             </div>
         </div>
     </div>
 
-    <!-- TAB 4: ĐIỀN CÂU VÀO ĐOẠN VĂN -->
-    <div id="sentence_insertion" class="tab-content">
+    <!-- TAB 3: MAY & MIGHT -->
+    <div id="may_might" class="tab-content">
         <div class="card">
-            <h2>🧩 Điền câu thích hợp vào đoạn văn</h2>
-            <div class="note-box">
-                <strong>💡 Dạng bài yêu cầu đặt một câu vào vị trí thích hợp trong đoạn.</strong>
-                <p style="margin-top: 6px;">Kiểm tra khả năng hiểu mạch lạc và liên kết ý tưởng.</p>
-            </div>
+            <h2>🤔 May & Might – Khả năng, sự cho phép (trang trọng)</h2>
 
-            <h3>🔹 Chiến lược làm bài</h3>
+            <h3>🔹 MAY – Cho phép trang trọng / Khả năng</h3>
             <div class="rule-list">
                 <div class="rule-item">
-                    <strong>1️⃣ Đọc câu cần điền</strong>
-                    Xác định nội dung và vai trò của câu đó trong đoạn (câu chủ đề, câu hỗ trợ, câu kết luận).
+                    <strong>📌 Xin phép (trang trọng)</strong>
+                    <em><span class="highlight">May</span> I speak with Mr. Smith?</em><br>
+                    <span style="font-size:0.85rem;">(Tôi có thể nói chuyện với ông Smith không?)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>2️⃣ Tìm từ khóa hoặc từ nối</strong>
-                    Từ như "however", "therefore", "for example" giúp xác định vị trí logic.
+                    <strong>📌 Khả năng có thể xảy ra</strong>
+                    <em>She <span class="highlight">may</span> be at home now.</em><br>
+                    <span style="font-size:0.85rem;">(Cô ấy có thể ở nhà bây giờ.)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>3️⃣ Kiểm tra liên kết</strong>
-                    Đảm bảo câu điền vào kết nối mượt mà với câu trước và sau.
+                    <strong>📌 Cho phép (thường trong văn viết)</strong>
+                    <em>Students <span class="highlight">may</span> use the library until 9 PM.</em>
                 </div>
             </div>
 
-            <div class="example-box">
-                <strong>📌 Ví dụ:</strong><br>
-                <em>"Many people believe that technology is making our lives easier. _______ However, others argue that it has made us more dependent and less sociable."</em><br>
-                → Câu cần điền có thể là: <u>"While this may be true in some cases, it also has negative effects."</u><br>
-                → Từ khóa "However" ở câu sau cho thấy câu cần điền là một ý kiến đối lập.
+            <h3>🔹 MIGHT – Khả năng (ít chắc chắn hơn MAY)</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Khả năng thấp</strong>
+                    <em>It <span class="highlight">might</span> snow tomorrow.</em><br>
+                    <span style="font-size:0.85rem;">(Trời có thể tuyết vào ngày mai – khả năng thấp.)</span>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Dùng trong câu điều kiện</strong>
+                    <em>If you hurried, you <span class="highlight">might</span> catch the train.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Phủ định: might not</strong>
+                    <em>He <span class="highlight">might not</span> come.</em>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-col">
+                    <h4>✅ MAY</h4>
+                    <p><strong>Cho phép (trang trọng):</strong> <em><span class="highlight">May</span> I leave early?</em></p>
+                    <p><strong>Khả năng (50%):</strong> <em>They <span class="highlight">may</span> arrive soon.</em></p>
+                </div>
+                <div class="compare-col">
+                    <h4>✅ MIGHT</h4>
+                    <p><strong>Khả năng thấp (30%):</strong> <em>They <span class="highlight">might</span> arrive soon.</em></p>
+                    <p><strong>Quá khứ của may:</strong> <em>He said he <span class="highlight">might</span> be late.</em></p>
+                </div>
             </div>
 
             <div class="note-box">
-                <strong>📌 Mẹo:</strong> Chú ý các đại từ (it, they, this) – chúng phải tham chiếu đến một danh từ đã được đề cập trước đó.
+                <strong>📌 Lưu ý:</strong> Trong giao tiếp hàng ngày, người ta thường dùng <strong>can/could</strong> để xin phép thay vì <strong>may</strong> (trang trọng hơn).<br>
+                <em>"Can I use your phone?"</em> (thân mật) vs <em>"May I use your phone?"</em> (lịch sự, trang trọng)
             </div>
         </div>
     </div>
 
-    <!-- TAB 5: SUY LUẬN & NGỤ Ý -->
-    <div id="inference" class="tab-content">
+    <!-- TAB 4: MUST & SHOULD -->
+    <div id="must_should" class="tab-content">
         <div class="card">
-            <h2>🔍 Suy luận và hiểu ngụ ý (Inference)</h2>
-            <div class="note-box">
-                <strong>💡 Không phải mọi thông tin đều được nói trực tiếp.</strong>
-                <p style="margin-top: 6px;">Bạn cần đọc giữa các dòng để hiểu ý tác giả muốn truyền tải.</p>
-            </div>
+            <h2>⚖️ Must & Should – Nghĩa vụ và lời khuyên</h2>
 
-            <h3>🔹 Các loại suy luận thường gặp</h3>
+            <h3>🔹 MUST – Bắt buộc / Suy luận chắc chắn</h3>
             <div class="rule-list">
                 <div class="rule-item">
-                    <strong>📌 Suy luận về mục đích</strong>
-                    Tại sao tác giả viết bài này? (thuyết phục, giải thích, miêu tả, v.v.)
+                    <strong>📌 Nghĩa vụ (bắt buộc)</strong>
+                    <em>You <span class="highlight">must</span> wear a seatbelt.</em><br>
+                    <span style="font-size:0.85rem;">(Bạn phải thắt dây an toàn.)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>📌 Suy luận về thái độ</strong>
-                    Tác giả có thái độ tích cực, tiêu cực hay trung lập với vấn đề?
+                    <strong>📌 Suy luận logic</strong>
+                    <em>She's been working all day. She <span class="highlight">must</span> be tired.</em><br>
+                    <span style="font-size:0.85rem;">(Cô ấy làm việc cả ngày. Chắc cô ấy mệt.)</span>
                 </div>
                 <div class="rule-item">
-                    <strong>📌 Suy luận về hàm ý</strong>
-                    Thông tin nào được ngầm hiểu mà không cần nói thẳng?
+                    <strong>📌 Phủ định: must not (mustn't)</strong>
+                    <em>You <span class="highlight">mustn't</span> smoke here.</em><br>
+                    <span style="font-size:0.85rem;">(Bạn không được hút thuốc ở đây.)</span>
                 </div>
             </div>
 
-            <div class="example-box">
-                <strong>📌 Ví dụ:</strong><br>
-                Đoạn văn: <em>"Although the new policy has been implemented for three months, the number of complaints has not decreased. Many employees still find it confusing and ineffective."</em><br>
-                → <strong>Suy luận:</strong> Tác giả không hài lòng với chính sách mới. (Thái độ tiêu cực)<br>
-                → <strong>Hàm ý:</strong> Chính sách này có thể cần được thay đổi hoặc cải thiện.
+            <h3>🔹 SHOULD – Lời khuyên / Sự khuyến nghị</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Lời khuyên</strong>
+                    <em>You <span class="highlight">should</span> see a doctor.</em><br>
+                    <span style="font-size:0.85rem;">(Bạn nên đi gặp bác sĩ.)</span>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Điều nên làm (không bắt buộc)</strong>
+                    <em>Students <span class="highlight">should</span> study regularly.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Phủ định: should not (shouldn't)</strong>
+                    <em>You <span class="highlight">shouldn't</span> eat too much sugar.</em>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-col">
+                    <h4>✅ MUST (Bắt buộc)</h4>
+                    <p><strong>Nghĩa vụ:</strong> <em>You <span class="highlight">must</span> stop at the red light.</em></p>
+                    <p><strong>Suy luận:</strong> <em>He <span class="highlight">must</span> be the manager.</em></p>
+                    <p><span class="tag tag-danger">Cấm đoán</span> <em>You <span class="highlight">mustn't</span> tell anyone.</em></p>
+                </div>
+                <div class="compare-col">
+                    <h4>✅ SHOULD (Khuyên)</h4>
+                    <p><strong>Lời khuyên:</strong> <em>You <span class="highlight">should</span> try this dish.</em></p>
+                    <p><strong>Không bắt buộc:</strong> <em>I <span class="highlight">should</span> call my mom.</em></p>
+                    <p><span class="tag tag-warning">Không nên</span> <em>You <span class="highlight">shouldn't</span> stay up late.</em></p>
+                </div>
             </div>
 
             <div class="note-box">
-                <strong>📌 Mẹo:</strong> Khi gặp câu hỏi suy luận, hãy tìm bằng chứng trong bài đọc để hỗ trợ cho dự đoán của bạn.
+                <strong>📌 Phân biệt MUST và HAVE TO:</strong><br>
+                <strong>Must</strong> diễn tả nghĩa vụ từ người nói (cảm giác cá nhân).<br>
+                <strong>Have to</strong> diễn tả nghĩa vụ từ bên ngoài (luật lệ, quy định).<br>
+                <em>I <span class="highlight">must</span> finish this report. (tôi tự thấy cần)</em><br>
+                <em>I <span class="highlight">have to</span> wear a uniform at school. (quy định của trường)</em>
             </div>
         </div>
     </div>
 
-    <!-- TAB 6: TRẮC NGHIỆM TỔNG HỢP -->
-    <div id="luyentap" class="tab-content">
-        <div class="quiz-container">
-            <h2>🎯 Trắc nghiệm: Reading Comprehension</h2>
-            <p>✅ Đọc đoạn văn và chọn đáp án đúng cho các câu hỏi bên dưới.</p>
+    <!-- TAB 5: WILL & WOULD -->
+    <div id="will_would" class="tab-content">
+        <div class="card">
+            <h2>🔮 Will & Would – Tương lai, thói quen, đề nghị</h2>
 
-            <!-- ĐOẠN VĂN 1: Climate Change -->
-            <div class="reading-passage">
-                <h4>🌍 Passage 1: The Impact of Climate Change</h4>
-                <p>Climate change is one of the most pressing challenges facing humanity in the 21st century. The primary driver of this phenomenon is the emission of greenhouse gases, particularly carbon dioxide, from human activities such as burning fossil fuels, deforestation, and industrial processes. These gases trap heat in the Earth's atmosphere, leading to a gradual increase in global temperatures. The consequences of this warming are far-reaching and severe. Rising sea levels threaten coastal communities, while extreme weather events like hurricanes, droughts, and floods are becoming more frequent and intense. Agricultural productivity is also at risk, as changing weather patterns disrupt traditional farming cycles and reduce crop yields in many regions.</p>
-                <p>Addressing climate change requires unprecedented global cooperation. International agreements like the Paris Accord aim to limit global warming to well below 2°C above pre-industrial levels. However, achieving this target demands immediate and sustained action from all nations. This includes transitioning to renewable energy sources, improving energy efficiency, and implementing sustainable land-use practices. Individuals can also contribute by reducing their carbon footprint through lifestyle changes such as using public transportation, conserving energy, and adopting plant-based diets. While the challenge is immense, the collective effort to mitigate climate change also presents opportunities for innovation, economic growth, and a healthier planet for future generations.</p>
-            </div>
-
-            <div class="question" data-correct="C">
-                <p class="question-text">1. What is the primary cause of climate change according to the passage?</p>
-                <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q1" value="A"> Natural weather patterns</label>
-                    <label class="option-label"><input type="radio" name="q1" value="B"> Volcanic eruptions</label>
-                    <label class="option-label"><input type="radio" name="q1" value="C"> Emission of greenhouse gases from human activities</label>
-                    <label class="option-label"><input type="radio" name="q1" value="D"> Solar radiation variations</label>
+            <h3>🔹 WILL – Tương lai, lời hứa, quyết định</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Tương lai (dự đoán)</strong>
+                    <em>It <span class="highlight">will</span> be sunny tomorrow.</em>
                 </div>
-                <div class="explanation">🌡️ Bài đọc chỉ rõ: "The primary driver of this phenomenon is the emission of greenhouse gases... from human activities".</div>
+                <div class="rule-item">
+                    <strong>📌 Lời hứa</strong>
+                    <em>I <span class="highlight">will</span> always love you.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Quyết định ngay lúc nói</strong>
+                    <em>"The phone is ringing." – "I <span class="highlight">will</span> answer it."</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Đề nghị giúp đỡ</strong>
+                    <em><span class="highlight">Will</span> you help me carry this?</em>
+                </div>
             </div>
+
+            <h3>🔹 WOULD – Thói quen QK, đề nghị lịch sự</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 Thói quen trong quá khứ</strong>
+                    <em>When I was a kid, I <span class="highlight">would</span> visit my grandma every Sunday.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Đề nghị lịch sự</strong>
+                    <em><span class="highlight">Would</span> you like some tea?</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 Câu điều kiện loại 2</strong>
+                    <em>If I had money, I <span class="highlight">would</span> travel the world.</em>
+                </div>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-col">
+                    <h4>✅ WILL</h4>
+                    <p><strong>Tương lai:</strong> <em>They <span class="highlight">will</span> arrive at 8 PM.</em></p>
+                    <p><strong>Hứa hẹn:</strong> <em>I <span class="highlight">will</span> call you.</em></p>
+                    <p><strong>Yêu cầu:</strong> <em><span class="highlight">Will</span> you close the window?</em></p>
+                </div>
+                <div class="compare-col">
+                    <h4>✅ WOULD</h4>
+                    <p><strong>Thói quen QK:</strong> <em>She <span class="highlight">would</span> sing every morning.</em></p>
+                    <p><strong>Lịch sự:</strong> <em><span class="highlight">Would</span> you pass the salt?</em></p>
+                    <p><strong>Điều kiện:</strong> <em>I <span class="highlight">would</span> go if I could.</em></p>
+                </div>
+            </div>
+
+            <div class="example-box">
+                <strong>💡 Mẹo nhớ:</strong><br>
+                <strong>Will</strong> → tương lai, hứa hẹn, quyết định.<br>
+                <strong>Would</strong> → lịch sự, thói quen quá khứ, câu điều kiện.<br>
+                <em>Would you like...?</em> là cách mời/đề nghị lịch sự hơn <em>Will you...?</em>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 6: LUYỆN TẬP -->
+    <div id="practice" class="tab-content">
+        <div class="card">
+            <h2>🎯 Luyện tập Modal Verbs</h2>
+            <p>Chọn đáp án đúng để hoàn thành các câu sau.</p>
 
             <div class="question" data-correct="B">
-                <p class="question-text">2. Which of the following is NOT mentioned as a consequence of global warming?</p>
+                <p class="question-text">1. She ______ speak three languages fluently.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q2" value="A"> Rising sea levels</label>
-                    <label class="option-label"><input type="radio" name="q2" value="B"> Increased biodiversity</label>
-                    <label class="option-label"><input type="radio" name="q2" value="C"> More frequent extreme weather events</label>
-                    <label class="option-label"><input type="radio" name="q2" value="D"> Reduced agricultural productivity</label>
+                    <label class="option-label"><input type="radio" name="q1" value="A"> must</label>
+                    <label class="option-label"><input type="radio" name="q1" value="B"> can</label>
+                    <label class="option-label"><input type="radio" name="q1" value="C"> should</label>
+                    <label class="option-label"><input type="radio" name="q1" value="D"> would</label>
                 </div>
-                <div class="explanation">🌊 Bài đọc đề cập đến: rising sea levels, extreme weather, reduced crop yields. Không đề cập đến tăng đa dạng sinh học.</div>
+                <div class="explanation">💡 "can" diễn tả khả năng ở hiện tại.</div>
             </div>
 
             <div class="question" data-correct="A">
-                <p class="question-text">3. What does the Paris Accord aim to achieve?</p>
+                <p class="question-text">2. You ______ wear a helmet when riding a motorbike. It's the law.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q3" value="A"> Limit global warming to well below 2°C</label>
-                    <label class="option-label"><input type="radio" name="q3" value="B"> Eliminate all greenhouse gas emissions</label>
-                    <label class="option-label"><input type="radio" name="q3" value="C"> Reverse the effects of climate change immediately</label>
-                    <label class="option-label"><input type="radio" name="q3" value="D"> Stop all industrial activities</label>
+                    <label class="option-label"><input type="radio" name="q2" value="A"> must</label>
+                    <label class="option-label"><input type="radio" name="q2" value="B"> can</label>
+                    <label class="option-label"><input type="radio" name="q2" value="C"> may</label>
+                    <label class="option-label"><input type="radio" name="q2" value="D"> might</label>
                 </div>
-                <div class="explanation">📜 Bài đọc: "aim to limit global warming to well below 2°C above pre-industrial levels".</div>
+                <div class="explanation">⚖️ "must" diễn tả nghĩa vụ bắt buộc theo luật.</div>
             </div>
 
             <div class="question" data-correct="D">
-                <p class="question-text">4. According to the passage, how can individuals contribute to addressing climate change?</p>
+                <p class="question-text">3. ______ you help me with this heavy bag, please?</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q4" value="A"> By waiting for government action</label>
-                    <label class="option-label"><input type="radio" name="q4" value="B"> By increasing their carbon footprint</label>
-                    <label class="option-label"><input type="radio" name="q4" value="C"> By continuing to use fossil fuels</label>
-                    <label class="option-label"><input type="radio" name="q4" value="D"> By adopting plant-based diets and using public transportation</label>
+                    <label class="option-label"><input type="radio" name="q3" value="A"> May</label>
+                    <label class="option-label"><input type="radio" name="q3" value="B"> Must</label>
+                    <label class="option-label"><input type="radio" name="q3" value="C"> Will</label>
+                    <label class="option-label"><input type="radio" name="q3" value="D"> Could</label>
                 </div>
-                <div class="explanation">🚲 Bài đọc: "Individuals can also contribute by reducing their carbon footprint... using public transportation, conserving energy, and adopting plant-based diets."</div>
-            </div>
-
-            <!-- ĐOẠN VĂN 2: Artificial Intelligence -->
-            <div class="reading-passage">
-                <h4>🤖 Passage 2: Artificial Intelligence in Modern Life</h4>
-                <p>Artificial Intelligence (AI) has rapidly evolved from a futuristic concept to an integral part of our daily lives. AI systems are now embedded in numerous applications, from virtual assistants like Siri and Alexa to recommendation algorithms on streaming platforms and social media. In the healthcare sector, AI is revolutionizing diagnostics by analyzing medical images with remarkable accuracy, often surpassing human capabilities in detecting early signs of diseases. Similarly, in the financial industry, AI algorithms are used to detect fraudulent transactions and predict market trends with unprecedented speed and precision.</p>
-                <p>Despite its numerous benefits, the widespread adoption of AI raises significant ethical and social concerns. One of the most pressing issues is job displacement, as automation threatens to replace human workers in various industries, from manufacturing to customer service. Additionally, there are concerns about privacy and data security, as AI systems often require vast amounts of personal data to function effectively. Furthermore, the potential for algorithmic bias has become a major topic of discussion, as AI systems can perpetuate existing inequalities if not carefully designed and monitored. As AI continues to advance, it is crucial for policymakers, technologists, and society as a whole to address these challenges while harnessing the transformative potential of this technology.</p>
-            </div>
-
-            <div class="question" data-correct="B">
-                <p class="question-text">5. What is the main idea of the passage?</p>
-                <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q5" value="A"> AI will eventually replace all human jobs</label>
-                    <label class="option-label"><input type="radio" name="q5" value="B"> AI offers significant benefits but also raises important ethical concerns</label>
-                    <label class="option-label"><input type="radio" name="q5" value="C"> AI is only useful in healthcare and finance</label>
-                    <label class="option-label"><input type="radio" name="q5" value="D"> AI does not pose any risks to society</label>
-                </div>
-                <div class="explanation">🤔 Bài đọc trình bày cả lợi ích và lo ngại của AI → ý chính là sự cân bằng giữa lợi ích và thách thức đạo đức.</div>
-            </div>
-
-            <div class="question" data-correct="A">
-                <p class="question-text">6. According to the passage, in which field is AI used to analyze medical images?</p>
-                <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q6" value="A"> Healthcare</label>
-                    <label class="option-label"><input type="radio" name="q6" value="B"> Finance</label>
-                    <label class="option-label"><input type="radio" name="q6" value="C"> Manufacturing</label>
-                    <label class="option-label"><input type="radio" name="q6" value="D"> Customer service</label>
-                </div>
-                <div class="explanation">🏥 Bài đọc: "In the healthcare sector, AI is revolutionizing diagnostics by analyzing medical images".</div>
-            </div>
-
-            <div class="question" data-correct="D">
-                <p class="question-text">7. What ethical concern about AI is mentioned in the passage?</p>
-                <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q7" value="A"> AI is too expensive to implement</label>
-                    <label class="option-label"><input type="radio" name="q7" value="B"> AI cannot process large amounts of data</label>
-                    <label class="option-label"><input type="radio" name="q7" value="C"> AI is not reliable enough for critical tasks</label>
-                    <label class="option-label"><input type="radio" name="q7" value="D"> Algorithmic bias and job displacement</label>
-                </div>
-                <div class="explanation">⚖️ Bài đọc đề cập đến: job displacement, privacy concerns, và algorithmic bias.</div>
+                <div class="explanation">🤝 "Could" là cách đề nghị lịch sự.</div>
             </div>
 
             <div class="question" data-correct="C">
-                <p class="question-text">8. What does the passage suggest is needed to address the challenges of AI?</p>
+                <p class="question-text">4. It ______ rain later, so take an umbrella.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q8" value="A"> Stopping all AI development</label>
-                    <label class="option-label"><input type="radio" name="q8" value="B"> Ignoring the ethical concerns</label>
-                    <label class="option-label"><input type="radio" name="q8" value="C"> Cooperation between policymakers, technologists, and society</label>
-                    <label class="option-label"><input type="radio" name="q8" value="D"> Allowing AI to develop without regulation</label>
+                    <label class="option-label"><input type="radio" name="q4" value="A"> must</label>
+                    <label class="option-label"><input type="radio" name="q4" value="B"> will</label>
+                    <label class="option-label"><input type="radio" name="q4" value="C"> might</label>
+                    <label class="option-label"><input type="radio" name="q4" value="D"> can</label>
                 </div>
-                <div class="explanation">🤝 Bài đọc: "it is crucial for policymakers, technologists, and society as a whole to address these challenges".</div>
-            </div>
-
-            <!-- ĐOẠN VĂN 3: Social Media -->
-            <div class="reading-passage">
-                <h4>📱 Passage 3: The Influence of Social Media</h4>
-                <p>Over the past two decades, social media platforms have transformed the way people communicate, share information, and build communities. What began as a means for individuals to connect with friends and family has evolved into a powerful tool that influences politics, business, and culture on a global scale. Social media enables the rapid dissemination of news, allowing information to reach millions of people within minutes. This has empowered grassroots movements and given a voice to marginalized groups, while also enabling businesses to engage directly with consumers in ways that were previously unimaginable.</p>
-                <p>However, the rise of social media has also brought about significant challenges. The spread of misinformation and fake news has become a major concern, as false information can quickly go viral and shape public opinion. Additionally, the algorithms used by social media platforms often create "echo chambers" that reinforce users' existing beliefs, contributing to political polarization and social division. There is also growing evidence that excessive use of social media can have negative effects on mental health, particularly among young people, leading to increased rates of anxiety, depression, and feelings of inadequacy. As social media continues to evolve, it is essential for users to develop critical thinking skills and for platforms to take responsibility for the content they host.</p>
+                <div class="explanation">🌧️ "might" diễn tả khả năng có thể xảy ra (không chắc chắn).</div>
             </div>
 
             <div class="question" data-correct="B">
-                <p class="question-text">9. What is the passage mainly about?</p>
+                <p class="question-text">5. When I was a child, I ______ spend hours playing in the park.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q9" value="A"> The history of social media platforms</label>
-                    <label class="option-label"><input type="radio" name="q9" value="B"> The positive and negative impacts of social media</label>
-                    <label class="option-label"><input type="radio" name="q9" value="C"> How to use social media effectively</label>
-                    <label class="option-label"><input type="radio" name="q9" value="D"> The financial success of social media companies</label>
+                    <label class="option-label"><input type="radio" name="q5" value="A"> will</label>
+                    <label class="option-label"><input type="radio" name="q5" value="B"> would</label>
+                    <label class="option-label"><input type="radio" name="q5" value="C"> should</label>
+                    <label class="option-label"><input type="radio" name="q5" value="D"> can</label>
                 </div>
-                <div class="explanation">📘 Bài đọc trình bày cả mặt tích cực và tiêu cực của mạng xã hội.</div>
+                <div class="explanation">🕰️ "would" diễn tả thói quen trong quá khứ.</div>
             </div>
 
             <div class="question" data-correct="A">
-                <p class="question-text">10. According to the passage, what is a positive impact of social media?</p>
+                <p class="question-text">6. You ______ eat so much junk food. It's bad for your health.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q10" value="A"> It empowers grassroots movements and marginalized groups</label>
-                    <label class="option-label"><input type="radio" name="q10" value="B"> It eliminates all political polarization</label>
-                    <label class="option-label"><input type="radio" name="q10" value="C"> It has no negative effects on mental health</label>
-                    <label class="option-label"><input type="radio" name="q10" value="D"> It prevents the spread of misinformation</label>
+                    <label class="option-label"><input type="radio" name="q6" value="A"> shouldn't</label>
+                    <label class="option-label"><input type="radio" name="q6" value="B"> mustn't</label>
+                    <label class="option-label"><input type="radio" name="q6" value="C"> can't</label>
+                    <label class="option-label"><input type="radio" name="q6" value="D"> won't</label>
                 </div>
-                <div class="explanation">📢 Bài đọc: "empowered grassroots movements and given a voice to marginalized groups".</div>
-            </div>
-
-            <div class="question" data-correct="D">
-                <p class="question-text">11. What is an "echo chamber" as mentioned in the passage?</p>
-                <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q11" value="A"> A social media platform that promotes diversity</label>
-                    <label class="option-label"><input type="radio" name="q11" value="B"> A feature that allows users to have private conversations</label>
-                    <label class="option-label"><input type="radio" name="q11" value="C"> A tool for fact-checking information</label>
-                    <label class="option-label"><input type="radio" name="q11" value="D"> An environment where users are exposed only to their existing beliefs</label>
-                </div>
-                <div class="explanation">🔁 Bài đọc: "reinforce users' existing beliefs" → echo chambers là môi trường chỉ tiếp xúc với niềm tin đã có.</div>
+                <div class="explanation">🍔 "shouldn't" là lời khuyên không nên làm.</div>
             </div>
 
             <div class="question" data-correct="C">
-                <p class="question-text">12. What does the passage suggest about the future of social media?</p>
+                <p class="question-text">7. ______ I open the window? It's a bit stuffy in here.</p>
                 <div class="options-route">
-                    <label class="option-label"><input type="radio" name="q12" value="A"> It will become less popular over time</label>
-                    <label class="option-label"><input type="radio" name="q12" value="B"> It will solve all communication problems</label>
-                    <label class="option-label"><input type="radio" name="q12" value="C"> Users and platforms must work together to address its challenges</label>
-                    <label class="option-label"><input type="radio" name="q12" value="D"> It will no longer have any negative effects</label>
+                    <label class="option-label"><input type="radio" name="q7" value="A"> Will</label>
+                    <label class="option-label"><input type="radio" name="q7" value="B"> Would</label>
+                    <label class="option-label"><input type="radio" name="q7" value="C"> May</label>
+                    <label class="option-label"><input type="radio" name="q7" value="D"> Must</label>
                 </div>
-                <div class="explanation">🔮 Bài đọc: "it is essential for users to develop critical thinking skills and for platforms to take responsibility".</div>
+                <div class="explanation">🚪 "May" dùng để xin phép một cách trang trọng.</div>
+            </div>
+
+            <div class="question" data-correct="D">
+                <p class="question-text">8. She looks really tired. She ______ have stayed up late.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q8" value="A"> can</label>
+                    <label class="option-label"><input type="radio" name="q8" value="B"> should</label>
+                    <label class="option-label"><input type="radio" name="q8" value="C"> might</label>
+                    <label class="option-label"><input type="radio" name="q8" value="D"> must</label>
+                </div>
+                <div class="explanation">😴 "must have" diễn tả suy luận chắc chắn về quá khứ.</div>
+            </div>
+
+            <div class="question" data-correct="B">
+                <p class="question-text">9. If I had more time, I ______ travel around the world.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q9" value="A"> will</label>
+                    <label class="option-label"><input type="radio" name="q9" value="B"> would</label>
+                    <label class="option-label"><input type="radio" name="q9" value="C"> can</label>
+                    <label class="option-label"><input type="radio" name="q9" value="D"> may</label>
+                </div>
+                <div class="explanation">🌍 "would" dùng trong câu điều kiện loại 2 (giả định).</div>
+            </div>
+
+            <div class="question" data-correct="D">
+                <p class="question-text">10. You ______ park here. It's a reserved spot for the disabled.</p>
+                <div class="options-route">
+                    <label class="option-label"><input type="radio" name="q10" value="A"> may not</label>
+                    <label class="option-label"><input type="radio" name="q10" value="B"> shouldn't</label>
+                    <label class="option-label"><input type="radio" name="q10" value="C"> won't</label>
+                    <label class="option-label"><input type="radio" name="q10" value="D"> mustn't</label>
+                </div>
+                <div class="explanation">🚫 "mustn't" diễn tả sự cấm đoán, không được phép.</div>
             </div>
 
             <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
@@ -801,8 +843,111 @@
 </div>
 
 <footer>
-    ✨ Bài 20: Reading Comprehension | Học chủ động – Nắm chắc kỹ năng đọc | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
+    ✨ Bài 20: Modal Verbs | Học chủ động – Nắm chắc động từ khuyết thiếu | 📘 Lớp Tiếng Anh Cô Quỳnh Nhi
 </footer>
+
+<style>
+    .question {
+        background: #f3f8fc;
+        border-radius: 24px;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #c0d6e2;
+        transition: all 0.2s;
+    }
+
+    .question-text {
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+
+    .options-route {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+    }
+
+    .option-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #eaf0f5;
+        padding: 10px 16px;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid transparent;
+    }
+
+    .option-label:hover {
+        background: #d4e2ec;
+        transform: scale(0.98);
+    }
+
+    .option-label input {
+        margin: 0;
+        width: 18px;
+        height: 18px;
+        accent-color: var(--secondary);
+    }
+
+    .correct {
+        background: #c2dce8 !important;
+        border-color: var(--success) !important;
+        color: #143e28;
+    }
+
+    .incorrect {
+        background: #f5d0d0 !important;
+        border-color: var(--danger) !important;
+        color: #752a2a;
+    }
+
+    .explanation {
+        margin-top: 14px;
+        padding: 12px;
+        background: #eaf0f5;
+        border-left: 4px solid var(--accent);
+        border-radius: 16px;
+        font-size: 0.9rem;
+        display: none;
+    }
+
+    .submit-btn {
+        background: linear-gradient(135deg, #2a5f7a, #1a3a4a);
+        color: white;
+        padding: 14px 32px;
+        border: none;
+        border-radius: 60px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+        margin: 2rem auto 0;
+        transition: 0.2s;
+        box-shadow: 0 5px 12px rgba(42, 95, 122, 0.25);
+    }
+
+    .submit-btn:hover {
+        transform: scale(1.02);
+        background: linear-gradient(135deg, #1f4f6a, #0f2a3a);
+        box-shadow: 0 8px 18px rgba(42, 95, 122, 0.35);
+    }
+
+    .result-score {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-top: 1.8rem;
+        background: #eaf0f5;
+        padding: 1rem;
+        border-radius: 40px;
+        display: none;
+        border: 2px solid #b0c8d8;
+    }
+</style>
 
 <script>
     function openTab(tabId) {
@@ -816,7 +961,7 @@
     }
 
     function checkQuiz() {
-        const questions = document.querySelectorAll('#quizForm .question');
+        const questions = document.querySelectorAll('.question');
         let score = 0;
         questions.forEach((q, idx) => {
             const correctVal = q.getAttribute('data-correct');
@@ -853,10 +998,10 @@
         const total = questions.length;
         let message = '';
         if (score === total) {
-            message = '🏆 Hoàn hảo! Bạn đã nắm vững kỹ năng đọc hiểu!';
-        } else if (score >= 9) {
-            message = '🌟 Rất tốt! Bạn hiểu rõ các dạng bài đọc hiểu!';
-        } else if (score >= 6) {
+            message = '🏆 Hoàn hảo! Bạn đã nắm vững Modal Verbs!';
+        } else if (score >= 8) {
+            message = '🌟 Rất tốt! Bạn hiểu rõ các động từ khuyết thiếu!';
+        } else if (score >= 5) {
             message = '📖 Khá ổn. Xem lại lý thuyết để cải thiện hơn!';
         } else {
             message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết và luyện tập thêm nhé!';
