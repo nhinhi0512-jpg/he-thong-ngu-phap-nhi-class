@@ -385,6 +385,29 @@
             font-weight: 600;
         }
 
+        .highlight-box {
+            background: linear-gradient(135deg, #f0faf4, #d8ebe0);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #aacbbe;
+        }
+
+        .short-adj-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .short-adj-list span {
+            background: var(--secondary);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 700px) {
             .master-header {
                 padding: 1rem;
@@ -468,6 +491,31 @@
             <div class="note-box">
                 <strong>📌 Lưu ý:</strong> Trong câu phủ định, ta có thể dùng <em>so ... as</em> thay cho <em>as ... as</em>.
             </div>
+
+            <!-- Bổ sung: Bảng phân biệt tính từ ngắn/dài -->
+            <div class="highlight-box">
+                <h3 style="margin-top:0;">📌 Phân biệt tính từ ngắn và tính từ dài</h3>
+                <table>
+                    <thead>
+                        <tr><th>Loại tính từ</th><th>So sánh hơn</th><th>So sánh nhất</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ngắn (1 âm tiết)</strong><br>tall, big, small, hot, cold</td>
+                            <td>adj + -er<br><em>tall → taller</em></td>
+                            <td>the + adj + -est<br><em>tall → the tallest</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dài (2+ âm tiết)</strong><br>beautiful, expensive, comfortable</td>
+                            <td>more + adj<br><em>beautiful → more beautiful</em></td>
+                            <td>the most + adj<br><em>beautiful → the most beautiful</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:10px; font-size:0.95rem;">
+                    <strong>💡 Lưu ý:</strong> Một số tính từ hai âm tiết kết thúc bằng <strong>-y, -le, -ow, -er</strong> có thể dùng cả hai cách, nhưng thông thường với người học cơ bản, ta phân biệt ngắn/dài theo số âm tiết.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -479,11 +527,72 @@
                 <strong>💡 Dùng để so sánh hai đối tượng với mức độ khác nhau.</strong>
             </div>
 
+            <!-- BỔ SUNG: Phân biệt tính từ/trạng từ ngắn và dài -->
+            <div class="highlight-box">
+                <h3 style="margin-top:0;">🔍 Phân biệt tính từ / trạng từ ngắn và dài</h3>
+                
+                <h4>📌 Tính từ / trạng từ ngắn (Short adjectives/adverbs)</h4>
+                <p>Là từ có <strong>1 âm tiết</strong>:</p>
+                <div class="short-adj-list">
+                    <span>tall</span>
+                    <span>big</span>
+                    <span>small</span>
+                    <span>hot</span>
+                    <span>cold</span>
+                    <span>fast</span>
+                    <span>hard</span>
+                    <span>high</span>
+                    <span>low</span>
+                    <span>near</span>
+                    <span>far</span>
+                    <span>long</span>
+                    <span>short</span>
+                </div>
+                <p style="margin-top:8px;">
+                    <strong>Ví dụ trạng từ ngắn:</strong> fast, hard, high, low, near, long, short
+                </p>
+
+                <h4>📌 Tính từ / trạng từ dài (Long adjectives/adverbs)</h4>
+                <p>Là từ có <strong>2 âm tiết trở lên</strong>:</p>
+                <div class="short-adj-list">
+                    <span>beautiful</span>
+                    <span>expensive</span>
+                    <span>comfortable</span>
+                    <span>interesting</span>
+                    <span>dangerous</span>
+                    <span>carefully</span>
+                    <span>fluently</span>
+                    <span>beautifully</span>
+                    <span>quickly</span>
+                    <span>slowly</span>
+                </div>
+
+                <div style="margin-top:12px; background: white; padding: 12px 16px; border-radius: 16px;">
+                    <p><strong>⚠️ Lưu ý quan trọng:</strong></p>
+                    <ul style="margin-left: 20px;">
+                        <li>Một số tính từ <strong>2 âm tiết</strong> kết thúc bằng <strong>-y, -le, -ow, -er</strong> có thể dùng cả hai cách:
+                            <br>Ví dụ: <em>happy → happier / more happy</em> (thông thường dùng <strong>happier</strong>)
+                        </li>
+                        <li>Trạng từ thường có đuôi <strong>-ly</strong> → được coi là <strong>trạng từ dài</strong> và dùng <strong>more</strong>.
+                            <br>Ví dụ: <em>quickly → more quickly</em> (không dùng <em>quicklier</em>)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <h3>🔹 Với tính từ/trạng từ ngắn (1 âm tiết)</h3>
             <div class="formula-box">
                 <strong>adj/adv + -er + than</strong><br>
                 <em>He is <u>taller than</u> me.</em><br>
                 <em>She runs <u>faster than</u> him.</em>
+            </div>
+            <div class="example-box">
+                <strong>Quy tắc thêm -er:</strong><br>
+                <ul style="margin-left: 20px;">
+                    <li>Thêm <strong>-er</strong> thông thường: <em>tall → taller, fast → faster</em></li>
+                    <li>Gấp đôi phụ âm cuối nếu trước đó là nguyên âm ngắn: <em>big → bigger, hot → hotter</em></li>
+                    <li>Nếu kết thúc bằng <strong>-y</strong> → đổi <strong>y → ier</strong>: <em>happy → happier</em></li>
+                </ul>
             </div>
 
             <h3>🔹 Với tính từ/trạng từ dài (≥ 2 âm tiết)</h3>
@@ -491,6 +600,27 @@
                 <strong>more + adj/adv + than</strong><br>
                 <em>This task is <u>more difficult than</u> that one.</em><br>
                 <em>He speaks <u>more fluently than</u> his sister.</em>
+            </div>
+
+            <!-- Bổ sung: So sánh hơn với danh từ -->
+            <h3>🔹 So sánh hơn với danh từ</h3>
+            <div class="rule-list">
+                <div class="rule-item">
+                    <strong>📌 more + danh từ không đếm được</strong>
+                    <em>I have <u>more time than</u> you.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 more + danh từ đếm được số nhiều</strong>
+                    <em>She has <u>more books than</u> I do.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 fewer + danh từ đếm được</strong>
+                    <em>He has <u>fewer friends than</u> his brother.</em>
+                </div>
+                <div class="rule-item">
+                    <strong>📌 less + danh từ không đếm được</strong>
+                    <em>I drink <u>less coffee than</u> my colleague.</em>
+                </div>
             </div>
 
             <h3>🔹 Ngoại lệ (bất quy tắc)</h3>
@@ -547,7 +677,7 @@
         </div>
     </div>
 
-    <!-- TAB 4: SO SÁNH ĐẶC BIỆT (bội số, cấp tiến, kép) -->
+    <!-- TAB 4: SO SÁNH ĐẶC BIỆT -->
     <div id="so_sanh_dac_biet" class="tab-content">
         <div class="card">
             <h2>✨ So sánh đặc biệt</h2>
@@ -559,35 +689,61 @@
                 <em>My salary is <u>three times as high as</u> his.</em>
             </div>
 
-            <h3>🔹 So sánh cấp tiến (càng ngày càng)</h3>
-            <div class="formula-box">
-                <strong>adj/adv + -er and adj/adv + -er</strong> (ngắn)<br>
-                <em>It's <u>getting colder and colder</u>.</em><br>
-                <strong>more and more + adj/adv</strong> (dài)<br>
-                <em>She becomes <u>more and more beautiful</u>.</em>
-            </div>
-
             <h3>🔹 So sánh kép (càng ... càng)</h3>
             <div class="formula-box">
-                <strong>The + so sánh hơn (+ S + V), the + so sánh hơn (+ S + V)</strong><br>
-                <em><u>The more</u> you study, <u>the smarter</u> you become.</em><br>
-                <em><u>The faster</u> you run, <u>the more tired</u> you feel.</em>
+                <strong>The + so sánh hơn (+ S + V), the + so sánh hơn (+ S + V)</strong>
+            </div>
+            
+            <h4>📌 Với tính từ / trạng từ ngắn</h4>
+            <div class="example-box">
+                <strong>the + adj/adv-er + S + V, the + adj/adv-er + S + V</strong><br>
+                <em><u>The harder</u> he studies, <u>the wiser</u> he becomes.</em><br>
+                <em><u>The bigger</u> the house is, <u>the higher</u> the rent is.</em>
+            </div>
+
+            <h4>📌 Với tính từ / trạng từ dài</h4>
+            <div class="example-box">
+                <strong>the more + adj/adv + S + V, the more + adj/adv + S + V</strong><br>
+                <em><u>The more beautiful</u> she is, <u>the more modest</u> she becomes.</em><br>
+                <em><u>The more expensive</u> the car is, <u>the more comfortable</u> it is.</em>
+            </div>
+
+            <h4>📌 Với danh từ</h4>
+            <div class="example-box">
+                <strong>the more + noun + S + V, the more + noun + S + V</strong><br>
+                <em><u>The more electricity</u> you use, <u>the higher</u> bill you will have.</em><br>
+                <em><u>The more money</u> she has, <u>the more clothes</u> she buys.</em>
+            </div>
+
+            <h3>🔹 So sánh đồng tiến (càng ngày càng)</h3>
+            
+            <h4>📌 Với tính từ / trạng từ ngắn</h4>
+            <div class="formula-box">
+                <strong>adj/adv + -er and + adj/adv + -er</strong><br>
+                <em>They work <u>harder and harder</u>.</em><br>
+                <em>It's <u>hotter and hotter</u>.</em>
+            </div>
+
+            <h4>📌 Với tính từ / trạng từ dài</h4>
+            <div class="formula-box">
+                <strong>more and more + adj/adv</strong><br>
+                <em>Life in the city is <u>more and more stressful</u>.</em><br>
+                <em>My daughter is <u>more and more beautiful</u>.</em>
             </div>
 
             <div class="note-box">
-                <strong>📌 Lưu ý:</strong> So sánh bội số có thể dùng với <em>as ... as</em> hoặc <em>more ... than</em>.<br>
-                <em>He is <u>twice as old as</u> his sister. / He is <u>twice older than</u> his sister.</em>
+                <strong>📌 Lưu ý:</strong> So sánh kép dùng để nhấn mạnh mối quan hệ tương hỗ giữa hai hành động / tính chất.<br>
+                <em>The older she is, the slower she becomes.</em> (Càng lớn tuổi, bà ấy càng chậm chạp.)
             </div>
         </div>
     </div>
 
-    <!-- TAB 5: TRẮC NGHIỆM TỔNG HỢP -->
+    <!-- TAB 5: TRẮC NGHIỆM -->
     <div id="luyentap" class="tab-content">
         <div class="quiz-container">
             <h2>🎯 Trắc nghiệm: Câu so sánh</h2>
             <p>✅ Chọn đáp án đúng. Hệ thống sẽ chấm điểm và giải thích.</p>
             <form id="quizForm">
-                <!-- 20 câu hỏi về so sánh -->
                 <div class="question" data-correct="A">
                     <p class="question-text">1. She is _______ her sister.</p>
                     <div class="options-route">
