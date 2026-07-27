@@ -271,6 +271,191 @@
             margin-bottom: 4px;
         }
 
+        /* ===== Phần viết lại câu ===== */
+        .rewrite-section {
+            background: #f8fcf9;
+            border-radius: 24px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 2px solid #cce0d4;
+        }
+
+        .rewrite-section .formula-box {
+            background: #e8f3ed;
+            border-left: 5px solid var(--accent);
+        }
+
+        .rewrite-section .example-box {
+            background: #dceee4;
+        }
+
+        .rewrite-exercise {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #d4e8dc;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .rewrite-exercise .question-text {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .rewrite-exercise .input-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .rewrite-exercise input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            border: 2px solid #cce0d4;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
+            background: #fafffd;
+        }
+
+        .rewrite-exercise input[type="text"]:focus {
+            border-color: var(--secondary);
+        }
+
+        .rewrite-exercise input[type="text"].correct-input {
+            border-color: var(--success);
+            background: #e6f5ed;
+        }
+
+        .rewrite-exercise input[type="text"].incorrect-input {
+            border-color: var(--danger);
+            background: #fde8e8;
+        }
+
+        .rewrite-exercise .check-btn {
+            padding: 10px 24px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .rewrite-exercise .check-btn:hover {
+            background: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .rewrite-exercise .check-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .rewrite-exercise .feedback {
+            margin-top: 10px;
+            padding: 10px 16px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .rewrite-exercise .feedback.show {
+            display: block;
+        }
+
+        .rewrite-exercise .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            color: #155724;
+        }
+
+        .rewrite-exercise .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid var(--danger);
+            color: #721c24;
+        }
+
+        .rewrite-exercise .feedback .answer-reveal {
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .rewrite-exercise .hint-btn {
+            padding: 6px 16px;
+            background: #e8f0eb;
+            border: 1px solid #b8d4c4;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--primary);
+            transition: all 0.2s;
+        }
+
+        .rewrite-exercise .hint-btn:hover {
+            background: #d0e4d8;
+        }
+
+        .rewrite-exercise .hint-text {
+            font-size: 0.9rem;
+            color: #5a7a6a;
+            margin-top: 6px;
+            display: none;
+            font-style: italic;
+        }
+
+        .rewrite-exercise .hint-text.show {
+            display: block;
+        }
+
+        /* Progress */
+        .progress-summary {
+            background: #ecf6f0;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .progress-summary .stat {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .progress-summary .stat span {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .reset-all-btn {
+            padding: 8px 20px;
+            background: #e8e8e8;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.2s;
+        }
+
+        .reset-all-btn:hover {
+            background: #d4d4d4;
+        }
+
         .question {
             background: #f3faf6;
             border-radius: 24px;
@@ -408,6 +593,14 @@
             font-size: 0.9rem;
         }
 
+        .formula-highlight {
+            background: #d4e8dc;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
         @media (max-width: 700px) {
             .master-header {
                 padding: 1rem;
@@ -421,6 +614,13 @@
             }
             .rule-list {
                 grid-template-columns: 1fr;
+            }
+            .rewrite-exercise .input-area {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .rewrite-exercise input[type="text"] {
+                min-width: unset;
             }
         }
     </style>
@@ -452,7 +652,7 @@
         <button class="tab-btn" onclick="openTab('so_sanh_hon')">📈 2. So sánh hơn</button>
         <button class="tab-btn" onclick="openTab('so_sanh_nhat')">🏆 3. So sánh nhất</button>
         <button class="tab-btn" onclick="openTab('so_sanh_dac_biet')">✨ 4. So sánh đặc biệt</button>
-        <button class="tab-btn" onclick="openTab('luyentap')">🎯 5. Trắc nghiệm</button>
+        <button class="tab-btn" onclick="openTab('viet_lai_cau')">✏️ 5. Viết lại câu</button>
     </div>
 
     <!-- TAB 1: SO SÁNH BẰNG -->
@@ -492,7 +692,6 @@
                 <strong>📌 Lưu ý:</strong> Trong câu phủ định, ta có thể dùng <em>so ... as</em> thay cho <em>as ... as</em>.
             </div>
 
-            <!-- Bổ sung: Bảng phân biệt tính từ ngắn/dài -->
             <div class="highlight-box">
                 <h3 style="margin-top:0;">📌 Phân biệt tính từ ngắn và tính từ dài</h3>
                 <table>
@@ -527,7 +726,6 @@
                 <strong>💡 Dùng để so sánh hai đối tượng với mức độ khác nhau.</strong>
             </div>
 
-            <!-- BỔ SUNG: Phân biệt tính từ/trạng từ ngắn và dài -->
             <div class="highlight-box">
                 <h3 style="margin-top:0;">🔍 Phân biệt tính từ / trạng từ ngắn và dài</h3>
                 
@@ -602,7 +800,6 @@
                 <em>He speaks <u>more fluently than</u> his sister.</em>
             </div>
 
-            <!-- Bổ sung: So sánh hơn với danh từ -->
             <h3>🔹 So sánh hơn với danh từ</h3>
             <div class="rule-list">
                 <div class="rule-item">
@@ -738,235 +935,535 @@
         </div>
     </div>
 
-    <!-- TAB 5: TRẮC NGHIỆM -->
-    <div id="luyentap" class="tab-content">
-        <div class="quiz-container">
-            <h2>🎯 Trắc nghiệm: Câu so sánh</h2>
-            <p>✅ Chọn đáp án đúng. Hệ thống sẽ chấm điểm và giải thích.</p>
-            <form id="quizForm">
-                <div class="question" data-correct="A">
-                    <p class="question-text">1. She is _______ her sister.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q1" value="A"> as tall as</label>
-                        <label class="option-label"><input type="radio" name="q1" value="B"> taller as</label>
-                        <label class="option-label"><input type="radio" name="q1" value="C"> the tallest</label>
-                        <label class="option-label"><input type="radio" name="q1" value="D"> more tall</label>
-                    </div>
-                    <div class="explanation">📏 So sánh bằng: as + adj + as.</div>
+    <!-- TAB 5: VIẾT LẠI CÂU -->
+    <div id="viet_lai_cau" class="tab-content">
+        <div class="card">
+            <h2>✏️ Viết lại câu so sánh</h2>
+            <p style="margin-bottom: 1.5rem;">📌 Học lý thuyết từng dạng, xem ví dụ, sau đó thực hành viết lại câu ngay bên dưới.</p>
+
+            <!-- ===== DẠNG 1: SO SÁNH BẰNG → SO SÁNH HƠN / NHẤT ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 1: So sánh bằng → So sánh hơn</h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>Câu gốc:</strong> S1 + V + <span class="formula-highlight">not + as/so + adj/adv + as</span> + S2</p>
+                    <p><strong>→ Viết lại:</strong> S2 + V + <span class="formula-highlight">adj/adv-er / more + adj/adv + than</span> + S1</p>
+                    <p style="margin-top: 6px; font-size:0.95rem; color:#555;">💡 Dùng khi câu gốc ở dạng <strong>phủ định</strong> (không bằng)</p>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">2. He runs _______ than me.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q2" value="A"> more fast</label>
-                        <label class="option-label"><input type="radio" name="q2" value="B"> faster</label>
-                        <label class="option-label"><input type="radio" name="q2" value="C"> as fast as</label>
-                        <label class="option-label"><input type="radio" name="q2" value="D"> fast</label>
-                    </div>
-                    <div class="explanation">🏃 So sánh hơn của trạng từ ngắn: fast → faster.</div>
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em>She is <u>not as tall as</u> her brother.</em> (Cô ấy không cao bằng anh trai.)</p>
+                    <p><strong>↔ Viết lại:</strong> <em>Her brother is <u>taller than</u> her.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>He doesn't run <u>as fast as</u> his friend.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>His friend runs <u>faster than</u> him.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>This book is <u>not as interesting as</u> that one.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>That book is <u>more interesting than</u> this one.</em></p>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">3. This book is _______ than that one.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q3" value="A"> more interesting</label>
-                        <label class="option-label"><input type="radio" name="q3" value="B"> interestinger</label>
-                        <label class="option-label"><input type="radio" name="q3" value="C"> most interesting</label>
-                        <label class="option-label"><input type="radio" name="q3" value="D"> as interesting</label>
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+                
+                <div class="rewrite-exercise" data-exercise="1.1">
+                    <p class="question-text">1.1. <strong>Tom is not as strong as his brother.</strong> (Viết lại câu với nghĩa không đổi, dùng so sánh hơn)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📖 Tính từ dài (3 âm tiết) → more + adj.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>His brother is stronger than Tom.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="C">
-                    <p class="question-text">4. She is _______ student in the class.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q4" value="A"> better</label>
-                        <label class="option-label"><input type="radio" name="q4" value="B"> more good</label>
-                        <label class="option-label"><input type="radio" name="q4" value="C"> the best</label>
-                        <label class="option-label"><input type="radio" name="q4" value="D"> the better</label>
+                <div class="rewrite-exercise" data-exercise="1.2">
+                    <p class="question-text">1.2. <strong>She doesn't run as fast as her friend.</strong> (Viết lại câu với nghĩa không đổi)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">🏆 So sánh nhất của good → the best.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>Her friend runs faster than her.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">5. He has _______ money than I do.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q5" value="A"> less</label>
-                        <label class="option-label"><input type="radio" name="q5" value="B"> fewer</label>
-                        <label class="option-label"><input type="radio" name="q5" value="C"> little</label>
-                        <label class="option-label"><input type="radio" name="q5" value="D"> more less</label>
+                <div class="rewrite-exercise" data-exercise="1.3">
+                    <p class="question-text">1.3. <strong>This book is not as interesting as that one.</strong> (Viết lại câu với nghĩa không đổi)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">💰 little → less (so sánh hơn).</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>That book is more interesting than this one.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">6. She sings _______ of all.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q6" value="A"> beautiful</label>
-                        <label class="option-label"><input type="radio" name="q6" value="B"> most beautifully</label>
-                        <label class="option-label"><input type="radio" name="q6" value="C"> more beautifully</label>
-                        <label class="option-label"><input type="radio" name="q6" value="D"> as beautiful</label>
+                <div class="rewrite-exercise" data-exercise="1.4">
+                    <p class="question-text">1.4. <strong>She is not as intelligent as her sister.</strong> (Viết lại câu với nghĩa không đổi)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">🎤 Trạng từ dài → the most + adv.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>Her sister is more intelligent than her.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">7. This box is _______ that one.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q7" value="A"> twice as heavy as</label>
-                        <label class="option-label"><input type="radio" name="q7" value="B"> twice as heavier as</label>
-                        <label class="option-label"><input type="radio" name="q7" value="C"> two times heavy</label>
-                        <label class="option-label"><input type="radio" name="q7" value="D"> as twice heavy</label>
+                <div class="rewrite-exercise" data-exercise="1.5">
+                    <p class="question-text">1.5. <strong>He doesn't have as much money as his brother.</strong> (Viết lại câu với nghĩa không đổi)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📦 So sánh bội số: twice as + adj + as.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>His brother has more money than him.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== DẠNG 2: SO SÁNH HƠN → SO SÁNH NHẤT ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 2: So sánh hơn → So sánh nhất</h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>Câu gốc:</strong> S + V + <span class="formula-highlight">adj/adv-er / more + adj/adv + than + any other + N (số ít)</span></p>
+                    <p><strong>→ Viết lại:</strong> S + V + <span class="formula-highlight">the + adj/adv-est / the most + adj/adv + N (số ít) + in / of / among ...</span></p>
+                    <p style="margin-top: 6px; font-size:0.95rem; color:#555;">💡 Dùng khi so sánh một đối tượng với tất cả các đối tượng khác trong cùng nhóm</p>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">8. It is getting _______ and _______.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q8" value="A"> cold ... cold</label>
-                        <label class="option-label"><input type="radio" name="q8" value="B"> colder ... colder</label>
-                        <label class="option-label"><input type="radio" name="q8" value="C"> more cold ... more cold</label>
-                        <label class="option-label"><input type="radio" name="q8" value="D"> coldest ... coldest</label>
-                    </div>
-                    <div class="explanation">❄️ Cấp tiến (càng ngày càng) của adj ngắn: adj-er and adj-er.</div>
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em>He is <u>taller than any other student</u> in the class.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>He is <u>the tallest student</u> in the class.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>She runs <u>faster than anyone else</u> in the team.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>She runs <u>the fastest</u> in the team.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>This car is <u>more expensive than any other car</u> in the showroom.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>This car is <u>the most expensive</u> in the showroom.</em></p>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">9. _______ you study, _______ you become.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q9" value="A"> The more ... the smarter</label>
-                        <label class="option-label"><input type="radio" name="q9" value="B"> More ... smarter</label>
-                        <label class="option-label"><input type="radio" name="q9" value="C"> The most ... the smartest</label>
-                        <label class="option-label"><input type="radio" name="q9" value="D"> As ... as</label>
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+
+                <div class="rewrite-exercise" data-exercise="2.1">
+                    <p class="question-text">2.1. <strong>She is taller than any other student in the school.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📚 So sánh kép: The + comparative, the + comparative.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>She is the tallest student in the school.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">10. She is not _______ her mother.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q10" value="A"> as tall as</label>
-                        <label class="option-label"><input type="radio" name="q10" value="B"> so tall than</label>
-                        <label class="option-label"><input type="radio" name="q10" value="C"> taller than</label>
-                        <label class="option-label"><input type="radio" name="q10" value="D"> the tallest</label>
+                <div class="rewrite-exercise" data-exercise="2.2">
+                    <p class="question-text">2.2. <strong>He runs faster than anyone else in the team.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📏 Phủ định so sánh bằng: not as/so + adj + as.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>He runs the fastest in the team.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">11. This is _______ dress I have ever seen.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q11" value="A"> more beautiful</label>
-                        <label class="option-label"><input type="radio" name="q11" value="B"> the most beautiful</label>
-                        <label class="option-label"><input type="radio" name="q11" value="C"> beautiful</label>
-                        <label class="option-label"><input type="radio" name="q11" value="D"> as beautiful</label>
+                <div class="rewrite-exercise" data-exercise="2.3">
+                    <p class="question-text">2.3. <strong>This book is more interesting than any other book I've read.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">👗 So sánh nhất với tính từ dài: the most + adj.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>This is the most interesting book I've ever read.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">12. He is _______ than his brother.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q12" value="A"> more tall</label>
-                        <label class="option-label"><input type="radio" name="q12" value="B"> taller</label>
-                        <label class="option-label"><input type="radio" name="q12" value="C"> tallest</label>
-                        <label class="option-label"><input type="radio" name="q12" value="D"> as tall</label>
+                <div class="rewrite-exercise" data-exercise="2.4">
+                    <p class="question-text">2.4. <strong>No one in the class speaks English more fluently than her.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📏 tall → taller (so sánh hơn).</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>She speaks English the most fluently in the class.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">13. She has _______ books than I do.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q13" value="A"> more</label>
-                        <label class="option-label"><input type="radio" name="q13" value="B"> many</label>
-                        <label class="option-label"><input type="radio" name="q13" value="C"> most</label>
-                        <label class="option-label"><input type="radio" name="q13" value="D"> much</label>
+                <div class="rewrite-exercise" data-exercise="2.5">
+                    <p class="question-text">2.5. <strong>He has more experience than any other candidate.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">📚 many → more (so sánh hơn).</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>He has the most experience among the candidates.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== DẠNG 3: SO SÁNH NHẤT VỚI "NO OTHER / NONE" ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 3: So sánh nhất với <strong>"No other / None"</strong></h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>Câu gốc:</strong> <span class="formula-highlight">No other</span> + N (số ít) + V + <span class="formula-highlight">as/so + adj/adv + as</span> + S</p>
+                    <p><strong>→ Viết lại:</strong> S + V + <span class="formula-highlight">the + adj/adv-est / the most + adj/adv</span> + (N) + in / of ...</p>
+                    <p style="margin-top: 6px; font-size:0.95rem; color:#555;">💡 Dùng để nhấn mạnh <strong>không ai/cái gì hơn</strong> được đối tượng đang nói đến</p>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">14. He drove _______ than usual.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q14" value="A"> more careful</label>
-                        <label class="option-label"><input type="radio" name="q14" value="B"> more carefully</label>
-                        <label class="option-label"><input type="radio" name="q14" value="C"> carefuler</label>
-                        <label class="option-label"><input type="radio" name="q14" value="D"> most carefully</label>
-                    </div>
-                    <div class="explanation">🚗 Trạng từ dài → more + adv.</div>
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em><u>No other student</u> in the class is <u>as tall as</u> Peter.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>Peter is <u>the tallest student</u> in the class.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em><u>No one</u> in the team runs <u>as fast as</u> him.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>He runs <u>the fastest</u> in the team.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em><u>None</u> of the books is <u>as interesting as</u> this one.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>This book is <u>the most interesting</u> of all.</em></p>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">15. That was _______ day of my life.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q15" value="A"> the happiest</label>
-                        <label class="option-label"><input type="radio" name="q15" value="B"> more happy</label>
-                        <label class="option-label"><input type="radio" name="q15" value="C"> happier</label>
-                        <label class="option-label"><input type="radio" name="q15" value="D"> as happy</label>
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+
+                <div class="rewrite-exercise" data-exercise="3.1">
+                    <p class="question-text">3.1. <strong>No other student in the class is as tall as Mary.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">😊 happy → the happiest (so sánh nhất).</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>Mary is the tallest student in the class.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">16. She is _______ her sister.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q16" value="A"> as old as</label>
-                        <label class="option-label"><input type="radio" name="q16" value="B"> older as</label>
-                        <label class="option-label"><input type="radio" name="q16" value="C"> oldest</label>
-                        <label class="option-label"><input type="radio" name="q16" value="D"> more old</label>
+                <div class="rewrite-exercise" data-exercise="3.2">
+                    <p class="question-text">3.2. <strong>No one in the group is as intelligent as John.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">🎂 So sánh bằng: as + adj + as.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>John is the most intelligent in the group.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">17. The weather is getting _______ and _______.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q17" value="A"> bad ... bad</label>
-                        <label class="option-label"><input type="radio" name="q17" value="B"> worse ... worse</label>
-                        <label class="option-label"><input type="radio" name="q17" value="C"> more bad ... more bad</label>
-                        <label class="option-label"><input type="radio" name="q17" value="D"> worst ... worst</label>
+                <div class="rewrite-exercise" data-exercise="3.3">
+                    <p class="question-text">3.3. <strong>None of the cars is as fast as this one.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">🌧️ bad → worse (cấp tiến).</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>This car is the fastest of all.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">18. He has _______ experience than his colleague.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q18" value="A"> less</label>
-                        <label class="option-label"><input type="radio" name="q18" value="B"> fewer</label>
-                        <label class="option-label"><input type="radio" name="q18" value="C"> little</label>
-                        <label class="option-label"><input type="radio" name="q18" value="D"> least</label>
+                <div class="rewrite-exercise" data-exercise="3.4">
+                    <p class="question-text">3.4. <strong>No other movie is as exciting as this one.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">💼 little (không đếm được) → less.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>This is the most exciting movie.</strong></div>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="question" data-correct="B">
-                    <p class="question-text">19. She speaks English _______ than her friend.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q19" value="A"> fluent</label>
-                        <label class="option-label"><input type="radio" name="q19" value="B"> more fluently</label>
-                        <label class="option-label"><input type="radio" name="q19" value="C"> fluently</label>
-                        <label class="option-label"><input type="radio" name="q19" value="D"> most fluently</label>
+                <div class="rewrite-exercise" data-exercise="3.5">
+                    <p class="question-text">3.5. <strong>No one in the company works as hard as her.</strong> (Viết lại câu dùng so sánh nhất)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
                     </div>
-                    <div class="explanation">🗣️ Trạng từ dài → more + adv.</div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>She works the hardest in the company.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== DẠNG 4: SO SÁNH KÉP ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 4: So sánh kép (Càng ... càng)</h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>The + comparative (+ S + V), the + comparative (+ S + V)</strong></p>
+                    <p style="margin-top:8px;">↔ Có thể viết lại từ câu có nghĩa "càng ... càng ..."</p>
                 </div>
 
-                <div class="question" data-correct="A">
-                    <p class="question-text">20. This is _______ expensive car in the showroom.</p>
-                    <div class="options-route">
-                        <label class="option-label"><input type="radio" name="q20" value="A"> the most</label>
-                        <label class="option-label"><input type="radio" name="q20" value="B"> more</label>
-                        <label class="option-label"><input type="radio" name="q20" value="C"> as</label>
-                        <label class="option-label"><input type="radio" name="q20" value="D"> less</label>
-                    </div>
-                    <div class="explanation">🚗 So sánh nhất: the most + adj.</div>
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em>If he studies harder, he becomes smarter.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>The harder he studies, the smarter he becomes.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>If you have more money, you spend more.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>The more money you have, the more you spend.</em></p>
                 </div>
 
-                <button type="button" class="submit-btn" onclick="checkQuiz()">🎯 Nộp bài & xem kết quả</button>
-            </form>
-            <div id="quizResult" class="result-score"></div>
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+
+                <div class="rewrite-exercise" data-exercise="4.1">
+                    <p class="question-text">4.1. <strong>If she gets older, she becomes more beautiful.</strong> (Viết lại câu dùng so sánh kép)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The older she gets, the more beautiful she becomes.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="4.2">
+                    <p class="question-text">4.2. <strong>If you work more, you earn more.</strong> (Viết lại câu dùng so sánh kép)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The more you work, the more you earn.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="4.3">
+                    <p class="question-text">4.3. <strong>If the weather is colder, I feel more comfortable.</strong> (Viết lại câu dùng so sánh kép)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The colder the weather is, the more comfortable I feel.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="4.4">
+                    <p class="question-text">4.4. <strong>If you eat more, you become fatter.</strong> (Viết lại câu dùng so sánh kép)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The more you eat, the fatter you become.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="4.5">
+                    <p class="question-text">4.5. <strong>If the book is longer, it is more boring.</strong> (Viết lại câu dùng so sánh kép)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The longer the book is, the more boring it is.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== DẠNG 5: SO SÁNH BỘI SỐ ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 5: So sánh bội số</h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>twice / three times / half + as + adj + as</strong></p>
+                    <p style="margin-top:8px;"><strong>↔ Viết lại:</strong> Đảo ngược hai đối tượng</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em>This box is <u>twice as heavy as</u> that one.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>That box is <u>half as heavy as</u> this one.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>This room is <u>three times as large as</u> that one.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>That room is <u>one-third as large as</u> this one.</em></p>
+                </div>
+
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+
+                <div class="rewrite-exercise" data-exercise="5.1">
+                    <p class="question-text">5.1. <strong>This bag is twice as heavy as that one.</strong> (Viết lại câu đảo ngược đối tượng)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Đảo ngược: <strong>That bag is half as heavy as this one.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="5.2">
+                    <p class="question-text">5.2. <strong>His salary is three times as high as mine.</strong> (Viết lại câu đảo ngược đối tượng)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Đảo ngược: <strong>My salary is one-third as high as his.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="5.3">
+                    <p class="question-text">5.3. <strong>This building is twice as tall as that one.</strong> (Viết lại câu đảo ngược đối tượng)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Đảo ngược: <strong>That building is half as tall as this one.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="5.4">
+                    <p class="question-text">5.4. <strong>She earns twice as much as her sister.</strong> (Viết lại câu đảo ngược đối tượng)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Đảo ngược: <strong>Her sister earns half as much as her.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="5.5">
+                    <p class="question-text">5.5. <strong>This car is four times as fast as that one.</strong> (Viết lại câu đảo ngược đối tượng)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Đảo ngược: <strong>That car is a quarter as fast as this one.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== DẠNG 6: SO SÁNH ĐỒNG TIẾN ===== -->
+            <div class="rewrite-section">
+                <h3>🔹 Dạng 6: So sánh đồng tiến (càng ngày càng)</h3>
+                
+                <div class="formula-box">
+                    <strong>📐 Công thức:</strong><br>
+                    <p><strong>short adj/adv-er and short adj/adv-er</strong> (ngắn)</p>
+                    <p><strong>more and more + long adj/adv</strong> (dài)</p>
+                    <p style="margin-top:8px;">↔ Viết lại câu có nghĩa "càng ngày càng ..."</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>📌 Ví dụ:</strong><br>
+                    <p><strong>→</strong> <em>It is becoming colder every day.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>It is getting colder and colder.</em></p>
+                    <hr style="margin: 10px 0; border-color: #b8d4c4;">
+                    <p><strong>→</strong> <em>The city is becoming more crowded.</em></p>
+                    <p><strong>↔ Viết lại:</strong> <em>The city is getting more and more crowded.</em></p>
+                </div>
+
+                <h4 style="margin-top: 1.5rem;">📝 Bài tập: Viết lại câu</h4>
+
+                <div class="rewrite-exercise" data-exercise="6.1">
+                    <p class="question-text">6.1. <strong>The weather is becoming hotter every day.</strong> (Viết lại câu dùng cấu trúc đồng tiến)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The weather is getting hotter and hotter.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="6.2">
+                    <p class="question-text">6.2. <strong>Life in the city is becoming more stressful.</strong> (Viết lại câu dùng cấu trúc đồng tiến)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>Life in the city is getting more and more stressful.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="6.3">
+                    <p class="question-text">6.3. <strong>The baby is becoming cuter every day.</strong> (Viết lại câu dùng cấu trúc đồng tiến)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>The baby is getting cuter and cuter.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="6.4">
+                    <p class="question-text">6.4. <strong>My English is becoming more fluent.</strong> (Viết lại câu dùng cấu trúc đồng tiến)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>My English is getting more and more fluent.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="rewrite-exercise" data-exercise="6.5">
+                    <p class="question-text">6.5. <strong>He is working harder every day.</strong> (Viết lại câu dùng cấu trúc đồng tiến)</p>
+                    <div class="input-area">
+                        <input type="text" placeholder="Nhập câu viết lại..." class="answer-input">
+                        <button class="check-btn" onclick="checkRewrite(this)">✅ Kiểm tra</button>
+                        <button class="hint-btn" onclick="toggleHint(this)">💡 Gợi ý</button>
+                    </div>
+                    <div class="hint-text">💡 Dùng cấu trúc: <strong>He is working harder and harder.</strong></div>
+                    <div class="feedback"></div>
+                </div>
+            </div>
+
+            <!-- ===== BẢNG TỔNG HỢP ===== -->
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <h3 style="margin-top:0;">📊 Tổng hợp các dạng viết lại câu so sánh</h3>
+                <table>
+                    <thead>
+                        <tr><th>Dạng</th><th>Công thức gốc</th><th>Cách viết lại</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Bằng → Hơn</strong></td>
+                            <td><em>not as/so + adj/adv + as</em></td>
+                            <td><em>adj-er / more + adj + than</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Hơn → Nhất</strong></td>
+                            <td><em>... + than + any other + N(số ít)</em></td>
+                            <td><em>the + adj-est / most + adj</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. No other → Nhất</strong></td>
+                            <td><em>No other + N + as/so + adj + as</em></td>
+                            <td><em>the + adj-est / most + adj</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Kép</strong></td>
+                            <td><em>If ... + comparative ...</em></td>
+                            <td><em>The + comparative, the + comparative</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Bội số</strong></td>
+                            <td><em>twice/three times + as + adj + as</em></td>
+                            <td><em>half / one-third + as + adj + as</em> (đảo ngược)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. Đồng tiến</strong></td>
+                            <td><em>... becoming + adj-er / more + adj</em></td>
+                            <td><em>adj-er and adj-er / more and more + adj</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Progress Summary -->
+            <div class="progress-summary">
+                <div class="stat">✅ Đã hoàn thành: <span id="completedCount">0</span> / 30 bài tập</div>
+                <button class="reset-all-btn" onclick="resetAllExercises()">🔄 Làm lại tất cả</button>
+            </div>
+
         </div>
     </div>
 </div>
@@ -976,6 +1473,7 @@
 </footer>
 
 <script>
+    // Tab switching
     function openTab(tabId) {
         const contents = document.querySelectorAll('.tab-content');
         contents.forEach(c => c.classList.remove('active'));
@@ -986,55 +1484,112 @@
         if (activeBtn) activeBtn.classList.add('active');
     }
 
-    function checkQuiz() {
-        const questions = document.querySelectorAll('#quizForm .question');
-        let score = 0;
-        questions.forEach((q, idx) => {
-            const correctVal = q.getAttribute('data-correct');
-            const selected = q.querySelector(`input[name="q${idx+1}"]:checked`);
-            const explanationDiv = q.querySelector('.explanation');
-            const labels = q.querySelectorAll('.option-label');
-            
-            labels.forEach(label => label.classList.remove('correct', 'incorrect'));
-            if (explanationDiv) explanationDiv.style.display = 'block';
-            
-            if (selected) {
-                const userVal = selected.value;
-                if (userVal === correctVal) {
-                    score++;
-                    selected.parentElement.classList.add('correct');
-                } else {
-                    selected.parentElement.classList.add('incorrect');
-                    labels.forEach(label => {
-                        if (label.querySelector('input').value === correctVal) {
-                            label.classList.add('correct');
-                        }
-                    });
-                }
-            } else {
-                labels.forEach(label => {
-                    if (label.querySelector('input').value === correctVal) {
-                        label.classList.add('correct');
-                    }
-                });
+    // Toggle hint
+    function toggleHint(btn) {
+        const hint = btn.parentElement.parentElement.querySelector('.hint-text');
+        hint.classList.toggle('show');
+    }
+
+    // Check rewrite answer
+    function checkRewrite(btn) {
+        const exercise = btn.parentElement.parentElement;
+        const input = exercise.querySelector('.answer-input');
+        const feedback = exercise.querySelector('.feedback');
+        const userAnswer = input.value.trim().toLowerCase();
+        
+        // Get the hint text which contains the answer
+        const hintText = exercise.querySelector('.hint-text');
+        let expectedAnswer = '';
+        if (hintText) {
+            const hintContent = hintText.textContent;
+            // Extract text between ** **
+            const match = hintContent.match(/\*\*(.*?)\*\*/);
+            if (match) {
+                expectedAnswer = match[1].trim().toLowerCase();
+            }
+        }
+        
+        // Normalize function
+        const normalize = (str) => {
+            return str.replace(/\s+/g, ' ').replace(/[.,!?;:]/g, '').trim();
+        };
+        
+        const normalizedUser = normalize(userAnswer);
+        const normalizedExpected = normalize(expectedAnswer);
+        
+        if (userAnswer.length === 0) {
+            feedback.className = 'feedback show incorrect';
+            feedback.innerHTML = '⚠️ Vui lòng nhập câu trả lời của bạn.';
+            return;
+        }
+        
+        // Check if answer is correct (flexible matching)
+        const isCorrect = normalizedUser === normalizedExpected || 
+                         normalizedUser.includes(normalizedExpected) || 
+                         normalizedExpected.includes(normalizedUser) && normalizedUser.length > 5;
+        
+        if (isCorrect) {
+            feedback.className = 'feedback show correct';
+            feedback.innerHTML = '✅ Đúng rồi! 🎉';
+            input.classList.add('correct-input');
+            input.classList.remove('incorrect-input');
+        } else {
+            feedback.className = 'feedback show incorrect';
+            feedback.innerHTML = `❌ Chưa đúng. Đáp án: <strong>${expectedAnswer}</strong>`;
+            input.classList.add('incorrect-input');
+            input.classList.remove('correct-input');
+        }
+        updateProgress();
+    }
+
+    // Update progress count
+    function updateProgress() {
+        const exercises = document.querySelectorAll('.rewrite-exercise');
+        let completed = 0;
+        exercises.forEach(ex => {
+            const input = ex.querySelector('.answer-input');
+            if (input && input.classList.contains('correct-input')) {
+                completed++;
             }
         });
-        const resultDiv = document.getElementById('quizResult');
-        resultDiv.style.display = 'block';
-        const total = questions.length;
-        let message = '';
-        if (score === total) {
-            message = '🏆 Hoàn hảo! Bạn đã nắm vững các dạng so sánh!';
-        } else if (score >= 16) {
-            message = '🌟 Rất tốt! Bạn hiểu rõ về câu so sánh!';
-        } else if (score >= 12) {
-            message = '📖 Khá ổn. Xem lại lý thuyết để chắc chắn hơn!';
-        } else {
-            message = '💪 Đừng nản! Hãy học kỹ các Tab lý thuyết nhé!';
-        }
-        resultDiv.innerHTML = `📊 Kết quả: ${score} / ${total} câu đúng. ${message}`;
-        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        document.getElementById('completedCount').textContent = completed;
     }
+
+    // Reset all exercises
+    function resetAllExercises() {
+        const exercises = document.querySelectorAll('.rewrite-exercise');
+        exercises.forEach(ex => {
+            const input = ex.querySelector('.answer-input');
+            const feedback = ex.querySelector('.feedback');
+            const hint = ex.querySelector('.hint-text');
+            if (input) {
+                input.value = '';
+                input.classList.remove('correct-input', 'incorrect-input');
+            }
+            if (feedback) {
+                feedback.className = 'feedback';
+                feedback.innerHTML = '';
+            }
+            if (hint) {
+                hint.classList.remove('show');
+            }
+        });
+        updateProgress();
+    }
+
+    // Initialize progress on load
+    document.addEventListener('DOMContentLoaded', function() {
+        updateProgress();
+        // Allow Enter key to submit
+        document.querySelectorAll('.answer-input').forEach(input => {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const btn = this.parentElement.querySelector('.check-btn');
+                    if (btn) btn.click();
+                }
+            });
+        });
+    });
 </script>
 
 </body>
